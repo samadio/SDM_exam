@@ -4,6 +4,6 @@ import gamesuite.Move;
 
 public interface InputManager {
 
-    void readMove();
-    Move getMove();
+    public void readMove();
+    public Move getMove();
 }
