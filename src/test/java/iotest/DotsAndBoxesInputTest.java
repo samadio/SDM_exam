@@ -2,6 +2,7 @@ package iotest;
 
 
 import dotsandboxes.DotsAndBoxesInput;
+import gamesuite.Move;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -22,6 +23,18 @@ class DotsAndBoxesInputTest {
         DotsAndBoxesInput itest=new DotsAndBoxesInput();
         setKeyboard("Mossa");
         assertEquals(itest.readInput(),"Mossa");
-        System.out.println("Test");
     }
+
+
+    @Test
+    public void ParserTest(){
+        DotsAndBoxesInput itest=new DotsAndBoxesInput();
+        setKeyboard("12 R");
+        itest.readMove();
+        Move currentMove= itest.getMove();
+        assertEquals(currentMove.getNode(),12);
+        assertEquals(currentMove.getDirection(), Move.Direction.RIGHT);
+    }
+
+
 }
