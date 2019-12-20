@@ -28,6 +28,7 @@ public class DotsAndBoxesInput implements InputManager {
 
     }
 
+    @Override
     public Move getMove(){
         return currentMove;
     }
