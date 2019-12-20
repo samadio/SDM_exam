@@ -19,9 +19,13 @@ public class DotsAndBoxesInput implements InputManager {
     @Override
     public void readMove() {
         String inputLine=readInput();
+
         if(InputValidator.checkFormat(inputLine)){
-            currentMove= ValidatedInputParser.parse(inputLine);
+            currentMove = ValidatedInputParser.parse(inputLine);
         }
+        else
+            throw new UnknownFormatConversionException("Format not recognized");
+
     }
 
     public Move getMove(){
