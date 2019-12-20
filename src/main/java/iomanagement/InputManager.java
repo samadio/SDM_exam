@@ -7,3 +7,6 @@ public interface InputManager {
     public void readMove();
     public Move getMove();
 }
+
+
+
