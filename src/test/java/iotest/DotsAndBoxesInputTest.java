@@ -22,5 +22,6 @@ class DotsAndBoxesInputTest {
         DotsAndBoxesInput itest=new DotsAndBoxesInput();
         setKeyboard("Mossa");
         assertEquals(itest.readInput(),"Mossa");
+        System.out.println("Test");
     }
 }
