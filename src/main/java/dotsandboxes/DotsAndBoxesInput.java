@@ -3,6 +3,8 @@ package dotsandboxes;
 import gamesuite.Move;
 import iomanagement.InputManager;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.UnknownFormatConversionException;
 
@@ -35,8 +37,22 @@ public class DotsAndBoxesInput implements InputManager {
 
 class InputValidator{
     static boolean checkFormat(String s){
-        return true;
-        //throw new UnknownFormatConversionException("Format not recognized");
+        Scanner in = new Scanner(s);
+        try{
+            Integer i = in.nextInt();
+        }
+        catch(Exception e){
+            return false;
+        }
+
+        List<String> validChar = Arrays.asList("U","D","L","R");
+        String direction = in.next();
+        if (direction.length()!=1) return false;
+        if (validChar.contains(direction)) return true;
+
+        return false;
+
+
     }
 
 }
