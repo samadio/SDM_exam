@@ -1,16 +1,20 @@
 package gametests.statustest;
 
+import gamesuite.BoardManager;
 import gamesuite.Move;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ScorerTest {
-
+    @Test
+    void horizontalMoveNoPoint() {
+    }
 }
 
-class DummyBoardManager {
+class DummyBoardManager extends BoardManager {
 
     private final Map<Move, Boolean> MOVES_DONE;
     private final Map<Move, Boolean> MOVES_VALIDITY;
@@ -37,6 +41,11 @@ class DummyBoardManager {
         if (valid == null)
             throw new NotValidMoveException();
         return valid;
+    }
+
+    public Integer rowLength(){
+
+        return 3;
     }
 }
 
