@@ -26,7 +26,7 @@ class DummyBoardManager {
         Boolean done = MOVES_DONE.get(move);
 
         if (done == null)
-            throw new InvalidMoveException();
+            throw new NotValidMoveException();
 
         return done;
     }
@@ -35,7 +35,9 @@ class DummyBoardManager {
 
         Boolean valid = MOVES_VALIDITY.get(move);
         if (valid == null)
-            throw new InvalidMoveException();
+            throw new NotValidMoveException();
         return valid;
     }
 }
+
+class NotValidMoveException extends RuntimeException{}
