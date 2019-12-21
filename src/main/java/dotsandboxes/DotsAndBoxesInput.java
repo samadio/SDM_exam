@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.UnknownFormatConversionException;
 
-public class DotsAndBoxesInput implements InputManager {
+public class DotsAndBoxesInput extends InputManager {
 
-    private Move currentMove;
 
 
     public String readInput(){
@@ -30,10 +29,6 @@ public class DotsAndBoxesInput implements InputManager {
 
     }
 
-    @Override
-    public Move getMove(){
-        return currentMove;
-    }
 
 }
 

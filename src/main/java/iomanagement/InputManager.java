@@ -2,10 +2,16 @@ package iomanagement;
 
 import gamesuite.Move;
 
-public interface InputManager {
+public abstract class InputManager {
 
-    public void readMove();
-    public Move getMove();
+    protected Move currentMove;
+
+
+    public abstract void readMove();
+
+    public Move getMove(){
+        return currentMove;
+    }
 }
 
 
