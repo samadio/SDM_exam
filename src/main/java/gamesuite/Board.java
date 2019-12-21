@@ -4,12 +4,12 @@ public class Board {
 
     public enum Which{HORIZONTAL,VERTICAL};
 
-    private Boolean[][] horizontalLines;
-    private Boolean[][] verticalLines;
+    public boolean[][] horizontalLines;
+    private boolean[][] verticalLines;
 
     Board(Integer n, Integer m){
-        this.horizontalLines= new Boolean[n][m-1];
-        this.verticalLines=  new Boolean[n-1][m];
+        this.horizontalLines= new boolean[n][m-1];
+        this.verticalLines=  new boolean[n-1][m];
     }
 
     public Boolean getElement(Indexes indexes) {
