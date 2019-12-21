@@ -10,19 +10,19 @@ public class BoardManager {
         this.columns = m;
     }
 
-    public Integer rowLength() {
-        return this.rows;
-    }
+
+    public Integer rowLength() {return this.rows;}
+
 
     public boolean moveDone(Move m) {
-        if (this.board.getElement(new Indexes(m))) return true;
+        if (this.board.getElement(new Indexes(m,this.rows))) return true;
         return false;
     }
 
 
     public void updateBoard(Move m) throws InvalidMove {
         try {
-            if (!moveDone(m)) this.board.setBoard(new Indexes(m));
+            if (!moveDone(m)) this.board.setBoard(new Indexes(m, this.rows));
             else throw new Exception();
 
         } catch (IndexOutOfBoundsException ex) {
@@ -30,7 +30,6 @@ public class BoardManager {
 
         } catch (Exception ex) {
             throw new InvalidMove(m);
-
         }
     }
 }
