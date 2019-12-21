@@ -16,5 +16,13 @@ public class Move {
 
     public Direction getDirection(){return this.direction;}
 
+}
 
+
+
+class InvalidMove extends Exception {
+    Move invalid;
+    InvalidMove(Move m){
+        invalid=m;
+    }
 }
