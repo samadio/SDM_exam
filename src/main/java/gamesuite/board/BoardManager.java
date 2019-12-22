@@ -18,6 +18,9 @@ public class BoardManager {
     //needed by Federico
     public Integer rowLength() {return this.rows;}
 
+    //added by Simone
+    public Integer colLength() {return this.columns;}
+
     //needed by Federico
     public boolean moveDone(Move m) {
         if (this.board.getElement(new Indexes(m,this.rows))) return true;
