@@ -10,17 +10,17 @@ public class MoveValidator {
     }
 
     public boolean invalidNode(Integer i){
-        return (i<1)  |  (i>bm.colLength()*bm.rowLength()) ;
+        return (i<0)  |  (i>bm.columnsLength()*bm.rowLength()-1) ;
     }
 
 
-    public boolean moveAlreadyDone(Move m) throws MoveAlreadyDoneException{
-        return bm.moveDone(m); //throw new MoveAlreadyDoneException(m);
+    public boolean moveAlreadyDone(Move m){
+        return bm.moveDone(m);
     }
 
     public boolean outBoardLine(Move m) throws MoveOutOfBoardException{
         Integer rowLen=bm.rowLength();
-        Integer colLen=bm.colLength();
+        Integer colLen=bm.columnsLength();
 
         return (leftFromFirstCol(m,rowLen)| rightFromLastCol(m,rowLen)| upFromFirstRow(m,rowLen) | downFromLastRow(m,rowLen,colLen));  //  throw new MoveOutOfBoardException(m); return true;
     }
@@ -30,7 +30,7 @@ public class MoveValidator {
             }
 
             private boolean inFirstColumn(Move m, Integer rowLen) {
-                return m.getNode()%rowLen==1;
+                return m.getNode()%rowLen==0;
             }
 
             private boolean rightFromLastCol(Move m, Integer rowLen) {
@@ -38,7 +38,7 @@ public class MoveValidator {
             }
 
             private boolean inLastColumn(Move m, Integer rowLen) {
-                return m.getNode()%rowLen==0;
+                return (m.getNode()+1)%rowLen==0;
             }
 
 
@@ -47,7 +47,7 @@ public class MoveValidator {
             }
 
             private boolean inFirstRow(Move m, Integer rowLen) {
-                return m.getNode()<rowLen+1;
+                return m.getNode()<rowLen;
             }
 
             private boolean downFromLastRow(Move m, Integer rowLen, Integer colLen) {
@@ -55,14 +55,15 @@ public class MoveValidator {
             }
 
             private boolean inLastRow(Move m, Integer rowLen, Integer colLen) {
-                return rowLen*colLen-m.getNode()<rowLen+1;
+                return rowLen*colLen-1-m.getNode()<rowLen;
             }
 
 
 
-    public void validate(Move m) throws MoveAlreadyDoneException, MoveOutOfBoardException{
+    public void validateMove(Move m) throws MoveAlreadyDoneException, MoveOutOfBoardException, InvalidNodeException {
+        if(invalidNode(m.getNode())) throw new InvalidNodeException(m);
+        if(outBoardLine(m)) throw new MoveOutOfBoardException(m);
         if(moveAlreadyDone(m)) throw new MoveAlreadyDoneException(m);
-        if(outBoardLine(m)| invalidNode(m.getNode())) throw new MoveOutOfBoardException(m);
     }
 
 }

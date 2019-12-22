@@ -5,4 +5,8 @@ public class MoveAlreadyDoneException extends RuntimeException{
     public MoveAlreadyDoneException(Move m){
         invalid=m;
     }
+
+    public Move getInvalid() {
+        return invalid;
+    }
 }
