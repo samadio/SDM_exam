@@ -64,17 +64,17 @@ public class MoveValidatorTest {
         assertFalse(testMoveValidator.invalidNode(15));
     }
 
-    /*   @Test
+    @Test
     public void validateMoveAlreadyDoneException() {
         Move currentMove = new Move(12, Move.Direction.LEFT);
         BoardManager currentBM = new BoardManager(4, 4);
         MoveValidator testMoveValidator = new MoveValidator(currentBM);
 
+        testMoveValidator.validate(currentMove);
         currentBM.updateBoard(currentMove);
 
         assertThrows(MoveAlreadyDoneException.class, () -> testMoveValidator.validate(currentMove));
     }
-*/
 
 
 
