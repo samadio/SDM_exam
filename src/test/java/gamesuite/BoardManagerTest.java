@@ -1,5 +1,7 @@
 package gamesuite;
 
+import gamesuite.board.BoardManager;
+import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

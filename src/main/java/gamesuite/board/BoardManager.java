@@ -1,4 +1,8 @@
-package gamesuite;
+package gamesuite.board;
+
+import gamesuite.move.Move;
+import gamesuite.move.MoveAlreadyDoneException;
+import gamesuite.move.MoveOutOfBoardException;
 
 public class BoardManager {
     private Integer rows;
@@ -27,7 +31,7 @@ public class BoardManager {
             else throw new Exception();
 
         } catch (IndexOutOfBoundsException ex) {
-            throw new OutOfBoardException(m);
+            throw new MoveOutOfBoardException(m);
 
         } catch (Exception ex) {
             throw new MoveAlreadyDoneException(m);

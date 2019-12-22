@@ -1,8 +1,8 @@
-package gamesuite;
+package gamesuite.board;
 
 public class Board {
 
-    public enum Which{HORIZONTAL,VERTICAL};
+    public enum Which{HORIZONTAL,VERTICAL}
 
     public boolean[][] horizontalLines;
     private boolean[][] verticalLines;

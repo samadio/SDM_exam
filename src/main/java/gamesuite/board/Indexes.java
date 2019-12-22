@@ -1,4 +1,6 @@
-package gamesuite;
+package gamesuite.board;
+
+import gamesuite.move.Move;
 
 public class Indexes{
 

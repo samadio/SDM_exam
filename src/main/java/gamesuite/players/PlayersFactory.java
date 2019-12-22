@@ -1,4 +1,4 @@
-package gamesuite;
+package gamesuite.players;
 
 public class PlayersFactory {
 

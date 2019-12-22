@@ -1,6 +1,6 @@
 package dotsandboxes;
 
-import gamesuite.Move;
+import gamesuite.move.Move;
 import iomanagement.InputManager;
 
 import java.util.Arrays;
