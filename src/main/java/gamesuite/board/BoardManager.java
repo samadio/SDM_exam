@@ -9,7 +9,7 @@ public class BoardManager {
     private Integer columns;
     private Board board;
 
-    BoardManager(Integer n, Integer m) {
+    public BoardManager(Integer n, Integer m) {
         this.rows = n;
         this.columns = m;
         this.board= new Board(n,m);
