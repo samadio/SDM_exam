@@ -15,5 +15,14 @@ class BoardTest {
 
     }
 
+    @Test
+    void setElementTest(){
+        Board board= new Board(4,6);
+        Move m= new Move(4, Move.Direction.UP);
+        Indexes indexes=new Indexes(m,4);
+        board.setBoard(indexes);
+        assertEquals(board.getElement(indexes),true);
+    }
+
 
 }

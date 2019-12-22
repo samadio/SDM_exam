@@ -21,4 +21,6 @@ class IndexesTest {
         assertEquals(indexes.toBoardColIndex(m,3),
                 1);
     }
+
+
 }

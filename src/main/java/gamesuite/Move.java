@@ -20,9 +20,17 @@ public class Move {
 
 
 
-class InvalidMove extends Exception {
+class MoveAlreadyDoneException extends RuntimeException{
     Move invalid;
-    InvalidMove(Move m){
+    MoveAlreadyDoneException(Move m){
+        invalid=m;
+    }
+}
+
+
+class OutOfBoardException extends RuntimeException{
+    Move invalid;
+    OutOfBoardException(Move m){
         invalid=m;
     }
 }
