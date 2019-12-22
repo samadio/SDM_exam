@@ -16,29 +16,17 @@ public class BoardManager {
     }
 
     //needed by Federico
-    public Integer rowLength() {return this.rows;}
-    public Integer columnsLength() {return this.columns;}
-
+    public Integer rowLength() {return this.columns;}
+    public Integer columnsLength() {return this.rows;}
 
     //needed by Federico
     public boolean moveDone(Move m) {
-        if (this.board.getElement(new Indexes(m,this.rows))) return true;
-        return false;
+        return (this.board.getElement(new Indexes(m,this.rows)));
     }
 
     //needed by Simone
-    public void updateBoard(Move m) throws MoveAlreadyDoneException {
-        try {
-            if (!moveDone(m)) this.board.setBoard(new Indexes(m, this.rows));
-            else throw new Exception();
+    public void updateBoard(Move m) { this.board.setBoard(new Indexes(m, this.rows));}
 
-        } catch (IndexOutOfBoundsException ex) {
-            throw new MoveOutOfBoardException(m);
-
-        } catch (Exception ex) {
-            throw new MoveAlreadyDoneException(m);
-        }
-    }
 }
 
 
