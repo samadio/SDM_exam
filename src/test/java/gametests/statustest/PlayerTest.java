@@ -1,7 +1,7 @@
 package gametests.statustest;
 
-import gamesuite.Player;
-import gamesuite.PlayersFactory;
+import gamesuite.players.Player;
+import gamesuite.players.PlayersFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

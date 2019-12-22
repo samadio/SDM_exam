@@ -1,6 +1,6 @@
 package iomanagement;
 
-import gamesuite.Move;
+import gamesuite.move.Move;
 
 public abstract class InputManager {
 

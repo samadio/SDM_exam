@@ -1,8 +1,8 @@
-package gamesuite;
+package gamesuite.move;
 
 
 public class Move {
-    public enum Direction{RIGHT,DOWN,UP,LEFT};
+    public enum Direction{RIGHT,DOWN,UP,LEFT}
 
     private Integer node;
     private Direction direction;
@@ -16,5 +16,6 @@ public class Move {
 
     public Direction getDirection(){return this.direction;}
 
-
 }
+
+
