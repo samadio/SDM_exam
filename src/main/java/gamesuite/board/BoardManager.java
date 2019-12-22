@@ -17,6 +17,8 @@ public class BoardManager {
 
     //needed by Federico
     public Integer rowLength() {return this.rows;}
+    public Integer columnsLength() {return this.columns;}
+
 
     //needed by Federico
     public boolean moveDone(Move m) {
