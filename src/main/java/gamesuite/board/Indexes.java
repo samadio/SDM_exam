@@ -8,7 +8,7 @@ public class Indexes{
     private Integer rowIndex;
     private Integer columnIndex;
 
-    Indexes(Move m, Integer rows){
+    public Indexes(Move m, Integer rows){
         whichBoard=toBoardWhich(m);
         rowIndex=toBoardRowIndex(m, rows);
         columnIndex=toBoardColIndex(m, rows);
