@@ -59,19 +59,19 @@ class InputValidator{
 
 
 class ValidatedInputParser{
-    static Move parse(String s){
+    static InputMove parse(String s){
         Scanner in = new Scanner(s);
         Integer i = in.nextInt();
         String d = in.next();
         switch (d.charAt(0)){
             case 'R':
-                return new Move(i, Move.Direction.RIGHT);
+                return new InputMove(i, InputMove.Direction.RIGHT);
             case 'U':
-                return new Move(i, Move.Direction.UP);
+                return new InputMove(i, InputMove.Direction.UP);
             case 'L':
-                return new Move(i, Move.Direction.LEFT);
+                return new InputMove(i, InputMove.Direction.LEFT);
             default:
-                return new Move(i, Move.Direction.DOWN);
+                return new InputMove(i, InputMove.Direction.DOWN);
             }
     }
 }

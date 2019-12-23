@@ -2,19 +2,25 @@ package gamesuite.move;
 
 
 public class Move {
-    public enum Direction{RIGHT,DOWN,UP,LEFT}
 
-    private Integer node;
-    private Direction direction;
+    public enum Which{HORIZONTAL,VERTICAL}
 
-    public Move(Integer i,Direction d){
-        this.node=i;
-        this.direction=d;
+
+    private Which lineKind;
+    private int row;
+    private int column;
+
+    public Move(Which lk, Integer i,Integer j){
+        this.lineKind= lk;
+        this.row=i;
+        this.column=j;
     }
 
-    public Integer getNode(){ return this.node;}
+    public Which getLineKind(){return this.lineKind;}
+    public Integer getRow(){ return this.row;}
+    public Integer getCol() {return this.column;}
 
-    public Direction getDirection(){return this.direction;}
+
 
 }
 
