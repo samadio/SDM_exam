@@ -1,17 +1,16 @@
 package iomanagement;
-
+import dotsandboxes.InputMove;
 import gamesuite.move.Move;
 
 import java.util.zip.DataFormatException;
 
 public abstract class InputManager {
 
-    protected Move currentMove;
-
+    protected InputMove currentMove;
 
     public abstract void readMove() throws DataFormatException;
 
-    public Move getMove(){
+    public InputMove getMove(){
         return currentMove;
     }
 }

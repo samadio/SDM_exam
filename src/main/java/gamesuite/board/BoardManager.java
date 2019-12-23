@@ -21,11 +21,11 @@ public class BoardManager {
 
     //needed by Federico
     public boolean moveDone(Move m) {
-        return (this.board.getElement(new Indexes(m,this.rows)));
+        return this.board.getElement(m.getLineKind(), m.getRow(),m.getCol());
     }
 
     //needed by Simone
-    public void updateBoard(Move m) { this.board.setBoard(new Indexes(m, this.rows));}
+    public void updateBoard(Move m) { this.board.setBoard(m.getLineKind(), m.getRow(), m.getCol());}
 
 }
 

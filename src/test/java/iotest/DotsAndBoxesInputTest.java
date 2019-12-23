@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DotsAndBoxesInputTest {
-
+/*
     private void setKeyboard(String data) {
         InputStream stdin = System.in;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -50,5 +50,7 @@ class DotsAndBoxesInputTest {
         assertEquals("Format not recognized",exception.getMessage());
     }
 
+
+ */
 
 }

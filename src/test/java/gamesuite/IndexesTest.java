@@ -1,5 +1,4 @@
 package gamesuite;
-import gamesuite.board.Indexes;
 import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IndexesTest {
 
-
+/*
     @Test
     public void toBoardRowIndexTest(){
         Move m= new Move(4, Move.Direction.UP);
@@ -25,4 +24,6 @@ class IndexesTest {
     }
 
 
+
+ */
 }
