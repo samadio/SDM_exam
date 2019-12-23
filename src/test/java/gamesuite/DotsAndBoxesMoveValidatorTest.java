@@ -4,18 +4,16 @@ import gamesuite.board.BoardManager;
 import gamesuite.move.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.zip.DataFormatException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MoveValidatorTest {
+public class DotsAndBoxesMoveValidatorTest {
 
 
     @Test
     public void NewMoveTest() {
         Move currentMove = new Move(3, Move.Direction.DOWN);
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
         assertFalse(testMoveValidator.moveAlreadyDone(currentMove));
     }
 
@@ -23,7 +21,7 @@ public class MoveValidatorTest {
     public void AlreadyDoneMoveTest() {
         Move currentMove = new Move(3, Move.Direction.DOWN);
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         currentBM.updateBoard(currentMove);
 
@@ -35,7 +33,7 @@ public class MoveValidatorTest {
     public void inBoardMoveTest() {
         Move currentMove = new Move(3, Move.Direction.DOWN);
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertFalse(testMoveValidator.outBoardLine(currentMove));
     }
@@ -43,7 +41,7 @@ public class MoveValidatorTest {
     @Test
     public void outBoardMoveTests() {
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertTrue(testMoveValidator.outBoardLine(new Move(14, Move.Direction.DOWN)));
         assertTrue(testMoveValidator.outBoardLine(new Move(15, Move.Direction.RIGHT)));
@@ -55,7 +53,7 @@ public class MoveValidatorTest {
     @Test
     public void invalidNodeTest() {
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertTrue(testMoveValidator.invalidNode(16));
         assertTrue(testMoveValidator.invalidNode(103));
@@ -67,7 +65,7 @@ public class MoveValidatorTest {
     public void validateNoExceptionTest(){
         Move currentMove= new Move(10, Move.Direction.DOWN);
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertDoesNotThrow(()->testMoveValidator.validateMove(currentMove));
     }
@@ -76,7 +74,7 @@ public class MoveValidatorTest {
     public void validateMoveAlreadyDoneException(){
         Move currentMove = new Move(10, Move.Direction.DOWN);
         BoardManager currentBM = new BoardManager(4, 4);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         currentBM.updateBoard(currentMove);
 
@@ -88,7 +86,7 @@ public class MoveValidatorTest {
     @Test
     public void validateMoveOutOfBoardException() {
         BoardManager currentBM = new BoardManager(1, 10);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         //outBoardLine should cause exception
         Move move1=new Move(1, Move.Direction.DOWN);
@@ -99,7 +97,7 @@ public class MoveValidatorTest {
     @Test
     public void validateInvalidNodeException() {
         BoardManager currentBM = new BoardManager(10, 7);
-        MoveValidator testMoveValidator = new MoveValidator(currentBM);
+        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         //invalidNode should cause an exception
         Move currentMove = new Move(101, Move.Direction.UP);

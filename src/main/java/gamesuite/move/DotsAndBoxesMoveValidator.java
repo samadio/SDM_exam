@@ -2,10 +2,10 @@ package gamesuite.move;
 
 import gamesuite.board.BoardManager;
 
-public class MoveValidator {
+public class DotsAndBoxesMoveValidator {
     BoardManager bm;
 
-    public MoveValidator(BoardManager desired){
+    public DotsAndBoxesMoveValidator(BoardManager desired){
         this.bm=desired;
     }
 
