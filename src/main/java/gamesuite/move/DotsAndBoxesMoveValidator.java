@@ -18,6 +18,7 @@ public class DotsAndBoxesMoveValidator extends MoveValidator{
         return bm.moveDone(m);
     }
 
+    @Override
     public boolean outBoardLine(Move m) throws MoveOutOfBoardException{
         Integer rowLen=bm.rowLength();
         Integer colLen=bm.columnsLength();
@@ -58,8 +59,8 @@ public class DotsAndBoxesMoveValidator extends MoveValidator{
                 return rowLen*colLen-1-m.getNode()<rowLen;
             }
 
-
-    public void validateMove(Move m) throws Throwable {
+    @Override
+    public void validateMove(Move m) throws RuntimeException {
         if(invalidNode(m.getNode())) throw new InvalidNodeException(m);
         if(outBoardLine(m)) throw new MoveOutOfBoardException(m);
         if(moveAlreadyDone(m)) throw new MoveAlreadyDoneException(m);
