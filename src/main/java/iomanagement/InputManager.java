@@ -8,7 +8,6 @@ public abstract class InputManager {
 
     protected InputMove currentMove;
 
-
     public abstract void readMove() throws DataFormatException;
 
     public InputMove getMove(){
