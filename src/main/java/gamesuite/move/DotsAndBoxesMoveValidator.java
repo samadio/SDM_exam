@@ -2,7 +2,7 @@ package gamesuite.move;
 
 import gamesuite.board.BoardManager;
 
-public class DotsAndBoxesMoveValidator {
+public class DotsAndBoxesMoveValidator extends MoveValidator{
     BoardManager bm;
 
     public DotsAndBoxesMoveValidator(BoardManager desired){
@@ -59,8 +59,7 @@ public class DotsAndBoxesMoveValidator {
             }
 
 
-
-    public void validateMove(Move m) throws MoveAlreadyDoneException, MoveOutOfBoardException, InvalidNodeException {
+    public void validateMove(Move m) throws Throwable {
         if(invalidNode(m.getNode())) throw new InvalidNodeException(m);
         if(outBoardLine(m)) throw new MoveOutOfBoardException(m);
         if(moveAlreadyDone(m)) throw new MoveAlreadyDoneException(m);
