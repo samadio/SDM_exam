@@ -1,8 +1,10 @@
 package gamesuite.board;
 
+import gamesuite.move.Move;
+
 public class Board {
 
-    public enum Which{HORIZONTAL,VERTICAL}
+
 
     public boolean[][] horizontalLines;
     private boolean[][] verticalLines;
@@ -12,17 +14,17 @@ public class Board {
         this.verticalLines=  new boolean[n-1][m];
     }
 
-    public Boolean getElement(Indexes indexes) {
-        if (indexes.which()==Which.HORIZONTAL)
-            return this.horizontalLines[indexes.row()][indexes.column()];
+    public Boolean getElement(Move.Which w, Integer i, Integer j) {
+        if (w== Move.Which.HORIZONTAL)
+            return this.horizontalLines[i][j];
         else
-            return this.verticalLines[indexes.row()][indexes.column()];
+            return this.verticalLines[i][j];
     }
 
-    public void setBoard(Indexes indexes){
-        if (indexes.which()==Which.HORIZONTAL)
-            this.horizontalLines[indexes.row()][indexes.column()]=true;
+    public void setBoard(Move.Which w, Integer i, Integer j){
+        if (w== Move.Which.HORIZONTAL)
+            this.horizontalLines[i][j]=true;
         else
-            this.verticalLines[indexes.row()][indexes.column()]=true;
+            this.verticalLines[i][j]=true;
     }
 }
