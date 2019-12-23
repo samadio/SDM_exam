@@ -6,7 +6,7 @@ import iomanagement.InputManager;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.UnknownFormatConversionException;
+import java.util.zip.DataFormatException;
 
 public class DotsAndBoxesInput extends InputManager {
 
@@ -18,20 +18,19 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     @Override
-    public void readMove() {
+    public void readMove() throws DataFormatException {
         String inputLine=readInput();
 
         if(InputValidator.checkFormat(inputLine)){
             currentMove = ValidatedInputParser.parse(inputLine);
         }
         else
-            throw new UnknownFormatConversionException("Format not recognized");
+            throw new DataFormatException("Format not recognized");
 
     }
 
 
 }
-
 
 
 
@@ -48,9 +47,7 @@ class InputValidator{
         List<String> validChar = Arrays.asList("U","D","L","R");
         String direction = in.next();
         if (direction.length()!=1) return false;
-        if (validChar.contains(direction)) return true;
-
-        return false;
+        return (validChar.contains(direction));
 
 
     }

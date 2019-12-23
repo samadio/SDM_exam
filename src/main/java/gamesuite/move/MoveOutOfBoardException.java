@@ -5,4 +5,6 @@ public class MoveOutOfBoardException extends RuntimeException{
     public MoveOutOfBoardException(Move m){
         invalid=m;
     }
+
+    public Move getInvalid() {return this.invalid;}
 }
