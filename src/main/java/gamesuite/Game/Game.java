@@ -13,11 +13,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Game {
+    /*
     private InputManager imanager;
     private BoardManager boardManager;
     private MoveValidator validator;
     private GameScore status;
-    //private OutputManager outmanager;
+    private OutputManager outmanager;
+    private ArrayList<Player> players;
 
     public Game(Board boardManager, MoveValidator validator,GameScore status,InputManager imanager){
         this.boardManager=boardManager;
@@ -36,7 +38,7 @@ public class Game {
 
     private void setPlayers() {
         Integer number = imanager.getPlayersNumber(); //how many players are there?
-        ArrayList<Player> players= new ArrayList<Player>(number);
+        this.players= new ArrayList<Player>(number);
 
         PlayersFactory playerGenerator= new PlayersFactory();
         boolean costumize = imanager.customizePlayers(); //do you want to customize Players name? Yes=True
@@ -60,7 +62,7 @@ public class Game {
     }
 
 
-/*
+
         public boolean notEnded();
  */
 }
