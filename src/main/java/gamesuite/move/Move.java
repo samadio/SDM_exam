@@ -32,6 +32,10 @@ public class Move {
                 lineKind == move.lineKind;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(lineKind, row, column);
+    }
 }
 
 

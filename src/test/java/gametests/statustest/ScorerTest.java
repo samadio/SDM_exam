@@ -52,6 +52,7 @@ class ScorerTest {
         Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, true, false, true, false, true, true));
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
 
+        movesDone.get(refMove);
         Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
 
         assertFalse(scorer.isPoint(refMove));
