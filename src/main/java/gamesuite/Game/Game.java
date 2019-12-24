@@ -17,15 +17,16 @@ public class Game {
     private InputManager imanager;
     private BoardManager boardManager;
     private MoveValidator validator;
-    private GameScore status;
+    private GameStatus status;
     private OutputManager outmanager;
     private ArrayList<Player> players;
 
-    public Game(Board boardManager, MoveValidator validator,GameScore status,InputManager imanager){
+    public Game(Board boardManager, MoveValidator validator,GameStatus status,InputManager imanager){
         this.boardManager=boardManager;
         this.validator=validator;
         this.status=status;
         this.imanager=imanager;
+        this.status=status;
     }
 
     private void setGrid() {

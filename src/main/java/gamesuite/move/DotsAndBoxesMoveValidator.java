@@ -22,7 +22,7 @@ public class DotsAndBoxesMoveValidator extends MoveValidator{
     }
 
     @Override
-    public void validateMove(Move m) throws RuntimeException {
+    public void validateMove(Move m) throws InvalidMoveException {
         if(outBoardLine(m)) throw new MoveOutOfBoardException(m);
         if(moveAlreadyDone(m)) throw new MoveAlreadyDoneException(m);
     }

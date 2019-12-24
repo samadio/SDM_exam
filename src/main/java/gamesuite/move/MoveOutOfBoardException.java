@@ -1,6 +1,6 @@
 package gamesuite.move;
 
-public class MoveOutOfBoardException extends RuntimeException{
+public class MoveOutOfBoardException extends InvalidMoveException{
     Move invalid;
     public MoveOutOfBoardException(Move m){
         invalid=m;
