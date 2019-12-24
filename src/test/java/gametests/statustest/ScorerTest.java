@@ -12,8 +12,64 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ScorerTest {
+
+
+
+    @Test
+    void horizontalMoveNoPoint() {
+
+        Move refMove = new Move(Move.Which.HORIZONTAL, 1, 0);
+        Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, true, false, true, false, true, true));
+        Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
+
+        movesDone.get(refMove);
+        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+
+        assertFalse(scorer.isPoint(refMove));
+
+    }
+
+    @Test
+    void verticalMoveNoPoint() {
+
+        Move refMove = new Move(Move.Which.VERTICAL, 0, 0);
+        Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, false, false, true, false, false));
+        Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
+
+        movesDone.get(refMove);
+        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+
+        assertFalse(scorer.isPoint(refMove));
+    }
+
+    @Test
+    void horizontalMovePoint() {
+
+        Move refMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
+        Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
+
+        movesDone.get(refMove);
+        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+
+        assertTrue(scorer.isPoint(refMove));
+    }
+
+    @Test
+    void verticalMovePoint() {
+
+        Move refMove = new Move(Move.Which.VERTICAL, 0, 0);
+        Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, true, true, true, true, true));
+        Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
+
+        movesDone.get(refMove);
+        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+
+        assertTrue(scorer.isPoint(refMove));
+    }
 
     private Map<Move, Boolean> moveMap(Move referenceMove, List<Boolean> values){
 
@@ -43,20 +99,6 @@ class ScorerTest {
         }
 
         return movesMap;
-    }
-
-    @Test
-    void horizontalMoveNoPoint() {
-
-        Move refMove = new Move(Move.Which.HORIZONTAL, 1, 0);
-        Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, true, false, true, false, true, true));
-        Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
-
-        movesDone.get(refMove);
-        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
-
-        assertFalse(scorer.isPoint(refMove));
-
     }
 }
 
