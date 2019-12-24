@@ -61,7 +61,7 @@ class ScorerTest {
     @Test
     void verticalMovePoint() {
 
-        Move refMove = new Move(Move.Which.VERTICAL, 0, 0);
+        Move refMove = new Move(Move.Which.VERTICAL, 1, 1);
         Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, true, true, true, true, true));
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
 
@@ -132,7 +132,7 @@ class DummyValidator extends MoveValidator {
 
     @Override
     public boolean outBoardLine(Move m) {
-        return MOVES_VALIDITY.get(m);
+        return !MOVES_VALIDITY.get(m);
     }
 }
 

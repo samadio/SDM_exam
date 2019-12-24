@@ -16,9 +16,9 @@ public class DotsAndBoxesMoveValidator extends MoveValidator{
     @Override
     public boolean outBoardLine(Move m){
         if((m.getRow()<0) | (m.getCol()<0)) return true;
-        if(m.getLineKind()== Move.Which.HORIZONTAL) return (m.getCol()>bm.columnsLength()-1) | (m.getRow()>bm.rowLength()) ;
+        if(m.getLineKind()== Move.Which.HORIZONTAL) return (m.getCol()>bm.columnsLength()-2) | (m.getRow()>bm.rowLength() - 1) ;
         //VERTICAL case
-        return (m.getCol()>bm.columnsLength())|(m.getRow()>bm.rowLength()-1);
+        return (m.getCol()>bm.columnsLength() - 1)|(m.getRow()>bm.rowLength()-2);
     }
 
     @Override

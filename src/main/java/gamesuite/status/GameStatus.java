@@ -22,7 +22,7 @@ public class GameStatus {
 
         PLAYERS = players;
         SCORER = new Scorer(bManager, mValidator);
-        remainingMoves = bManager.columnsLength()*bManager.rowLength() + bManager.rowLength() + bManager.columnsLength();
+        remainingMoves = 2*(bManager.columnsLength()-1)*(bManager.rowLength()-1) + bManager.rowLength() + bManager.columnsLength() - 2;
         currentPlayer = 0;
         score = new GameScore();
 
