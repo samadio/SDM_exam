@@ -27,7 +27,7 @@ public class GameStatus {
 
     public void update(Move lastMove) {
 
-        if(SCORER.isPoint(lastMove))
+        if(SCORER.isNotPoint(lastMove))
             currentPlayer = nextPlayer();
     }
 

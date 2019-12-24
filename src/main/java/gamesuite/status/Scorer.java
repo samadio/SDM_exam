@@ -22,12 +22,17 @@ public class Scorer {
         List<Move> upperNeighbors = upperNeighbors(refMove);
         List<Move> lowerNeighbors = lowerNeighbors(refMove);
 
-        Predicate<Boolean> isTrue = x -> x == true;
+        Predicate<Boolean> isTrue = x -> x;
 
         Boolean upperPoint = upperNeighbors.stream().map(MOVE_VALIDATOR::outBoardLine).allMatch(isTrue) && upperNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
         Boolean lowerPoint = lowerNeighbors.stream().map(MOVE_VALIDATOR::outBoardLine).allMatch(isTrue) && lowerNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
 
         return upperPoint || lowerPoint;
+    }
+
+    public boolean isNotPoint(Move refMove){
+
+        return !isPoint(refMove);
     }
 
     private List<Move> lowerNeighbors(Move refMove) {
