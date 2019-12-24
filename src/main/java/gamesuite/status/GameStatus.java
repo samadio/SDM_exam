@@ -15,13 +15,15 @@ public class GameStatus {
     private Integer currentPlayer;
     private GameScore score;
 
+    private Integer remainingMoves;
+
 
     public GameStatus(List<Player> players, BoardManager bManager, MoveValidator mValidator) {
 
         PLAYERS = players;
         SCORER = new Scorer(bManager, mValidator);
+        remainingMoves = bManager.columnsLength()*bManager.rowLength() + bManager.rowLength() + bManager.columnsLength();
         currentPlayer = 0;
-
         score = new GameScore();
 
         for (Player p : PLAYERS)
@@ -34,12 +36,31 @@ public class GameStatus {
 
     public void update(Move lastMove) {
 
-        if(SCORER.isNotPoint(lastMove))
-            currentPlayer = nextPlayer();
+        if(isNotFinished()) {
+
+            if (SCORER.isNotPoint(lastMove))
+                currentPlayer = nextPlayer();
+            else {
+
+                Player currentP = PLAYERS.get(currentPlayer);
+                score.replace(currentP, score.get(currentP) + 1);
+            }
+
+            remainingMoves--;
+        }
     }
 
     private Integer nextPlayer() {
         return (currentPlayer + 1) % PLAYERS.size();
+    }
+
+    public boolean isFinished(){
+
+        return remainingMoves <= 0;
+    }
+    public boolean isNotFinished(){
+
+        return remainingMoves > 0;
     }
 
     public GameScore getScore() {

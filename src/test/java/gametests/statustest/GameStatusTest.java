@@ -85,4 +85,72 @@ class GameStatusTest {
         assertEquals(1, score.get(players.get(0)));
         assertEquals(0, score.get(players.get(1)));
     }
+
+    @Test
+    void pointNotAssigned() {
+
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+
+        GameScore score = gStatus.getScore();
+        assertEquals(0, score.get(players.get(0)));
+        assertEquals(0, score.get(players.get(1)));
+        gStatus.update(lastMove);
+        assertEquals(0, score.get(players.get(0)));
+        assertEquals(0, score.get(players.get(1)));
+    }
+
+    @Test
+    void notFinishedAtStart() {
+
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+
+        assertFalse(gStatus.isFinished());
+    }
+
+    @Test
+    void notFinishedAfterOneMove() {
+
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+
+        assertFalse(gStatus.isFinished());
+        gStatus.update(lastMove);
+        assertFalse(gStatus.isFinished());
+    }
+
+    @Test
+    void finishedAtEnd() {
+
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+
+        int nMoves = bManager.columnsLength()*bManager.rowLength() + bManager.rowLength() + bManager.columnsLength();
+
+        assertFalse(gStatus.isFinished());
+        for(int i = 0; i < nMoves; i++)
+            gStatus.update(lastMove);
+        assertTrue(gStatus.isFinished());
+    }
 }
