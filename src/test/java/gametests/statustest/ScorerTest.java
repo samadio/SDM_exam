@@ -71,7 +71,7 @@ class ScorerTest {
         assertTrue(scorer.isPoint(refMove));
     }
 
-    private Map<Move, Boolean> moveMap(Move referenceMove, List<Boolean> values){
+    Map<Move, Boolean> moveMap(Move referenceMove, List<Boolean> values){
 
         Map<Move, Boolean> movesMap = new HashMap<>();
         Integer refRow = referenceMove.getRow();
