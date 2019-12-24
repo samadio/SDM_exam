@@ -59,13 +59,8 @@ public class Game {
 
 
     public void start(){
-        try{
-            setGrid();
-            setPlayers();
-        }
-        catch(DataFormatException e){
-            System.out.print(e.getMessage());
-        }
+        setGrid();
+        setPlayers();
     }
 
 

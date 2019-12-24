@@ -1,8 +1,9 @@
-package gamesuite.move;
+package dotsandboxes;
 
 import gamesuite.board.BoardManager;
+import gamesuite.move.*;
 
-public class DotsAndBoxesMoveValidator extends MoveValidator{
+public class DotsAndBoxesMoveValidator extends MoveValidator {
     BoardManager bm;
 
     public DotsAndBoxesMoveValidator(BoardManager desired){

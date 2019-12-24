@@ -1,7 +1,7 @@
 package gametests.statustest;
 
 import gamesuite.board.BoardManager;
-import gamesuite.move.DotsAndBoxesMoveValidator;
+import dotsandboxes.DotsAndBoxesMoveValidator;
 import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
 import gamesuite.players.Player;
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
