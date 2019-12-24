@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class Game {
     /*
+    private final Integer rows;
+    private final Integer columns;
     private InputManager imanager;
     private BoardManager boardManager;
     private MoveValidator validator;
@@ -30,11 +32,10 @@ public class Game {
     }
 
     private void setGrid() {
-        int m, n;
         Array<Integer> dimensions = imanager.getGrid(); //function that asks for grid dimensions and returns it
-        n = dimensions[0];
-        m = dimensions[1];
-        this.boardManager = new boardManager(n, m);
+        this.rows = dimensions[0];
+        this.columns = dimensions[1];
+        this.boardManager = new boardManager(rows, columns);
     }
 
     private void setPlayers() {
@@ -58,8 +59,13 @@ public class Game {
 
 
     public void start(){
-        setGrid();
-        setPlayers();
+        try{
+            setGrid();
+            setPlayers();
+        }
+        catch(DataFormatException e){
+            System.out.print(e.getMessage());
+        }
     }
 
 

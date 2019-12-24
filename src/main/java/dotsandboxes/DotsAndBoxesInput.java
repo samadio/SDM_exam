@@ -3,32 +3,74 @@ package dotsandboxes;
 import gamesuite.move.Move;
 import iomanagement.InputManager;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
 public class DotsAndBoxesInput extends InputManager {
 
-
+    @Override
+    public Move getMove() {
+        return this.currentMove;
+    }
 
     public String readInput(){
         Scanner input= new Scanner(System.in);
         return input.nextLine();
     }
 
-    @Override
-    public void readMove() throws DataFormatException {
+    public InputMove readInputMove() throws DataFormatException {
         String inputLine=readInput();
 
         if(InputValidator.checkFormat(inputLine)){
-            currentMove = ValidatedInputParser.parse(inputLine);
+            return ValidatedInputParser.parse(inputLine);
         }
         else
             throw new DataFormatException("Format not recognized");
 
     }
 
+    @Override
+    public Integer[] getGrid() throws DataFormatException{
+        System.out.print("Insert grid dimension in format:rows columns");
+        Scanner in = new Scanner(System.in);
+
+        Integer[] result = Arrays.stream(in.nextLine().split(" ")).map(x -> Integer.valueOf(x) - 1)
+                .toArray(Integer[]::new);
+        if (result.length == 2) {
+            return result;
+        }
+        else throw new DataFormatException("Format not recognized");
+    }
+
+    @Override
+    public void readMove() throws DataFormatException {
+        InputMove inputMove=readInputMove();
+        Integer[] dimensions= getGrid();
+        this.currentMove= Converter.converter(inputMove, dimensions[0]);
+    }
+
+    @Override
+    public Integer getPlayersNumber() throws DataFormatException{
+        System.out.print("Enter number of players");
+        Scanner s=new Scanner(System.in);
+        Integer i=s.nextInt();
+        if(s.hasNext()) throw new DataFormatException("Format not valid");
+        return i;
+    }
+
+    @Override
+    public boolean customizePlayers() throws DataFormatException {
+        System.out.print("Do you want to customize player names? (y=yes,n=no) ");
+        Scanner s=new Scanner(System.in);
+        String answer=s.next();
+        if(answer.contentEquals("y")) return true;
+        else if(answer.contentEquals("n")) return false;
+        else throw new DataFormatException("Format not valid");
+    }
 
 }
 
