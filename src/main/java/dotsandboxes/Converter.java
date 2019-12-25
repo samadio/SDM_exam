@@ -4,42 +4,36 @@ import gamesuite.board.Board;
 import gamesuite.move.Move;
 
 public class Converter {
+    private Move.Which whichLine;
+    private Integer rowIndex;
+    private Integer columnIndex;
 
-    private final Integer COLS;
 
-    public Converter(Integer nCols){
+    
 
-        this.COLS = nCols;
+    public static Move converter(InputMove im, Integer rows){
+        return new Move(toWhichLine(im),toBoardRowIndex(im,rows),toBoardColIndex(im,rows));
     }
 
 
-    public  Move convert(InputMove im){
-        return new Move(toWhichLine(im),toBoardRowIndex(im),toBoardColIndex(im));
-    }
-
-
-    private  Move.Which toWhichLine(InputMove m){
+    public static Move.Which toWhichLine(InputMove m){
         if (m.getDirection()== InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
             return Move.Which.HORIZONTAL;
         else
             return Move.Which.VERTICAL;
     }
 
-    private  Integer  toBoardRowIndex(InputMove m) {
-        if (m.getDirection()==InputMove.Direction.LEFT)
-            return (m.getNode() - 1)/COLS;
-        else if (m.getDirection()==InputMove.Direction.UP)
-            return (m.getNode() - COLS)/COLS;
+    public static Integer  toBoardRowIndex(InputMove m, Integer rows) {
+        if(m.getDirection()== InputMove.Direction.UP)
+            return m.getNode()/rows-1;
         else
-            return m.getNode()/COLS;
+            return m.getNode()/rows;
     }
 
-    private  Integer  toBoardColIndex(InputMove m) {
-        if (m.getDirection()==InputMove.Direction.LEFT)
-            return (m.getNode() - 1)%COLS;
-        else if (m.getDirection()==InputMove.Direction.UP)
-            return (m.getNode() - COLS)%COLS;
+    public static Integer  toBoardColIndex(InputMove m, Integer rows) {
+        if(m.getDirection()== InputMove.Direction.LEFT)
+            return m.getNode()%rows -1;
         else
-            return m.getNode()%COLS;
+            return m.getNode()%rows;
     }
 }
