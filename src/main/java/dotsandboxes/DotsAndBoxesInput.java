@@ -6,6 +6,7 @@ import iomanagement.InputManager;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
 public class DotsAndBoxesInput extends InputManager {
@@ -21,16 +22,13 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     @Override
-    public Move getMove() {
-        return this.currentMove;
-    }
+    public void readMove() throws DataFormatException {
 
-    //private not considering tests
-    public String readInput(){
-        Scanner input= new Scanner(System.in);
-        return input.nextLine();
-    }
+        if (!settedConverter)
+            throw new InvalidStateException("Convert not set");
 
+        this.currentMove= moveConverter.convert(readInputMove());
+    }
     //private not considering tests
     public InputMove readInputMove() throws DataFormatException {
         String inputLine=readInput();
@@ -42,28 +40,31 @@ public class DotsAndBoxesInput extends InputManager {
             throw new DataFormatException("Format not recognized");
 
     }
+    //private not considering tests
+    public String readInput(){
+        Scanner input= new Scanner(System.in);
+        return input.nextLine();
+    }
+
 
     @Override
-    public Integer[] getGrid() throws DataFormatException{
+    public List<Integer> getGridDimensions() throws DataFormatException{
+
         System.out.println("Insert grid dimension in format:rowDimension columnDimension");
         Scanner in = new Scanner(System.in);
 
-        Integer[] result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf)
-                .toArray(Integer[]::new);
-        if (result.length == 2) {
+        List<Integer> result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
+
+        if (result.size() == 2) {
+
+            if (!settedConverter)
+                setConverter(result.get(1));
             return result;
         }
-        else throw new DataFormatException("Format not recognized");
+
+        else throw new DataFormatException("Invalid number of dimensions");
     }
 
-    @Override
-    public void readMove() throws DataFormatException {
-
-        if (!settedConverter)
-            throw new InvalidStateException("Convert not set");
-
-        this.currentMove= moveConverter.convert(readInputMove());
-    }
 
     @Override
     public Integer getPlayersNumber() throws DataFormatException{
@@ -75,13 +76,18 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     @Override
-    public boolean customizePlayers() throws DataFormatException {
+    public boolean customPlayers() throws DataFormatException {
         System.out.println("Do you want to customize player names? (y=yes,n=no) ");
         Scanner s=new Scanner(System.in);
         String answer=s.next();
         if(answer.contentEquals(new StringBuffer("y"))) return true;
         else if(answer.contentEquals(new StringBuffer("n"))) return false;
         else throw new DataFormatException("Format not valid");
+    }
+
+    @Override
+    public Move getMove() {
+        return this.currentMove;
     }
 
 }
