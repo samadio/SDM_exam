@@ -13,11 +13,11 @@ public abstract class InputManager {
 
     public abstract Move getMove();
 
-    public abstract Integer getPlayersNumber() throws DataFormatException;
+    public abstract Integer getPlayersNumber();
 
-    public abstract List<Integer> getGridDimensions() throws DataFormatException;
+    public abstract List<Integer> getGridDimensions();
 
-    public abstract boolean customPlayers() throws DataFormatException;
+    public abstract boolean customPlayers();
 
     public abstract String getPlayerName();
 

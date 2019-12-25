@@ -23,7 +23,7 @@ public abstract class GameSetter {
         this.oManager = oManager;
     }
 
-   public final Game newGame() throws DataFormatException {
+   public final Game newGame(){
 
        List<Player> players = setPlayers();
        BoardManager bManager = createBoard();
@@ -33,13 +33,13 @@ public abstract class GameSetter {
        return new Game(iManager, oManager, bManager, mValidator, gStatus, players);
    }
 
-    private BoardManager createBoard() throws DataFormatException {
+    private BoardManager createBoard(){
 
         List<Integer> dimensions = iManager.getGridDimensions(); //function that asks for grid dimensions and returns it
         return  setBoard(dimensions.get(0), dimensions.get(1));
     }
 
-    private List<Player> setPlayers() throws DataFormatException {
+    private List<Player> setPlayers(){
 
         Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
 
@@ -49,7 +49,7 @@ public abstract class GameSetter {
         boolean custom = iManager.customPlayers(); //do you want to customize Players name? Yes=True
         if (custom) {
 
-            for (Integer i = 0; i < nPlayers ; i++) {
+            for (int i = 0; i < nPlayers ; i++) {
 
                 String name = iManager.getPlayerName();
                 if (name.isEmpty())

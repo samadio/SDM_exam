@@ -5,6 +5,7 @@ import gamesuite.move.Move;
 import iomanagement.InputManager;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -56,6 +57,7 @@ public class DotsAndBoxesInput extends InputManager {
             throw new DataFormatException("Format not recognized");
 
     }
+
     //private not considering tests
     public String readInput(){
         Scanner input= new Scanner(System.in);
@@ -64,40 +66,67 @@ public class DotsAndBoxesInput extends InputManager {
 
 
     @Override
-    public List<Integer> getGridDimensions() throws DataFormatException{
+    public List<Integer> getGridDimensions() {
 
         System.out.println("Insert grid dimension in format:rowDimension columnDimension");
         Scanner in = new Scanner(System.in);
 
+        boolean invalidDimensions = true;
         List<Integer> result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
 
-        if (result.size() == 2) {
+        while (invalidDimensions) {
 
-            if (!settedConverter)
-                setConverter(result.get(1));
-            return result;
+            if (result.size() != 2) {
+                System.err.println("Error: invalid grid dimensions.");
+                System.out.println("Insert grid dimension in format:rowDimension columnDimension");
+                result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
+            }
+            else
+                invalidDimensions = false;
         }
 
-        else throw new DataFormatException("Invalid number of dimensions");
+        return result;
     }
 
     @Override
-    public Integer getPlayersNumber() throws DataFormatException{
+    public Integer getPlayersNumber(){
+
         System.out.println("Enter number of players");
         Scanner s=new Scanner(System.in);
-        Integer i=s.nextInt();
-        if(s.hasNext()) throw new DataFormatException("Format not valid");
+
+        int i = 2;
+        boolean invalidNumber = true;
+
+        while (invalidNumber){
+
+            try {
+                i = s.nextInt();
+                if (s.hasNext()) throw new DataFormatException("Format not valid");
+                invalidNumber = false;
+            }
+            catch (InputMismatchException | DataFormatException e){
+                System.err.println("Error: invalid input for number of players");
+                System.out.println("Enter number of players");
+            }
+        }
         return i;
     }
 
     @Override
-    public boolean customPlayers() throws DataFormatException {
+    public boolean customPlayers(){
         System.out.println("Do you want to customize player names? (y=yes,n=no) ");
         Scanner s=new Scanner(System.in);
         String answer=s.next();
-        if(answer.contentEquals(new StringBuffer("y"))) return true;
-        else if(answer.contentEquals(new StringBuffer("n"))) return false;
-        else throw new DataFormatException("Format not valid");
+
+        while (true) {
+            if (answer.contentEquals(new StringBuffer("y"))) return true;
+            else if (answer.contentEquals(new StringBuffer("n"))) return false;
+            else{
+                System.err.println("Error: invalid answer");
+                System.out.println("Do you want to customize player names? (y=yes,n=no) ");
+                answer=s.next();
+            }
+        }
     }
 
     @Override
