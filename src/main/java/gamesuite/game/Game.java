@@ -1,54 +1,53 @@
-package gamesuite.Game;
+package gamesuite.game;
 
 import gamesuite.board.Board;
 import gamesuite.board.BoardManager;
-import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
-import gamesuite.status.GameScore;
+import gamesuite.status.GameStatus;
 import iomanagement.InputManager;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Game {
-    /*
-    private final Integer rows;
-    private final Integer columns;
-    private InputManager imanager;
+
+    private final Integer ROWS;
+    private final Integer COLUMNS;
+    private InputManager iManager;
     private BoardManager boardManager;
     private MoveValidator validator;
     private GameStatus status;
-    private OutputManager outmanager;
+    private OutputManager oManager;
     private ArrayList<Player> players;
 
-    public Game(Board boardManager, MoveValidator validator,GameStatus status,InputManager imanager){
+    public Game(BoardManager boardManager, MoveValidator validator, GameStatus status, InputManager iManager, OutputManager oManager){
         this.boardManager=boardManager;
         this.validator=validator;
         this.status=status;
-        this.imanager=imanager;
+        this.iManager=iManager;
+        this.oManager = oManager;
         this.status=status;
     }
 
     private void setGrid() {
-        Array<Integer> dimensions = imanager.getGrid(); //function that asks for grid dimensions and returns it
-        this.rows = dimensions[0];
-        this.columns = dimensions[1];
-        this.boardManager = new boardManager(rows, columns);
+        ArrayList<Integer> dimensions = iManager.getGrid(); //function that asks for grid dimensions and returns it
+        this.ROWS = dimensions[0];
+        this.COLUMNS = dimensions[1];
+        this.boardManager = new boardManager(ROWS, COLUMNS);
     }
 
     private void setPlayers() {
-        Integer number = imanager.getPlayersNumber(); //how many players are there?
+        Integer number = iManager.getPlayersNumber(); //how many players are there?
         this.players= new ArrayList<Player>(number);
 
         PlayersFactory playerGenerator= new PlayersFactory();
-        boolean costumize = imanager.customizePlayers(); //do you want to customize Players name? Yes=True
+        boolean costumize = iManager.customizePlayers(); //do you want to customize Players name? Yes=True
         if (costumize) {
             for (Integer i = 0; i < number ; i++) {
-                String name = imanager.getCustomName();
+                String name = iManager.getCustomName();
                 if (name.isEmpty()) players[i]=playerGenerator.newPlayer();
-                else players[i]=playerGenerator.newPlayer(name);
+                else players.set(i, playerGenerator.newPlayer(name));
             }
         }
         //no custom
@@ -66,5 +65,5 @@ public class Game {
 
 
         public boolean notEnded();
- */
+
 }
