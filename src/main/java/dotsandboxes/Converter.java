@@ -7,9 +7,9 @@ public class Converter {
 
     private final Integer COLS;
 
-    public Converter(Integer nRows){
+    public Converter(Integer nCols){
 
-        this.COLS = nRows;
+        this.COLS = nCols;
     }
 
 
@@ -26,15 +26,19 @@ public class Converter {
     }
 
     private  Integer  toBoardRowIndex(InputMove m) {
-        if(m.getDirection()== InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
-            return m.getNode()/COLS-1;
+        if (m.getDirection()==InputMove.Direction.LEFT)
+            return (m.getNode() - 1)/COLS;
+        else if (m.getDirection()==InputMove.Direction.UP)
+            return (m.getNode() - COLS)/COLS;
         else
             return m.getNode()/COLS;
     }
 
     private  Integer  toBoardColIndex(InputMove m) {
-        if(m.getDirection()== InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
-            return m.getNode()%COLS -1;
+        if (m.getDirection()==InputMove.Direction.LEFT)
+            return (m.getNode() - 1)%COLS;
+        else if (m.getDirection()==InputMove.Direction.UP)
+            return (m.getNode() - COLS)%COLS;
         else
             return m.getNode()%COLS;
     }
