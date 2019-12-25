@@ -47,25 +47,13 @@ class DotsAndBoxesInputTest {
         assertEquals(itest.getGridDimensions(), expected);
     }
 
-    @Test
-    public void converterTest() throws DataFormatException {
 
-        itest.setConverter(12);
-
-        setKeyboard("26 R");
-        itest.readMove();
-        Move m = itest.getMove();
-
-        assertTrue(m.getLineKind()==Move.Which.HORIZONTAL);
-        assertTrue(m.getRow()==2); //first element of row2=Node 24,
-        assertTrue(m.getCol()==2);
-    }
 
     @Test
     public void getPlayersNumberTest() throws DataFormatException {
         setKeyboard("2");
         Integer i=itest.getPlayersNumber();
-        assertTrue(i==2);
+        assertEquals(2, (int) i);
     }
 
     @Test
