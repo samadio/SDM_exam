@@ -50,15 +50,15 @@ class DotsAndBoxesInputTest {
     @Test
     public void converterTest() throws DataFormatException {
 
-        itest.setConverter(13);
+        itest.setConverter(12);
 
         setKeyboard("26 R");
         itest.readMove();
         Move m = itest.getMove();
 
-        assertSame(m.getLineKind(), Move.Which.HORIZONTAL);
-        assertEquals(2, (int) m.getRow()); //first element of row2=Node 24,
-        assertEquals(0, (int) m.getCol());
+        assertTrue(m.getLineKind()==Move.Which.HORIZONTAL);
+        assertTrue(m.getRow()==2); //first element of row2=Node 24,
+        assertTrue(m.getCol()==2);
     }
 
     @Test
