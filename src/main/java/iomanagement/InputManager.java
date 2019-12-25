@@ -1,6 +1,7 @@
 package iomanagement;
 import gamesuite.move.Move;
 
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 public abstract class InputManager {
@@ -15,7 +16,11 @@ public abstract class InputManager {
 
     public abstract Integer getPlayersNumber() throws DataFormatException;
 
-    public abstract boolean customizePlayers() throws DataFormatException;
+    public abstract List<Integer> getGridDimensions();
+
+    public abstract boolean customPlayers() throws DataFormatException;
+
+    public abstract String getPlayerName();
 }
 
 

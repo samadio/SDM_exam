@@ -42,10 +42,10 @@ public abstract class GameSetter {
 
         Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
 
-        List<Player> players = new ArrayList<Player>(nPlayers);
+        List<Player> players = new ArrayList<>(nPlayers);
         PlayersFactory playerGenerator= new PlayersFactory();
 
-        boolean custom = iManager.customizePlayers(); //do you want to customize Players name? Yes=True
+        boolean custom = iManager.customPlayers(); //do you want to customize Players name? Yes=True
         if (custom) {
 
             for (Integer i = 0; i < nPlayers ; i++) {
@@ -58,7 +58,7 @@ public abstract class GameSetter {
             }
         }
         else{
-            for(Integer i=0;i<nPlayers;i++) {
+            for(int i=0;i<nPlayers;i++) {
                 players.set(i, playerGenerator.newPlayer());
             }
         }
