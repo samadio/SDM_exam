@@ -26,14 +26,14 @@ public class Converter {
     }
 
     private  Integer  toBoardRowIndex(InputMove m) {
-        if(m.getDirection()== InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
+        if(m.getDirection()== InputMove.Direction.UP)
             return m.getNode()/COLS-1;
         else
             return m.getNode()/COLS;
     }
 
     private  Integer  toBoardColIndex(InputMove m) {
-        if(m.getDirection()== InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
+        if(m.getDirection()== InputMove.Direction.LEFT)
             return m.getNode()%COLS -1;
         else
             return m.getNode()%COLS;
