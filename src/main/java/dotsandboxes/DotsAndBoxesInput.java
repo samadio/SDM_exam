@@ -10,10 +10,11 @@ import java.util.zip.DataFormatException;
 
 public class DotsAndBoxesInput extends InputManager {
 
+
     private Boolean settedConverter = false;
     private Converter moveConverter;
 
-    private void setConverter(Integer nCols){
+    public void setConverter(Integer nCols){
 
         moveConverter = new Converter(nCols);
         settedConverter = true;
@@ -57,9 +58,11 @@ public class DotsAndBoxesInput extends InputManager {
 
     @Override
     public void readMove() throws DataFormatException {
-        InputMove inputMove=readInputMove();
-        Integer[] dimensions= getGrid();
-        this.currentMove= Converter.converter(inputMove, dimensions[0]);
+
+        if (!settedConverter)
+            throw new InvalidStateException("Convert not set");
+
+        this.currentMove= moveConverter.convert(readInputMove());
     }
 
     @Override
