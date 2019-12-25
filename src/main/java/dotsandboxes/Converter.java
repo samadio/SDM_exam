@@ -5,11 +5,11 @@ import gamesuite.move.Move;
 
 public class Converter {
 
-    private final Integer ROWS;
+    private final Integer COLS;
 
     public Converter(Integer nRows){
 
-        this.ROWS = nRows;
+        this.COLS = nRows;
     }
 
 
@@ -27,15 +27,15 @@ public class Converter {
 
     private  Integer  toBoardRowIndex(InputMove m) {
         if(m.getDirection()== InputMove.Direction.UP)
-            return m.getNode()/ROWS-1;
+            return m.getNode()/COLS-1;
         else
-            return m.getNode()/ROWS;
+            return m.getNode()/COLS;
     }
 
     private  Integer  toBoardColIndex(InputMove m) {
         if(m.getDirection()== InputMove.Direction.LEFT)
-            return m.getNode()%ROWS -1;
+            return m.getNode()%COLS -1;
         else
-            return m.getNode()%ROWS;
+            return m.getNode()%COLS;
     }
 }

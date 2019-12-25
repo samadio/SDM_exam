@@ -10,6 +10,15 @@ import java.util.zip.DataFormatException;
 
 public class DotsAndBoxesInput extends InputManager {
 
+    private Boolean settedConverter = false;
+    private Converter moveConverter;
+
+    private void setConverter(Integer nCols){
+
+        moveConverter = new Converter(nCols);
+        settedConverter = true;
+    }
+
     @Override
     public Move getMove() {
         return this.currentMove;
@@ -38,7 +47,7 @@ public class DotsAndBoxesInput extends InputManager {
         System.out.println("Insert grid dimension in format:rowDimension columnDimension");
         Scanner in = new Scanner(System.in);
 
-        Integer[] result = Arrays.stream(in.nextLine().split(" ")).map(x -> Integer.valueOf(x))
+        Integer[] result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf)
                 .toArray(Integer[]::new);
         if (result.length == 2) {
             return result;
