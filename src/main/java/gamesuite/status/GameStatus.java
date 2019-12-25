@@ -7,7 +7,7 @@ import gamesuite.players.Player;
 
 import java.util.List;
 
-public class GameStatus {
+public abstract class GameStatus {
 
 
     private final Scorer SCORER;
@@ -15,20 +15,18 @@ public class GameStatus {
     private Integer currentPlayer;
     private GameScore score;
 
-    private Integer remainingMoves;
-
-
     public GameStatus(List<Player> players, BoardManager bManager, MoveValidator mValidator) {
 
         PLAYERS = players;
-        SCORER = new Scorer(bManager, mValidator);
-        remainingMoves = 2*(bManager.columnsLength()-1)*(bManager.rowLength()-1) + bManager.rowLength() + bManager.columnsLength() - 2;
+        SCORER = setScorer(bManager, mValidator);
         currentPlayer = 0;
         score = new GameScore();
 
         for (Player p : PLAYERS)
             score.put(p, 0);
     }
+
+    protected abstract Scorer setScorer(BoardManager bManager, MoveValidator mValidator);
 
     public Player currentPlayer() {
         return PLAYERS.get(currentPlayer);
@@ -46,21 +44,21 @@ public class GameStatus {
                 score.replace(currentP, score.get(currentP) + 1);
             }
 
-            remainingMoves--;
+            updateProgress();
         }
     }
+
+    protected abstract void updateProgress();
 
     private Integer nextPlayer() {
         return (currentPlayer + 1) % PLAYERS.size();
     }
 
-    public boolean isFinished(){
-
-        return remainingMoves <= 0;
-    }
+    public abstract boolean isFinished();
+    
     public boolean isNotFinished(){
 
-        return remainingMoves > 0;
+        return !isFinished();
     }
 
     public GameScore getScore() {

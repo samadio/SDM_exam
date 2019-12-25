@@ -1,5 +1,6 @@
 package gametests.statustest;
 
+import dotsandboxes.DotsAndBoxesScorer;
 import gamesuite.board.BoardManager;
 import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
@@ -26,7 +27,7 @@ class ScorerTest {
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
 
         movesDone.get(refMove);
-        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+        Scorer scorer = new DotsAndBoxesScorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
 
         assertFalse(scorer.isPoint(refMove));
 
@@ -40,7 +41,7 @@ class ScorerTest {
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
 
         movesDone.get(refMove);
-        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+        Scorer scorer = new DotsAndBoxesScorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
 
         assertFalse(scorer.isPoint(refMove));
     }
@@ -53,7 +54,7 @@ class ScorerTest {
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
 
         movesDone.get(refMove);
-        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+        Scorer scorer = new DotsAndBoxesScorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
 
         assertTrue(scorer.isPoint(refMove));
     }
@@ -66,7 +67,7 @@ class ScorerTest {
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
 
         movesDone.get(refMove);
-        Scorer scorer = new Scorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
+        Scorer scorer = new DotsAndBoxesScorer(new DummyBoardManager(movesDone), new DummyValidator(validMoves));
 
         assertTrue(scorer.isPoint(refMove));
     }

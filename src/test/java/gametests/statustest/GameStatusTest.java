@@ -1,5 +1,6 @@
 package gametests.statustest;
 
+import dotsandboxes.DotsAndBoxesStatus;
 import gamesuite.board.BoardManager;
 import dotsandboxes.DotsAndBoxesMoveValidator;
 import gamesuite.move.Move;
@@ -26,7 +27,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         assertEquals(players.get(0), gStatus.currentPlayer());
         gStatus.update(lastMove);
@@ -42,7 +43,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         assertEquals(players.get(0), gStatus.currentPlayer());
         gStatus.update(lastMove);
@@ -58,7 +59,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         assertEquals(players.get(0), gStatus.currentPlayer());
         gStatus.update(lastMove);
@@ -77,7 +78,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         GameScore score = gStatus.getScore();
         assertEquals(0, score.get(players.get(0)));
@@ -96,7 +97,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         GameScore score = gStatus.getScore();
         assertEquals(0, score.get(players.get(0)));
@@ -115,7 +116,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         assertFalse(gStatus.isFinished());
     }
@@ -129,7 +130,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         assertFalse(gStatus.isFinished());
         gStatus.update(lastMove);
@@ -145,7 +146,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
         BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
         MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new GameStatus(players, bManager, mValidator);
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         int nMoves = 12;
 
@@ -161,7 +162,7 @@ class GameStatusTest {
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
 
         BoardManager boardManager = new BoardManager(3,3);
-        GameStatus gStatus = new GameStatus(players, boardManager, new DotsAndBoxesMoveValidator(boardManager));
+        GameStatus gStatus = new DotsAndBoxesStatus(players, boardManager, new DotsAndBoxesMoveValidator(boardManager));
 
         assertScore(players, gStatus.getScore(), 0, 0);
 
