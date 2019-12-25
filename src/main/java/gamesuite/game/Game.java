@@ -34,7 +34,7 @@ public class Game {
 
 
 
-    public void start(){
+    public void play(){
 
         oManager.printGame(this);
 

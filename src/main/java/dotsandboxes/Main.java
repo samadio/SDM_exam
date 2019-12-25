@@ -11,5 +11,6 @@ public class Main {
 
         GameSetter gSetter = new DotsAndBoxesSetter(new DotsAndBoxesInput(), new DotsAndBoxesOutput());
         Game dotsAndBoxes = gSetter.newGame();
+        dotsAndBoxes.play();
     }
 }
