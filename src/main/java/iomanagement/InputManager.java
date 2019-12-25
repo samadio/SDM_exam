@@ -1,4 +1,5 @@
 package iomanagement;
+import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
 
 import java.util.List;
@@ -8,7 +9,7 @@ public abstract class InputManager {
 
     protected Move currentMove;
 
-    public abstract void readMove() throws DataFormatException;
+    public abstract void readMove();
 
     public abstract Move getMove();
 
@@ -19,6 +20,9 @@ public abstract class InputManager {
     public abstract boolean customPlayers() throws DataFormatException;
 
     public abstract String getPlayerName();
+
+    public abstract void printInvalidMove(InvalidMoveException e);
+
 }
 
 

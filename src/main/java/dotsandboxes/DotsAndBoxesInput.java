@@ -1,5 +1,6 @@
 package dotsandboxes;
 
+import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
 import iomanagement.InputManager;
 
@@ -22,13 +23,28 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     @Override
-    public void readMove() throws DataFormatException {
+    public void readMove(){
 
         if (!settedConverter)
             throw new InvalidStateException("Convert not set");
+        boolean invalidInput = true;
+        while(invalidInput){
 
-        this.currentMove= moveConverter.convert(readInputMove());
+            try {
+                this.currentMove = moveConverter.convert(readInputMove());
+                invalidInput = false;
+            }
+            catch (DataFormatException e){
+                printFormatWarning();
+            }
+        }
     }
+
+    private void printFormatWarning() {
+
+        System.err.println("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+    }
+
     //private not considering tests
     public InputMove readInputMove() throws DataFormatException {
         String inputLine=readInput();
@@ -89,6 +105,12 @@ public class DotsAndBoxesInput extends InputManager {
         System.out.print("Insert next player's name: ");
         Scanner s = new Scanner(System.in);
         return s.nextLine();
+    }
+
+    @Override
+    public void printInvalidMove(InvalidMoveException e) {
+
+        System.err.println(e.getMessage());
     }
 
     @Override

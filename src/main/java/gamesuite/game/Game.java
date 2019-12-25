@@ -2,7 +2,7 @@ package gamesuite.game;
 
 import gamesuite.board.Board;
 import gamesuite.board.BoardManager;
-import gamesuite.move.MoveValidator;
+import gamesuite.move.*;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
 import gamesuite.status.GameStatus;
@@ -36,7 +36,32 @@ public class Game {
 
     public void start(){
 
-        /*GAMEPLAY CODE HERE*/
+        oManager.printGame(this);
+
+        while (status.isNotFinished()) {
+
+            boolean invalidMove = true;
+            iManager.readMove();
+            Move m = iManager.getMove();
+
+            while (invalidMove){
+                try{
+                    validator.validateMove(m);
+                    invalidMove = false;
+                }
+                catch (InvalidMoveException e) {
+
+                    iManager.printInvalidMove(e);
+                    iManager.readMove();
+                    m = iManager.getMove();
+                }
+            }
+
+            boardManager.updateBoard(m);
+            status.update(m);
+
+            oManager.printGame(this);
+        }
     }
 
     public boolean notEnded(){

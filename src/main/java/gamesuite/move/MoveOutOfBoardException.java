@@ -1,10 +1,11 @@
 package gamesuite.move;
 
 public class MoveOutOfBoardException extends InvalidMoveException{
-    Move invalid;
-    public MoveOutOfBoardException(Move m){
-        invalid=m;
+    public MoveOutOfBoardException(Move m, String message) {
+        super(m, message);
     }
 
-    public Move getInvalid() {return this.invalid;}
+    public MoveOutOfBoardException(Move m) {
+        super(m);
+    }
 }

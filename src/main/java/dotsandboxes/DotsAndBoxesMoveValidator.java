@@ -24,8 +24,9 @@ public class DotsAndBoxesMoveValidator extends MoveValidator {
 
     @Override
     public void validateMove(Move m) throws InvalidMoveException {
-        if(outBoardLine(m)) throw new MoveOutOfBoardException(m);
-        if(moveAlreadyDone(m)) throw new MoveAlreadyDoneException(m);
+
+        if(outBoardLine(m)) throw new MoveOutOfBoardException(m, "Error: move is out of board!");
+        if(moveAlreadyDone(m)) throw new MoveAlreadyDoneException(m, "Error: move already done!");
     }
 
 }
