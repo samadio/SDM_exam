@@ -12,8 +12,6 @@ public abstract class InputManager {
 
     public abstract Move getMove();
 
-    public abstract Integer[] getGrid() throws DataFormatException;
-
     public abstract Integer getPlayersNumber() throws DataFormatException;
 
     public abstract List<Integer> getGridDimensions() throws DataFormatException;

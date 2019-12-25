@@ -65,7 +65,6 @@ public class DotsAndBoxesInput extends InputManager {
         else throw new DataFormatException("Invalid number of dimensions");
     }
 
-
     @Override
     public Integer getPlayersNumber() throws DataFormatException{
         System.out.println("Enter number of players");
@@ -83,6 +82,13 @@ public class DotsAndBoxesInput extends InputManager {
         if(answer.contentEquals(new StringBuffer("y"))) return true;
         else if(answer.contentEquals(new StringBuffer("n"))) return false;
         else throw new DataFormatException("Format not valid");
+    }
+
+    @Override
+    public String getPlayerName() {
+        System.out.print("Insert next player's name: ");
+        Scanner s = new Scanner(System.in);
+        return s.nextLine();
     }
 
     @Override
