@@ -10,6 +10,7 @@ import iomanagement.OutputManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.DataFormatException;
 
 public abstract class GameSetter {
 
@@ -22,7 +23,7 @@ public abstract class GameSetter {
         this.oManager = oManager;
     }
 
-   public final Game newGame(){
+   public final Game newGame() throws DataFormatException {
 
        List<Player> players = setPlayers();
        BoardManager bManager = createBoard();
@@ -32,13 +33,13 @@ public abstract class GameSetter {
        return new Game(iManager, oManager, bManager, mValidator, gStatus, players);
    }
 
-    private BoardManager createBoard() {
+    private BoardManager createBoard() throws DataFormatException {
 
         List<Integer> dimensions = iManager.getGridDimensions(); //function that asks for grid dimensions and returns it
         return  setBoard(dimensions.get(0), dimensions.get(1));
     }
 
-    private List<Player> setPlayers(){
+    private List<Player> setPlayers() throws DataFormatException {
 
         Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
 

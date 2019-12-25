@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,18 +43,18 @@ class DotsAndBoxesInputTest {
     @Test
     public void getGridTest() throws DataFormatException {
         setKeyboard("12 13");
-        Integer[] expected=new Integer[]{12,13};
-        assertTrue(Arrays.equals(itest.getGrid(),expected));
+        List<Integer> expected = Arrays.asList(12,13);
+        assertEquals(itest.getGridDimensions(), expected);
     }
 
     @Test
     public void converterTest() throws DataFormatException {
+
+        itest.setConverter(12);
+
         setKeyboard("26 R");
-        InputMove imove=itest.readInputMove();
-        setKeyboard("12 13");
-        Integer rows= itest.getGrid()[0];
-        Move m= Converter.converter(imove,rows);
-        DotsAndBoxesMoveValidator mvalidator=new DotsAndBoxesMoveValidator(new BoardManager(12,13));
+        itest.readMove();
+        Move m = itest.getMove();
 
         assertTrue(m.getLineKind()==Move.Which.HORIZONTAL);
         assertTrue(m.getRow()==2); //first element of row2=Node 24,
@@ -70,9 +71,9 @@ class DotsAndBoxesInputTest {
     @Test
     public void customizePlayersTest() throws DataFormatException {
         setKeyboard("n");
-        assertFalse(itest.customizePlayers());
+        assertFalse(itest.customPlayers());
         setKeyboard("y");
-        assertTrue(itest.customizePlayers());
+        assertTrue(itest.customPlayers());
         //TRUE BUT IN THE FUTURE CAN BE MOVED, SO keep it commented
 
         //setKeyboard("anything else");
