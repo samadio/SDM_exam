@@ -108,15 +108,29 @@ class DummyBoardManager extends BoardManager {
     private final Map<Move, Boolean> MOVES_DONE;
 
     DummyBoardManager (Map<Move, Boolean> movesDone){
-        super(3,3);
 
         MOVES_DONE = movesDone;
+    }
+
+    @Override
+    public Integer rowLength() {
+        return 3;
+    }
+
+    @Override
+    public Integer columnsLength() {
+        return 3;
     }
 
     @Override
     public boolean moveDone(Move move){
 
         return MOVES_DONE.get(move);
+    }
+
+    @Override
+    public void updateBoard(Move m) {
+
     }
 }
 

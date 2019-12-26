@@ -1,15 +1,12 @@
 package gamesuite.game;
 
-import gamesuite.board.Board;
 import gamesuite.board.BoardManager;
 import gamesuite.move.*;
 import gamesuite.players.Player;
-import gamesuite.players.PlayersFactory;
 import gamesuite.status.GameStatus;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {

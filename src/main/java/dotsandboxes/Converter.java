@@ -1,6 +1,5 @@
 package dotsandboxes;
 
-import gamesuite.board.Board;
 import gamesuite.move.Move;
 
 public class Converter {

@@ -28,6 +28,6 @@ public class DotsAndBoxesSetter extends GameSetter {
 
     @Override
     protected BoardManager setBoard(Integer rows, Integer cols) {
-        return new DotsAndBoxesBoard(rows, cols);
+        return new DotsAndBoxesBoardManager(rows, cols);
     }
 }

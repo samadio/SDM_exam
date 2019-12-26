@@ -65,6 +65,4 @@ class DotsAndBoxesInputTest {
         //assertThrows(DataFormatException.class,()->itest.customizePlayers());
     }
 
-
-
 }

@@ -1,5 +1,6 @@
 package gamesuite;
 
+import dotsandboxes.DotsAndBoxesBoardManager;
 import gamesuite.board.BoardManager;
 import dotsandboxes.DotsAndBoxesMoveValidator;
 import gamesuite.move.Move;
@@ -14,7 +15,7 @@ public class DotsAndBoxesMoveValidatorTest {
     @Test
     public void NewMoveTest() {
         Move currentMove = new Move(Move.Which.HORIZONTAL, 0,0);
-        BoardManager currentBM = new BoardManager(4, 4);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(4, 4);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
         assertFalse(testMoveValidator.moveAlreadyDone(currentMove));
     }
@@ -23,7 +24,7 @@ public class DotsAndBoxesMoveValidatorTest {
     @Test
     public void AlreadyDoneMoveTest() {
         Move currentMove = new Move(Move.Which.HORIZONTAL,4,4);
-        BoardManager currentBM = new BoardManager(6, 8);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(6, 8);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         currentBM.updateBoard(currentMove);
@@ -35,7 +36,7 @@ public class DotsAndBoxesMoveValidatorTest {
     @Test
     public void inBoardMoveTest() {
         Move currentMove = new Move(Move.Which.HORIZONTAL,4,4);
-        BoardManager currentBM = new BoardManager(8, 8);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(8, 8);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertFalse(testMoveValidator.outBoardLine(currentMove));
@@ -43,7 +44,7 @@ public class DotsAndBoxesMoveValidatorTest {
 
     @Test
     public void outBoardMoveTests() {
-        BoardManager currentBM = new BoardManager(10, 10);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(10, 10);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertTrue(testMoveValidator.outBoardLine(new Move(Move.Which.HORIZONTAL,10,11)));
@@ -56,7 +57,7 @@ public class DotsAndBoxesMoveValidatorTest {
     @Test
     public void validateNoExceptionTest(){
         Move currentMove= new Move(Move.Which.HORIZONTAL, 10,0);
-        BoardManager currentBM = new BoardManager(11, 11);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(11, 11);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         assertDoesNotThrow(()->testMoveValidator.validateMove(currentMove));
@@ -65,7 +66,7 @@ public class DotsAndBoxesMoveValidatorTest {
     @Test
     public void validateMoveAlreadyDoneException(){
         Move currentMove = new Move(Move.Which.HORIZONTAL, 10,0);
-        BoardManager currentBM = new BoardManager(11, 11);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(11, 11);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         currentBM.updateBoard(currentMove);
@@ -77,7 +78,7 @@ public class DotsAndBoxesMoveValidatorTest {
 
     @Test
     public void validateMoveOutOfBoardException() {
-        BoardManager currentBM = new BoardManager(10, 10);
+        BoardManager currentBM = new DotsAndBoxesBoardManager(10, 10);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         //outBoardLine should cause exception

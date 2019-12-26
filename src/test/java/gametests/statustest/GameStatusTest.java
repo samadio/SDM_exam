@@ -1,5 +1,6 @@
 package gametests.statustest;
 
+import dotsandboxes.DotsAndBoxesBoardManager;
 import dotsandboxes.DotsAndBoxesStatus;
 import gamesuite.board.BoardManager;
 import dotsandboxes.DotsAndBoxesMoveValidator;
@@ -161,7 +162,7 @@ class GameStatusTest {
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
 
-        BoardManager boardManager = new BoardManager(3,3);
+        BoardManager boardManager = new DotsAndBoxesBoardManager(3,3);
         GameStatus gStatus = new DotsAndBoxesStatus(players, boardManager, new DotsAndBoxesMoveValidator(boardManager));
 
         assertScore(players, gStatus.getScore(), 0, 0);
