@@ -89,6 +89,9 @@ public class DotsAndBoxesInput extends InputManager {
                 invalidDimensions = false;
         }
 
+        //should be set with NUMBER OF COLUMNS!!
+        setConverter(result.get(0));
+
         return result;
     }
 
@@ -105,10 +108,10 @@ public class DotsAndBoxesInput extends InputManager {
 
             try {
                 i = s.nextInt();
-                if (s.hasNext()) throw new DataFormatException("Format not valid");
+                //if (s.hasNext()) throw new DataFormatException("Format not valid");
                 invalidNumber = false;
             }
-            catch (InputMismatchException | DataFormatException e){
+            catch (InputMismatchException e){//| DataFormatException e){
                 OUTPUT.errorPrintln("Error: invalid input for number of players");
                 OUTPUT.outputPrintln("Enter number of players");
             }
@@ -139,10 +142,6 @@ public class DotsAndBoxesInput extends InputManager {
         Scanner s = new Scanner(System.in);
         return s.nextLine();
     }
-
-
-
-
 }
 
 
@@ -163,11 +162,6 @@ class InputValidator{
         return (validChar.contains(direction));
     }
 }
-
-
-
-
-
 class ValidatedInputParser{
     static InputMove parse(String s){
         Scanner in = new Scanner(s);

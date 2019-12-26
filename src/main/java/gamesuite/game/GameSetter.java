@@ -53,14 +53,14 @@ public abstract class GameSetter {
 
                 String name = iManager.getPlayerName();
                 if (name.isEmpty())
-                    players.set(i, playerGenerator.newPlayer());
+                    players.add(i, playerGenerator.newPlayer());
                 else
-                    players.set(i, playerGenerator.newPlayer(name));
+                    players.add(i, playerGenerator.newPlayer(name));
             }
         }
         else{
             for(int i=0;i<nPlayers;i++) {
-                players.set(i, playerGenerator.newPlayer());
+                players.add(i, playerGenerator.newPlayer());
             }
         }
 
