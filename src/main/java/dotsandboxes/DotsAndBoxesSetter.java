@@ -1,5 +1,8 @@
 package dotsandboxes;
 
+import dotsandboxes.board.DotsAndBoxesBoardManager;
+import dotsandboxes.status.DotsAndBoxesStatus;
+import dotsandboxes.validation.DotsAndBoxesMoveValidator;
 import gamesuite.board.BoardManager;
 import gamesuite.game.GameSetter;
 import gamesuite.move.MoveValidator;

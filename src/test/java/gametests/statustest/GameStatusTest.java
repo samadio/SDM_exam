@@ -1,9 +1,9 @@
 package gametests.statustest;
 
-import dotsandboxes.DotsAndBoxesBoardManager;
-import dotsandboxes.DotsAndBoxesStatus;
+import dotsandboxes.board.DotsAndBoxesBoardManager;
+import dotsandboxes.status.DotsAndBoxesStatus;
 import gamesuite.board.BoardManager;
-import dotsandboxes.DotsAndBoxesMoveValidator;
+import dotsandboxes.validation.DotsAndBoxesMoveValidator;
 import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
 import gamesuite.players.Player;

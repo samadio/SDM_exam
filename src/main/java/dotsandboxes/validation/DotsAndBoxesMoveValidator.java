@@ -1,4 +1,4 @@
-package dotsandboxes;
+package dotsandboxes.validation;
 
 import gamesuite.board.BoardManager;
 import gamesuite.move.*;

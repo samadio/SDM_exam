@@ -1,13 +1,12 @@
 package iotest;
 
-import dotsandboxes.DotsAndBoxesInput;
-import dotsandboxes.DotsAndBoxesOutput;
+import dotsandboxes.io.DotsAndBoxesInput;
+import dotsandboxes.io.DotsAndBoxesOutput;
 import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.zip.DataFormatException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

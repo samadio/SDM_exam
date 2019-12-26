@@ -1,4 +1,4 @@
-package dotsandboxes;
+package dotsandboxes.status;
 
 import gamesuite.board.BoardManager;
 import gamesuite.move.MoveValidator;

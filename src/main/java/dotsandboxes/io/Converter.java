@@ -1,4 +1,4 @@
-package dotsandboxes;
+package dotsandboxes.io;
 
 import gamesuite.move.Move;
 

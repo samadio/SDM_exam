@@ -1,10 +1,10 @@
 package dotsandboxes;
 
+import dotsandboxes.io.DotsAndBoxesInput;
+import dotsandboxes.io.DotsAndBoxesOutput;
 import gamesuite.game.Game;
 import gamesuite.game.GameSetter;
 import iomanagement.OutputManager;
-
-import java.util.zip.DataFormatException;
 
 public class Main {
 

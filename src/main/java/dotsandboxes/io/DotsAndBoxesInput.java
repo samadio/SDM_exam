@@ -1,6 +1,5 @@
-package dotsandboxes;
+package dotsandboxes.io;
 
-import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;

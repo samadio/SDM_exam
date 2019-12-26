@@ -1,8 +1,8 @@
 package gamesuite;
 
-import dotsandboxes.DotsAndBoxesBoardManager;
+import dotsandboxes.board.DotsAndBoxesBoardManager;
 import gamesuite.board.BoardManager;
-import dotsandboxes.DotsAndBoxesMoveValidator;
+import dotsandboxes.validation.DotsAndBoxesMoveValidator;
 import gamesuite.move.Move;
 import gamesuite.move.MoveAlreadyDoneException;
 import gamesuite.move.MoveOutOfBoardException;

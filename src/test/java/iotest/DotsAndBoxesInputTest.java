@@ -1,8 +1,8 @@
 package iotest;
 
-import dotsandboxes.*;
-import gamesuite.board.BoardManager;
-import gamesuite.move.Move;
+import dotsandboxes.io.DotsAndBoxesInput;
+import dotsandboxes.io.DotsAndBoxesOutput;
+import dotsandboxes.io.InputMove;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

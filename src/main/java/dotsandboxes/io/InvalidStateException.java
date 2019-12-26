@@ -1,4 +1,4 @@
-package dotsandboxes;
+package dotsandboxes.io;
 
 public class InvalidStateException extends RuntimeException {
 
