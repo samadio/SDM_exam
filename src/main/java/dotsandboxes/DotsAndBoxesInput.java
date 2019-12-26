@@ -3,6 +3,7 @@ package dotsandboxes;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
 import iomanagement.InputManager;
+import iomanagement.OutputManager;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -16,6 +17,10 @@ public class DotsAndBoxesInput extends InputManager {
 
     private Boolean settedConverter = false;
     private Converter moveConverter;
+
+    public DotsAndBoxesInput(OutputManager oManager) {
+        super(oManager);
+    }
 
     public void setConverter(Integer nCols){
 
@@ -36,14 +41,9 @@ public class DotsAndBoxesInput extends InputManager {
                 invalidInput = false;
             }
             catch (DataFormatException e){
-                printFormatWarning();
+                OUTPUT.errorPrintln("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
             }
         }
-    }
-
-    private void printFormatWarning() {
-
-        System.err.println("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
     }
 
     //private not considering tests
@@ -64,11 +64,15 @@ public class DotsAndBoxesInput extends InputManager {
         return input.nextLine();
     }
 
+    @Override
+    public Move getMove() {
+        return this.currentMove;
+    }
 
     @Override
     public List<Integer> getGridDimensions() {
 
-        System.out.println("Insert grid dimension in format:rowDimension columnDimension");
+        OUTPUT.outputPrintln("Insert grid dimension in format:rowDimension columnDimension");
         Scanner in = new Scanner(System.in);
 
         boolean invalidDimensions = true;
@@ -77,8 +81,8 @@ public class DotsAndBoxesInput extends InputManager {
         while (invalidDimensions) {
 
             if (result.size() != 2) {
-                System.err.println("Error: invalid grid dimensions.");
-                System.out.println("Insert grid dimension in format:rowDimension columnDimension");
+                OUTPUT.errorPrintln("Error: invalid grid dimensions.");
+                OUTPUT.outputPrintln("Insert grid dimension in format:rowDimension columnDimension");
                 result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
             }
             else
@@ -91,7 +95,7 @@ public class DotsAndBoxesInput extends InputManager {
     @Override
     public Integer getPlayersNumber(){
 
-        System.out.println("Enter number of players");
+        OUTPUT.outputPrintln("Enter number of players");
         Scanner s=new Scanner(System.in);
 
         int i = 2;
@@ -105,8 +109,8 @@ public class DotsAndBoxesInput extends InputManager {
                 invalidNumber = false;
             }
             catch (InputMismatchException | DataFormatException e){
-                System.err.println("Error: invalid input for number of players");
-                System.out.println("Enter number of players");
+                OUTPUT.errorPrintln("Error: invalid input for number of players");
+                OUTPUT.outputPrintln("Enter number of players");
             }
         }
         return i;
@@ -114,7 +118,7 @@ public class DotsAndBoxesInput extends InputManager {
 
     @Override
     public boolean customPlayers(){
-        System.out.println("Do you want to customize player names? (y=yes,n=no) ");
+        OUTPUT.outputPrintln("Do you want to customize player names? (y=yes,n=no) ");
         Scanner s=new Scanner(System.in);
         String answer=s.next();
 
@@ -122,8 +126,8 @@ public class DotsAndBoxesInput extends InputManager {
             if (answer.contentEquals(new StringBuffer("y"))) return true;
             else if (answer.contentEquals(new StringBuffer("n"))) return false;
             else{
-                System.err.println("Error: invalid answer");
-                System.out.println("Do you want to customize player names? (y=yes,n=no) ");
+                OUTPUT.errorPrintln("Error: invalid answer");
+                OUTPUT.outputPrintln("Do you want to customize player names? (y=yes,n=no) ");
                 answer=s.next();
             }
         }
@@ -131,21 +135,13 @@ public class DotsAndBoxesInput extends InputManager {
 
     @Override
     public String getPlayerName() {
-        System.out.print("Insert next player's name: ");
+        OUTPUT.outputPrint("Insert next player's name: ");
         Scanner s = new Scanner(System.in);
         return s.nextLine();
     }
 
-    @Override
-    public void printInvalidMove(InvalidMoveException e) {
 
-        System.err.println(e.getMessage());
-    }
 
-    @Override
-    public Move getMove() {
-        return this.currentMove;
-    }
 
 }
 
@@ -165,10 +161,7 @@ class InputValidator{
         String direction = in.next();
         if (direction.length()!=1) return false;
         return (validChar.contains(direction));
-
-
     }
-
 }
 
 

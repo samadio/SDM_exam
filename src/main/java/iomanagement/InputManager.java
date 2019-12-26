@@ -8,6 +8,12 @@ import java.util.zip.DataFormatException;
 public abstract class InputManager {
 
     protected Move currentMove;
+    protected final OutputManager OUTPUT;
+
+    protected InputManager(OutputManager oManager){
+
+        OUTPUT = oManager;
+    }
 
     public abstract void readMove();
 
@@ -20,8 +26,6 @@ public abstract class InputManager {
     public abstract boolean customPlayers();
 
     public abstract String getPlayerName();
-
-    public abstract void printInvalidMove(InvalidMoveException e);
 
 }
 

@@ -1,10 +1,7 @@
 package iotest;
 
-import dotsandboxes.Converter;
-import dotsandboxes.DotsAndBoxesInput;
-import dotsandboxes.InputMove;
+import dotsandboxes.*;
 import gamesuite.board.BoardManager;
-import dotsandboxes.DotsAndBoxesMoveValidator;
 import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +21,7 @@ class DotsAndBoxesInputTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
     }
 
-    DotsAndBoxesInput itest = new DotsAndBoxesInput();
+    DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
 
     @Test
     public void readInputTest() {
@@ -41,7 +38,7 @@ class DotsAndBoxesInputTest {
     }
 
     @Test
-    public void getGridTest() throws DataFormatException {
+    public void getGridTest(){
         setKeyboard("12 13");
         List<Integer> expected = Arrays.asList(12,13);
         assertEquals(itest.getGridDimensions(), expected);
@@ -50,14 +47,14 @@ class DotsAndBoxesInputTest {
 
 
     @Test
-    public void getPlayersNumberTest() throws DataFormatException {
+    public void getPlayersNumberTest(){
         setKeyboard("2");
         Integer i=itest.getPlayersNumber();
         assertEquals(2, (int) i);
     }
 
     @Test
-    public void customizePlayersTest() throws DataFormatException {
+    public void customizePlayersTest(){
         setKeyboard("n");
         assertFalse(itest.customPlayers());
         setKeyboard("y");

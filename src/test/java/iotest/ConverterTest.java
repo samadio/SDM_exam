@@ -1,6 +1,7 @@
 package iotest;
 
 import dotsandboxes.DotsAndBoxesInput;
+import dotsandboxes.DotsAndBoxesOutput;
 import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
@@ -17,10 +18,10 @@ public class ConverterTest{
         System.setIn(new ByteArrayInputStream(data.getBytes()));
     }
 
-    DotsAndBoxesInput itest = new DotsAndBoxesInput();
+    DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
 
     @Test
-    public void converterTest() throws DataFormatException {
+    public void converterTest(){
 
         itest.setConverter(12);
 

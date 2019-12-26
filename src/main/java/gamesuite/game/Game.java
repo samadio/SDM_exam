@@ -51,7 +51,7 @@ public class Game {
                 }
                 catch (InvalidMoveException e) {
 
-                    iManager.printInvalidMove(e);
+                    oManager.printInvalidMove(e);
                     iManager.readMove();
                     m = iManager.getMove();
                 }
