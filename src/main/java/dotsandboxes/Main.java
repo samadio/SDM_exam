@@ -1,5 +1,6 @@
 package dotsandboxes;
 
+import dotsandboxes.game.DotsAndBoxesSetter;
 import dotsandboxes.io.DotsAndBoxesInput;
 import dotsandboxes.io.DotsAndBoxesOutput;
 import gamesuite.game.Game;

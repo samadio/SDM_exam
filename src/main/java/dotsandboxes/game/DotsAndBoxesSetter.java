@@ -1,4 +1,4 @@
-package dotsandboxes;
+package dotsandboxes.game;
 
 import dotsandboxes.board.DotsAndBoxesBoardManager;
 import dotsandboxes.status.DotsAndBoxesStatus;
