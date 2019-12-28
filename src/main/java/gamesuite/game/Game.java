@@ -29,9 +29,6 @@ public class Game {
         this.players = players;
     }
 
-
-
-
     public void play(){
 
         oManager.printGame(this);
@@ -60,6 +57,8 @@ public class Game {
 
             oManager.printGame(this);
         }
+
+        oManager.printWinner(this);
     }
 
     public GameScore getScore(){
@@ -76,5 +75,4 @@ public class Game {
 
         return status.isNotFinished();
     }
-
 }
