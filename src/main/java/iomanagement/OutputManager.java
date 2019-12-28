@@ -15,4 +15,6 @@ public abstract class OutputManager {
     public abstract void outputPrint(String s);
 
     public abstract void errorPrint(String s);
+
+    public abstract void printWinner(Game game);
 }

@@ -2,7 +2,13 @@ package dotsandboxes.io;
 
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
+import gamesuite.players.Player;
+import gamesuite.status.GameScore;
 import iomanagement.OutputManager;
+
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
 
 public class DotsAndBoxesOutput extends OutputManager {
 
@@ -36,5 +42,15 @@ public class DotsAndBoxesOutput extends OutputManager {
     @Override
     public void errorPrint(String s) {
         System.err.print(s);
+    }
+
+    @Override
+    public void printWinner(Game game) {
+
+        GameScore score = game.getScore();
+
+        Optional<Map.Entry<Player, Integer>> winner = score.entrySet().stream().min(Comparator.comparingInt(Map.Entry::getValue));
+
+        System.out.println("The winner is " + winner.get().getKey());
     }
 }
