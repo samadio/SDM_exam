@@ -71,7 +71,7 @@ public class DotsAndBoxesInput extends InputManager {
     @Override
     public List<Integer> getGridDimensions() {
 
-        String gridMessage = "Insert grid dimension in format:rowDimension columnDimension";
+        String gridMessage = "Insert grid dimension in format:rowNumber columnNumber";
         OUTPUT.outputPrintln(gridMessage);
         Scanner in = new Scanner(System.in);
 
@@ -89,8 +89,7 @@ public class DotsAndBoxesInput extends InputManager {
                 invalidDimensions = false;
         }
 
-        //should be set with NUMBER OF COLUMNS!!
-        setConverter(result.get(0));
+        setConverter(result.get(1));
 
         return result;
     }
