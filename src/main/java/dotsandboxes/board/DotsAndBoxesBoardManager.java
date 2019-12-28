@@ -1,5 +1,6 @@
 package dotsandboxes.board;
 
+import gamesuite.board.AbstractBoard;
 import gamesuite.board.BoardManager;
 import gamesuite.move.Move;
 
@@ -28,4 +29,8 @@ public class DotsAndBoxesBoardManager extends BoardManager {
     @Override
     public void updateBoard(Move m) { this.board.setBoard(m.getLineKind(), m.getRow(), m.getCol());}
 
+    @Override
+    public AbstractBoard getBoard() {
+        return board;
+    }
 }

@@ -1,4 +1,4 @@
-package dotsandboxes.board;
+package gamesuite.board;
 
 import gamesuite.move.Move;
 

@@ -1,10 +1,9 @@
 package dotsandboxes.board;
 
+import gamesuite.board.AbstractBoard;
 import gamesuite.move.Move;
 
 public class Board extends AbstractBoard {
-
-
 
     public boolean[][] horizontalLines;
     private boolean[][] verticalLines;

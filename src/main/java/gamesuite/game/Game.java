@@ -1,5 +1,6 @@
 package gamesuite.game;
 
+import gamesuite.board.AbstractBoard;
 import gamesuite.board.BoardManager;
 import gamesuite.move.*;
 import gamesuite.players.Player;
@@ -27,9 +28,6 @@ public class Game {
         this.status = gStatus;
         this.players = players;
     }
-
-
-
 
     public void play(){
 
@@ -64,6 +62,10 @@ public class Game {
     public boolean notEnded(){
 
         return status.isNotFinished();
+    }
+
+    public AbstractBoard getBoard(){
+        return boardManager.getBoard();
     }
 
 }
