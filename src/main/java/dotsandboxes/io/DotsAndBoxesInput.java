@@ -102,18 +102,23 @@ public class DotsAndBoxesInput extends InputManager {
         OUTPUT.outputPrintln(playersMessage);
         Scanner s=new Scanner(System.in);
 
+        List<String> input= s.tokens().collect(Collectors.toList());
         int i = 2;
         boolean invalidNumber = true;
 
         while (invalidNumber){
 
             try {
-                i = s.nextInt();
-                //if (s.hasNext()) throw new DataFormatException("Format not valid");
+                if(input.size()!=1) throw new InputMismatchException();
+                i=Integer.parseInt(input.get(0));
                 invalidNumber = false;
             }
-            catch (InputMismatchException e){//| DataFormatException e){
-                OUTPUT.errorPrintln("Error: invalid input for number of players");
+            catch (InputMismatchException e){
+                OUTPUT.errorPrintln("Error: invalid number of inputs for number of players");
+                OUTPUT.outputPrintln(playersMessage);
+            }
+            catch(NumberFormatException e){
+                OUTPUT.errorPrintln("Error: the input is expected to be Integer");
                 OUTPUT.outputPrintln(playersMessage);
             }
         }
