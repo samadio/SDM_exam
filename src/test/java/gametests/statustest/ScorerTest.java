@@ -1,6 +1,7 @@
 package gametests.statustest;
 
 import dotsandboxes.status.DotsAndBoxesScorer;
+import gamesuite.board.AbstractBoard;
 import gamesuite.board.BoardManager;
 import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
@@ -131,6 +132,11 @@ class DummyBoardManager extends BoardManager {
     @Override
     public void updateBoard(Move m) {
 
+    }
+
+    @Override
+    public AbstractBoard getBoard() {
+        return null;
     }
 }
 
