@@ -68,10 +68,10 @@ class DotsAndBoxesInputTest {
         assertFalse(itest.customPlayers());
         setKeyboard("y");
         assertTrue(itest.customPlayers());
-        //TRUE BUT IN THE FUTURE CAN BE MOVED, SO keep it commented
+        setKeyboard("ly\ny");
+        assertTrue(itest.customPlayers());
 
-        //setKeyboard("anything else");
-        //assertThrows(DataFormatException.class,()->itest.customizePlayers());
+
     }
 
 }
