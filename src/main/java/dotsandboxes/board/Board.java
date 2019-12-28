@@ -2,7 +2,7 @@ package dotsandboxes.board;
 
 import gamesuite.move.Move;
 
-public class Board {
+public class Board extends AbstractBoard {
 
 
 
@@ -14,6 +14,7 @@ public class Board {
         this.verticalLines=  new boolean[n-1][m];
     }
 
+    @Override
     public Boolean getElement(Move.Which w, Integer i, Integer j) {
         if (w== Move.Which.HORIZONTAL)
             return this.horizontalLines[i][j];
