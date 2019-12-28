@@ -4,10 +4,7 @@ import gamesuite.move.Move;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
@@ -101,13 +98,16 @@ public class DotsAndBoxesInput extends InputManager {
         OUTPUT.outputPrintln(playersMessage);
         Scanner s=new Scanner(System.in);
 
-        List<String> input= s.tokens().collect(Collectors.toList());
+        List<String> input;
         int i = 2;
         boolean invalidNumber = true;
 
         while (invalidNumber){
 
             try {
+                input= new ArrayList<>(Arrays.asList(s.nextLine().split(" ")));
+                //if u put blank spaces at the beginning or the end, it doesn't matter
+                input.removeAll(Arrays.asList(""));
                 if(input.size()!=1) throw new InputMismatchException();
                 i=Integer.parseInt(input.get(0));
                 invalidNumber = false;

@@ -48,10 +48,19 @@ class DotsAndBoxesInputTest {
 
     @Test
     public void getPlayersNumberTest(){
-        setKeyboard("5 ");
+        setKeyboard(" 5");
         Integer i=itest.getPlayersNumber();
         assertEquals(5, i);
     }
+
+    @Test
+    public void getPlayersNumberBuggyTest(){
+        setKeyboard("5 3\n a \n7 ");
+        Integer i=itest.getPlayersNumber();
+        assertEquals(7, i);
+    }
+
+
 
     @Test
     public void customizePlayersTest(){
