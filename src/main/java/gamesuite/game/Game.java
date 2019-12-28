@@ -3,6 +3,7 @@ package gamesuite.game;
 import gamesuite.board.BoardManager;
 import gamesuite.move.*;
 import gamesuite.players.Player;
+import gamesuite.status.GameScore;
 import gamesuite.status.GameStatus;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
@@ -59,6 +60,16 @@ public class Game {
 
             oManager.printGame(this);
         }
+    }
+
+    public GameScore getScore(){
+
+        return status.getScore();
+    }
+
+    public Player nextPlayer(){
+
+        return status.currentPlayer();
     }
 
     public boolean notEnded(){
