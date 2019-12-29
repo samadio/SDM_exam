@@ -57,6 +57,7 @@ public class DotsAndBoxesOutput extends OutputManager {
 
     @Override
     public void printBoard(AbstractBoard board) {
-        outputPrint(new BoardRepresentation(board).convertToString());
+        Integer rows=board.getRows();
+        Integer columns=board.getColumns();
     }
 }

@@ -6,20 +6,16 @@ import gamesuite.move.Move;
 
 public class DotsAndBoxesBoardManager extends BoardManager {
 
-    private Integer rows;
-    private Integer columns;
     private Board board;
 
     public DotsAndBoxesBoardManager(Integer n, Integer m) {
-        this.rows = n;
-        this.columns = m;
         this.board= new Board(n,m);
     }
 
     @Override
-    public Integer rowLength() {return this.columns;}
+    public Integer rowLength() {return this.board.getColumns();}
     @Override
-    public Integer columnsLength() {return this.rows;}
+    public Integer columnsLength() {return this.board.getRows();}
 
     @Override
     public boolean moveDone(Move m) {
