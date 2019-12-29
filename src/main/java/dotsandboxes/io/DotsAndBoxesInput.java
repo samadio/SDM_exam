@@ -105,8 +105,9 @@ public class DotsAndBoxesInput extends InputManager {
         while (invalidNumber){
 
             try {
-                
-                input= Arrays.asList(s.nextLine().trim().split(" "));
+                input= new ArrayList<>(Arrays.asList(s.nextLine().split(" ")));
+                //if u put blank spaces at the beginning or the end, it doesn't matter
+                input.removeAll(Arrays.asList(""));
                 
                 if(input.size()!=1) throw new InputMismatchException();
                 i=Integer.parseInt(input.get(0));
