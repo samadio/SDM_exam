@@ -71,7 +71,6 @@ public class DotsAndBoxesInput extends InputManager {
 
         String gridMessage = "Insert grid dimension in format:[rowsNumber] [columnsNumber]";
         OUTPUT.outputPrintln(gridMessage);
-        Scanner in = new Scanner(System.in);
 
         boolean invalidDimensions = true;
         List<Integer> dimensions = null;
@@ -79,7 +78,7 @@ public class DotsAndBoxesInput extends InputManager {
         while (invalidDimensions) {
             try {
 
-                List<String> parsedInput= Arrays.stream(in.nextLine().split(" ")).collect(Collectors.toList());
+                List<String> parsedInput= Arrays.stream(readInput().split(" ")).collect(Collectors.toList());
                 parsedInput.removeAll(Collections.singletonList(""));
                 dimensions= parsedInput.stream().map(Integer::valueOf).collect(Collectors.toList());
                 if (dimensions.size() != 2) {
@@ -103,7 +102,6 @@ public class DotsAndBoxesInput extends InputManager {
 
         String playersMessage = "Enter number of players";
         OUTPUT.outputPrintln(playersMessage);
-        Scanner s=new Scanner(System.in);
 
         List<String> input;
         int i = 2;
@@ -112,7 +110,7 @@ public class DotsAndBoxesInput extends InputManager {
         while (invalidNumber){
 
             try {
-                input= new ArrayList<>(Arrays.asList(s.nextLine().split(" ")));
+                input= new ArrayList<>(Arrays.asList(readInput().split(" ")));
                 //if u put blank spaces at the beginning or the end, it doesn't matter
                 input.removeAll(Collections.singletonList(""));
                 
@@ -137,16 +135,15 @@ public class DotsAndBoxesInput extends InputManager {
 
         String customPlayersMessage = "Do you want to customize player names? (y=yes,n=no)";
         OUTPUT.outputPrintln(customPlayersMessage);
-        Scanner s=new Scanner(System.in);
-        String answer=s.next();
+        String answer=readInput().trim();
 
         while (true) {
-            if (answer.contentEquals(new StringBuffer("y"))) return true;
-            else if (answer.contentEquals(new StringBuffer("n"))) return false;
+            if (answer.equalsIgnoreCase("y")) return true;
+            else if (answer.equalsIgnoreCase("n")) return false;
             else{
                 OUTPUT.errorPrintln("Error: invalid answer");
                 OUTPUT.outputPrintln(customPlayersMessage);
-                answer=s.next();
+                answer=readInput().trim();
             }
         }
     }
@@ -156,8 +153,7 @@ public class DotsAndBoxesInput extends InputManager {
         String playerNameMessage = "Insert next player's name: ";
 
         OUTPUT.outputPrintln(playerNameMessage);
-        Scanner s = new Scanner(System.in);
-        return s.nextLine();
+        return readInput();
     }
 }
 
