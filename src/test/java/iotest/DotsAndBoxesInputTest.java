@@ -58,7 +58,7 @@ class DotsAndBoxesInputTest {
     public void customizePlayersTest(){
         setKeyboard("n\n");
         assertFalse(itest.customPlayers());
-        setKeyboard("y\n");
+        setKeyboard(" Y \n");
         assertTrue(itest.customPlayers());
 
     }
