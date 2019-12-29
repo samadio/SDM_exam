@@ -36,7 +36,7 @@ public abstract class GameSetter {
     private BoardManager createBoard(){
 
         List<Integer> dimensions = iManager.getGridDimensions(); //function that asks for grid dimensions and returns it
-        return  setBoard(dimensions.get(1), dimensions.get(0));
+        return  setBoard(dimensions.get(0), dimensions.get(1));
     }
 
     private List<Player> setPlayers(){
