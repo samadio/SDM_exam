@@ -137,14 +137,14 @@ public class DotsAndBoxesInput extends InputManager {
         OUTPUT.outputPrintln(customPlayersMessage);
         String answer=readInput().trim();
 
+        System.out.println("answer: "+answer);
         while (true) {
             if (answer.equalsIgnoreCase("y")) return true;
             else if (answer.equalsIgnoreCase("n")) return false;
-            else{
-                OUTPUT.errorPrintln("Error: invalid answer");
-                OUTPUT.outputPrintln(customPlayersMessage);
-                answer=readInput().trim();
-            }
+            OUTPUT.errorPrintln("Error: invalid answer");
+            OUTPUT.outputPrintln(customPlayersMessage);
+            answer=readInput();
+            System.out.println("answer: "+answer);
         }
     }
 
