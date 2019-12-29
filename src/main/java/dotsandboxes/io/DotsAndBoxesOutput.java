@@ -62,19 +62,21 @@ public class DotsAndBoxesOutput extends OutputManager {
     public void printBoard(AbstractBoard board) {
         Integer rows=board.getRows();
         Integer columns=board.getColumns();
+        Integer maxLength=String.valueOf(rows*columns-1).length();
 
         Move.Which type= HORIZONTAL;
         int i=0; //row u're looking at
         while(i!=rows-1 | type!=VERTICAL){   //stop condition: first invalid row
             for(int j = 0; j<columnsOf(type,columns); j += 1){
                 Boolean present= board.getElement(type,i,j);
-                String s=convertToString(present,type);
+                Integer currNode= i*columns+j;
+                String s=convertToString(present,type,currNode, maxLength);
                 outputPrint(s);
             }
             //after finishing a column
             if(type==VERTICAL) i+=1;
             if(type==VERTICAL)outputPrint("\n");
-            if(type==HORIZONTAL)outputPrint("*\n");
+            if(type==HORIZONTAL)outputPrint(indent(String.valueOf(i*columns+columns-1),maxLength)+"\n");
             type=other(type);
         }
     }
@@ -89,13 +91,19 @@ public class DotsAndBoxesOutput extends OutputManager {
         return HORIZONTAL;
     }
 
-    private String convertToString(Boolean present, Move.Which type) {
+    private String indent(String nodeString, Integer maxLength){
+        return "0".repeat(maxLength-nodeString.length())+nodeString;
+    }
+
+    private String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
+        String nodeString=String.valueOf(currNode);
+        String indented=indent(nodeString,maxLength);
         if(present){
             if(type==VERTICAL)  return "|  ";
-            if(type==HORIZONTAL)return "*——";
+            if(type==HORIZONTAL)return indented+"——";
         }
         if(type==VERTICAL)return "   ";
-        return  "*  ";
+        return  indented+"  ";
     }
 
 

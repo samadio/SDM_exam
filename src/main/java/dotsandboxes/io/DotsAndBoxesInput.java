@@ -44,6 +44,7 @@ public class DotsAndBoxesInput extends InputManager {
 
     //private not considering tests
     public InputMove readInputMove() throws DataFormatException {
+        OUTPUT.outputPrintln("Insert edge to be inserted in the format: NodeNumber Direction={L,R,U,D}");
         String inputLine=readInput();
 
         if(InputValidator.checkFormat(inputLine)){
@@ -146,10 +147,9 @@ public class DotsAndBoxesInput extends InputManager {
 
     @Override
     public String getPlayerName() {
-
         String playerNameMessage = "Insert next player's name: ";
 
-        OUTPUT.outputPrint(playerNameMessage);
+        OUTPUT.outputPrintln(playerNameMessage);
         Scanner s = new Scanner(System.in);
         return s.nextLine();
     }
