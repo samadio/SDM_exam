@@ -74,22 +74,28 @@ public class DotsAndBoxesInput extends InputManager {
         Scanner in = new Scanner(System.in);
 
         boolean invalidDimensions = true;
-        List<Integer> result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
+        List<Integer> dimensions = null;
 
         while (invalidDimensions) {
+            try {
 
-            if (result.size() != 2) {
-                OUTPUT.errorPrintln("Error: invalid grid dimensions.");
+                List<String> parsedInput= Arrays.stream(in.nextLine().split(" ")).collect(Collectors.toList());
+                parsedInput.removeAll(Collections.singletonList(""));
+                dimensions= parsedInput.stream().map(Integer::valueOf).collect(Collectors.toList());
+                if (dimensions.size() != 2) {
+                    OUTPUT.errorPrintln("Error: invalid grid dimensions.");
+                    OUTPUT.outputPrintln(gridMessage);
+                } else
+                    invalidDimensions = false;
+            } catch (NumberFormatException e) {
+                OUTPUT.errorPrintln("Error: the input is expected to be a sequence of integer.");
                 OUTPUT.outputPrintln(gridMessage);
-                result = Arrays.stream(in.nextLine().split(" ")).map(Integer::valueOf).collect(Collectors.toList());
             }
-            else
-                invalidDimensions = false;
         }
 
-        setConverter(result.get(1));
+        setConverter(dimensions.get(1));
 
-        return result;
+        return dimensions;
     }
 
     @Override
@@ -108,7 +114,7 @@ public class DotsAndBoxesInput extends InputManager {
             try {
                 input= new ArrayList<>(Arrays.asList(s.nextLine().split(" ")));
                 //if u put blank spaces at the beginning or the end, it doesn't matter
-                input.removeAll(Arrays.asList(""));
+                input.removeAll(Collections.singletonList(""));
                 
                 if(input.size()!=1) throw new InputMismatchException();
                 i=Integer.parseInt(input.get(0));
