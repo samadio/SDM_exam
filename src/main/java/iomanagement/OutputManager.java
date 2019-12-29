@@ -1,5 +1,6 @@
 package iomanagement;
 
+import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 
@@ -17,4 +18,7 @@ public abstract class OutputManager {
     public abstract void errorPrint(String s);
 
     public abstract void printWinner(Game game);
+
+    public abstract void printBoard(AbstractBoard board);
+
 }

@@ -1,5 +1,6 @@
 package dotsandboxes.io;
 
+import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.players.Player;
@@ -52,5 +53,10 @@ public class DotsAndBoxesOutput extends OutputManager {
         Optional<Map.Entry<Player, Integer>> winner = score.entrySet().stream().min(Comparator.comparingInt(Map.Entry::getValue));
 
         System.out.println("The winner is " + winner.get().getKey());
+    }
+
+    @Override
+    public void printBoard(AbstractBoard board) {
+        outputPrint(new BoardRepresentation(board).convertToString());
     }
 }
