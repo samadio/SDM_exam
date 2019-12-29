@@ -44,7 +44,7 @@ public class DotsAndBoxesInput extends InputManager {
 
     //private not considering tests
     public InputMove readInputMove() throws DataFormatException {
-        OUTPUT.outputPrintln("Insert edge to be inserted in the format: NodeNumber Direction={L,R,U,D}");
+        OUTPUT.outputPrintln("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
         String inputLine=readInput();
 
         if(InputValidator.checkFormat(inputLine)){
@@ -69,7 +69,7 @@ public class DotsAndBoxesInput extends InputManager {
     @Override
     public List<Integer> getGridDimensions() {
 
-        String gridMessage = "Insert grid dimension in format:rowNumber columnNumber";
+        String gridMessage = "Insert grid dimension in format:[rowsNumber] [columnsNumber]";
         OUTPUT.outputPrintln(gridMessage);
         Scanner in = new Scanner(System.in);
 

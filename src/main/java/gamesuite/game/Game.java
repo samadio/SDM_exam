@@ -67,6 +67,10 @@ public class Game {
         return status.getScore();
     }
 
+    public List<Player> getPlayers(){
+        return players;
+    }
+
     public Player nextPlayer(){
 
         return status.currentPlayer();

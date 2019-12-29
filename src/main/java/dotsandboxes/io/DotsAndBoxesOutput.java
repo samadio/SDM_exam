@@ -20,6 +20,12 @@ public class DotsAndBoxesOutput extends OutputManager {
     @Override
     public void printGame(Game game) {
         printBoard(game.getBoard());
+        outputPrintln("\n Players score:");
+        for(Player i: game.getPlayers()){
+            outputPrint(i.getName()+": ");
+            outputPrint(game.getScore().get(i)+"        ");
+        }
+        outputPrintln("\n");
     }
 
     @Override
