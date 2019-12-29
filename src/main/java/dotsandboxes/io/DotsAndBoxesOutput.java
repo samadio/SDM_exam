@@ -19,8 +19,7 @@ public class DotsAndBoxesOutput extends OutputManager {
 
     @Override
     public void printGame(Game game) {
-
-        System.out.println("Hello, world!");
+        printBoard(game.getBoard());
     }
 
     @Override
@@ -65,16 +64,18 @@ public class DotsAndBoxesOutput extends OutputManager {
         Integer columns=board.getColumns();
 
         Move.Which type= HORIZONTAL;
-        Integer i=0; //row u're looking at
-        while(i!=rows-1 && type!=VERTICAL){   //stop condition: first invalid row
-            for(Integer j=0;j<columnsOf(type,columns);j++){
+        int i=0; //row u're looking at
+        while(i!=rows-1 | type!=VERTICAL){   //stop condition: first invalid row
+            for(int j = 0; j<columnsOf(type,columns); j += 1){
                 Boolean present= board.getElement(type,i,j);
                 String s=convertToString(present,type);
                 outputPrint(s);
             }
+            //after finishing a column
             if(type==VERTICAL) i+=1;
+            if(type==VERTICAL)outputPrint("\n");
+            if(type==HORIZONTAL)outputPrint("*\n");
             type=other(type);
-            outputPrint("\n");
         }
     }
 
@@ -89,7 +90,12 @@ public class DotsAndBoxesOutput extends OutputManager {
     }
 
     private String convertToString(Boolean present, Move.Which type) {
-        return null;
+        if(present){
+            if(type==VERTICAL)  return "|  ";
+            if(type==HORIZONTAL)return "*——";
+        }
+        if(type==VERTICAL)return "   ";
+        return  "*  ";
     }
 
 
