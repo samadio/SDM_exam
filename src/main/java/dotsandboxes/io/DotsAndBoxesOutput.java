@@ -99,7 +99,7 @@ public class DotsAndBoxesOutput extends OutputManager {
         String nodeString=String.valueOf(currNode);
         String indented=indent(nodeString,maxLength);
         if(present){
-            if(type==VERTICAL)  return " |"+ " ".repeat(maxLength);
+            if(type==VERTICAL)  return " ".repeat(maxLength/2)+"| "+ " ".repeat((maxLength+1)/2);
             if(type==HORIZONTAL)return indented+"——";
         }
         if(type==VERTICAL)return " ".repeat(maxLength+2);
