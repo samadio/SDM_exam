@@ -58,6 +58,8 @@ public class DotsAndBoxesInput extends InputManager {
     //private not considering tests
     public String readInput(){
         Scanner input= new Scanner(System.in);
+        if (!input.hasNextLine())
+            System.exit(1);
         return input.nextLine();
     }
 
