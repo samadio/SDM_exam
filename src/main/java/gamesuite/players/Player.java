@@ -28,4 +28,9 @@ public class Player {
     public int hashCode() {
         return Objects.hash(PLAYER_NAME);
     }
+
+    @Override
+    public String toString() {
+        return PLAYER_NAME;
+    }
 }
