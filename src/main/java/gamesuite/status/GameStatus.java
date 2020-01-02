@@ -65,4 +65,9 @@ public abstract class GameStatus {
 
         return score;
     }
+
+    public void reset(){
+
+        score.reset();
+    }
 }

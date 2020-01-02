@@ -82,11 +82,9 @@ class GameStatusTest {
         GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         GameScore score = gStatus.getScore();
-        assertEquals(0, score.get(players.get(0)));
-        assertEquals(0, score.get(players.get(1)));
+        assertScore(players, score ,0 , 0);
         gStatus.update(lastMove);
-        assertEquals(1, score.get(players.get(0)));
-        assertEquals(0, score.get(players.get(1)));
+        assertScore(players, score ,1 , 0);
     }
 
     @Test
@@ -101,11 +99,9 @@ class GameStatusTest {
         GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
         GameScore score = gStatus.getScore();
-        assertEquals(0, score.get(players.get(0)));
-        assertEquals(0, score.get(players.get(1)));
+        assertScore(players, score, 0, 0);
         gStatus.update(lastMove);
-        assertEquals(0, score.get(players.get(0)));
-        assertEquals(0, score.get(players.get(1)));
+        assertScore(players, score, 0, 0);
     }
 
     @Test
@@ -232,6 +228,24 @@ class GameStatusTest {
         assertEquals(players.get(0), gStatus.currentPlayer());
 
         assertTrue(gStatus.isFinished());
+    }
+
+    @Test
+    void resetTest() {
+
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+        gStatus.update(lastMove);
+        GameScore score = gStatus.getScore();
+        assertScore(players, score, 1, 0);
+        gStatus.reset();
+        assertScore(players, score, 0, 0);
     }
 
     private void assertScore(List<Player> players, GameScore score, Integer... points ){

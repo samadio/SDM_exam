@@ -85,4 +85,8 @@ public class Game {
         return boardManager.getBoard();
     }
 
+    public void reset(){
+
+        status.reset();
+    }
 }
