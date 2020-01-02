@@ -29,4 +29,10 @@ public class DotsAndBoxesBoardManager extends BoardManager {
     public AbstractBoard getBoard() {
         return board;
     }
+
+    @Override
+    public void reset() {
+
+        board.reset();
+    }
 }

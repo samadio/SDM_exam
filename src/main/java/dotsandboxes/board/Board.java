@@ -3,6 +3,8 @@ package dotsandboxes.board;
 import gamesuite.board.AbstractBoard;
 import gamesuite.move.Move;
 
+import java.util.stream.IntStream;
+
 public class Board extends AbstractBoard {
 
     private Integer rows;
@@ -39,4 +41,9 @@ public class Board extends AbstractBoard {
     }
 
 
+    public void reset() {
+
+        IntStream.range(0, horizontalLines.length).forEach((x -> IntStream.range(0, horizontalLines[x].length).forEach(y -> horizontalLines[x][y] = false)));
+        IntStream.range(0, verticalLines.length).forEach((x -> IntStream.range(0, verticalLines[x].length).forEach(y -> verticalLines[x][y] = false)));
+    }
 }

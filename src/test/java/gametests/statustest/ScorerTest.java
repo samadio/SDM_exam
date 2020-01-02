@@ -138,6 +138,11 @@ class DummyBoardManager extends BoardManager {
     public AbstractBoard getBoard() {
         return null;
     }
+
+    @Override
+    public void reset() {
+
+    }
 }
 
 class DummyValidator extends MoveValidator {
