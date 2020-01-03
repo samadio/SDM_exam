@@ -58,13 +58,20 @@ public class Game {
 
                 oManager.printGame(this);
             }
-        }catch (EndGameException e) {
-                oManager.outputPrintln("The game has been manually ended");
+            oManager.printWinner(this);
+        }
+        catch (EndGameException e) {
+            oManager.outputPrintln("The game has been manually ended");
+            oManager.printWinner(this);
+        }
+        catch (ResetGameException e){
+            oManager.outputPrintln("The game is being resetted...");
+            this.reset();
         }
 
-
-        oManager.printWinner(this);
     }
+
+
 
     public GameScore getScore(){
 
@@ -90,7 +97,11 @@ public class Game {
     }
 
     public void reset(){
-
         status.reset();
+        /*
+
+        MISSIN STUFF HERE
+
+         */
     }
 }

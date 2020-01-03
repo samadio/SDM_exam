@@ -3,6 +3,7 @@ package iotest;
 import dotsandboxes.io.DotsAndBoxesInput;
 import dotsandboxes.io.DotsAndBoxesOutput;
 import gamesuite.game.EndGameException;
+import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ public class ConverterTest{
     DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
 
     @Test
-    public void converterTest() throws EndGameException {
+    public void converterTest() throws EndGameException, ResetGameException {
 
         itest.setConverter(12);
 

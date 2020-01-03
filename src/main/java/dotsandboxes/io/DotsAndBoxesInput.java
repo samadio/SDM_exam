@@ -1,6 +1,7 @@
 package dotsandboxes.io;
 
 import gamesuite.game.EndGameException;
+import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
@@ -36,7 +37,7 @@ public class DotsAndBoxesInput extends InputManager {
 
 
     @Override
-    public void readMove() throws EndGameException {
+    public void readMove() throws EndGameException, ResetGameException {
 
         if (!settedConverter)
             throw new InvalidStateException("Convert not set");
@@ -54,11 +55,12 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     //private not considering tests
-    public InputMove readInputMove() throws DataFormatException, EndGameException {
+    public InputMove readInputMove() throws DataFormatException, EndGameException, ResetGameException {
         OUTPUT.outputPrintln("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
         String inputLine=readInput();
 
-        if(inputLine.contains("quit")|inputLine.contains("exit")) throw new EndGameException();
+        checkQuitCondition(inputLine);
+        checkResetCondition(inputLine);
 
         if(InputValidator.checkFormat(inputLine)){
             return ValidatedInputParser.parse(inputLine);
@@ -66,6 +68,14 @@ public class DotsAndBoxesInput extends InputManager {
         else
             throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
 
+    }
+
+    private void checkResetCondition(String inputLine) throws ResetGameException {
+        if(inputLine.contains("reset")) throw new ResetGameException();
+    }
+
+    private void checkQuitCondition(String inputLine) throws EndGameException {
+        if(inputLine.contains("quit")|inputLine.contains("exit")) throw new EndGameException();
     }
 
     @Override

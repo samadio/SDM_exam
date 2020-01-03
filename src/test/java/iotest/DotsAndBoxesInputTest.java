@@ -4,6 +4,7 @@ import dotsandboxes.io.DotsAndBoxesInput;
 import dotsandboxes.io.DotsAndBoxesOutput;
 import dotsandboxes.io.InputMove;
 import gamesuite.game.EndGameException;
+import gamesuite.game.ResetGameException;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -31,7 +32,7 @@ class DotsAndBoxesInputTest {
     }
 
     @Test
-    public void readInputMoveParserTest() throws DataFormatException, EndGameException {
+    public void readInputMoveParserTest() throws DataFormatException, EndGameException, ResetGameException {
         setKeyboard("12 R");
         InputMove imove=itest.readInputMove();
         assertEquals(imove.getNode(),12);

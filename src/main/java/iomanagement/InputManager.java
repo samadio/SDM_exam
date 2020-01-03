@@ -1,5 +1,6 @@
 package iomanagement;
 import gamesuite.game.EndGameException;
+import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public abstract class InputManager {
 
     public abstract String readInput();
 
-    public abstract void readMove() throws EndGameException;
+    public abstract void readMove() throws EndGameException, ResetGameException;
 
     public abstract Move getMove();
 
