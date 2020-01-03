@@ -24,9 +24,17 @@ public class DotsAndBoxesOutput extends OutputManager {
         outputPrintln("\n Players score:");
         for(Player i: game.getPlayers()){
             outputPrint(i.getName()+": ");
-            outputPrint(game.getScore().get(i)+"        ");
+            outputPrint(game.getScore().get(i) + "        ");
         }
         outputPrintln("\n");
+        printCurrentPlayer(game);
+        outputPrintln("\n");
+
+    }
+
+    private void printCurrentPlayer(Game game) {
+
+        outputPrintln("Next player: " + game.nextPlayer());
     }
 
     @Override
@@ -60,7 +68,7 @@ public class DotsAndBoxesOutput extends OutputManager {
 
         GameScore score = game.getScore();
 
-        Optional<Map.Entry<Player, Integer>> winner = score.entrySet().stream().min(Comparator.comparingInt(Map.Entry::getValue));
+        Optional<Map.Entry<Player, Integer>> winner = score.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue));
 
         System.out.println("The winner is " + winner.get().getKey());
     }

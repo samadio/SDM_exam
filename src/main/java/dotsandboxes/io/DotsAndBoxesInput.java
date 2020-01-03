@@ -37,7 +37,7 @@ public class DotsAndBoxesInput extends InputManager {
                 invalidInput = false;
             }
             catch (DataFormatException e){
-                OUTPUT.errorPrintln("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+                OUTPUT.errorPrintln(e.getMessage());
             }
         }
     }
@@ -51,13 +51,15 @@ public class DotsAndBoxesInput extends InputManager {
             return ValidatedInputParser.parse(inputLine);
         }
         else
-            throw new DataFormatException("Format not recognized");
+            throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
 
     }
 
     //private not considering tests
     public String readInput(){
         Scanner input= new Scanner(System.in);
+        if (!input.hasNextLine())
+            System.exit(1);
         return input.nextLine();
     }
 
