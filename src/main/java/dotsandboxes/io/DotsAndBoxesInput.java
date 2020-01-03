@@ -101,7 +101,6 @@ public class DotsAndBoxesInput extends InputManager {
     public Integer getPlayersNumber(){
 
         String playersMessage = "Enter number of players";
-        OUTPUT.outputPrintln(playersMessage);
 
         List<String> input;
         int i = 2;
@@ -110,6 +109,7 @@ public class DotsAndBoxesInput extends InputManager {
         while (invalidNumber){
 
             try {
+                OUTPUT.outputPrintln(playersMessage);
                 input= new ArrayList<>(Arrays.asList(readInput().split(" ")));
                 //if u put blank spaces at the beginning or the end, it doesn't matter
                 input.removeAll(Collections.singletonList(""));
@@ -117,6 +117,10 @@ public class DotsAndBoxesInput extends InputManager {
                 if(input.size()!=1) throw new InputMismatchException();
                 i=Integer.parseInt(input.get(0));
                 invalidNumber = false;
+                if(i<=0){
+                    invalidNumber=true;
+                    OUTPUT.errorPrintln("Error: insert a number of players greater than 0");
+                }
             }
             catch (InputMismatchException e){
                 OUTPUT.errorPrintln("Error: invalid number of inputs for number of players");
@@ -137,14 +141,12 @@ public class DotsAndBoxesInput extends InputManager {
         OUTPUT.outputPrintln(customPlayersMessage);
         String answer=readInput().trim();
 
-        System.out.println("answer: "+answer);
         while (true) {
             if (answer.equalsIgnoreCase("y")) return true;
             else if (answer.equalsIgnoreCase("n")) return false;
             OUTPUT.errorPrintln("Error: invalid answer");
             OUTPUT.outputPrintln(customPlayersMessage);
             answer=readInput();
-            System.out.println("answer: "+answer);
         }
     }
 
@@ -170,7 +172,12 @@ class InputValidator{
         }
 
         List<String> validChar = Arrays.asList("U","D","L","R");
-        String direction = in.next();
+        String direction;
+        try{
+            direction = in.next();
+        } catch (Exception e) {
+            return false;
+        }
         if (direction.length()!=1) return false;
         return (validChar.contains(direction));
     }
