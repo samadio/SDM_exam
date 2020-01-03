@@ -1,9 +1,8 @@
 package iomanagement;
-import gamesuite.move.InvalidMoveException;
+import gamesuite.game.EndGameException;
 import gamesuite.move.Move;
 
 import java.util.List;
-import java.util.zip.DataFormatException;
 
 public abstract class InputManager {
 
@@ -15,7 +14,9 @@ public abstract class InputManager {
         OUTPUT = oManager;
     }
 
-    public abstract void readMove();
+    public abstract String readInput();
+
+    public abstract void readMove() throws EndGameException;
 
     public abstract Move getMove();
 

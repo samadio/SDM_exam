@@ -33,31 +33,35 @@ public class Game {
     public void play(){
 
         oManager.printGame(this);
+        try {
 
-        while (status.isNotFinished()) {
+            while (status.isNotFinished()) {
 
-            boolean invalidMove = true;
-            iManager.readMove();
-            Move m = iManager.getMove();
+                boolean invalidMove = true;
+                iManager.readMove();
+                Move m = iManager.getMove();
 
-            while (invalidMove){
-                try{
-                    validator.validateMove(m);
-                    invalidMove = false;
+                while (invalidMove) {
+                    try {
+                        validator.validateMove(m);
+                        invalidMove = false;
+                    } catch (InvalidMoveException e) {
+
+                        oManager.printInvalidMove(e);
+                        iManager.readMove();
+                        m = iManager.getMove();
+                    }
                 }
-                catch (InvalidMoveException e) {
 
-                    oManager.printInvalidMove(e);
-                    iManager.readMove();
-                    m = iManager.getMove();
-                }
+                boardManager.updateBoard(m);
+                status.update(m);
+
+                oManager.printGame(this);
             }
-
-            boardManager.updateBoard(m);
-            status.update(m);
-
-            oManager.printGame(this);
+        }catch (EndGameException e) {
+                oManager.outputPrintln("The game has been manually ended");
         }
+
 
         oManager.printWinner(this);
     }
