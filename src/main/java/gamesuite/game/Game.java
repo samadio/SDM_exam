@@ -67,6 +67,7 @@ public class Game {
         catch (ResetGameException e){
             oManager.outputPrintln("The game is being resetted...");
             this.reset();
+            this.play();
         }
 
     }
@@ -100,11 +101,6 @@ public class Game {
 
         status.reset();
         boardManager.reset();
-        /*
-
-        MISSIN STUFF HERE
-
-         */
     }
 
     public List<Player> getWinner(){

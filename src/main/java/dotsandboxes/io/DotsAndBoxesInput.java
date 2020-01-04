@@ -29,7 +29,7 @@ public class DotsAndBoxesInput extends InputManager {
     //private not considering tests
     @Override
     public String readInput(){
-        Scanner input= new Scanner(System.in);
+        Scanner input= new Scanner(System.in).useDelimiter("\n");
         if (!input.hasNextLine())
             System.exit(1);
         return input.nextLine();

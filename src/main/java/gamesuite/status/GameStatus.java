@@ -73,6 +73,7 @@ public abstract class GameStatus {
     public void reset(){
 
         score.reset();
+        currentPlayer=0;
     }
 
     public List<Player> getWinner(){
