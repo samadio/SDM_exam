@@ -21,7 +21,6 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     public void setConverter(Integer nCols){
-
         moveConverter = new Converter(nCols);
         settedConverter = true;
     }
@@ -34,6 +33,7 @@ public class DotsAndBoxesInput extends InputManager {
             System.exit(1);
         return input.nextLine();
     }
+
 
     @Override
     public void readMove() throws EndGameException, ResetGameException {
@@ -58,29 +58,18 @@ public class DotsAndBoxesInput extends InputManager {
         OUTPUT.outputPrintln("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
         String inputLine=readInput();
 
-        checkQuitCondition(inputLine);
-        checkResetCondition(inputLine);
+        QuitAndResetChecker.checkQuitCondition(inputLine);
+        QuitAndResetChecker.checkResetCondition(inputLine);
 
         if(InputValidator.checkFormat(inputLine)){
             return ValidatedInputParser.parse(inputLine);
         }
         else
             throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
-
-    }
-
-    private void checkResetCondition(String inputLine) throws ResetGameException {
-        if(inputLine.contains("reset")) throw new ResetGameException();
-    }
-
-    private void checkQuitCondition(String inputLine) throws EndGameException {
-        if(inputLine.contains("quit")|inputLine.contains("exit")) throw new EndGameException();
     }
 
     @Override
-    public Move getMove() {
-        return this.currentMove;
-    }
+    public Move getMove() { return this.currentMove; }
 
     @Override
     public List<Integer> getGridDimensions() {
@@ -172,47 +161,5 @@ public class DotsAndBoxesInput extends InputManager {
 
         OUTPUT.outputPrintln(playerNameMessage);
         return readInput();
-    }
-}
-
-
-
-class InputValidator{
-    static boolean checkFormat(String s){
-        Scanner in = new Scanner(s);
-        try{
-            Integer i = in.nextInt();
-        }
-        catch(Exception e){
-            return false;
-        }
-
-        List<String> validChar = Arrays.asList("U","D","L","R");
-        String direction;
-        try{
-            direction = in.next();
-        } catch (Exception e) {
-            return false;
-        }
-        if (direction.length()!=1) return false;
-        return (validChar.contains(direction));
-    }
-}
-
-class ValidatedInputParser{
-    static InputMove parse(String s){
-        Scanner in = new Scanner(s);
-        Integer i = in.nextInt();
-        String d = in.next();
-        switch (d.charAt(0)){
-            case 'R':
-                return new InputMove(i, InputMove.Direction.RIGHT);
-            case 'U':
-                return new InputMove(i, InputMove.Direction.UP);
-            case 'L':
-                return new InputMove(i, InputMove.Direction.LEFT);
-            default:
-                return new InputMove(i, InputMove.Direction.DOWN);
-            }
     }
 }
