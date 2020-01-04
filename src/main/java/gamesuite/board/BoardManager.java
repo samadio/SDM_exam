@@ -11,6 +11,8 @@ public abstract class BoardManager {
     public abstract boolean moveDone(Move m);
     public abstract void updateBoard(Move m);
     public abstract AbstractBoard getBoard();
+
+    public abstract void reset();
 }
 
 

@@ -97,7 +97,9 @@ public class Game {
     }
 
     public void reset(){
+
         status.reset();
+        boardManager.reset();
         /*
 
         MISSIN STUFF HERE
