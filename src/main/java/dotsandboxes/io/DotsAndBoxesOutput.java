@@ -9,6 +9,7 @@ import gamesuite.status.GameScore;
 import iomanagement.OutputManager;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -66,11 +67,15 @@ public class DotsAndBoxesOutput extends OutputManager {
     @Override
     public void printWinner(Game game) {
 
-        GameScore score = game.getScore();
+        List<Player> winners = game.getWinner();
 
-        Optional<Map.Entry<Player, Integer>> winner = score.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue));
-
-        System.out.println("The winner is " + winner.get().getKey());
+        if (winners.size() == 1)
+            System.out.println("The winner is " + winners.get(0));
+        else {
+            System.out.println("Game is a draw, the following players have the same score:");
+            for (Player p : winners)
+                System.out.println(p);
+        }
     }
 
     @Override

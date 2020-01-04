@@ -90,4 +90,9 @@ public class Game {
         status.reset();
         boardManager.reset();
     }
+
+    public List<Player> getWinner(){
+
+        return status.getWinner();
+    }
 }

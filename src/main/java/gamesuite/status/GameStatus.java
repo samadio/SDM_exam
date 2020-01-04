@@ -5,7 +5,11 @@ import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
 import gamesuite.players.Player;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public abstract class GameStatus {
 
@@ -69,5 +73,11 @@ public abstract class GameStatus {
     public void reset(){
 
         score.reset();
+    }
+
+    public List<Player> getWinner(){
+
+        Integer maxScore = score.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getValue();
+        return score.entrySet().stream().filter(x -> x.getValue().equals(maxScore)).map(Map.Entry::getKey).collect(Collectors.toList());
     }
 }
