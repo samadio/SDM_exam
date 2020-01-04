@@ -106,4 +106,9 @@ public class Game {
 
          */
     }
+
+    public List<Player> getWinner(){
+
+        return status.getWinner();
+    }
 }

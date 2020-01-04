@@ -248,6 +248,42 @@ class GameStatusTest {
         assertScore(players, score, 0, 0);
     }
 
+    @Test
+    void singleWinnerTest() {
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+        gStatus.update(lastMove);
+
+        List<Player> winners = gStatus.getWinner();
+
+        assertEquals(1, winners.size());
+        assertEquals(winners.get(0), players.get(0));
+    }
+
+    @Test
+    void twoWinnersTest() {
+        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+
+        PlayersFactory pFactory = new PlayersFactory();
+        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+        List<Player> winners = gStatus.getWinner();
+
+        assertEquals(2, winners.size());
+        Player winner1 = winners.get(0);
+        assertTrue(winner1.equals(players.get(0)) || winner1.equals(players.get(1)));
+        Player winner2 = winners.get(1);
+        assertTrue(winner2.equals(players.get(0)) || winner2.equals(players.get(1)));
+    }
+
     private void assertScore(List<Player> players, GameScore score, Integer... points ){
 
         for(int i = 0; i < players.size(); i++)
