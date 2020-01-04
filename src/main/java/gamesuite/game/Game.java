@@ -70,7 +70,7 @@ public class Game {
                     oManager.printGame(this);
                 }
             }
-        oManager.printGame(this);
+        oManager.printWinner(this);
     }
 
 
