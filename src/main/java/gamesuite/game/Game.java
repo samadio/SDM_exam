@@ -33,43 +33,44 @@ public class Game {
     public void play(){
 
         oManager.printGame(this);
-        try {
 
             while (status.isNotFinished()) {
 
-                boolean invalidMove = true;
-                iManager.readMove();
-                Move m = iManager.getMove();
+                try {
+                    boolean invalidMove = true;
+                    iManager.readMove();
+                    Move m = iManager.getMove();
 
-                while (invalidMove) {
-                    try {
-                        validator.validateMove(m);
-                        invalidMove = false;
-                    } catch (InvalidMoveException e) {
+                    while (invalidMove) {
+                        try {
+                            validator.validateMove(m);
+                            invalidMove = false;
+                        } catch (InvalidMoveException e) {
 
-                        oManager.printInvalidMove(e);
-                        iManager.readMove();
-                        m = iManager.getMove();
+                            oManager.printInvalidMove(e);
+                            iManager.readMove();
+                            m = iManager.getMove();
+                        }
                     }
+
+
+                    boardManager.updateBoard(m);
+                    status.update(m);
+
+                    oManager.printGame(this);
                 }
-
-                boardManager.updateBoard(m);
-                status.update(m);
-
-                oManager.printGame(this);
+                catch (EndGameException e) {
+                    oManager.outputPrintln("The game has been manually ended");
+                    oManager.printWinner(this);
+                    return;
+                }
+                catch (ResetGameException e){
+                    oManager.outputPrintln("The game is being resetted...");
+                    this.reset();
+                    oManager.printGame(this);
+                }
             }
-            oManager.printWinner(this);
-        }
-        catch (EndGameException e) {
-            oManager.outputPrintln("The game has been manually ended");
-            oManager.printWinner(this);
-        }
-        catch (ResetGameException e){
-            oManager.outputPrintln("The game is being resetted...");
-            this.reset();
-            this.play();
-        }
-
+        oManager.printGame(this);
     }
 
 

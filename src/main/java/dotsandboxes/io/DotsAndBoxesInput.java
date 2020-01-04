@@ -29,12 +29,11 @@ public class DotsAndBoxesInput extends InputManager {
     //private not considering tests
     @Override
     public String readInput(){
-        Scanner input= new Scanner(System.in).useDelimiter("\n");
+        Scanner input= new Scanner(System.in);
         if (!input.hasNextLine())
             System.exit(1);
         return input.nextLine();
     }
-
 
     @Override
     public void readMove() throws EndGameException, ResetGameException {
@@ -130,7 +129,7 @@ public class DotsAndBoxesInput extends InputManager {
                 input= new ArrayList<>(Arrays.asList(readInput().split(" ")));
                 //if u put blank spaces at the beginning or the end, it doesn't matter
                 input.removeAll(Collections.singletonList(""));
-                
+
                 if(input.size()!=1) throw new InputMismatchException();
                 i=Integer.parseInt(input.get(0));
                 invalidNumber = false;
