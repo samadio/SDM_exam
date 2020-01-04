@@ -11,11 +11,17 @@ import java.util.List;
 public class DotsAndBoxesStatus extends GameStatus {
 
     private Integer remainingMoves;
+    private Integer maximumMoves;
 
     public DotsAndBoxesStatus(List<Player> players, BoardManager bManager, MoveValidator mValidator) {
 
         super(players, bManager, mValidator);
-        remainingMoves = 2*(bManager.columnsLength()-1)*(bManager.rowLength()-1) + bManager.rowLength() + bManager.columnsLength() - 2;
+        setMaximumMoves(bManager.columnsLength(),bManager.rowLength());
+        remainingMoves=maximumMoves;
+    }
+
+    private void setMaximumMoves(Integer rows, Integer cols){
+        maximumMoves= 2*(rows-1)*(cols-1) + cols + rows - 2;
     }
 
     @Override
@@ -34,5 +40,9 @@ public class DotsAndBoxesStatus extends GameStatus {
         return remainingMoves <= 0;
     }
 
-
+    @Override
+    public void reset() {
+        super.reset();
+        remainingMoves=maximumMoves;
+    }
 }
