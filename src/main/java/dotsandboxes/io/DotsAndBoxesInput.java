@@ -108,7 +108,7 @@ public class DotsAndBoxesInput extends InputManager {
         String playersMessage = "Enter number of players";
 
         List<String> input;
-        int i = 2;
+        int i = -1;
         boolean invalidNumber = true;
 
         while (invalidNumber){
