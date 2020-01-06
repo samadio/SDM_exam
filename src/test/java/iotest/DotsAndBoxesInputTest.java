@@ -64,4 +64,23 @@ class DotsAndBoxesInputTest {
 
     }
 
+    @Test
+    public void EndGameExceptionTest(){
+        itest.setConverter(8);
+        setKeyboard("1 2 quit");
+        assertThrows(EndGameException.class,()->itest.readMove());
+        setKeyboard("exit");
+        assertThrows(EndGameException.class,()->itest.readMove());
+    }
+
+    @Test
+    public void ResetGameExceptionTest(){
+        itest.setConverter(8);
+        setKeyboard("1 2 reset");
+        assertThrows(ResetGameException.class,()->itest.readMove());
+        setKeyboard("reset");
+        assertThrows(ResetGameException.class,()->itest.readMove());
+    }
+
+
 }

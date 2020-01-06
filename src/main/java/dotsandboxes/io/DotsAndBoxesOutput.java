@@ -77,7 +77,7 @@ public class DotsAndBoxesOutput extends OutputManager {
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 
-        //maximum number of digits to be used
+        //maximum number of digits needed
         Integer maxLength = String.valueOf(rows * columns - 1).length();
 
         Move.Which type = HORIZONTAL;
@@ -127,6 +127,5 @@ class AuxiliaryPrintBoard{
     static String indent(String nodeString, Integer maxLength){
         return "0".repeat(maxLength-nodeString.length())+nodeString;
     }
-
 
 }
