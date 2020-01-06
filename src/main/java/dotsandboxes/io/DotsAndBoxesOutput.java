@@ -23,8 +23,8 @@ public class DotsAndBoxesOutput extends OutputManager {
         outputPrintln("\n");
         printBoard(game.getBoard());
         outputPrintln("\n Players score:");
-        for(Player i: game.getPlayers()){
-            outputPrint(i.getName()+": ");
+        for (Player i : game.getPlayers()) {
+            outputPrint(i.getName() + ": ");
             outputPrint(game.getScore().get(i) + "        ");
         }
         outputPrintln("\n");
@@ -33,16 +33,10 @@ public class DotsAndBoxesOutput extends OutputManager {
 
     }
 
-    private void printCurrentPlayer(Game game) {
-
-        outputPrintln("Next player: " + game.nextPlayer());
-    }
+    private void printCurrentPlayer(Game game) { outputPrintln("Next player: " + game.nextPlayer()); }
 
     @Override
-    public void printInvalidMove(InvalidMoveException e) {
-
-        System.err.println(e.getMessage());
-    }
+    public void printInvalidMove(InvalidMoveException e) { System.err.println(e.getMessage());}
 
     @Override
     public void outputPrintln(String message) {
@@ -80,42 +74,46 @@ public class DotsAndBoxesOutput extends OutputManager {
 
     @Override
     public void printBoard(AbstractBoard board) {
-        Integer rows=board.getRows();
-        Integer columns=board.getColumns();
-        Integer maxLength=String.valueOf(rows*columns-1).length();
+        Integer rows = board.getRows();
+        Integer columns = board.getColumns();
 
-        Move.Which type= HORIZONTAL;
-        int i=0; //row u're looking at
-        while(i!=rows-1 | type!=VERTICAL){   //stop condition: first invalid row
-            for(int j = 0; j<columnsOf(type,columns); j += 1){
-                Boolean present= board.getElement(type,i,j);
-                Integer currNode= i*columns+j;
-                String s=convertToString(present,type,currNode, maxLength);
+        //maximum number of digits to be used
+        Integer maxLength = String.valueOf(rows * columns - 1).length();
+
+        Move.Which type = HORIZONTAL;
+        int i = 0; //row u're looking at
+        while (i != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
+            for (int j = 0; j < AuxiliaryPrintBoard.columnsOf(type, columns); j++) {
+                Boolean present = board.getElement(type, i, j);
+                Integer currNode = i * columns + j;
+                String s = AuxiliaryPrintBoard.convertToString(present, type, currNode, maxLength);
                 outputPrint(s);
             }
             //after finishing a column
-            if(type==VERTICAL) i+=1;
-            if(type==VERTICAL)outputPrint("\n");
-            if(type==HORIZONTAL)outputPrint(indent(String.valueOf(i*columns+columns-1),maxLength)+"\n");
-            type=other(type);
+            if (type == VERTICAL) {
+                i += 1;
+                outputPrint("\n");
+            }
+            if (type == HORIZONTAL)
+                outputPrint(AuxiliaryPrintBoard.indent(String.valueOf(i * columns + columns - 1), maxLength) + "\n");
+            type = AuxiliaryPrintBoard.other(type);
         }
     }
 
-    private Integer columnsOf(Move.Which lk,Integer cols){
+}
+
+class AuxiliaryPrintBoard{
+    static Integer columnsOf(Move.Which lk,Integer cols){
         if((lk== HORIZONTAL)) return cols-1;
         return cols;
     }
 
-    private Move.Which other(Move.Which lk){
+    static Move.Which other(Move.Which lk){
         if(lk==HORIZONTAL) return VERTICAL;
         return HORIZONTAL;
     }
 
-    private String indent(String nodeString, Integer maxLength){
-        return "0".repeat(maxLength-nodeString.length())+nodeString;
-    }
-
-    private String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
+    static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
         String nodeString=String.valueOf(currNode);
         String indented=indent(nodeString,maxLength);
         if(present){
@@ -124,6 +122,10 @@ public class DotsAndBoxesOutput extends OutputManager {
         }
         if(type==VERTICAL)return " ".repeat(maxLength+2);
         return  indented+"  ";
+    }
+
+    static String indent(String nodeString, Integer maxLength){
+        return "0".repeat(maxLength-nodeString.length())+nodeString;
     }
 
 
