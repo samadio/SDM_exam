@@ -6,6 +6,7 @@ import dotsandboxes.io.InputMove;
 import dotsandboxes.io.InvalidStateException;
 import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
+import gamesuite.move.Move;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -35,8 +36,19 @@ class DotsAndBoxesInputTest {
     public void readInputMoveParserTest() throws DataFormatException, EndGameException, ResetGameException {
         setKeyboard("12 R");
         InputMove imove=itest.readInputMove();
-        assertEquals(imove.getNode(),12);
-        assertEquals(imove.getDirection(), InputMove.Direction.RIGHT);
+        assertEquals(12,imove.getNode());
+        assertEquals(InputMove.Direction.RIGHT, imove.getDirection());
+    }
+
+    @Test
+    public void readMoveTest(){
+        itest.setConverter(10);
+        setKeyboard("12 L");
+        assertDoesNotThrow(()->itest.readMove());
+        Move current=itest.getMove();
+        assertEquals(1,current.getRow());
+        assertEquals(1,current.getCol());
+        assertEquals(Move.Which.HORIZONTAL,current.getLineKind());
     }
 
     @Test
@@ -86,17 +98,19 @@ class DotsAndBoxesInputTest {
     @Test
     public void settedConverterExceptionTest() {
         try {
+            setKeyboard("1 R");
             itest.readMove();
             fail();
-        } catch (InvalidStateException e) {} //test passes
+        } catch (InvalidStateException e) {assertEquals(e.getMessage(),"Convert not set");}
         catch(EndGameException end){fail();}
         catch(ResetGameException res){fail();}
 
-        try {
-            itest.setConverter(10);
-            setKeyboard("1 R");
-            itest.readMove();
-        }catch(Exception e){fail();}
+        itest.setConverter(10);
+        setKeyboard("1 R");
+        //try{itest.readMove();
+        //}catch(Exception e){fail();}
+        //or
+        assertDoesNotThrow(()->itest.readMove());
     }
 
     @Test

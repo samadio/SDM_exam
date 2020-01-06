@@ -67,6 +67,8 @@ class BoardTest {
             type=other(type);
         }
     }
+
+
     private Integer columnsOf(Move.Which lk,Integer cols){
         if((lk== HORIZONTAL)) return cols-1;
         return cols;
