@@ -246,6 +246,8 @@ class GameStatusTest {
         assertScore(players, score, 1, 0);
         gStatus.reset();
         assertScore(players, score, 0, 0);
+
+        assertEquals(players.get(0),gStatus.currentPlayer());
     }
 
     @Test
