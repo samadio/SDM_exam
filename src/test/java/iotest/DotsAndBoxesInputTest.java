@@ -3,6 +3,7 @@ package iotest;
 import dotsandboxes.io.DotsAndBoxesInput;
 import dotsandboxes.io.DotsAndBoxesOutput;
 import dotsandboxes.io.InputMove;
+import dotsandboxes.io.InvalidStateException;
 import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DotsAndBoxesInputTest {
@@ -82,5 +82,28 @@ class DotsAndBoxesInputTest {
         assertThrows(ResetGameException.class,()->itest.readMove());
     }
 
+
+    @Test
+    public void settedConverterExceptionTest() {
+        try {
+            itest.readMove();
+            fail();
+        } catch (InvalidStateException e) {} //test passes
+        catch(EndGameException end){fail();}
+        catch(ResetGameException res){fail();}
+
+        try {
+            itest.setConverter(10);
+            setKeyboard("1 R");
+            itest.readMove();
+        }catch(Exception e){fail();}
+    }
+
+    @Test
+    public void DataFormatExceptionTest() {
+        setKeyboard("1 l");
+        DataFormatException e = assertThrows(DataFormatException.class, () -> itest.readInputMove());
+        assertEquals(e.getMessage(), "Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+    }
 
 }
