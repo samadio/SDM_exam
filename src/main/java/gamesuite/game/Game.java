@@ -65,7 +65,7 @@ public class Game {
                     return;
                 }
                 catch (ResetGameException e){
-                    oManager.outputPrintln("The game has being reset...");
+                    oManager.outputPrintln("The game has been reset...");
                     this.reset();
                     oManager.printGame(this);
                 }
