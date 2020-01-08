@@ -96,21 +96,22 @@ class BoardDrawer{
 
         StringBuilder boardString = new StringBuilder();
         Move.Which type = HORIZONTAL;
-        int i = 0; //row u're looking at
-        while (i != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
+        int currentRow = 0; //row u're looking at
+        while (currentRow != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
 
             Move.Which finalType = type;
-            int finalI = i;
-            IntUnaryOperator currentNode = j -> finalI*columns + j;
-            IntFunction<Boolean> isPresent = j -> board.getElement(finalType, finalI, j);
+            int finalRow = currentRow;
+
+            IntUnaryOperator currentNode = columnIdx -> finalRow*columns + columnIdx;
+            IntFunction<Boolean> isPresent = columnIdx -> board.getElement(finalType, finalRow, columnIdx);
 
             IntStream.range(0, columnsOf(type, columns))
-                    .forEach(j -> boardString.append(convertToString(isPresent.apply(j), finalType, currentNode.applyAsInt(j), maxLength)));
+                    .forEach(columnIdx -> boardString.append(convertToString(isPresent.apply(columnIdx), finalType, currentNode.applyAsInt(columnIdx), maxLength)));
 
             //after finishing a column
             if (type == VERTICAL)
-                i += 1;
-            String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(i), maxLength) : "";
+                currentRow += 1;
+            String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(currentRow), maxLength) : "";
             boardString.append(lineEnd).append("\n");
 
             type = other(type);
