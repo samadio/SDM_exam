@@ -117,17 +117,17 @@ class BoardPrinter{
         }
     }
 
-    static Integer columnsOf(Move.Which lk,Integer cols){
+    private static Integer columnsOf(Move.Which lk,Integer cols){
         if((lk== HORIZONTAL)) return cols-1;
         return cols;
     }
 
-    static Move.Which other(Move.Which lk){
+    private static Move.Which other(Move.Which lk){
         if(lk==HORIZONTAL) return VERTICAL;
         return HORIZONTAL;
     }
 
-    static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
+    private static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
         String nodeString=String.valueOf(currNode);
         String indented=indent(nodeString,maxLength);
         if(present){
@@ -138,7 +138,7 @@ class BoardPrinter{
         return  indented+"  ";
     }
 
-    static String indent(String nodeString, Integer maxLength){
+    private static String indent(String nodeString, Integer maxLength){
         return "0".repeat(maxLength-nodeString.length())+nodeString;
     }
 
