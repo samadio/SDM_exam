@@ -78,14 +78,14 @@ public class DotsAndBoxesOutput extends OutputManager {
     @Override
     public void printBoard(AbstractBoard board) {
 
-        BoardPrinter.printBoard(board, this);
+        outputPrintln(BoardDrawer.boardToString(board));
     }
 
 }
 
-class BoardPrinter{
+class BoardDrawer{
 
-    public static void printBoard(AbstractBoard board, OutputManager oManager) {
+    public static String boardToString(AbstractBoard board) {
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 
@@ -94,6 +94,7 @@ class BoardPrinter{
 
         IntFunction<String> lastRowNumber = row -> String.valueOf(row * columns + columns - 1);
 
+        StringBuilder boardString = new StringBuilder();
         Move.Which type = HORIZONTAL;
         int i = 0; //row u're looking at
         while (i != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
@@ -104,17 +105,18 @@ class BoardPrinter{
             IntFunction<Boolean> isPresent = j -> board.getElement(finalType, finalI, j);
 
             IntStream.range(0, columnsOf(type, columns))
-                    .forEach(j -> oManager.outputPrint(convertToString(isPresent.apply(j), finalType, currentNode.applyAsInt(j), maxLength)));
+                    .forEach(j -> boardString.append(convertToString(isPresent.apply(j), finalType, currentNode.applyAsInt(j), maxLength)));
 
             //after finishing a column
             if (type == VERTICAL)
                 i += 1;
             String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(i), maxLength) : "";
-            oManager.outputPrint(lineEnd + "\n");
+            boardString.append(lineEnd).append("\n");
 
-
-            type = BoardPrinter.other(type);
+            type = other(type);
         }
+
+        return boardString.toString();
     }
 
     private static Integer columnsOf(Move.Which lk,Integer cols){
