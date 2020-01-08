@@ -12,6 +12,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.IntFunction;
+import java.util.function.IntUnaryOperator;
+import java.util.stream.IntStream;
 
 import static gamesuite.move.Move.Which.HORIZONTAL;
 import static gamesuite.move.Move.Which.VERTICAL;
@@ -74,35 +77,46 @@ public class DotsAndBoxesOutput extends OutputManager {
 
     @Override
     public void printBoard(AbstractBoard board) {
+
+        BoardPrinter.printBoard(board, this);
+    }
+
+}
+
+class BoardPrinter{
+
+    public static void printBoard(AbstractBoard board, OutputManager oManager) {
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 
         //maximum number of digits needed
         Integer maxLength = String.valueOf(rows * columns - 1).length();
 
+        IntFunction<String> lastRowNumber = row -> String.valueOf(row * columns + columns - 1);
+
         Move.Which type = HORIZONTAL;
         int i = 0; //row u're looking at
         while (i != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
-            for (int j = 0; j < AuxiliaryPrintBoard.columnsOf(type, columns); j++) {
-                Boolean present = board.getElement(type, i, j);
-                Integer currNode = i * columns + j;
-                String s = AuxiliaryPrintBoard.convertToString(present, type, currNode, maxLength);
-                outputPrint(s);
-            }
+
+            Move.Which finalType = type;
+            int finalI = i;
+            IntUnaryOperator currentNode = j -> finalI*columns + j;
+            IntFunction<Boolean> isPresent = j -> board.getElement(finalType, finalI, j);
+
+            IntStream.range(0, columnsOf(type, columns))
+                    .forEach(j -> oManager.outputPrint(convertToString(isPresent.apply(j), finalType, currentNode.applyAsInt(j), maxLength)));
+
             //after finishing a column
-            if (type == VERTICAL) {
+            if (type == VERTICAL)
                 i += 1;
-                outputPrint("\n");
-            }
-            if (type == HORIZONTAL)
-                outputPrint(AuxiliaryPrintBoard.indent(String.valueOf(i * columns + columns - 1), maxLength) + "\n");
-            type = AuxiliaryPrintBoard.other(type);
+            String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(i), maxLength) : "";
+            oManager.outputPrint(lineEnd + "\n");
+
+
+            type = BoardPrinter.other(type);
         }
     }
 
-}
-
-class AuxiliaryPrintBoard{
     static Integer columnsOf(Move.Which lk,Integer cols){
         if((lk== HORIZONTAL)) return cols-1;
         return cols;
