@@ -167,11 +167,12 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void outputPrint(String s) {
 
+        System.out.print(s);
     }
 
     @Override
     public void errorPrint(String s) {
-
+        System.err.print(s);
     }
 
     @Override
