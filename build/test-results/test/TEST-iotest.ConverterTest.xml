@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:32" hostname="simonovo" time="0.006">
   <properties/>
   <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.006"/>
+=======
+<testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:24:05" hostname="simonovo" time="0.007">
+  <properties/>
+  <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.007"/>
+>>>>>>> Stashed changes
   <system-out><![CDATA[Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

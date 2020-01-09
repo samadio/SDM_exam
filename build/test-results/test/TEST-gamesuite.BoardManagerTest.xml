@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testsuite name="gamesuite.BoardManagerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:31" hostname="simonovo" time="0.004">
   <properties/>
   <testcase name="rowAndColLengthTest()" classname="gamesuite.BoardManagerTest" time="0.002"/>
   <testcase name="moveDoneTest()" classname="gamesuite.BoardManagerTest" time="0.001"/>
+=======
+<testsuite name="gamesuite.BoardManagerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:24:05" hostname="simonovo" time="0.011">
+  <properties/>
+  <testcase name="rowAndColLengthTest()" classname="gamesuite.BoardManagerTest" time="0.001"/>
+  <testcase name="moveDoneTest()" classname="gamesuite.BoardManagerTest" time="0.002"/>
+>>>>>>> Stashed changes
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

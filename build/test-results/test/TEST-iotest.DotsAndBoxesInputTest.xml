@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testsuite name="iotest.DotsAndBoxesInputTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:31" hostname="simonovo" time="0.136">
   <properties/>
   <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.051"/>
@@ -11,6 +12,20 @@
   <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.004"/>
   <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.008"/>
   <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.01"/>
+=======
+<testsuite name="iotest.DotsAndBoxesInputTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:24:05" hostname="simonovo" time="0.081">
+  <properties/>
+  <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.026"/>
+  <testcase name="readMoveTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="ResetGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.003"/>
+  <testcase name="settedConverterExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="readInputTest()" classname="iotest.DotsAndBoxesInputTest" time="0.002"/>
+  <testcase name="EndGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="DataFormatExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.004"/>
+  <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.003"/>
+  <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+>>>>>>> Stashed changes
   <system-out><![CDATA[Insert grid dimension in format:[rowsNumber] [columnsNumber]
 Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
 Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]

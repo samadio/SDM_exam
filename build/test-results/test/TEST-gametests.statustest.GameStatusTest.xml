@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testsuite name="gametests.statustest.GameStatusTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:31" hostname="simonovo" time="0.063">
   <properties/>
   <testcase name="gameTest()" classname="gametests.statustest.GameStatusTest" time="0.028"/>
+=======
+<testsuite name="gametests.statustest.GameStatusTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:24:04" hostname="simonovo" time="0.073">
+  <properties/>
+  <testcase name="gameTest()" classname="gametests.statustest.GameStatusTest" time="0.03"/>
+>>>>>>> Stashed changes
   <testcase name="pointNotAssigned()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
   <testcase name="finishedAtEnd()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
   <testcase name="pointAssigned()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="notFinishedAtStart()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="notFinishedAfterOneMove()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
+<<<<<<< Updated upstream
   <testcase name="singleWinnerTest()" classname="gametests.statustest.GameStatusTest" time="0.005"/>
   <testcase name="playerChangesAfterNoPoint()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
   <testcase name="twoWinnersTest()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="initialPlayerAfterTwoNoPoints()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="playerNotChangedAfterPoint()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
+=======
+  <testcase name="singleWinnerTest()" classname="gametests.statustest.GameStatusTest" time="0.006"/>
+  <testcase name="playerChangesAfterNoPoint()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
+  <testcase name="twoWinnersTest()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
+  <testcase name="initialPlayerAfterTwoNoPoints()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
+  <testcase name="playerNotChangedAfterPoint()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
+>>>>>>> Stashed changes
   <testcase name="resetTest()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
