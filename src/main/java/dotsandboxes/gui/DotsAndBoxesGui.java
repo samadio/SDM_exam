@@ -21,6 +21,11 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private Move currentMove;
     private boolean newMove;
     private Integer counter;
+    private LabelsList labels;
+    private JLabel currentPlayer;
+    BackgroundPanel backgroundPanel = new BackgroundPanel();
+    private Integer yOffset=0;
+
 
     public DotsAndBoxesGui(){
         super();
@@ -29,7 +34,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     private void init(){
 
-        BackgroundPanel backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
         this.setTitle("DOTS AND BOXES");
         this.setSize(600, 400);
@@ -37,6 +41,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(backgroundPanel);
+
 
         //Box.setBox(2, 2, backgroundPanel);
         //Box.setBox(0, 0, backgroundPanel);
@@ -72,7 +77,11 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
             });
         }
-        this.setVisible(true);
+        JLabel label= new JLabel("Test");
+        label.setText("Score Andrea");
+        label.setBounds(10, yOffset, 200, 50);
+        backgroundPanel.add(label);
+
     }
 
     //      TODO
@@ -84,6 +93,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public void readMove() throws EndGameException, ResetGameException {
         while(!this.newMove)
         {
+
             try {
                 Thread.sleep(1);
             }
@@ -99,6 +109,10 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public Integer getPlayersNumber() {
+        labels= new LabelsList();
+        currentPlayer= new JLabel();
+        currentPlayer.setBounds(230, 0, 200, 50);
+        backgroundPanel.add(currentPlayer);
         return 2;
     }
 
@@ -127,27 +141,40 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
         // Enter username and press Enter
         playerName = myObj.nextLine();
+        JLabel label= new JLabel("Test");
+        label.setText("Score    "+playerName);
+        label.setBounds(10, yOffset, 200, 50);
+        backgroundPanel.add(label);
+        labels.add(label);
+        yOffset+=20;
+        this.setVisible(true);
+
         return playerName;
     }
 
     @Override
     public void printGame(Game game) {
+
         outputPrintln("\n");
-        System.out.println("ciccio");
-        System.out.println(game.getPlayers().get(0).getName());
-        System.out.println(game.getScore().get());
-        System.out.println("pasticcio\n");
         //printBoard(game.getBoard());
         outputPrintln("\n Players score:");
+
+        currentPlayer.setText("Current Player:  "+game.nextPlayer().getName());
+
+        for (int i=0; i<labels.size(); i++){
+            labels.get(i).setText("Score "+game.getPlayers().get(i).getName()+"   "+game.getScore().get(game.getPlayers().get(i)));
+        }
+
         for (Player i : game.getPlayers()) {
             outputPrint(i.getName() + ": ");
             outputPrint(game.getScore().get(i) + "        ");
         }
+
         outputPrintln("\n");
         printCurrentPlayer(game);
-        outputPrintln("\n")
-
+        outputPrintln("\n");
     }
+
 
     @Override
     public void printInvalidMove(InvalidMoveException e) {
@@ -166,13 +193,12 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void outputPrint(String s) {
-
         System.out.print(s);
     }
 
     @Override
     public void errorPrint(String s) {
-        System.err.print(s);
+
     }
 
     @Override
