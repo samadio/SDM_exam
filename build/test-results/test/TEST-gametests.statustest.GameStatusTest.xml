@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gametests.statustest.GameStatusTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-01-08T14:40:14" hostname="simonovo" time="0.07">
+<testsuite name="gametests.statustest.GameStatusTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:31" hostname="simonovo" time="0.063">
   <properties/>
-  <testcase name="gameTest()" classname="gametests.statustest.GameStatusTest" time="0.038"/>
-  <testcase name="pointNotAssigned()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
+  <testcase name="gameTest()" classname="gametests.statustest.GameStatusTest" time="0.028"/>
+  <testcase name="pointNotAssigned()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
   <testcase name="finishedAtEnd()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
   <testcase name="pointAssigned()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="notFinishedAtStart()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="notFinishedAfterOneMove()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
-  <testcase name="singleWinnerTest()" classname="gametests.statustest.GameStatusTest" time="0.004"/>
-  <testcase name="playerChangesAfterNoPoint()" classname="gametests.statustest.GameStatusTest" time="0.0"/>
+  <testcase name="singleWinnerTest()" classname="gametests.statustest.GameStatusTest" time="0.005"/>
+  <testcase name="playerChangesAfterNoPoint()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
   <testcase name="twoWinnersTest()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="initialPlayerAfterTwoNoPoints()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
   <testcase name="playerNotChangedAfterPoint()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
-  <testcase name="resetTest()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
+  <testcase name="resetTest()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

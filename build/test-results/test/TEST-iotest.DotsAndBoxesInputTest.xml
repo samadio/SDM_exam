@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.DotsAndBoxesInputTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-01-08T14:40:14" hostname="simonovo" time="0.168">
+<testsuite name="iotest.DotsAndBoxesInputTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:31" hostname="simonovo" time="0.136">
   <properties/>
-  <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.069"/>
+  <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.051"/>
   <testcase name="readMoveTest()" classname="iotest.DotsAndBoxesInputTest" time="0.011"/>
-  <testcase name="ResetGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.004"/>
-  <testcase name="settedConverterExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.006"/>
-  <testcase name="readInputTest()" classname="iotest.DotsAndBoxesInputTest" time="0.002"/>
-  <testcase name="EndGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.013"/>
-  <testcase name="DataFormatExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.012"/>
-  <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.003"/>
-  <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.002"/>
-  <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="ResetGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.009"/>
+  <testcase name="settedConverterExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.007"/>
+  <testcase name="readInputTest()" classname="iotest.DotsAndBoxesInputTest" time="0.001"/>
+  <testcase name="EndGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.006"/>
+  <testcase name="DataFormatExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.004"/>
+  <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.004"/>
+  <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.008"/>
+  <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.01"/>
   <system-out><![CDATA[Insert grid dimension in format:[rowsNumber] [columnsNumber]
 Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
 Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
