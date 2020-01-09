@@ -3,6 +3,8 @@ package dotsandboxes.gui.graphics;
 import javax.swing.*;
 import java.awt.*;
 
+
+/*
 public class Environment {
 
     public static void setBackgroundElements(BackgroundPanel backgroundPanel){
@@ -26,3 +28,4 @@ public class Environment {
         SetElements.setDots(dots,dotSpec,dotGridSpec,backgroundPanel,false);
     }
 }
+*/

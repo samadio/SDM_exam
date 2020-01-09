@@ -1,16 +1,22 @@
 package dotsandboxes.gui.graphics;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SetElements {
 
-    public static void setGrid(Line[][] lines, ObjSpecifics objSpec, GridSpecifics gridSpec,BackgroundPanel bPanel){
+    public static LinesGrid setGrid(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
 
+        LinesGrid lines= new LinesGrid();
         for (int i = 0; i < gridSpec.rows; i++) {
             for (int j = 0; j < gridSpec.cols; j++) {
-                lines[i][j] = new Line(objSpec,i,j);
-                lines[i][j].setButtonProperties(gridSpec.dist * j + gridSpec.xOffset, gridSpec.dist * i + gridSpec.yOffset, gridSpec.width, gridSpec.height);
-                bPanel.add(lines[i][j].getButton());
+                Line line = new Line(objSpec,i,j);
+                line.setButtonProperties(gridSpec.dist * j + gridSpec.xOffset, gridSpec.dist * i + gridSpec.yOffset, gridSpec.width, gridSpec.height);
+                bPanel.add(line);
+                lines.add(line);
             }
         }
+        return lines;
 
     }
 
@@ -20,7 +26,7 @@ public class SetElements {
             for (int j = 0; j < gridSpec.cols; j++) {
                 graphicObj[i][j] = new GraphicObj(objSpec);
                 graphicObj[i][j].setButtonProperties(gridSpec.dist * j + gridSpec.xOffset, gridSpec.dist * i + gridSpec.yOffset, gridSpec.width, gridSpec.height);
-                bPanel.add(graphicObj[i][j].getButton());
+                bPanel.add(graphicObj[i][j]);
             }
         }
 
