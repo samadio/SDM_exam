@@ -135,7 +135,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         outputPrintln("\n");
         System.out.println("ciccio");
         System.out.println(game.getPlayers().get(0).getName());
-        System.out.println(game.getScore().get("andrea"));
+        System.out.println(game.getScore().get());
         System.out.println("pasticcio\n");
         //printBoard(game.getBoard());
         outputPrintln("\n Players score:");
@@ -145,7 +145,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         }
         outputPrintln("\n");
         printCurrentPlayer(game);
-        outputPrintln("\n");
+        outputPrintln("\n")
 
     }
 
