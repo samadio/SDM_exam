@@ -20,9 +20,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     private Move currentMove;
     private boolean newMove;
-    private Integer counter;
     private LabelsList labels;
     private JLabel currentPlayer;
+    BackgroundPanel startPanel= new BackgroundPanel();
     BackgroundPanel backgroundPanel = new BackgroundPanel();
     private Integer yOffset=0;
 
@@ -45,7 +45,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
         //Box.setBox(2, 2, backgroundPanel);
         //Box.setBox(0, 0, backgroundPanel);
-
         //Environment.setBackgroundElements(backgroundPanel);
 
         ObjSpecifics hEmptySpec= new ObjSpecifics("images/line_empty.png","images/line_full.png",50, 20, 50);
@@ -109,6 +108,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public Integer getPlayersNumber() {
+
         labels= new LabelsList();
         currentPlayer= new JLabel();
         currentPlayer.setBounds(230, 0, 200, 50);
