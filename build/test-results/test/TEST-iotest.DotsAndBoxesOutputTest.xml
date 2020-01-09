@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-08T14:40:14" hostname="simonovo" time="0.098">
+<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:22:47" hostname="simonovo" time="0.098">
   <properties/>
   <testcase name="seeOutputTest()" classname="iotest.DotsAndBoxesOutputTest" time="0.098"/>
   <system-out><![CDATA[00——01  02  03
