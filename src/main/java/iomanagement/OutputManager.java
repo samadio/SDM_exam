@@ -4,21 +4,21 @@ import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 
-public abstract class OutputManager {
+public interface OutputManager {
 
-    public abstract void printGame(Game game);
-    public abstract void printInvalidMove(InvalidMoveException e);
+    public  void printGame(Game game);
+    public  void printInvalidMove(InvalidMoveException e);
 
-    public abstract void outputPrintln(String message);
+    public  void outputPrintln(String message);
 
-    public abstract void errorPrintln(String s);
+    public  void errorPrintln(String s);
 
-    public abstract void outputPrint(String s);
+    public  void outputPrint(String s);
 
-    public abstract void errorPrint(String s);
+    public  void errorPrint(String s);
 
-    public abstract void printWinner(Game game);
+    public  void printWinner(Game game);
 
-    public abstract void printBoard(AbstractBoard board);
+    public  void printBoard(AbstractBoard board);
 
 }

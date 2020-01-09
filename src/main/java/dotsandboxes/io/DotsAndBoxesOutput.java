@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
 import static gamesuite.move.Move.Which.HORIZONTAL;
 import static gamesuite.move.Move.Which.VERTICAL;
 
-public class DotsAndBoxesOutput extends OutputManager {
+public class DotsAndBoxesOutput implements OutputManager {
 
     @Override
     public void printGame(Game game) {

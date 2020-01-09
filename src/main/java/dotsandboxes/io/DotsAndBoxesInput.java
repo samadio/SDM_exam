@@ -10,15 +10,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
-public class DotsAndBoxesInput extends InputManager {
+public class DotsAndBoxesInput implements InputManager {
 
+    private Move currentMove;
+    private final OutputManager OUTPUT;
+
+    public DotsAndBoxesInput(OutputManager oManager){
+
+        OUTPUT = oManager;
+    }
 
     private Boolean settedConverter = false;
     private Converter moveConverter;
-
-    public DotsAndBoxesInput(OutputManager oManager) {
-        super(oManager);
-    }
 
     public void setConverter(Integer nCols){
         moveConverter = new Converter(nCols);

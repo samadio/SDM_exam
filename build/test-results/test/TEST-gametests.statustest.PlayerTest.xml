@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<testsuite name="gametests.statustest.PlayerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:31" hostname="simonovo" time="0.005">
-  <properties/>
-  <testcase name="customNameTest()" classname="gametests.statustest.PlayerTest" time="0.002"/>
-  <testcase name="defaultNameTest()" classname="gametests.statustest.PlayerTest" time="0.002"/>
-=======
-<testsuite name="gametests.statustest.PlayerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:24:04" hostname="simonovo" time="0.007">
+<testsuite name="gametests.statustest.PlayerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-09T13:45:51" hostname="simonovo" time="0.006">
   <properties/>
   <testcase name="customNameTest()" classname="gametests.statustest.PlayerTest" time="0.001"/>
-  <testcase name="defaultNameTest()" classname="gametests.statustest.PlayerTest" time="0.004"/>
->>>>>>> Stashed changes
+  <testcase name="defaultNameTest()" classname="gametests.statustest.PlayerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -5,15 +5,9 @@ import gamesuite.move.Move;
 
 import java.util.List;
 
-public abstract class InputManager {
 
-    protected Move currentMove;
-    protected final OutputManager OUTPUT;
+public interface InputManager {
 
-    protected InputManager(OutputManager oManager){
-
-        OUTPUT = oManager;
-    }
 
     public abstract String readInput();
 

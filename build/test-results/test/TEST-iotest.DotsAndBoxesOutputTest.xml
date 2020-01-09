@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:20:32" hostname="simonovo" time="0.144">
+<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T13:45:51" hostname="simonovo" time="0.096">
   <properties/>
-  <testcase name="seeOutputTest()" classname="iotest.DotsAndBoxesOutputTest" time="0.144"/>
-=======
-<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:24:05" hostname="simonovo" time="0.063">
-  <properties/>
-  <testcase name="seeOutputTest()" classname="iotest.DotsAndBoxesOutputTest" time="0.063"/>
->>>>>>> Stashed changes
+  <testcase name="seeOutputTest()" classname="iotest.DotsAndBoxesOutputTest" time="0.096"/>
   <system-out><![CDATA[00——01  02  03
                 
 04  05  06  07

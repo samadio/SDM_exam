@@ -15,8 +15,8 @@ public class DotsAndBoxesFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(backgroundPanel);
 
-        Box.setBox(2, 2, backgroundPanel);
-        Box.setBox(0, 0, backgroundPanel);
+        //Box.setBox(2, 2, backgroundPanel);
+        //Box.setBox(0, 0, backgroundPanel);
 
         Environment.setBackgroundElements(backgroundPanel);
         this.setVisible(true);
