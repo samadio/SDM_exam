@@ -16,17 +16,6 @@ public class Line extends GraphicObj {
 
     }
 
-    /*
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == graphicObj)
-        {
-            System.out.println("mandi");
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(objSpec.fileName2).getImage().getScaledInstance(objSpec.width, objSpec.height, objSpec.hints));
-            graphicObj.setIcon(imageIcon);
-            graphicObj.invalidate();
-
-        }
-    }*/
 
     public Integer getRow() {return this.row;}
 

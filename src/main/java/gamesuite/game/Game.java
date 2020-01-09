@@ -45,16 +45,15 @@ public class Game {
                             validator.validateMove(m);
                             invalidMove = false;
                         } catch (InvalidMoveException e) {
-
                             oManager.printInvalidMove(e);
                             iManager.readMove();
                             m = iManager.getMove();
                         }
                     }
 
-
                     boardManager.updateBoard(m);
                     status.update(m);
+
 
                     oManager.printGame(this);
                 }

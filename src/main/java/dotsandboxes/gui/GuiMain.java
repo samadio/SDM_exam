@@ -9,7 +9,6 @@ public class GuiMain {
 
 
         DotsAndBoxesGui dbGui = new DotsAndBoxesGui();
-        System.out.println("ciao ciao");
         Game game = (new DotsAndBoxesSetter(dbGui, dbGui)).newGame();
         game.play();
     }

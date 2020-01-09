@@ -7,17 +7,20 @@ import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
+import gamesuite.players.Player;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
     private Move currentMove;
     private boolean newMove;
+    private Integer counter;
 
     public DotsAndBoxesGui(){
         super();
@@ -47,8 +50,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         for(Line l:horizontalLines) {
             l.addActionListener(x ->
                     {
-                        newMove=true;
                         currentMove = new Move(Move.Which.HORIZONTAL,l.getRow(),l.getColumn());
+                        newMove=true;
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(),l.getLineH(),l.getLineHints()));
                         l.setIcon(imageIcon);
                     });
@@ -58,16 +61,17 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         GridSpecifics veGridSpec=new GridSpecifics(5,6,15, 50, 150, 75 , 50);
         LinesGrid verticalLines= SetElements.setGrid(vEmptySpec,veGridSpec,backgroundPanel);
 
-        for(Line l:horizontalLines) {
+        for(Line l:verticalLines) {
             l.addActionListener(x ->
             {
-                newMove=true;
                 currentMove = new Move(Move.Which.VERTICAL,l.getRow(),l.getColumn());
+                newMove=true;
                 ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(),l.getLineH(),l.getLineHints()));
                 l.setIcon(imageIcon);
+
+
             });
         }
-
         this.setVisible(true);
     }
 
@@ -78,11 +82,14 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void readMove() throws EndGameException, ResetGameException {
-        while(!this.newMove){
-            //Thread.wait();
+        while(!this.newMove)
+        {
+            try {
+                Thread.sleep(1);
+            }
+            catch(InterruptedException e) {}
         }
         this.newMove=false;
-        //this.currentMove=m;
     }
 
     @Override
@@ -95,26 +102,50 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         return 2;
     }
 
+    private void printCurrentPlayer(Game game) { outputPrintln("Next player: " + game.nextPlayer()); }
+
     @Override
     public List<Integer> getGridDimensions() {
         List<Integer> list= new ArrayList<Integer>(2);
-        list.add(5);
-        list.add(5);
+        list.add(6);
+        list.add(6);
         return list;
     }
 
     @Override
     public boolean customPlayers() {
-        return false;
+        return true;
     }
 
     @Override
     public String getPlayerName() {
-        return null;
+        String playerNameMessage = "Insert next player's name: ";
+
+        outputPrintln(playerNameMessage);
+        Scanner myObj = new Scanner(System.in);
+        String playerName;
+
+        // Enter username and press Enter
+        playerName = myObj.nextLine();
+        return playerName;
     }
 
     @Override
     public void printGame(Game game) {
+        outputPrintln("\n");
+        System.out.println("ciccio");
+        System.out.println(game.getPlayers().get(0).getName());
+        System.out.println(game.getScore().get("andrea"));
+        System.out.println("pasticcio\n");
+        //printBoard(game.getBoard());
+        outputPrintln("\n Players score:");
+        for (Player i : game.getPlayers()) {
+            outputPrint(i.getName() + ": ");
+            outputPrint(game.getScore().get(i) + "        ");
+        }
+        outputPrintln("\n");
+        printCurrentPlayer(game);
+        outputPrintln("\n");
 
     }
 
@@ -125,7 +156,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void outputPrintln(String message) {
-
+        System.out.println(message);
     }
 
     @Override
