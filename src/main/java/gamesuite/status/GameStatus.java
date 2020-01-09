@@ -71,13 +71,11 @@ public abstract class GameStatus {
     }
 
     public void reset(){
-
         score.reset();
         currentPlayer=0;
     }
 
     public List<Player> getWinner(){
-
         Integer maxScore = score.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getValue();
         return score.entrySet().stream().filter(x -> x.getValue().equals(maxScore)).map(Map.Entry::getKey).collect(Collectors.toList());
     }

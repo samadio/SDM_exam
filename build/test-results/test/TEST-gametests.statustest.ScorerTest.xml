@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="gametests.statustest.ScorerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-01-08T14:40:14" hostname="simonovo" time="0.009">
+  <properties/>
+  <testcase name="verticalMovePoint()" classname="gametests.statustest.ScorerTest" time="0.002"/>
+  <testcase name="horizontalMovePoint()" classname="gametests.statustest.ScorerTest" time="0.002"/>
+  <testcase name="verticalMoveNoPoint()" classname="gametests.statustest.ScorerTest" time="0.001"/>
+  <testcase name="horizontalMoveNoPoint()" classname="gametests.statustest.ScorerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

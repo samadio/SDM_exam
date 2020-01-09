@@ -19,7 +19,7 @@ public class Main {
             dotsAndBoxes.play();
         }catch (ExhaustedInputException e){
             //System.out.println("Ctrl+D ending");
-            System.exit(0);
+            System.exit(1);
         }
     }
-}
+}   
