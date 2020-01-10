@@ -1,8 +1,8 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GraphicObj extends JButton {
     protected ObjSpecifics objSpec;

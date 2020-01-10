@@ -1,5 +1,7 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 public class Box {
     public static void setBox(int i, int j,BackgroundPanel backgroundPanel){
 

@@ -1,4 +1,6 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.graphics.specifics;
+
+import gamesuite.move.Move;
 
 public class ObjSpecifics {
     public String fileName;
@@ -16,3 +18,4 @@ public class ObjSpecifics {
     }
 
 }
+

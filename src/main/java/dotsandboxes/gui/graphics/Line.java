@@ -1,8 +1,6 @@
 package dotsandboxes.gui.graphics;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 public class Line extends GraphicObj {
 
