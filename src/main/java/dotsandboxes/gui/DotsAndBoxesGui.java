@@ -48,49 +48,10 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         //Box.setBox(2, 2, backgroundPanel);
 
 
-        ObjSpecifics hEmptySpec= new ObjSpecifics("images/line_empty.png","images/line_full.png",50, 20, 50);
-        GridSpecifics heGridSpec=new GridSpecifics(6,5,50, 15, 155, 68 , 50);
-        LinesList horizontalLines= SetElements.setGrid(hEmptySpec,heGridSpec,backgroundPanel);
-
-        ObjSpecifics vEmptySpec= new ObjSpecifics("images/line_empty_vertical.png","images/line_full_vertical.png",20, 50, 50);
-        GridSpecifics veGridSpec=new GridSpecifics(5,6,15, 50, 150, 75 , 50);
-        LinesList verticalLines= SetElements.setGrid(vEmptySpec,veGridSpec,backgroundPanel);
-
-        for(Line l:horizontalLines) {
-            l.addActionListener(x ->
-                {
-                    currentMove = new Move(Move.Which.HORIZONTAL,l.getRow(),l.getColumn());
-                    newMove=true;
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(),l.getLineH(),l.getLineHints()));
-                    l.setIcon(imageIcon);
-                });
-        }
-
-        for(Line l:verticalLines) {
-            l.addActionListener(x ->
-                {
-                    currentMove = new Move(Move.Which.VERTICAL,l.getRow(),l.getColumn());
-                    newMove=true;
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(),l.getLineH(),l.getLineHints()));
-                    l.setIcon(imageIcon);
-                });
-        }
-
-        ObjSpecifics dotSpec= new ObjSpecifics("images/dot.png","",10, 10, 50);
-        GridSpecifics dotGridSpec=new GridSpecifics(6,6,50, 50, 130, 50 , 50);
-        SetElements.setDots(dotSpec,dotGridSpec,backgroundPanel);
 
     }
 
-    @Override
-    public List<String> getPlayersName(Integer nPlayers) {
-        List<String> playerList= new ArrayList<>(nPlayers);
-        System.out.print("cicciociccio");
-        System.out.println(nPlayers);
-        System.out.println(playerList.size());
-        for (int i=0; i<nPlayers; i++) playerList.add(i,getPlayerName());
-        return playerList;
-    }
+
 
     //      TODO
     //remove readInput from Interface
@@ -141,6 +102,16 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
     @Override
+    public List<String> getPlayersName(Integer nPlayers) {
+        List<String> playerList= new ArrayList<>(nPlayers);
+        System.out.print("cicciociccio");
+        System.out.println(nPlayers);
+        System.out.println(playerList.size());
+        for (int i=0; i<nPlayers; i++) playerList.add(i,getPlayerName());
+        return playerList;
+    }
+
+    @Override
     public String getPlayerName() {
         String playerNameMessage = "Insert next player's name: ";
 
@@ -163,6 +134,38 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void startGame() {
+
+        ObjSpecifics hEmptySpec= new ObjSpecifics("images/line_empty.png","images/line_full.png",50, 20, 50);
+        GridSpecifics heGridSpec=new GridSpecifics(6,5,50, 15, 155, 68 , 50);
+        LinesList horizontalLines= SetElements.setGrid(hEmptySpec,heGridSpec,backgroundPanel);
+
+        ObjSpecifics vEmptySpec= new ObjSpecifics("images/line_empty_vertical.png","images/line_full_vertical.png",20, 50, 50);
+        GridSpecifics veGridSpec=new GridSpecifics(5,6,15, 50, 150, 75 , 50);
+        LinesList verticalLines= SetElements.setGrid(vEmptySpec,veGridSpec,backgroundPanel);
+
+        for(Line l:horizontalLines) {
+            l.addActionListener(x ->
+            {
+                currentMove = new Move(Move.Which.HORIZONTAL,l.getRow(),l.getColumn());
+                newMove=true;
+                ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(),l.getLineH(),l.getLineHints()));
+                l.setIcon(imageIcon);
+            });
+        }
+
+        for(Line l:verticalLines) {
+            l.addActionListener(x ->
+            {
+                currentMove = new Move(Move.Which.VERTICAL,l.getRow(),l.getColumn());
+                newMove=true;
+                ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(),l.getLineH(),l.getLineHints()));
+                l.setIcon(imageIcon);
+            });
+        }
+
+        ObjSpecifics dotSpec= new ObjSpecifics("images/dot.png","",10, 10, 50);
+        GridSpecifics dotGridSpec=new GridSpecifics(6,6,50, 50, 130, 50 , 50);
+        SetElements.setDots(dotSpec,dotGridSpec,backgroundPanel);
         this.setVisible(true);
     }
 
