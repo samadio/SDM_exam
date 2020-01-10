@@ -76,10 +76,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
             });
         }
-        JLabel label= new JLabel("Test");
-        label.setText("Score Andrea");
-        label.setBounds(10, yOffset, 200, 50);
-        backgroundPanel.add(label);
 
     }
 
@@ -94,7 +90,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         {
 
             try {
-                Thread.sleep(1);
+                Thread.sleep(150);
             }
             catch(InterruptedException e) {}
         }
