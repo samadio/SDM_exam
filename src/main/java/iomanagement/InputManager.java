@@ -3,6 +3,7 @@ import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,6 +23,8 @@ public interface InputManager {
     public abstract boolean customPlayers();
 
     public abstract String getPlayerName();
+
+    public abstract List<String> getPlayersName(Integer nPlayers);
 
 }
 

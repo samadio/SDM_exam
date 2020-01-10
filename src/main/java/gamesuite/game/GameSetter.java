@@ -47,13 +47,15 @@ public abstract class GameSetter {
 
         boolean custom = iManager.customPlayers(); //do you want to customize Players name? Yes=True
         if (custom) {
+
+            List<String> playerNames= iManager.getPlayersName(nPlayers);
+
             for (int i = 0; i < nPlayers ; i++) {
 
-                String name = iManager.getPlayerName();
-                if (name.isEmpty())
+                if (playerNames.get(i).isEmpty())
                     players.add(i, playerGenerator.newPlayer());
                 else
-                    players.add(i, playerGenerator.newPlayer(name));
+                    players.add(i, playerGenerator.newPlayer(playerNames.get(i)));
             }
         }
         else{

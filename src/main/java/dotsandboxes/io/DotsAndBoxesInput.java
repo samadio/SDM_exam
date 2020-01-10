@@ -28,6 +28,13 @@ public class DotsAndBoxesInput implements InputManager {
         settedConverter = true;
     }
 
+    @Override
+    public List<String> getPlayersName(Integer nPlayers) {
+        List<String> playerList= new ArrayList<>(nPlayers);
+        for (int i=0; i<nPlayers; i++) playerList.add(i,getPlayerName());
+        return playerList;
+    }
+
     //private not considering tests
     @Override
     public String readInput(){

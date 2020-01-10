@@ -21,6 +21,12 @@ import static gamesuite.move.Move.Which.VERTICAL;
 
 public class DotsAndBoxesOutput implements OutputManager {
 
+
+    @Override
+    public void startGame() {
+        System.out.println("Start Game");
+    }
+
     @Override
     public void printGame(Game game) {
         outputPrintln("\n");

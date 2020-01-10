@@ -82,6 +82,16 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     }
 
+    @Override
+    public List<String> getPlayersName(Integer nPlayers) {
+        List<String> playerList= new ArrayList<>(nPlayers);
+        System.out.print("cicciociccio");
+        System.out.println(nPlayers);
+        System.out.println(playerList.size());
+        for (int i=0; i<nPlayers; i++) playerList.add(i,getPlayerName());
+        return playerList;
+    }
+
     //      TODO
     //remove readInput from Interface
     @Override
@@ -146,9 +156,14 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         backgroundPanel.add(label);
         labels.add(label);
         yOffset+=20;
-        this.setVisible(true);
+
 
         return playerName;
+    }
+
+    @Override
+    public void startGame() {
+        this.setVisible(true);
     }
 
     @Override

@@ -4,7 +4,6 @@ import dotsandboxes.game.DotsAndBoxesSetter;
 import gamesuite.game.Game;
 
 public class GuiMain {
-    String word="";
     public static void main(String[] args) {
 
 

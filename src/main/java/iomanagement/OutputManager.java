@@ -6,7 +6,10 @@ import gamesuite.move.InvalidMoveException;
 
 public interface OutputManager {
 
+    public void startGame();
+
     public  void printGame(Game game);
+
     public  void printInvalidMove(InvalidMoveException e);
 
     public  void outputPrintln(String message);

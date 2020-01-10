@@ -31,6 +31,8 @@ public class Game {
 
     public void play(){
 
+        oManager.startGame();
+
         oManager.printGame(this);
 
             while (status.isNotFinished()) {

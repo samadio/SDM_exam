@@ -11,7 +11,6 @@ import iomanagement.OutputManager;
 public class Main {
 
     public static void main(String[] args){
-
         OutputManager outputManager = new DotsAndBoxesOutput();
         try{
             GameSetter gSetter = new DotsAndBoxesSetter(new DotsAndBoxesInput(outputManager), outputManager);
