@@ -7,6 +7,8 @@ import gamesuite.move.InvalidMoveException;
 
 public interface OutputManager {
 
+
+
     public void startGame();
 
     public  void printGame(Game game);
@@ -19,9 +21,11 @@ public interface OutputManager {
 
     public  void outputPrint(String s);
 
+    public void resetGame(Game game);
+
     public  void errorPrint(String s);
 
-    public  void printWinner(Game game);
+    public  void printWinner(Game game, boolean gameManuallyEnded);
 
     public  void printBoard(AbstractBoard board);
 

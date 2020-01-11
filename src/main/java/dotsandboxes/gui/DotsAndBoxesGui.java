@@ -18,6 +18,7 @@ import iomanagement.OutputManager;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
@@ -27,7 +28,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private JLabel currentPlayer;
     private Integer numPlayers;
     private String name;
-    private boolean endGame=false;
+    private boolean endGame;
+    private boolean reset;
     BackgroundPanel backgroundPanel = new BackgroundPanel();
 
 
@@ -61,6 +63,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public void readMove() throws EndGameException, ResetGameException {
         waitInput();
         if(endGame==true) throw new EndGameException();
+        if(reset==true) throw new ResetGameException();
     }
 
     @Override
@@ -184,10 +187,13 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void startGame() {
 
+        endGame=false;
+        reset=false;
+
         for (JLabel i : labels) backgroundPanel.add(i);
 
         JButton endGameButton=new JButton("End Game");
-        endGameButton.setBounds(460, 330, 120, 30);
+        endGameButton.setBounds(460, 290, 120, 30);
 
         endGameButton.addActionListener(x ->
         {
@@ -196,7 +202,18 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
         });
 
+        JButton resetGameButton=new JButton("Reset Game");
+        resetGameButton.setBounds(460, 330, 120, 30);
+
+        resetGameButton.addActionListener(x ->
+        {
+            reset=true;
+            inputGiven=true;
+
+        });
+
         backgroundPanel.add(endGameButton);
+        backgroundPanel.add(resetGameButton);
 
         currentPlayer= new JLabel();
         currentPlayer.setBounds(230, 0, 200, 50);
@@ -248,28 +265,28 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void printGame(Game game) {
 
-        outputPrintln("\n");
-        //printBoard(game.getBoard());
-        outputPrintln("\n Players score:");
 
         currentPlayer.setText("Current Player:  "+game.nextPlayer().getName());
 
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
+
 
         for (int i=0; i<labels.size(); i++){
             labels.get(i).setText("Score "+game.getPlayers().get(i).getName()+"   "+game.getScore().get(game.getPlayers().get(i)));
         }
 
-        for (Player i : game.getPlayers()) {
-            outputPrint(i.getName() + ": ");
-            outputPrint(game.getScore().get(i) + "        ");
-        }
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
 
-        outputPrintln("\n");
-        printCurrentPlayer(game);
-        outputPrintln("\n");
     }
+
+     @Override
+     public void resetGame(Game game) {
+        backgroundPanel.removeAll();
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+        this.startGame();
+        this.printGame(game);
+     }
 
 
     @Override
@@ -298,7 +315,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
     @Override
-    public void printWinner(Game game) {
+    public void printWinner(Game game, boolean gameManuallyEnded) {
 
         List<Player> winners = game.getWinner();
 
