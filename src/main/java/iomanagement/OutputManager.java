@@ -1,6 +1,7 @@
 package iomanagement;
 
 import gamesuite.board.AbstractBoard;
+import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 

@@ -1,4 +1,4 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.graphics.specifics;
 
 public class GridSpecifics {
     public Integer rows;

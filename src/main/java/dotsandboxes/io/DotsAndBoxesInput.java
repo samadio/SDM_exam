@@ -35,6 +35,13 @@ public class DotsAndBoxesInput implements InputManager {
         return playerList;
     }
 
+    public String getPlayerName() {
+        String playerNameMessage = "Insert next player's name: ";
+
+        OUTPUT.outputPrintln(playerNameMessage);
+        return readInput();
+    }
+
     //private not considering tests
     @Override
     public String readInput(){
@@ -165,11 +172,5 @@ public class DotsAndBoxesInput implements InputManager {
         }
     }
 
-    @Override
-    public String getPlayerName() {
-        String playerNameMessage = "Insert next player's name: ";
 
-        OUTPUT.outputPrintln(playerNameMessage);
-        return readInput();
-    }
 }

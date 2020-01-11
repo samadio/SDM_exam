@@ -2,6 +2,7 @@ package dotsandboxes.gui.graphics;
 
 import dotsandboxes.gui.graphics.lists.DotsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
+import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 public class SetElements {

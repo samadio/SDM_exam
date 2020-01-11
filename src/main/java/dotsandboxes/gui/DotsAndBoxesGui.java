@@ -3,6 +3,7 @@ package dotsandboxes.gui;
 import dotsandboxes.gui.graphics.*;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
+import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.board.AbstractBoard;
 import gamesuite.game.EndGameException;
@@ -15,11 +16,8 @@ import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
@@ -29,6 +27,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private JLabel currentPlayer;
     private Integer numPlayers;
     private String name;
+    private boolean endGame=false;
     BackgroundPanel backgroundPanel = new BackgroundPanel();
 
 
@@ -61,6 +60,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void readMove() throws EndGameException, ResetGameException {
         waitInput();
+        if(endGame==true) throw new EndGameException();
     }
 
     @Override
@@ -180,13 +180,23 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         return playerList;
     }
 
-    @Override
-    public String getPlayerName() {return null; }
 
     @Override
     public void startGame() {
 
         for (JLabel i : labels) backgroundPanel.add(i);
+
+        JButton endGameButton=new JButton("End Game");
+        endGameButton.setBounds(460, 330, 120, 30);
+
+        endGameButton.addActionListener(x ->
+        {
+            endGame=true;
+            inputGiven=true;
+
+        });
+
+        backgroundPanel.add(endGameButton);
 
         currentPlayer= new JLabel();
         currentPlayer.setBounds(230, 0, 200, 50);
@@ -224,8 +234,14 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         GridSpecifics dotGridSpec=new GridSpecifics(6,6,50, 50, 130, 50 , 50);
         SetElements.setDots(dotSpec,dotGridSpec,backgroundPanel);
 
+
+
+
+
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
+
+
 
     }
 
@@ -283,6 +299,33 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void printWinner(Game game) {
+
+        List<Player> winners = game.getWinner();
+
+
+        backgroundPanel.removeAll();
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+        JLabel winMessage = new JLabel("",SwingConstants.CENTER);
+        winMessage.setBounds(215, 30, 250, 50);
+        List<JLabel> winnersLabels= new ArrayList<>();
+
+        if (winners.size() == 1) winMessage.setText("The winner is");
+        else winMessage.setText("<html>Game is a draw<br/>The following players have the same score:<html>");
+
+        backgroundPanel.add(winMessage);
+        Integer yOffset = 80;
+
+        for (Player p : winners) {
+            JLabel label= new JLabel(p.getName());
+            label.setBounds(260, yOffset, 80, 30);
+
+            yOffset+=30;
+            backgroundPanel.add(label);
+            winnersLabels.add(label);
+        }
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
 
     }
 

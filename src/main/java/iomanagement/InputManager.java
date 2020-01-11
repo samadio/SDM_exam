@@ -22,8 +22,6 @@ public interface InputManager {
 
     public abstract boolean customPlayers();
 
-    public abstract String getPlayerName();
-
     public abstract List<String> getPlayersName(Integer nPlayers);
 
 }
