@@ -1,6 +1,9 @@
 package dotsandboxes.gui;
 
 
+import dotsandboxes.gui.frames.GameFrame;
+import dotsandboxes.gui.frames.PlayersNameFrame;
+import dotsandboxes.gui.frames.PlayersNumberFrame;
 import dotsandboxes.gui.graphics.*;
 import dotsandboxes.gui.graphics.Box;
 import dotsandboxes.gui.graphics.lists.LabelsList;
@@ -17,7 +20,6 @@ import gamesuite.players.Player;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
-import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +27,19 @@ import java.util.List;
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
+    private BackgroundPanel backgroundPanel = new BackgroundPanel();
     private Move currentMove;
     private boolean inputGiven;
     private LabelsList labels;
+
     private JLabel currentPlayer;
     private Integer numPlayers;
-    private String name;
     private boolean endGame;
     private boolean reset;
     private Integer boxesRows;
     private Integer boxesColumns;
     private boolean[][] boxes;
-    BackgroundPanel backgroundPanel = new BackgroundPanel();
+
 
 
     public DotsAndBoxesGui(){
@@ -49,19 +52,13 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         backgroundPanel.setLayout(null);
         this.setTitle("DOTS AND BOXES");
         this.setSize(600, 400);
-
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(backgroundPanel);
 
-
-        //Box.setBox(2, 2, backgroundPanel);
-
     }
 
 
-    //      TODO
-    //remove readInput from Interface
     @Override
     public String readInput() {return null;}
 
@@ -72,50 +69,22 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         if(reset==true) throw new ResetGameException();
     }
 
+
+
     @Override
     public Move getMove() {
         return currentMove;
     }
 
+
+
     @Override
     public Integer getPlayersNumber() {
 
         this.setVisible(true);
-        JLabel playerQuestion= new JLabel();
-        playerQuestion.setText("Number of players");
-        playerQuestion.setBounds(215, 30, 200, 30);
 
-        backgroundPanel.add(playerQuestion);
-
-        List<NumButton> buttons= new ArrayList<>(3);
-        Integer yOffset = 70;
-
-        for (int i=2; i<5; i++) {
-            NumButton button=new NumButton(i);
-            button.setBounds(260, yOffset, 80, 30);
-            button.addActionListener(x ->
-            {
-                numPlayers=button.number;
-                inputGiven=true;
-            });
-            yOffset+=40;
-            backgroundPanel.add(button);
-            buttons.add(button);
-        }
-
-        //for (int i=0 ; i<3; i++) backgroundPanel.add(buttons.get(i));
-
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-
-        waitInput();
-
-        this.inputGiven=false;
-        backgroundPanel.remove(playerQuestion);
-        for(JButton i : buttons) backgroundPanel.remove(i);
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-
+        PlayersNumberFrame PNFrame=new PlayersNumberFrame();
+        numPlayers=PNFrame.setFrame(backgroundPanel);
 
         return numPlayers;
     }
@@ -141,61 +110,16 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public List<String> getPlayersName(Integer nPlayers) {
 
-
-
-        JTextField playerName= new JTextField(1);
-        JLabel playerQuestion= new JLabel();
-        playerQuestion.setText("Player's names");
-        playerQuestion.setBounds(70, 30, 200, 30);
-        playerName.setBounds(70, 100, 60, 30);
-
-        //playerName.setBorder(null);
-        //playerName.setOpaque(false);
-
-        List<String> playerList= new ArrayList<>(nPlayers);
-        backgroundPanel.add(playerQuestion);
-        backgroundPanel.add(playerName);
-
-        
-
-        playerName.addActionListener(x ->
-        {
-            name=playerName.getText();
-            playerName.setText("");
-            inputGiven=true;
-        });
-
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-
-        Integer yOffset=0;
+        PlayersNameFrame PNFrame= new PlayersNameFrame();
         labels= new LabelsList();
-        
-        for (int i=0; i<nPlayers; i++) {
-
-            waitInput();
-            playerList.add(i,name);
-            JLabel label= new JLabel("Test");
-            label.setText("Score    "+playerName);
-            label.setBounds(10, yOffset, 200, 50);
-            labels.add(label);
-            yOffset+=20;
-        }
-
-        backgroundPanel.remove(playerName);
-        backgroundPanel.remove(playerQuestion);
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-
-        backgroundPanel.updateUI();
-
-        return playerList;
+       return PNFrame.setFrame(backgroundPanel,labels,nPlayers);
     }
 
 
     @Override
     public void startGame() {
 
+        //GameFrame gameFrame= new GameFrame();
         endGame=false;
         reset=false;
 
@@ -262,8 +186,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
 
 
-
-
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
 
@@ -276,8 +198,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
 
         currentPlayer.setText("Current Player:  "+game.nextPlayer().getName());
-
-
 
         for (int i=0; i<labels.size(); i++){
             labels.get(i).setText("Score "+game.getPlayers().get(i).getName()+"   "+game.getScore().get(game.getPlayers().get(i)));
