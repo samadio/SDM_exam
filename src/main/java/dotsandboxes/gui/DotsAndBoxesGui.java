@@ -1,6 +1,8 @@
 package dotsandboxes.gui;
 
+
 import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.Box;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
@@ -15,10 +17,11 @@ import gamesuite.players.Player;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
+import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
@@ -30,6 +33,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private String name;
     private boolean endGame;
     private boolean reset;
+    private Integer boxesRows;
+    private Integer boxesColumns;
+    private boolean[][] boxes;
     BackgroundPanel backgroundPanel = new BackgroundPanel();
 
 
@@ -121,6 +127,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         List<Integer> list= new ArrayList<Integer>(2);
         list.add(6);
         list.add(6);
+        boxesRows=5;
+        boxesColumns=5;
+        boxes=new boolean[boxesRows][boxesColumns];
         return list;
     }
 
@@ -274,6 +283,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
             labels.get(i).setText("Score "+game.getPlayers().get(i).getName()+"   "+game.getScore().get(game.getPlayers().get(i)));
         }
 
+        printBox(game);
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
 
@@ -281,6 +291,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
      @Override
      public void resetGame(Game game) {
+        boxes=new boolean[boxesRows][boxesColumns];
         backgroundPanel.removeAll();
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
@@ -362,6 +373,28 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         }
 
         this.inputGiven = false;
+    }
+
+
+    public void printBox(Game game){
+        AbstractBoard board=game.getBoard();
+
+        for (int i=0; i<boxesRows; i++) {
+            for (int j=0;j<boxesColumns; j++) {
+
+                if(board.getElement(Move.Which.HORIZONTAL,i,j) && board.getElement(Move.Which.HORIZONTAL,i+1,j)
+                    && board.getElement(Move.Which.VERTICAL,i,j) && board.getElement(Move.Which.VERTICAL,i,j+1)) {
+
+                    if(boxes[i][j]==false) {
+                        Box.setBox(i,j,backgroundPanel);
+                        boxes[i][j]=true;
+                    }
+                }
+            }
+        }
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+
     }
 
 
