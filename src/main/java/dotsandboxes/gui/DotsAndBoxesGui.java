@@ -1,6 +1,7 @@
 package dotsandboxes.gui;
 
 
+import dotsandboxes.gui.frames.EndFrame;
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.frames.PlayersNameFrame;
 import dotsandboxes.gui.frames.PlayersNumberFrame;
@@ -30,7 +31,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private BackgroundPanel backgroundPanel = new BackgroundPanel();
     private GameFrame gameFrame;
     private List<String> playersNames;
-
 
     private Integer numPlayers;
 
@@ -159,8 +159,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void printWinner(Game game, boolean gameManuallyEnded) {
-        gameFrame.printWinner(game,backgroundPanel);
-
+        EndFrame endFrame=new EndFrame();
+        endFrame.printWinner(game,backgroundPanel);
     }
 
     @Override

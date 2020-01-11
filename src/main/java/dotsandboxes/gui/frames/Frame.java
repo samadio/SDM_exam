@@ -1,8 +1,10 @@
 package dotsandboxes.gui.frames;
 
+import dotsandboxes.gui.graphics.BackgroundPanel;
+
 public class Frame {
     protected Integer numPlayers;
-    protected boolean inputGiven;
+    public boolean inputGiven;
 
     public Frame() {}
 
@@ -17,5 +19,14 @@ public class Frame {
         }
 
         inputGiven = false;
+    }
+    protected void updatePanel(BackgroundPanel backgroundPanel) {
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+    }
+
+    protected void clear(BackgroundPanel backgroundPanel){
+        backgroundPanel.removeAll();
+        updatePanel(backgroundPanel);
     }
 }

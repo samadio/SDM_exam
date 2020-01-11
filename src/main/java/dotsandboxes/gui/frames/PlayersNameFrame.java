@@ -41,8 +41,7 @@ public class PlayersNameFrame extends Frame {
             inputGiven=true;
         });
 
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
+        updatePanel(backgroundPanel);
 
 
         for (int i=0; i<nPlayers; i++) {
@@ -52,12 +51,7 @@ public class PlayersNameFrame extends Frame {
 
         }
 
-        backgroundPanel.remove(playerName);
-        backgroundPanel.remove(playerQuestion);
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-
-        backgroundPanel.updateUI();
+        clear(backgroundPanel);
 
         return playerList;
     }
