@@ -13,8 +13,10 @@ import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
+import gamesuite.players.Player;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameFrame extends Frame {
@@ -123,6 +125,9 @@ public class GameFrame extends Frame {
 
 
     public void updateFrame(Game game, BackgroundPanel backgroundPanel) {
+
+        currentPlayer.setText("Current Player:  "+game.nextPlayer().getName());
+
         for (int i = 0; i < labels.size(); i++) {
             labels.get(i).setText("Score " + game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
         }
@@ -160,4 +165,37 @@ public class GameFrame extends Frame {
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
     }
+
+
+    public void printWinner(Game game, BackgroundPanel backgroundPanel){
+
+
+        List<Player> winners = game.getWinner();
+        backgroundPanel.removeAll();
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+        JLabel winMessage = new JLabel("",SwingConstants.CENTER);
+        winMessage.setBounds(215, 30, 250, 50);
+        List<JLabel> winnersLabels= new ArrayList<>();
+
+        if (winners.size() == 1) winMessage.setText("The winner is");
+        else winMessage.setText("<html>Game is a draw<br/>The following players have the same score:<html>");
+
+        backgroundPanel.add(winMessage);
+        Integer yOffset = 80;
+
+        for (Player p : winners) {
+            JLabel label= new JLabel(p.getName());
+            label.setBounds(260, yOffset, 80, 30);
+
+            yOffset+=30;
+            backgroundPanel.add(label);
+            winnersLabels.add(label);
+        }
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+    }
 }
+
+
+

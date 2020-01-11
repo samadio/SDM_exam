@@ -31,17 +31,12 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private GameFrame gameFrame;
     private List<String> playersNames;
 
-    private Move currentMove;
-    private boolean inputGiven;
-    private LabelsList labels;
 
-    private JLabel currentPlayer;
     private Integer numPlayers;
-    private boolean endGame;
-    private boolean reset;
+
     private Integer boxesRows;
     private Integer boxesColumns;
-    private boolean[][] boxes;
+
 
 
 
@@ -164,34 +159,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void printWinner(Game game, boolean gameManuallyEnded) {
-/*
-        List<Player> winners = game.getWinner();
+        gameFrame.printWinner(game,backgroundPanel);
 
-
-        backgroundPanel.removeAll();
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-        JLabel winMessage = new JLabel("",SwingConstants.CENTER);
-        winMessage.setBounds(215, 30, 250, 50);
-        List<JLabel> winnersLabels= new ArrayList<>();
-
-        if (winners.size() == 1) winMessage.setText("The winner is");
-        else winMessage.setText("<html>Game is a draw<br/>The following players have the same score:<html>");
-
-        backgroundPanel.add(winMessage);
-        Integer yOffset = 80;
-
-        for (Player p : winners) {
-            JLabel label= new JLabel(p.getName());
-            label.setBounds(260, yOffset, 80, 30);
-
-            yOffset+=30;
-            backgroundPanel.add(label);
-            winnersLabels.add(label);
-        }
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-*/
     }
 
     @Override
