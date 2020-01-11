@@ -1,4 +1,4 @@
-package dotsandboxes.gui;
+package dotsandboxes.gui.graphics;
 
 import dotsandboxes.gui.graphics.GraphicObj;
 

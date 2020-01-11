@@ -1,6 +1,6 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.NumButton;
+import dotsandboxes.gui.graphics.NumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 
 import javax.swing.*;

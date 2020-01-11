@@ -17,7 +17,7 @@ public class PlayersNameFrame extends Frame {
         super();
     }
 
-    public  List<String> setFrame(BackgroundPanel backgroundPanel,LabelsList labels,Integer nPlayers) {
+    public  List<String> setFrame(BackgroundPanel backgroundPanel,Integer nPlayers) {
 
         JTextField playerName= new JTextField(1);
         JLabel playerQuestion= new JLabel();
@@ -44,18 +44,12 @@ public class PlayersNameFrame extends Frame {
         backgroundPanel.revalidate();
         backgroundPanel.repaint();
 
-        Integer yOffset=0;
-
 
         for (int i=0; i<nPlayers; i++) {
 
             waitInput();
             playerList.add(i,name);
-            JLabel label= new JLabel("Test");
-            label.setText("Score    "+playerName);
-            label.setBounds(10, yOffset, 200, 50);
-            labels.add(label);
-            yOffset+=20;
+
         }
 
         backgroundPanel.remove(playerName);
