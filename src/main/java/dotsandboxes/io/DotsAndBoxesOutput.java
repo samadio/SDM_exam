@@ -63,12 +63,20 @@ public class DotsAndBoxesOutput implements OutputManager {
     }
 
     @Override
+    public void resetGame(Game game) {
+        outputPrintln("The game has been reset...");
+        printGame(game);
+    }
+
+    @Override
     public void errorPrint(String s) {
         System.err.print(s);
     }
 
     @Override
-    public void printWinner(Game game) {
+    public void printWinner(Game game, boolean gameManuallyEnded) {
+
+        if(gameManuallyEnded==true) outputPrintln("The game has been manually ended");
 
         List<Player> winners = game.getWinner();
 

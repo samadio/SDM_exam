@@ -60,17 +60,14 @@ public class Game {
                     oManager.printGame(this);
                 }
                 catch (EndGameException e) {
-                    oManager.outputPrintln("The game has been manually ended");
-                    oManager.printWinner(this);
+                    oManager.printWinner(this,true);
                     return;
                 }
                 catch (ResetGameException e){
-                    oManager.outputPrintln("The game has been reset...");
                     this.reset();
-                    oManager.printGame(this);
                 }
             }
-        oManager.printWinner(this);
+        oManager.printWinner(this,false);
     }
 
 
@@ -92,6 +89,7 @@ public class Game {
     public void reset(){
         status.reset();
         boardManager.reset();
+        oManager.resetGame(this);
     }
 
     public List<Player> getWinner(){  return status.getWinner(); }

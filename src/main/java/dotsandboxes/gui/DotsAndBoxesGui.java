@@ -1,6 +1,8 @@
 package dotsandboxes.gui;
 
+
 import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.Box;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
@@ -15,9 +17,11 @@ import gamesuite.players.Player;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
+import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
@@ -27,7 +31,11 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private JLabel currentPlayer;
     private Integer numPlayers;
     private String name;
-    private boolean endGame=false;
+    private boolean endGame;
+    private boolean reset;
+    private Integer boxesRows;
+    private Integer boxesColumns;
+    private boolean[][] boxes;
     BackgroundPanel backgroundPanel = new BackgroundPanel();
 
 
@@ -61,6 +69,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public void readMove() throws EndGameException, ResetGameException {
         waitInput();
         if(endGame==true) throw new EndGameException();
+        if(reset==true) throw new ResetGameException();
     }
 
     @Override
@@ -118,6 +127,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         List<Integer> list= new ArrayList<Integer>(2);
         list.add(6);
         list.add(6);
+        boxesRows=5;
+        boxesColumns=5;
+        boxes=new boolean[boxesRows][boxesColumns];
         return list;
     }
 
@@ -184,10 +196,13 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void startGame() {
 
+        endGame=false;
+        reset=false;
+
         for (JLabel i : labels) backgroundPanel.add(i);
 
         JButton endGameButton=new JButton("End Game");
-        endGameButton.setBounds(460, 330, 120, 30);
+        endGameButton.setBounds(460, 290, 120, 30);
 
         endGameButton.addActionListener(x ->
         {
@@ -196,7 +211,18 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
         });
 
+        JButton resetGameButton=new JButton("Reset Game");
+        resetGameButton.setBounds(460, 330, 120, 30);
+
+        resetGameButton.addActionListener(x ->
+        {
+            reset=true;
+            inputGiven=true;
+
+        });
+
         backgroundPanel.add(endGameButton);
+        backgroundPanel.add(resetGameButton);
 
         currentPlayer= new JLabel();
         currentPlayer.setBounds(230, 0, 200, 50);
@@ -248,28 +274,30 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void printGame(Game game) {
 
-        outputPrintln("\n");
-        //printBoard(game.getBoard());
-        outputPrintln("\n Players score:");
 
         currentPlayer.setText("Current Player:  "+game.nextPlayer().getName());
 
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
+
 
         for (int i=0; i<labels.size(); i++){
             labels.get(i).setText("Score "+game.getPlayers().get(i).getName()+"   "+game.getScore().get(game.getPlayers().get(i)));
         }
 
-        for (Player i : game.getPlayers()) {
-            outputPrint(i.getName() + ": ");
-            outputPrint(game.getScore().get(i) + "        ");
-        }
+        printBox(game);
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
 
-        outputPrintln("\n");
-        printCurrentPlayer(game);
-        outputPrintln("\n");
     }
+
+     @Override
+     public void resetGame(Game game) {
+        boxes=new boolean[boxesRows][boxesColumns];
+        backgroundPanel.removeAll();
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+        this.startGame();
+        this.printGame(game);
+     }
 
 
     @Override
@@ -298,7 +326,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
     @Override
-    public void printWinner(Game game) {
+    public void printWinner(Game game, boolean gameManuallyEnded) {
 
         List<Player> winners = game.getWinner();
 
@@ -345,6 +373,28 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         }
 
         this.inputGiven = false;
+    }
+
+
+    public void printBox(Game game){
+        AbstractBoard board=game.getBoard();
+
+        for (int i=0; i<boxesRows; i++) {
+            for (int j=0;j<boxesColumns; j++) {
+
+                if(board.getElement(Move.Which.HORIZONTAL,i,j) && board.getElement(Move.Which.HORIZONTAL,i+1,j)
+                    && board.getElement(Move.Which.VERTICAL,i,j) && board.getElement(Move.Which.VERTICAL,i,j+1)) {
+
+                    if(boxes[i][j]==false) {
+                        Box.setBox(i,j,backgroundPanel);
+                        boxes[i][j]=true;
+                    }
+                }
+            }
+        }
+        backgroundPanel.revalidate();
+        backgroundPanel.repaint();
+
     }
 
 
