@@ -38,8 +38,6 @@ public class ComponentSetter{
         xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
         yOffset=50+(300-(dimOne+dimTwo)*rows)/2;
 
-        System.out.println(cols);
-        System.out.println((dimOne+dimTwo)*(cols)/2);
 
         horizontalLinesSpec = new ObjSpecifics("images/horizontal_empty.png", "images/horizontal_full.png", dimOne, dimTwo, 50);
         horizontalGridSpec = new GridSpecifics(rows+1, cols, dimOne, dimTwo, xOffset+dimTwo, yOffset, dimOne+dimTwo);
@@ -93,7 +91,6 @@ public class ComponentSetter{
         {
             gameFrame.reset = true;
             gameFrame.inputGiven = true;
-
         });
 
         backgroundPanel.add(endGameButton);

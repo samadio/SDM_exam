@@ -25,12 +25,12 @@ public class GridFrame extends Frame{
         backgroundPanel.add(playerQuestion);
 
         Integer minDimension=3;
-        Integer maxDimension=6;
+        Integer maxDimension=5;
 
         List<NumRadioButton> rowsButtons= new ArrayList<>(maxDimension-minDimension);
         List<NumRadioButton> colsButtons= new ArrayList<>(maxDimension-minDimension);
 
-        Integer yOffset = 70;
+        Integer yOffset = 100;
 
         for (int i=minDimension; i<maxDimension+1; i++) {
             NumRadioButton rowButton=new NumRadioButton(i,250, yOffset, 40, 30);
@@ -38,10 +38,20 @@ public class GridFrame extends Frame{
             rowButton.addActionListener(x ->
             {
                 rows=rowButton.number;
+                for (NumRadioButton  rButton : rowsButtons){
+                    if(!rButton.equals(rowButton) & rButton.isSelected()){
+                        rButton.setSelected(false);
+                    }
+                }
             });
             colButton.addActionListener(x ->
             {
                 cols=colButton.number;
+                for (NumRadioButton  cButton : colsButtons){
+                    if(!cButton.equals(colButton) & cButton.isSelected()){
+                        cButton.setSelected(false);
+                    }
+                }
             });
             yOffset+=40;
             backgroundPanel.add(rowButton);

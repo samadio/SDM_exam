@@ -3,17 +3,13 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.frames.gameFrameFunctions.ComponentSetter;
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.frames.gameFrameFunctions.SetElementsInGrid;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.lists.LabelsList;
-import dotsandboxes.gui.graphics.specifics.GridSpecifics;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
-import javax.swing.*;
 
 public class GameFrame extends Frame {
 

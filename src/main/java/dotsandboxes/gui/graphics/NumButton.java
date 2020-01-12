@@ -30,5 +30,14 @@ public class NumButton extends JButton {
         this.setIcon(imageIcon);
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
+
+        ImageIcon darkIcon = new ImageIcon(new ImageIcon("images/woodTableDark.png").getImage().getScaledInstance(width, height, 80));
+        this.setSelectedIcon(darkIcon);
+    }
+
+    public void setDark() {
+        ImageIcon darkIcon = new ImageIcon(new ImageIcon("images/woodTableDark.png").getImage().getScaledInstance(width, height, 80));
+        this.setIcon(darkIcon);
+        System.out.println("ciojfkslaò");
     }
 }

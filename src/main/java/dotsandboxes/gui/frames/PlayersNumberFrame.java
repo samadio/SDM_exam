@@ -4,7 +4,6 @@ import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.NumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class PlayersNumberFrame extends Frame{
         backgroundPanel.add(playerQuestion);
 
         List<NumButton> buttons= new ArrayList<>(3);
-        Integer yOffset = 70;
+        Integer yOffset = 100;
 
         for (int i=2; i<5; i++) {
             NumButton button=new NumButton(i,260, yOffset, 80, 30);

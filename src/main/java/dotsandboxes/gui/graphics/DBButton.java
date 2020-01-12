@@ -31,4 +31,8 @@ public class DBButton extends JButton {
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
     }
+    public void setDark() {
+        ImageIcon darkIcon = new ImageIcon(new ImageIcon("images/woodTableDark.png").getImage().getScaledInstance(width, height, 80));
+        this.setIcon(darkIcon);
+    }
 }
