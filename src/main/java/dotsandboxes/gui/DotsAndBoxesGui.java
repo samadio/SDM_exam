@@ -3,7 +3,6 @@ package dotsandboxes.gui;
 
 import dotsandboxes.gui.frames.*;
 import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.graphics.Box;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;

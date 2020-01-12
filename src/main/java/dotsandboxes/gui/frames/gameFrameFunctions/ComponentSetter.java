@@ -8,6 +8,8 @@ import dotsandboxes.gui.graphics.Line;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import gamesuite.board.AbstractBoard;
+import gamesuite.game.Game;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
 
@@ -16,41 +18,46 @@ import java.util.List;
 
 public class ComponentSetter{
 
-    ObjSpecifics horizontalLinesSpec;
-    ObjSpecifics verticalLinesSpec;
-    ObjSpecifics dotsSpec;
-    GridSpecifics horizontalGridSpec;
-    GridSpecifics verticalGridSpec;
-    GridSpecifics dotsGridSpec;
+    private ObjSpecifics horizontalLinesSpec;
+    private ObjSpecifics verticalLinesSpec;
+    private ObjSpecifics dotsSpec;
+    private GridSpecifics horizontalGridSpec;
+    private GridSpecifics verticalGridSpec;
+    private GridSpecifics dotsGridSpec;
+
+    private Integer xOffset;
+    private Integer yOffset;
+    private Integer dimOne;
+    private Integer dimTwo;
 
 
     public ComponentSetter(Integer rows, Integer cols){
 
-        Integer x_limit=120;
+        dimOne=45;
+        dimTwo=15;
+        xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
+        yOffset=50+(300-(dimOne+dimTwo)*rows)/2;
 
-        horizontalLinesSpec = new ObjSpecifics("images/line_empty.png", "images/line_full.png", 50, 20, 50);
-        horizontalGridSpec = new GridSpecifics(rows+1, cols, 50, 15, x_limit, 68, 50);
+        System.out.println(cols);
+        System.out.println((dimOne+dimTwo)*(cols)/2);
 
-        verticalLinesSpec = new ObjSpecifics("images/line_empty_vertical.png", "images/line_full_vertical.png", 20, 50, 50);
-        verticalGridSpec = new GridSpecifics(rows, cols+1, 15, 50, x_limit, 75, 50);
+        horizontalLinesSpec = new ObjSpecifics("images/horizontal_empty.png", "images/horizontal_full.png", dimOne, dimTwo, 50);
+        horizontalGridSpec = new GridSpecifics(rows+1, cols, dimOne, dimTwo, xOffset+dimTwo, yOffset, dimOne+dimTwo);
 
-        dotsSpec = new ObjSpecifics("images/dot.png", "", 15, 15, 50);
-        dotsGridSpec = new GridSpecifics(rows+1, cols+1, 50, 50, x_limit, 50, 50);
-
-        /*
-        horizontalLinesSpec = new ObjSpecifics("images/line_empty.png", "images/line_full.png", 50, 20, 50);
-        horizontalGridSpec = new GridSpecifics(rows+1, cols, 50, 15, 155, 68, 50);
-
-        verticalLinesSpec = new ObjSpecifics("images/line_empty_vertical.png", "images/line_full_vertical.png", 20, 50, 50);
-        verticalGridSpec = new GridSpecifics(rows, cols+1, 15, 50, 150, 75, 50);
+        verticalLinesSpec = new ObjSpecifics("images/vertical_empty.png", "images/vertical_full.png", dimTwo, dimOne, 50);
+        verticalGridSpec = new GridSpecifics(rows, cols+1, dimTwo, dimOne, xOffset, yOffset+dimTwo, dimOne+dimTwo);
 
         dotsSpec = new ObjSpecifics("images/dot.png", "", 10, 10, 50);
-        dotsGridSpec = new GridSpecifics(rows+1, cols+1, 50, 50, 130, 50, 50);
-        */
-
-
+        dotsGridSpec = new GridSpecifics(rows+1, cols+1, dimTwo, dimTwo, xOffset, yOffset, dimOne+dimTwo);
 
     }
+
+
+    public Integer getXOffset(){return  xOffset;}
+    public Integer getYOffset(){return  yOffset;}
+    public Integer getDimOne() {return  dimOne;}
+    public Integer getDimTwo() {return  dimTwo;}
+
 
     public void playersLabels(GameFrame gameFrame,List<Player>  players, BackgroundPanel backgroundPanel){
 
@@ -127,6 +134,25 @@ public class ComponentSetter{
 
         SetElementsInGrid.setDots(dotsSpec, dotsGridSpec, backgroundPanel);
 
+    }
+
+
+    public  void add(Game game, GameFrame gameFrame,  BackgroundPanel backgroundPanel) {
+        AbstractBoard board = game.getBoard();
+
+        for (int i = 0; i < gameFrame.getBoxesRows(); i++) {
+            for (int j = 0; j < gameFrame.getBoxesColumns(); j++) {
+
+                if (board.getElement(Move.Which.HORIZONTAL, i, j) && board.getElement(Move.Which.HORIZONTAL, i + 1, j)
+                        && board.getElement(Move.Which.VERTICAL, i, j) && board.getElement(Move.Which.VERTICAL, i, j + 1)) {
+
+                    if (gameFrame.getBoxes()[i][j] == false) {
+                        SetElementsInGrid.setBox(i, j,this, backgroundPanel);
+                        gameFrame.getBoxes()[i][j] = true;
+                    }
+                }
+            }
+        }
     }
 
 }

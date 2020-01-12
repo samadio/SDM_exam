@@ -22,7 +22,7 @@ public class DBLabel extends JLabel {
         this.setBounds(x_position, y_position, width, height);
 
         this.setOpaque(false);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.jpg").getImage().getScaledInstance(w,h, 80));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(w,h, 80));
         this.setIcon(imageIcon);
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);

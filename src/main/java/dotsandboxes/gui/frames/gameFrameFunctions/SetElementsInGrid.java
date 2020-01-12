@@ -38,4 +38,18 @@ public class SetElementsInGrid {
         }
 
     }
+
+
+    public static void setBox(int i, int j,ComponentSetter componentSetter,BackgroundPanel backgroundPanel){
+
+        Integer xOffset=componentSetter.getXOffset();
+        Integer yOffset=componentSetter.getYOffset();
+        Integer dimOne=componentSetter.getDimOne();
+        Integer dimTwo=componentSetter.getDimTwo();
+
+        ObjSpecifics boxSpec= new ObjSpecifics("images/box.png","",dimOne,dimOne, 50);
+        GraphicObj box = new GraphicObj(boxSpec);
+        box.setButtonProperties(xOffset+dimTwo +j*(dimOne+dimTwo), yOffset+dimTwo+i*(dimOne+dimTwo), dimOne, 50);
+        backgroundPanel.add(box);
+    }
 }

@@ -1,6 +1,6 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.frames.gameFrameFunctions.AddBox;
+
 import dotsandboxes.gui.frames.gameFrameFunctions.ComponentSetter;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.frames.gameFrameFunctions.SetElementsInGrid;
@@ -16,6 +16,8 @@ import gamesuite.move.Move;
 import javax.swing.*;
 
 public class GameFrame extends Frame {
+
+    ComponentSetter componentSetter;
 
     private DBLabel currentPlayerLabel;
     public Move currentMove;
@@ -36,12 +38,12 @@ public class GameFrame extends Frame {
         reset = false;
         labels= new LabelsList();
 
-        ComponentSetter componentSetter= new ComponentSetter(boxesRows,boxesColumns);
+        componentSetter= new ComponentSetter(boxesRows,boxesColumns);
 
         componentSetter.playersLabels(this,game.getPlayers(), backgroundPanel);
         componentSetter.endResetButtons(this,backgroundPanel);
 
-        currentPlayerLabel = new DBLabel("",230, 5, 200, 30);
+        currentPlayerLabel = new DBLabel("",230, 10, 200, 30);
         backgroundPanel.add(currentPlayerLabel);
 
         componentSetter.lines(this, backgroundPanel);
@@ -75,7 +77,7 @@ public class GameFrame extends Frame {
             labels.get(i).setText(game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
         }
 
-        AddBox.add(game,this,backgroundPanel);
+        componentSetter.add(game,this,backgroundPanel);
         updatePanel(backgroundPanel);
     }
 

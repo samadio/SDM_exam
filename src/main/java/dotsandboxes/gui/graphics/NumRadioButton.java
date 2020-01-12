@@ -24,13 +24,13 @@ public class NumRadioButton extends JRadioButton {
         this.setContentAreaFilled(false);
         //this.setBorderPainted(false);
         this.setFocusPainted(false);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.jpg").getImage().getScaledInstance(w,h, 80));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(w,h, 80));
         this.setIcon(imageIcon);
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
 
 
-        ImageIcon radio_on = new ImageIcon(new ImageIcon("images/woodTableDark.jpg").getImage().getScaledInstance(w,h, 80));
+        ImageIcon radio_on = new ImageIcon(new ImageIcon("images/woodTableDark.png").getImage().getScaledInstance(w,h, 80));
         this.setSelectedIcon(radio_on);
 
 
