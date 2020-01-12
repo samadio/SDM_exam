@@ -41,17 +41,18 @@ public class GridFrame extends Frame{
             rowButton.addActionListener(x ->
             {
                 rows=rowButton.number;
+                rowButton.setSelected(true);
                 rowInput=true;
                 for (NumRadioButton  rButton : rowsButtons){
                     if(!rButton.equals(rowButton) & rButton.isSelected()){
                         rButton.setSelected(false);
-
                     }
                 }
             });
             colButton.addActionListener(x ->
             {
                 cols=colButton.number;
+                colButton.setSelected(true);
                 colInput=true;
                 for (NumRadioButton  cButton : colsButtons){
                     if(!cButton.equals(colButton) & cButton.isSelected()){
