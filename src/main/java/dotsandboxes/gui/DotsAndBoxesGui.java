@@ -28,18 +28,19 @@ import java.util.List;
 
 public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManager {
 
-    private BackgroundPanel backgroundPanel = new BackgroundPanel();
+    private BackgroundPanel backgroundPanel;
     private GameFrame gameFrame;
 
 
 
     public DotsAndBoxesGui(){
         super();
-        init();
+        backgroundPanellInit();
     }
 
-    private void init(){
+    private void backgroundPanellInit(){
 
+        backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
         this.setTitle("DOTS AND BOXES");
         this.setSize(600, 400);
@@ -53,11 +54,11 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public String readInput() {return null;}
 
+
     @Override
     public void readMove() throws EndGameException, ResetGameException {
         gameFrame.readMove();
     }
-
 
 
     @Override
