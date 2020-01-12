@@ -9,7 +9,7 @@ public interface OutputManager {
 
 
 
-    public void startGame();
+    public void startGame(Game game);
 
     public  void printGame(Game game);
 

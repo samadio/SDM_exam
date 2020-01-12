@@ -23,7 +23,7 @@ public class DotsAndBoxesOutput implements OutputManager {
 
 
     @Override
-    public void startGame() {
+    public void startGame(Game game) {
         System.out.println("Start Game");
     }
 

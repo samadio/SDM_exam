@@ -9,18 +9,20 @@ import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
+import gamesuite.players.Player;
 
 import javax.swing.*;
 import java.util.List;
 
 public class ComponentSetter{
-    public void playersLabels(GameFrame gameFrame, List<String> playersName, BackgroundPanel backgroundPanel){
+    public void playersLabels(GameFrame gameFrame,List<Player>  players, BackgroundPanel backgroundPanel){
+
         Integer yOffset=0;
 
-        for (int i=0; i<playersName.size(); i++) {
+        for (int i=0; i<players.size(); i++) {
 
             JLabel label= new JLabel("Test");
-            label.setText("Score    "+playersName.get(i));
+            label.setText("Score    "+players.get(i).getName());
             label.setBounds(10, yOffset, 200, 50);
             gameFrame.getLabels().add(label);
             backgroundPanel.add(label);

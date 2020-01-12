@@ -13,7 +13,7 @@ public class EndFrame extends Frame{
         super();
     }
 
-    public void printWinner(Game game, BackgroundPanel backgroundPanel){
+    public void printWinner( BackgroundPanel backgroundPanel, Game game){
 
 
         List<Player> winners = game.getWinner();

@@ -31,7 +31,7 @@ public class Game {
 
     public void play(){
 
-        oManager.startGame();
+        oManager.startGame(this);
 
         oManager.printGame(this);
 
