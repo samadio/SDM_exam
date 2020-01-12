@@ -73,7 +73,7 @@ public class GameFrame extends Frame {
             labels.get(i).setText(game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
         }
 
-        componentSetter.add(game,this,backgroundPanel);
+        componentSetter.addBox(game,this,backgroundPanel);
         updatePanel(backgroundPanel);
     }
 

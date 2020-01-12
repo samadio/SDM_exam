@@ -73,6 +73,7 @@ public class GridFrame extends Frame{
         button.addActionListener(x ->
         {
             inputGiven=true;
+            button.setDark();
         });
         backgroundPanel.add(button);
 

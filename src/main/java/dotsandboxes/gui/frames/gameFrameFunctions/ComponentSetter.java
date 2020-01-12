@@ -82,6 +82,7 @@ public class ComponentSetter{
         {
             gameFrame.endGame= true;
             gameFrame.inputGiven = true;
+            endGameButton.setDark();
 
         });
 
@@ -91,6 +92,7 @@ public class ComponentSetter{
         {
             gameFrame.reset = true;
             gameFrame.inputGiven = true;
+            resetGameButton.setDark();
         });
 
         backgroundPanel.add(endGameButton);
@@ -134,7 +136,7 @@ public class ComponentSetter{
     }
 
 
-    public  void add(Game game, GameFrame gameFrame,  BackgroundPanel backgroundPanel) {
+    public  void addBox(Game game, GameFrame gameFrame,  BackgroundPanel backgroundPanel) {
         AbstractBoard board = game.getBoard();
 
         for (int i = 0; i < gameFrame.getBoxesRows(); i++) {
