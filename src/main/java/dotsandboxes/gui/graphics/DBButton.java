@@ -1,24 +1,24 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.graphics.GraphicObj;
-
 import javax.swing.*;
 
-public class NumButton extends JButton {
-    public Integer number;
+public class DBButton extends JButton {
+    String text;
     Integer x_position;
     Integer y_position;
     Integer width;
     Integer height;
 
-
-    public NumButton(Integer num,Integer x,Integer y, Integer w, Integer h){
-        super(Integer.toString(num));
-        number=num;
+    public DBButton(String t, Integer x, Integer y, Integer w, Integer h ){
+        super();
+        text=t;
         x_position=x;
         y_position=y;
         width=w;
         height=h;
+        this.setText(text);
+        this.setHorizontalAlignment(JLabel.CENTER);
+        this.setVerticalAlignment(JLabel.CENTER);
         this.setBounds(x_position, y_position, width, height);
 
 

@@ -3,27 +3,21 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.frames.gameFrameFunctions.AddBox;
 import dotsandboxes.gui.frames.gameFrameFunctions.ComponentSetter;
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.Box;
-import dotsandboxes.gui.graphics.Line;
-import dotsandboxes.gui.graphics.SetElements;
+import dotsandboxes.gui.frames.gameFrameFunctions.SetElementsInGrid;
+import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.lists.LabelsList;
-import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
-import gamesuite.board.AbstractBoard;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
-import gamesuite.players.Player;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameFrame extends Frame {
 
-    private JLabel currentPlayer;
+    private DBLabel currentPlayerLabel;
     public Move currentMove;
     private LabelsList labels;
     public boolean endGame;
@@ -42,20 +36,17 @@ public class GameFrame extends Frame {
         reset = false;
         labels= new LabelsList();
 
-        ComponentSetter componentSetter= new ComponentSetter();
+        ComponentSetter componentSetter= new ComponentSetter(boxesRows,boxesColumns);
 
         componentSetter.playersLabels(this,game.getPlayers(), backgroundPanel);
         componentSetter.endResetButtons(this,backgroundPanel);
 
-        currentPlayer = new JLabel();
-        currentPlayer.setBounds(230, 0, 200, 50);
-        backgroundPanel.add(currentPlayer);
+        currentPlayerLabel = new DBLabel("",230, 5, 200, 30);
+        backgroundPanel.add(currentPlayerLabel);
 
         componentSetter.lines(this, backgroundPanel);
 
-        ObjSpecifics dotSpec = new ObjSpecifics("images/dot.png", "", 10, 10, 50);
-        GridSpecifics dotGridSpec = new GridSpecifics(6, 6, 50, 50, 130, 50, 50);
-        SetElements.setDots(dotSpec, dotGridSpec, backgroundPanel);
+        componentSetter.dots(backgroundPanel);
 
         updatePanel(backgroundPanel);
     }
@@ -78,10 +69,10 @@ public class GameFrame extends Frame {
 
     public void updateFrame(BackgroundPanel backgroundPanel, Game game) {
 
-        currentPlayer.setText("Current Player:  "+game.nextPlayer().getName());
+        currentPlayerLabel.setText("CURRENT PLAYER:  "+game.nextPlayer().getName());
 
         for (int i = 0; i < labels.size(); i++) {
-            labels.get(i).setText("Score " + game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
+            labels.get(i).setText(game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
         }
 
         AddBox.add(game,this,backgroundPanel);

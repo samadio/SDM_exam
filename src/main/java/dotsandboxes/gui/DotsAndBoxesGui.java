@@ -1,10 +1,7 @@
 package dotsandboxes.gui;
 
 
-import dotsandboxes.gui.frames.EndFrame;
-import dotsandboxes.gui.frames.GameFrame;
-import dotsandboxes.gui.frames.PlayersNameFrame;
-import dotsandboxes.gui.frames.PlayersNumberFrame;
+import dotsandboxes.gui.frames.*;
 import dotsandboxes.gui.graphics.*;
 import dotsandboxes.gui.graphics.Box;
 import dotsandboxes.gui.graphics.lists.LabelsList;
@@ -82,10 +79,10 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public List<Integer> getGridDimensions() {
-        List<Integer> list= new ArrayList<Integer>(2);
-        list.add(6);
-        list.add(6);
-        return list;
+
+        GridFrame gridFrame=new GridFrame();
+        List<Integer> gridDimensions= gridFrame.setFrame(backgroundPanel);
+        return gridDimensions;
     }
 
     @Override
@@ -98,7 +95,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
         PlayersNameFrame playersNameFrame= new PlayersNameFrame();
         List<String> playersNames=playersNameFrame.setFrame(backgroundPanel,nPlayers);
-       return  playersNames;
+        return  playersNames;
     }
 
 

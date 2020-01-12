@@ -1,11 +1,14 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.frames.gameFrameFunctions;
 
+import dotsandboxes.gui.graphics.BackgroundPanel;
+import dotsandboxes.gui.graphics.GraphicObj;
+import dotsandboxes.gui.graphics.Line;
 import dotsandboxes.gui.graphics.lists.DotsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-public class SetElements {
+public class SetElementsInGrid {
 
     public static LinesList setGrid(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
 

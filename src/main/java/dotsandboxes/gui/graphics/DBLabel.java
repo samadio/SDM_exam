@@ -1,31 +1,27 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.graphics.GraphicObj;
-
 import javax.swing.*;
 
-public class NumButton extends JButton {
-    public Integer number;
+public class DBLabel extends JLabel {
+    String text;
     Integer x_position;
     Integer y_position;
     Integer width;
     Integer height;
 
-
-    public NumButton(Integer num,Integer x,Integer y, Integer w, Integer h){
-        super(Integer.toString(num));
-        number=num;
+    public DBLabel(String t, Integer x, Integer y, Integer w, Integer h ){
+        super();
+        text=t;
         x_position=x;
         y_position=y;
         width=w;
         height=h;
+        this.setText(text);
+        this.setHorizontalAlignment(JLabel.CENTER);
+        this.setVerticalAlignment(JLabel.CENTER);
         this.setBounds(x_position, y_position, width, height);
 
-
         this.setOpaque(false);
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
-        this.setFocusPainted(false);
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.jpg").getImage().getScaledInstance(w,h, 80));
         this.setIcon(imageIcon);
         this.setVerticalTextPosition(SwingConstants.CENTER);

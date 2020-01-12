@@ -1,6 +1,7 @@
 package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
+import dotsandboxes.gui.graphics.DBLabel;
 import gamesuite.game.Game;
 import gamesuite.players.Player;
 
@@ -17,22 +18,19 @@ public class EndFrame extends Frame{
 
 
         List<Player> winners = game.getWinner();
-        backgroundPanel.removeAll();
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
-        JLabel winMessage = new JLabel("",SwingConstants.CENTER);
-        winMessage.setBounds(215, 30, 250, 50);
+        clear(backgroundPanel);
+        DBLabel winMessage = new DBLabel("",175, 30, 250, 50);
+
         List<JLabel> winnersLabels= new ArrayList<>();
 
         if (winners.size() == 1) winMessage.setText("The winner is");
-        else winMessage.setText("<html>Game is a draw<br/>The following players have the same score:<html>");
+        else winMessage.setText("<html><body style='text-align: center'>Game is a draw<br/>The following players have the same score:<html>");
 
         backgroundPanel.add(winMessage);
-        Integer yOffset = 80;
+        Integer yOffset = 90;
 
         for (Player p : winners) {
-            JLabel label= new JLabel(p.getName());
-            label.setBounds(260, yOffset, 80, 30);
+            DBLabel label= new DBLabel(p.getName(),260, yOffset, 80, 30);
 
             yOffset+=30;
             backgroundPanel.add(label);

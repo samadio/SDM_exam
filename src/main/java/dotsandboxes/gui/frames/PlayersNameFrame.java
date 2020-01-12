@@ -2,6 +2,8 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.frames.Frame;
 import dotsandboxes.gui.graphics.BackgroundPanel;
+import dotsandboxes.gui.graphics.DBLabel;
+import dotsandboxes.gui.graphics.DBTextField;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import gamesuite.players.Player;
 
@@ -19,20 +21,13 @@ public class PlayersNameFrame extends Frame {
 
     public  List<String> setFrame(BackgroundPanel backgroundPanel,Integer nPlayers) {
 
-        JTextField playerName= new JTextField(1);
-        JLabel playerQuestion= new JLabel();
-        playerQuestion.setText("Player's names");
-        playerQuestion.setBounds(70, 30, 200, 30);
-        playerName.setBounds(70, 100, 60, 30);
+        DBTextField playerName= new DBTextField(1,270, 100, 60, 30);
+        DBLabel playerQuestion= new DBLabel("PLAYER'S NAME",200, 30, 200, 30);
 
-        //playerName.setBorder(null);
-        //playerName.setOpaque(false);
-
-        List<String> playerList= new ArrayList<>(nPlayers);
         backgroundPanel.add(playerQuestion);
         backgroundPanel.add(playerName);
 
-
+        List<String> playerList= new ArrayList<>(nPlayers);
 
         playerName.addActionListener(x ->
         {
