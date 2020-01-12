@@ -11,6 +11,9 @@ public class GridFrame extends Frame{
     private Integer rows;
     private Integer cols;
 
+    private boolean rowInput;
+    private boolean colInput;
+
     public GridFrame(){
         super();
     }
@@ -38,15 +41,18 @@ public class GridFrame extends Frame{
             rowButton.addActionListener(x ->
             {
                 rows=rowButton.number;
+                rowInput=true;
                 for (NumRadioButton  rButton : rowsButtons){
                     if(!rButton.equals(rowButton) & rButton.isSelected()){
                         rButton.setSelected(false);
+
                     }
                 }
             });
             colButton.addActionListener(x ->
             {
                 cols=colButton.number;
+                colInput=true;
                 for (NumRadioButton  cButton : colsButtons){
                     if(!cButton.equals(colButton) & cButton.isSelected()){
                         cButton.setSelected(false);
@@ -71,8 +77,9 @@ public class GridFrame extends Frame{
 
         updatePanel(backgroundPanel);
 
-
-        waitInput();
+        while (!rowInput || !colInput) {
+            waitInput();
+        }
 
         dimensions.add(rows+1);
         dimensions.add(cols+1);

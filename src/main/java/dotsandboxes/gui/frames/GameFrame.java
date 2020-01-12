@@ -39,7 +39,7 @@ public class GameFrame extends Frame {
         componentSetter.playersLabels(this,game.getPlayers(), backgroundPanel);
         componentSetter.endResetButtons(this,backgroundPanel);
 
-        currentPlayerLabel = new DBLabel("",230, 10, 200, 30);
+        currentPlayerLabel = new DBLabel("",180, 10, 250, 30);
         backgroundPanel.add(currentPlayerLabel);
 
         componentSetter.lines(this, backgroundPanel);

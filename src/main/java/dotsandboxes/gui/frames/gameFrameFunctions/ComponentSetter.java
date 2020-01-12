@@ -59,17 +59,17 @@ public class ComponentSetter{
 
     public void playersLabels(GameFrame gameFrame,List<Player>  players, BackgroundPanel backgroundPanel){
 
+        Integer yOffset=40;
 
-        DBLabel score= new DBLabel("SCORE",10, 5, 100, 30);
+        DBLabel score= new DBLabel("SCORE",10, yOffset, 100, 30);
         backgroundPanel.add(score);
 
-        Integer yOffset=40;
-        for (int i=0; i<players.size(); i++) {
 
+        for (int i=0; i<players.size(); i++) {
+            yOffset+=40;
             DBLabel label= new DBLabel(players.get(i).getName(),10, yOffset, 100, 30);
             gameFrame.getLabels().add(label);
             backgroundPanel.add(label);
-            yOffset+=40;
         }
     }
 
