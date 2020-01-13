@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EndFrame extends Frame{
-    public EndFrame(){
-        super();
+    public EndFrame(BackgroundPanel bP){
+
+        super(bP);
     }
 
-    public void printWinner( BackgroundPanel backgroundPanel, Game game){
+    public void printWinner(Game game){
 
 
         List<Player> winners = game.getWinner();

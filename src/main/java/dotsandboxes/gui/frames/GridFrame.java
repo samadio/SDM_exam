@@ -8,21 +8,18 @@ import java.util.List;
 
 public class GridFrame extends Frame{
 
+    List<Integer> dimensions;
     private Integer rows;
     private Integer cols;
 
     private boolean rowInput;
     private boolean colInput;
 
-    public GridFrame(){
-        super();
-    }
+    public GridFrame(BackgroundPanel bP){
 
-    public List<Integer> setFrame(BackgroundPanel backgroundPanel) {
+        super(bP);
+        dimensions=new ArrayList<>(2);
 
-        List<Integer> dimensions=new ArrayList<>(2);
-
-        GridFrame frame= new GridFrame();
         DBLabel playerQuestion= new DBLabel("GRID DIMENSIONS",225, 30, 150, 30);
 
         backgroundPanel.add(playerQuestion);
@@ -73,11 +70,16 @@ public class GridFrame extends Frame{
         button.addActionListener(x ->
         {
             inputGiven=true;
-            button.setDark();
+            if(rowInput & colInput) button.setDark();
         });
         backgroundPanel.add(button);
 
         updatePanel(backgroundPanel);
+    }
+
+
+
+    public List<Integer> getInput() {
 
         while (!rowInput || !colInput) {
             waitInput();

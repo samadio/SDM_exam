@@ -10,12 +10,14 @@ import java.util.List;
 public class PlayersNameFrame extends Frame {
 
     private String name;
+    Integer nPlayers;
+    List<String> playerList;
 
-    public PlayersNameFrame(){
-        super();
-    }
+    public PlayersNameFrame(BackgroundPanel bP, Integer nP){
 
-    public  List<String> setFrame(BackgroundPanel backgroundPanel,Integer nPlayers) {
+        super(bP);
+        nPlayers= nP;
+        playerList= new ArrayList<>(nPlayers);
 
         DBTextField playerName= new DBTextField(1,270, 100, 60, 30);
         DBLabel playerQuestion= new DBLabel("PLAYER'S NAME",200, 30, 200, 30);
@@ -23,7 +25,6 @@ public class PlayersNameFrame extends Frame {
         backgroundPanel.add(playerQuestion);
         backgroundPanel.add(playerName);
 
-        List<String> playerList= new ArrayList<>(nPlayers);
 
         playerName.addActionListener(x ->
         {
@@ -33,7 +34,11 @@ public class PlayersNameFrame extends Frame {
         });
 
         updatePanel(backgroundPanel);
+    }
 
+
+
+    public  List<String> getInput() {
 
         for (int i=0; i<nPlayers; i++) {
 
