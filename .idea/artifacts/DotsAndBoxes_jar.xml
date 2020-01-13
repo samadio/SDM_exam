@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DotsAndBoxes:jar">
+    <output-path>$PROJECT_DIR$/../..</output-path>
+    <root id="archive" name="DotsAndBoxes.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../../META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="DotsAndBoxes.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.5.2/d5697f6ebe0b4d08c0210b5b98b4e1a40f40dfc6/junit-platform-engine-1.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/2.2/3f2bd07716a31c395e2837254f37f21f0f0ab24b/hamcrest-core-2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.0/fc9dff4bb36d627bdc553de77e1f17efd790876c/apiguardian-api-1.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.5.2/9703df63b65d415b2a027d43ce908c625b3aedce/junit-platform-commons-1.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/2.2/cf530c8a0bc993487c64e940ae639bb4a6104dc6/hamcrest-library-2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.5.2/6393db7e4c0265152d8fc4ff146633d1a7d36c47/junit-jupiter-api-5.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.2/1820c0968dba3a11a1b30669bb1f01978a91dedc/hamcrest-2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.5.2/f597408bde45371548f9e9791da7981a1134328d/junit-jupiter-engine-5.5.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

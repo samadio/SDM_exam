@@ -3,10 +3,13 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 
 public class Frame {
-    protected Integer numPlayers;
+
+    protected BackgroundPanel backgroundPanel;
     public boolean inputGiven;
 
-    public Frame() {}
+    public Frame(BackgroundPanel bP) {
+        backgroundPanel=bP;
+    }
 
 
     protected   void waitInput() {

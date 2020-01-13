@@ -10,20 +10,19 @@ import java.util.List;
 
 public class PlayersNumberFrame extends Frame{
 
+    Integer numPlayers;
+    List<NumButton> buttons;
 
-    public PlayersNumberFrame(){
-        super();
-    }
 
-    public Integer setFrame(BackgroundPanel backgroundPanel){
+    public PlayersNumberFrame(BackgroundPanel bP){
 
-        PlayersNumberFrame frame= new PlayersNumberFrame();
+        super(bP);
 
         DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",200, 30, 200, 30);
 
         backgroundPanel.add(playerQuestion);
 
-        List<NumButton> buttons= new ArrayList<>(3);
+        buttons= new ArrayList<>(3);
         Integer yOffset = 100;
 
         for (int i=2; i<5; i++) {
@@ -41,7 +40,9 @@ public class PlayersNumberFrame extends Frame{
 
 
         updatePanel(backgroundPanel);
+    }
 
+    public Integer getInput(){
 
         waitInput();
 

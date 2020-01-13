@@ -3,16 +3,22 @@ package dotsandboxes.gui;
 
 import dotsandboxes.gui.frames.*;
 import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.lists.LabelsList;
+import dotsandboxes.gui.graphics.lists.LinesList;
+import dotsandboxes.gui.graphics.specifics.GridSpecifics;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.board.AbstractBoard;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
+import gamesuite.players.Player;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,10 +31,10 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     public DotsAndBoxesGui(){
         super();
-        backgroundPanelInit();
+        backgroundPanellInit();
     }
 
-    private void backgroundPanelInit(){
+    private void backgroundPanellInit(){
 
         backgroundPanel = new BackgroundPanel();
         backgroundPanel.setLayout(null);
@@ -39,10 +45,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
         this.add(backgroundPanel);
 
     }
-
-
-    @Override
-    public String readInput() {return null;}
 
 
     @Override
@@ -63,9 +65,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
         this.setVisible(true);
 
-        PlayersNumberFrame PNFrame=new PlayersNumberFrame();
-
-        return PNFrame.setFrame(backgroundPanel);
+        PlayersNumberFrame PNFrame=new PlayersNumberFrame(backgroundPanel);
+        Integer numPlayers=PNFrame.getInput();
+        return numPlayers;
     }
 
 
@@ -73,7 +75,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public List<Integer> getGridDimensions() {
 
         GridFrame gridFrame=new GridFrame();
-        return gridFrame.setFrame(backgroundPanel);
+        List<Integer> gridDimensions= gridFrame.setFrame(backgroundPanel);
+        return gridDimensions;
     }
 
     @Override
@@ -84,9 +87,20 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public List<String> getPlayersName(Integer nPlayers) {
 
-        PlayersNameFrame playersNameFrame= new PlayersNameFrame();
-        return playersNameFrame.setFrame(backgroundPanel,nPlayers);
+        PlayersNameFrame playersNameFrame= new PlayersNameFrame(backgroundPanel,nPlayers);
+        List<String> playersNames=playersNameFrame.getInput();
+        return  playersNames;
     }
+
+
+    @Override
+    public List<Integer> getGridDimensions() {
+
+        GridFrame gridFrame=new GridFrame(backgroundPanel);
+        List<Integer> gridDimensions= gridFrame.getInput();
+        return gridDimensions;
+    }
+
 
 
     @Override
@@ -99,22 +113,24 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void printGame(Game game) {
 
-        gameFrame.updateFrame(backgroundPanel,game);
+        gameFrame.updateFrame(game);
 
     }
 
      @Override
      public void resetGame(Game game) {
-        gameFrame.resetFrame(backgroundPanel);
+        gameFrame.resetFrame();
         this.startGame(game);
         this.printGame(game);
      }
 
 
     @Override
-    public void printInvalidMove(InvalidMoveException e) {
-
+    public void printWinner(Game game, boolean gameManuallyEnded) {
+        EndFrame endFrame=new EndFrame(backgroundPanel);
+        endFrame.printWinner(game);
     }
+
 
     @Override
     public void outputPrintln(String message) {
@@ -122,28 +138,23 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
     @Override
-    public void errorPrintln(String s) {
-
-    }
+    public void printInvalidMove(InvalidMoveException e) {}
 
     @Override
-    public void outputPrint(String s) {
-        System.out.print(s);
-    }
+    public void outputPrintln(String message) {}
 
     @Override
-    public void errorPrint(String s) {
-
-    }
+    public void errorPrintln(String s) {}
 
     @Override
-    public void printWinner(Game game, boolean gameManuallyEnded) {
-        EndFrame endFrame=new EndFrame();
-        endFrame.printWinner(backgroundPanel, game);
-    }
+    public void outputPrint(String s){}
 
     @Override
-    public void printBoard(AbstractBoard board) {
+    public void errorPrint(String s) {}
 
-    }
+    @Override
+    public String readInput() {return null;}
+
+    @Override
+    public void printBoard(AbstractBoard board) { }
 }

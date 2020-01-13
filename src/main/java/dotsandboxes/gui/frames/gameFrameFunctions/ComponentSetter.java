@@ -101,6 +101,8 @@ public class ComponentSetter{
 
 
 
+
+
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
 
