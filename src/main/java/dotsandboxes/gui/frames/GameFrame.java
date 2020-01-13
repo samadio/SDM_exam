@@ -24,12 +24,9 @@ public class GameFrame extends Frame {
     private Integer boxesColumns;
     private boolean[][] boxes;
 
-
-
     public GameFrame(BackgroundPanel bP, Game game) {
 
         super(bP);
-
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
         boxes=new boolean[boxesRows][boxesColumns];
@@ -68,7 +65,7 @@ public class GameFrame extends Frame {
     }
 
 
-    public void updateFrame( Game game) {
+    public void updateFrame(Game game) {
 
         currentPlayerLabel.setText("CURRENT PLAYER:  "+game.nextPlayer().getName());
 
@@ -81,7 +78,7 @@ public class GameFrame extends Frame {
     }
 
 
-    public void resetFrame() {
+    public void resetFrame(BackgroundPanel backgroundPanel) {
 
         boxes=new boolean[boxesRows][boxesColumns];
         clear(backgroundPanel);

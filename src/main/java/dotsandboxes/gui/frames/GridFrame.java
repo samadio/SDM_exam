@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GridFrame extends Frame{
 
-    private List<Integer> dimensions;
+    List<Integer> dimensions;
     private Integer rows;
     private Integer cols;
 
@@ -18,8 +18,8 @@ public class GridFrame extends Frame{
     public GridFrame(BackgroundPanel bP){
 
         super(bP);
-
         dimensions=new ArrayList<>(2);
+
         DBLabel playerQuestion= new DBLabel("GRID DIMENSIONS",225, 30, 150, 30);
 
         backgroundPanel.add(playerQuestion);
@@ -65,6 +65,7 @@ public class GridFrame extends Frame{
         }
 
 
+
         DBButton button=new DBButton("OK",260, 300, 80, 30);
         button.addActionListener(x ->
         {
@@ -78,13 +79,11 @@ public class GridFrame extends Frame{
 
 
 
-
-
     public List<Integer> getInput() {
 
-
-
-        while (!rowInput || !colInput) waitInput();
+        while (!rowInput || !colInput) {
+            waitInput();
+        }
 
         dimensions.add(rows+1);
         dimensions.add(cols+1);

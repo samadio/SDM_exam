@@ -17,7 +17,6 @@ public class PlayersNumberFrame extends Frame{
     public PlayersNumberFrame(BackgroundPanel bP){
 
         super(bP);
-
         DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",200, 30, 200, 30);
 
         backgroundPanel.add(playerQuestion);
@@ -38,11 +37,12 @@ public class PlayersNumberFrame extends Frame{
             buttons.add(button);
         }
 
-
         updatePanel(backgroundPanel);
     }
 
+
     public Integer getInput(){
+
 
         waitInput();
 

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EndFrame extends Frame{
-
     public EndFrame(BackgroundPanel bP){
 
         super(bP);
