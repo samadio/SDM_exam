@@ -3,22 +3,16 @@ package dotsandboxes.gui;
 
 import dotsandboxes.gui.frames.*;
 import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.graphics.lists.LabelsList;
-import dotsandboxes.gui.graphics.lists.LinesList;
-import dotsandboxes.gui.graphics.specifics.GridSpecifics;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.board.AbstractBoard;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
-import gamesuite.players.Player;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
