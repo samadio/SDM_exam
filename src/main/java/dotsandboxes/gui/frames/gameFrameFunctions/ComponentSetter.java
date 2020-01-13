@@ -5,6 +5,7 @@ import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBButton;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.Line;
+import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
@@ -74,6 +75,12 @@ public class ComponentSetter{
     }
 
 
+    public void currentPlayerLabel(BackgroundPanel backgroundPanel,DBLabel currentPlayerLabel) {
+        currentPlayerLabel.setLabelProperties("",180, 10, 250, 30);
+        backgroundPanel.add(currentPlayerLabel);
+    }
+
+
 
     public void endResetButtons(GameFrame gameFrame, BackgroundPanel backgroundPanel){
         DBButton endGameButton = new DBButton("END GAME",470, 290, 120, 30);
@@ -135,6 +142,13 @@ public class ComponentSetter{
 
         SetElementsInGrid.setDots(dotsSpec, dotsGridSpec, backgroundPanel);
 
+    }
+
+
+    public void setScores(Game game, LabelsList labels) {
+        for (int i = 0; i < labels.size(); i++) {
+            labels.get(i).setText(game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
+        }
     }
 
 

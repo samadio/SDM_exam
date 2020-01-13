@@ -29,6 +29,7 @@ public class GameFrame extends Frame {
         super(bP);
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
+        currentPlayerLabel = new DBLabel();
         boxes=new boolean[boxesRows][boxesColumns];
         endGame = false;
         reset = false;
@@ -38,9 +39,7 @@ public class GameFrame extends Frame {
 
         componentSetter.playersLabels(this,game.getPlayers(), backgroundPanel);
         componentSetter.endResetButtons(this,backgroundPanel);
-
-        currentPlayerLabel = new DBLabel("",180, 10, 250, 30);
-        backgroundPanel.add(currentPlayerLabel);
+        componentSetter.currentPlayerLabel(backgroundPanel,currentPlayerLabel);
 
         componentSetter.lines(this, backgroundPanel);
 
@@ -69,9 +68,7 @@ public class GameFrame extends Frame {
 
         currentPlayerLabel.setText("CURRENT PLAYER:  "+game.nextPlayer().getName());
 
-        for (int i = 0; i < labels.size(); i++) {
-            labels.get(i).setText(game.getPlayers().get(i).getName() + "   " + game.getScore().get(game.getPlayers().get(i)));
-        }
+        componentSetter.setScores(game, labels);
 
         componentSetter.addBox(game,this,backgroundPanel);
         updatePanel(backgroundPanel);
