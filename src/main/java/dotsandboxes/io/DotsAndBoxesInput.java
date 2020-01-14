@@ -52,7 +52,7 @@ public class DotsAndBoxesInput implements InputManager {
     }
 
 
-    @Override
+
     public void readMove() throws EndGameException, ResetGameException {
 
         if (!settedConverter)
@@ -86,7 +86,10 @@ public class DotsAndBoxesInput implements InputManager {
     }
 
     @Override
-    public Move getMove() { return this.currentMove; }
+    public Move getMove() throws EndGameException, ResetGameException{
+        readMove();
+        return this.currentMove;
+    }
 
     @Override
     public List<Integer> getGridDimensions() {

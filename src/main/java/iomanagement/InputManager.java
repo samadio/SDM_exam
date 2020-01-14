@@ -12,9 +12,7 @@ public interface InputManager {
 
     public abstract String readInput();
 
-    public abstract void readMove() throws EndGameException, ResetGameException;
-
-    public abstract Move getMove();
+    public abstract Move getMove() throws EndGameException, ResetGameException;
 
     public abstract Integer getPlayersNumber();
 

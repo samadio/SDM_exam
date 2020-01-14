@@ -31,33 +31,23 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private void backgroundPanelInit(){
 
         backgroundPanel = new BackgroundPanel();
-        backgroundPanel.setLayout(null);
         this.setTitle("DOTS AND BOXES");
         this.setSize(600, 400);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(backgroundPanel);
+        this.setVisible(true);
 
     }
 
 
-
-
-
     @Override
-    public void readMove() throws EndGameException, ResetGameException {
-        gameFrame.readMove();
-    }
-
-    @Override
-    public Move getMove() {
+    public Move getMove() throws EndGameException, ResetGameException{
         return gameFrame.getMove();
     }
 
     @Override
     public Integer getPlayersNumber() {
-
-        this.setVisible(true);
 
         PlayersNumberFrame PNFrame=new PlayersNumberFrame(backgroundPanel);
         Integer numPlayers=PNFrame.getInput();

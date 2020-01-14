@@ -39,8 +39,7 @@ public class Game {
 
                 try {
                     boolean invalidMove = true;
-                    //queste due linee sono ridondanti
-                    iManager.readMove();
+
                     Move m = iManager.getMove();
 
                     while (invalidMove) {
@@ -49,7 +48,7 @@ public class Game {
                             invalidMove = false;
                         } catch (InvalidMoveException e) {
                             oManager.printInvalidMove(e);
-                            iManager.readMove();
+
                             m = iManager.getMove();
                         }
                     }

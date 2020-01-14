@@ -59,14 +59,15 @@ public class GameFrame extends Frame {
     public boolean[][] getBoxes() {return boxes;}
     public LabelsList getLabels() {return labels;}
     public boolean getReset() {return reset;}
-    public Move getMove() {return currentMove;}
 
 
-    public void readMove() throws EndGameException, ResetGameException {
+    public Move getMove() throws EndGameException, ResetGameException {
         waitInput();
         if(endGame==true) throw new EndGameException();
         if(reset==true) throw new ResetGameException();
+        return currentMove;
     }
+
 
 
     public void updateFrame(Game game) {
