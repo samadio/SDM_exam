@@ -39,6 +39,7 @@ public class Game {
 
                 try {
                     boolean invalidMove = true;
+                    //queste due linee sono ridondanti
                     iManager.readMove();
                     Move m = iManager.getMove();
 

@@ -10,7 +10,7 @@ import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 public class SetElementsInGrid {
 
-    public static LinesList setGrid(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
+    public static LinesList setLines(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
 
         LinesList lines= new LinesList();
         for (int i = 0; i < gridSpec.rows; i++) {

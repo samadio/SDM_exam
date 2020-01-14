@@ -1,10 +1,7 @@
 package dotsandboxes.gui.frames.gameFrameFunctions;
 
 import dotsandboxes.gui.frames.GameFrame;
-import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.DBButton;
-import dotsandboxes.gui.graphics.DBLabel;
-import dotsandboxes.gui.graphics.Line;
+import dotsandboxes.gui.graphics.*;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
@@ -13,8 +10,6 @@ import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
-
-import javax.swing.*;
 import java.util.List;
 
 public class ComponentSetter{
@@ -113,16 +108,16 @@ public class ComponentSetter{
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
 
-        LinesList horizontalLines = SetElementsInGrid.setGrid(horizontalLinesSpec, horizontalGridSpec, backgroundPanel);
-        LinesList verticalLines = SetElementsInGrid.setGrid(verticalLinesSpec, verticalGridSpec, backgroundPanel);
+        LinesList horizontalLines = SetElementsInGrid.setLines(horizontalLinesSpec, horizontalGridSpec, backgroundPanel);
+        LinesList verticalLines = SetElementsInGrid.setLines(verticalLinesSpec, verticalGridSpec, backgroundPanel);
+
+        gameFrame.grid.setGrid(horizontalLines,verticalLines);
 
         for (Line l : horizontalLines) {
             l.addActionListener(x ->
             {
                 gameFrame.currentMove = new Move(Move.Which.HORIZONTAL, l.getRow(), l.getColumn());
                 gameFrame.inputGiven = true;
-                ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(), l.getLineH(), l.getLineHints()));
-                l.setIcon(imageIcon);
             });
         }
 
@@ -131,8 +126,6 @@ public class ComponentSetter{
             {
                 gameFrame.currentMove = new Move(Move.Which.VERTICAL, l.getRow(), l.getColumn());
                 gameFrame.inputGiven = true;
-                ImageIcon imageIcon = new ImageIcon(new ImageIcon(l.newFileName()).getImage().getScaledInstance(l.getLineW(), l.getLineH(), l.getLineHints()));
-                l.setIcon(imageIcon);
             });
         }
     }
@@ -142,6 +135,11 @@ public class ComponentSetter{
 
         SetElementsInGrid.setDots(dotsSpec, dotsGridSpec, backgroundPanel);
 
+    }
+
+
+    public void updateCurrentPlayer(Game game, DBLabel currentPlayerLabel){
+        currentPlayerLabel.setText("CURRENT PLAYER:  "+game.nextPlayer().getName());
     }
 
 
@@ -170,4 +168,13 @@ public class ComponentSetter{
         }
     }
 
+    public void paintLine(Move currentMove, GameFrame gameFrame) {
+
+        if(currentMove.getLineKind()== Move.Which.HORIZONTAL){
+            gameFrame.grid.horizontalLines.get(currentMove.getRow()*gameFrame.getBoxesColumns()+currentMove.getCol()).setDark();
+        }
+        else{
+            gameFrame.grid.verticalLines.get(currentMove.getRow()*(gameFrame.getBoxesColumns()+1)+currentMove.getCol()).setDark();
+        }
+    }
 }

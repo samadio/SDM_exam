@@ -4,6 +4,7 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.frames.gameFrameFunctions.ComponentSetter;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
+import dotsandboxes.gui.graphics.Grid;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
@@ -23,10 +24,12 @@ public class GameFrame extends Frame {
     private Integer boxesRows;
     private Integer boxesColumns;
     private boolean[][] boxes;
+    public Grid grid;
 
     public GameFrame(BackgroundPanel bP, Game game) {
 
         super(bP);
+        grid=new Grid();
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
         currentPlayerLabel = new DBLabel();
@@ -38,7 +41,9 @@ public class GameFrame extends Frame {
         componentSetter= new ComponentSetter(boxesRows,boxesColumns);
 
         componentSetter.playersLabels(this,game.getPlayers(), backgroundPanel);
+
         componentSetter.endResetButtons(this,backgroundPanel);
+
         componentSetter.currentPlayerLabel(backgroundPanel,currentPlayerLabel);
 
         componentSetter.lines(this, backgroundPanel);
@@ -66,12 +71,16 @@ public class GameFrame extends Frame {
 
     public void updateFrame(Game game) {
 
-        currentPlayerLabel.setText("CURRENT PLAYER:  "+game.nextPlayer().getName());
+        componentSetter.updateCurrentPlayer(game, currentPlayerLabel);
+
+        if(currentMove!=null) componentSetter.paintLine(currentMove,this);
 
         componentSetter.setScores(game, labels);
 
         componentSetter.addBox(game,this,backgroundPanel);
+
         updatePanel(backgroundPanel);
+
     }
 
 

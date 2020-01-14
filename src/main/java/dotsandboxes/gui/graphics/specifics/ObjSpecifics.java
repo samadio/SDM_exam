@@ -1,7 +1,5 @@
 package dotsandboxes.gui.graphics.specifics;
 
-import gamesuite.move.Move;
-
 public class ObjSpecifics {
     public String fileName;
     public String fileName2;

@@ -22,9 +22,7 @@ public class GraphicObj extends JButton {
 
     }
 
-    public void setButtonProperties(int x, int y, int w, int h){this.setBounds(x,y,w,h);}
-
-
+    public void setButtonProperties(int x, int y, int w, int h)  {this.setBounds(x,y,w,h);}
 
 }
 
