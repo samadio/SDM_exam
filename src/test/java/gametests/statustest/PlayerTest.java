@@ -31,4 +31,23 @@ class PlayerTest {
         assertEquals("Simone" , p2.getName());
         assertEquals("Andrea" , p3.getName());
     }
+
+    @Test
+    void repeatedNameTest() {
+
+        PlayersFactory pFactory = new PlayersFactory();
+        Player p1 = pFactory.newPlayer("Federico");
+        Player p2 = pFactory.newPlayer("Simone");
+        Player p3 = pFactory.newPlayer("Andrea");
+        Player p4 = pFactory.newPlayer("Andrea");
+
+
+        assertEquals("Federico" , p1.getName());
+        assertEquals("Simone" , p2.getName());
+        assertEquals("Andrea" , p3.getName());
+        assertEquals("Andrea 2" , p4.getName());
+
+    }
+
+
 }
