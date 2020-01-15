@@ -1,27 +1,23 @@
 package gamesuite.players;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class PlayersFactory {
 
-    private Integer numberOfPlayers = 1;
-    private NamesOccurrencies names= new NamesOccurrencies();
+    private Integer numberOfPlayers = 0;
+    private ArrayList<String> usedNames= new ArrayList<>();
 
-    public Player newPlayer(String name){
-        numberOfPlayers++;
-
-        if (names.containsKey(name)){
-            Integer newValue= names.get(name)+1;
-            names.replace(name,newValue);
-            name+=" "+newValue.toString();
-        }
-        else names.put(name,1);
+    public Player newPlayer(String name) throws NameAlreadyUsedException {
+        if(usedNames.contains(name)) throw new NameAlreadyUsedException();
+        numberOfPlayers+=1;
+        usedNames.add(name);
         return new Player(name);
     }
 
-    public Player newPlayer(){
-        return new Player((numberOfPlayers++).toString());
+    public Player newPlayer() throws NameAlreadyUsedException {
+        if(usedNames.contains(String.valueOf(numberOfPlayers+1))) throw new NameAlreadyUsedException();
+        numberOfPlayers+=1;
+        usedNames.add(String.valueOf(numberOfPlayers));
+        return new Player((numberOfPlayers).toString());
     }
 }
-
-class NamesOccurrencies extends HashMap<String, Integer>{}

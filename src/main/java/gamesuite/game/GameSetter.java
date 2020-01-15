@@ -2,6 +2,7 @@ package gamesuite.game;
 
 import gamesuite.board.BoardManager;
 import gamesuite.move.MoveValidator;
+import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
 import gamesuite.status.GameStatus;
@@ -48,19 +49,34 @@ public abstract class GameSetter {
 
         boolean custom = iManager.customPlayers(); //do you want to customize Players name? Yes=True
         if (custom) {
-
-            for (int i = 0; i < nPlayers ; i++) {
+            int idx=0;
+            while(idx < nPlayers) {
 
                 String name = iManager.getPlayerName();
-                if (name.isEmpty())
-                    players.add(i, playerGenerator.newPlayer());
-                else
-                    players.add(i, playerGenerator.newPlayer(name));
+                try {
+                    if (name.isEmpty()) {
+                        players.add(idx, playerGenerator.newPlayer());
+                        idx++;
+                    }
+                    else {
+                        players.add(idx, playerGenerator.newPlayer(name));
+                        idx++;
+                    }
+                }catch(NameAlreadyUsedException e){
+                    oManager.errorPrintln("Please specify a name or select a different one");
+                }
             }
         }
         else{
-            for(int i=0;i<nPlayers;i++) {
-                players.add(i, playerGenerator.newPlayer());
+            int idx=0;
+            while(idx<nPlayers) {
+                try {
+                    players.add(idx, playerGenerator.newPlayer());
+                    idx++;
+                } catch (NameAlreadyUsedException e) {
+                    oManager.errorPrintln("PlayersFactory.newPlayer() produces same Players?");
+                    System.exit(1);
+                }
             }
         }
 

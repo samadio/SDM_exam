@@ -1,5 +1,6 @@
 package gametests.statustest;
 
+import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,21 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
 
     @Test
-    void defaultNameTest() {
+    void noExceptionThrown(){
+        PlayersFactory pFactory = new PlayersFactory();
+        assertDoesNotThrow(()->pFactory.newPlayer());
+        assertDoesNotThrow(()->pFactory.newPlayer("Pluto"));
+    }
+
+    @Test
+    void ExceptionThrown(){
+        PlayersFactory pFactory = new PlayersFactory();
+        assertDoesNotThrow(()->pFactory.newPlayer("Pippo"));
+        assertThrows(NameAlreadyUsedException.class,()->pFactory.newPlayer("Pippo"));
+    }
+
+    @Test
+    void defaultNameTest() throws NameAlreadyUsedException {
 
         PlayersFactory pFactory = new PlayersFactory();
         Player p1 = pFactory.newPlayer();
@@ -20,7 +35,7 @@ class PlayerTest {
     }
 
     @Test
-    void customNameTest() {
+    void customNameTest() throws NameAlreadyUsedException {
 
         PlayersFactory pFactory = new PlayersFactory();
         Player p1 = pFactory.newPlayer("Federico");
@@ -31,23 +46,5 @@ class PlayerTest {
         assertEquals("Simone" , p2.getName());
         assertEquals("Andrea" , p3.getName());
     }
-
-    @Test
-    void repeatedNameTest() {
-
-        PlayersFactory pFactory = new PlayersFactory();
-        Player p1 = pFactory.newPlayer("Federico");
-        Player p2 = pFactory.newPlayer("Simone");
-        Player p3 = pFactory.newPlayer("Andrea");
-        Player p4 = pFactory.newPlayer("Andrea");
-
-
-        assertEquals("Federico" , p1.getName());
-        assertEquals("Simone" , p2.getName());
-        assertEquals("Andrea" , p3.getName());
-        assertEquals("Andrea 2" , p4.getName());
-
-    }
-
 
 }
