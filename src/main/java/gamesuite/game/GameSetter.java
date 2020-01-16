@@ -12,6 +12,7 @@ import iomanagement.OutputManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public abstract class GameSetter {
 
@@ -71,11 +72,7 @@ public abstract class GameSetter {
                 }
             }
         }
-        else{
-            for (int i=0;i<nPlayers;i++){
-                players.add(i, playerGenerator.newPlayer());
-            }
-        }
+        else  IntStream.range(0, nPlayers).forEach(x -> players.add(playerGenerator.newPlayer()));
 
         return players;
     }
