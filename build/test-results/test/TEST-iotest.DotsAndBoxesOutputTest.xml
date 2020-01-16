@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-16T07:10:39" hostname="machine770" time="0.063">
+<testsuite name="iotest.DotsAndBoxesOutputTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:01:39" hostname="machine770" time="0.048">
   <properties/>
-  <testcase name="seeOutputTest()" classname="iotest.DotsAndBoxesOutputTest" time="0.063"/>
+  <testcase name="seeOutputTest()" classname="iotest.DotsAndBoxesOutputTest" time="0.048"/>
   <system-out><![CDATA[00——01  02  03
                 
 04  05  06  07

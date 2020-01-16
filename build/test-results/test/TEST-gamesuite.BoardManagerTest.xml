@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gamesuite.BoardManagerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-16T07:10:39" hostname="machine770" time="0.002">
+<testsuite name="gamesuite.BoardManagerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:01:39" hostname="machine770" time="0.002">
   <properties/>
   <testcase name="rowAndColLengthTest()" classname="gamesuite.BoardManagerTest" time="0.0"/>
   <testcase name="moveDoneTest()" classname="gamesuite.BoardManagerTest" time="0.001"/>
