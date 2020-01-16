@@ -100,7 +100,6 @@ public class DotsAndBoxesInput extends InputManager {
 
     @Override
     public List<Integer> getGridDimensions() {
-
         List<Integer> dimensions=takeGridDimensions();
         setConverter(dimensions.get(1));
         return dimensions;
