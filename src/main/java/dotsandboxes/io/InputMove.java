@@ -4,17 +4,15 @@ public class InputMove {
 
         public enum Direction{RIGHT,DOWN,UP,LEFT}
 
-        private Integer node;
-        private Direction direction;
+        private final Integer NODE;
+        private final Direction DIRECTION;
 
-        public InputMove(Integer i,Direction d){
-            this.node=i;
-            this.direction=d;
+        public InputMove(Integer nodeNumber,Direction direction){
+            this.NODE = nodeNumber;
+            this.DIRECTION = direction;
         }
 
-        public Integer getNode(){ return this.node;}
+        public Integer getNode(){ return this.NODE;}
 
-        public Direction getDirection(){return this.direction;}
-
-
+        public Direction getDirection(){return this.DIRECTION;}
 }
