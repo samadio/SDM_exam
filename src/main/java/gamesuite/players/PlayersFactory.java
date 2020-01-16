@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class PlayersFactory {
 
-    private Integer numberOfPlayers = 0;
+    private Integer numberOfPlayers = 1;
     private ArrayList<String> usedNames= new ArrayList<>();
 
-    public Player newPlayer(String name) throws NameAlreadyUsedException {
+
+    public Player newPlayer(String name) throws NameAlreadyUsedException, ReservedNameException {
         if(usedNames.contains(name)) throw new NameAlreadyUsedException();
-        numberOfPlayers+=1;
+        boolean isNumeric = name.trim().chars().allMatch( Character::isDigit );
+        if(isNumeric) throw new ReservedNameException();
+        numberOfPlayers++;
         usedNames.add(name);
         return new Player(name);
     }
 
-    public Player newPlayer() throws NameAlreadyUsedException {
-        if(usedNames.contains(String.valueOf(numberOfPlayers+1))) throw new NameAlreadyUsedException();
-        numberOfPlayers+=1;
-        usedNames.add(String.valueOf(numberOfPlayers));
-        return new Player((numberOfPlayers).toString());
+    public Player newPlayer() {
+        return new Player((numberOfPlayers++).toString());
     }
 }

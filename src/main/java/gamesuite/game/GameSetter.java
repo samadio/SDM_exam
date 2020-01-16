@@ -5,13 +5,13 @@ import gamesuite.move.MoveValidator;
 import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
+import gamesuite.players.ReservedNameException;
 import gamesuite.status.GameStatus;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.DataFormatException;
 
 public abstract class GameSetter {
 
@@ -55,6 +55,7 @@ public abstract class GameSetter {
                 String name = iManager.getPlayerName();
                 try {
                     if (name.isEmpty()) {
+                        oManager.outputPrintln("You were assigned the name: "+(idx+1));
                         players.add(idx, playerGenerator.newPlayer());
                         idx++;
                     }
@@ -63,20 +64,16 @@ public abstract class GameSetter {
                         idx++;
                     }
                 }catch(NameAlreadyUsedException e){
-                    oManager.errorPrintln("Please specify a name or select a different one");
+                    oManager.errorPrintln("Error: name already taken. Please select a different one");
+                }
+                catch (ReservedNameException e){
+                    oManager.errorPrintln("Error: Integer numbers cannot be chosen as names");
                 }
             }
         }
         else{
-            int idx=0;
-            while(idx<nPlayers) {
-                try {
-                    players.add(idx, playerGenerator.newPlayer());
-                    idx++;
-                } catch (NameAlreadyUsedException e) {
-                    oManager.errorPrintln("PlayersFactory.newPlayer() produces same Players?");
-                    System.exit(1);
-                }
+            for (int i=0;i<nPlayers;i++){
+                players.add(i, playerGenerator.newPlayer());
             }
         }
 

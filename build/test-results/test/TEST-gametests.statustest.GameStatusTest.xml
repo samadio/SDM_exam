@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gametests.statustest.GameStatusTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-01-09T10:22:46" hostname="simonovo" time="0.131">
+<testsuite name="gametests.statustest.GameStatusTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:19:43" hostname="simonovo" time="0.08">
   <properties/>
-  <testcase name="gameTest()" classname="gametests.statustest.GameStatusTest" time="0.043"/>
-  <testcase name="pointNotAssigned()" classname="gametests.statustest.GameStatusTest" time="0.016"/>
-  <testcase name="finishedAtEnd()" classname="gametests.statustest.GameStatusTest" time="0.012"/>
+  <testcase name="gameTest()" classname="gametests.statustest.GameStatusTest" time="0.035"/>
+  <testcase name="pointNotAssigned()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
+  <testcase name="finishedAtEnd()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
   <testcase name="pointAssigned()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
-  <testcase name="notFinishedAtStart()" classname="gametests.statustest.GameStatusTest" time="0.004"/>
-  <testcase name="notFinishedAfterOneMove()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
-  <testcase name="singleWinnerTest()" classname="gametests.statustest.GameStatusTest" time="0.008"/>
-  <testcase name="playerChangesAfterNoPoint()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
-  <testcase name="twoWinnersTest()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
+  <testcase name="notFinishedAtStart()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
+  <testcase name="notFinishedAfterOneMove()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
+  <testcase name="singleWinnerTest()" classname="gametests.statustest.GameStatusTest" time="0.005"/>
+  <testcase name="playerChangesAfterNoPoint()" classname="gametests.statustest.GameStatusTest" time="0.001"/>
+  <testcase name="twoWinnersTest()" classname="gametests.statustest.GameStatusTest" time="0.004"/>
   <testcase name="initialPlayerAfterTwoNoPoints()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
-  <testcase name="playerNotChangedAfterPoint()" classname="gametests.statustest.GameStatusTest" time="0.002"/>
-  <testcase name="resetTest()" classname="gametests.statustest.GameStatusTest" time="0.008"/>
+  <testcase name="playerNotChangedAfterPoint()" classname="gametests.statustest.GameStatusTest" time="0.004"/>
+  <testcase name="resetTest()" classname="gametests.statustest.GameStatusTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

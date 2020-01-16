@@ -3,6 +3,7 @@ package gametests.statustest;
 import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
+import gamesuite.players.ReservedNameException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,18 +14,19 @@ class PlayerTest {
     void noExceptionThrown(){
         PlayersFactory pFactory = new PlayersFactory();
         assertDoesNotThrow(()->pFactory.newPlayer());
-        assertDoesNotThrow(()->pFactory.newPlayer("Pluto"));
+        assertDoesNotThrow(()->pFactory.newPlayer("Pluto1996"));
     }
 
     @Test
-    void ExceptionThrown(){
+    void ExceptionsThrown(){
         PlayersFactory pFactory = new PlayersFactory();
         assertDoesNotThrow(()->pFactory.newPlayer("Pippo"));
         assertThrows(NameAlreadyUsedException.class,()->pFactory.newPlayer("Pippo"));
+        assertThrows(ReservedNameException.class,()->pFactory.newPlayer(" 10000000 "));
     }
 
     @Test
-    void defaultNameTest() throws NameAlreadyUsedException {
+    void defaultNameTest(){
 
         PlayersFactory pFactory = new PlayersFactory();
         Player p1 = pFactory.newPlayer();
@@ -35,7 +37,7 @@ class PlayerTest {
     }
 
     @Test
-    void customNameTest() throws NameAlreadyUsedException {
+    void customNameTest() throws NameAlreadyUsedException, ReservedNameException {
 
         PlayersFactory pFactory = new PlayersFactory();
         Player p1 = pFactory.newPlayer("Federico");

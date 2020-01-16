@@ -9,6 +9,7 @@ import gamesuite.move.MoveValidator;
 import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
+import gamesuite.players.ReservedNameException;
 import gamesuite.status.GameScore;
 import gamesuite.status.GameStatus;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameStatusTest {
 
     @Test
-    void playerChangesAfterNoPoint() throws NameAlreadyUsedException {
+    void playerChangesAfterNoPoint() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -37,7 +38,7 @@ class GameStatusTest {
     }
 
     @Test
-    void playerNotChangedAfterPoint() throws NameAlreadyUsedException {
+    void playerNotChangedAfterPoint() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -53,7 +54,7 @@ class GameStatusTest {
     }
 
     @Test
-    void initialPlayerAfterTwoNoPoints() throws NameAlreadyUsedException {
+    void initialPlayerAfterTwoNoPoints() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -72,7 +73,7 @@ class GameStatusTest {
     }
 
     @Test
-    void pointAssigned() throws NameAlreadyUsedException {
+    void pointAssigned() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -89,7 +90,7 @@ class GameStatusTest {
     }
 
     @Test
-    void pointNotAssigned() throws NameAlreadyUsedException {
+    void pointNotAssigned() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -106,7 +107,7 @@ class GameStatusTest {
     }
 
     @Test
-    void notFinishedAtStart() throws NameAlreadyUsedException {
+    void notFinishedAtStart() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -120,7 +121,7 @@ class GameStatusTest {
     }
 
     @Test
-    void notFinishedAfterOneMove() throws NameAlreadyUsedException {
+    void notFinishedAfterOneMove() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -136,7 +137,7 @@ class GameStatusTest {
     }
 
     @Test
-    void finishedAtEnd() throws NameAlreadyUsedException {
+    void finishedAtEnd() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -155,7 +156,7 @@ class GameStatusTest {
     }
 
     @Test
-    void gameTest() throws NameAlreadyUsedException {
+    void gameTest() throws NameAlreadyUsedException, ReservedNameException {
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
 
@@ -232,7 +233,7 @@ class GameStatusTest {
     }
 
     @Test
-    void resetTest() throws NameAlreadyUsedException {
+    void resetTest() throws NameAlreadyUsedException, ReservedNameException {
 
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
@@ -252,7 +253,7 @@ class GameStatusTest {
     }
 
     @Test
-    void singleWinnerTest() throws NameAlreadyUsedException {
+    void singleWinnerTest() throws NameAlreadyUsedException, ReservedNameException {
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
@@ -269,7 +270,7 @@ class GameStatusTest {
     }
 
     @Test
-    void twoWinnersTest() throws NameAlreadyUsedException {
+    void twoWinnersTest() throws NameAlreadyUsedException, ReservedNameException {
         Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
