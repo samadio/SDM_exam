@@ -11,7 +11,7 @@ import iomanagement.OutputManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.DataFormatException;
+import java.util.stream.IntStream;
 
 public abstract class GameSetter {
 
@@ -68,6 +68,9 @@ public abstract class GameSetter {
             }
         }
         else{
+
+            // When newPlayer() doesn't throw any exception this does the same in functional style
+            //IntStream.range(0, nPlayers).forEach(x -> players.add(playerGenerator.newPlayer()));
             int idx=0;
             while(idx<nPlayers) {
                 try {
