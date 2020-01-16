@@ -11,9 +11,9 @@ public class Move {
     private final Which LINE_KIND;
     private final MoveCoordinates COORDINATES;
 
-    public Move(Which lk, Integer i,Integer j){
-        this.LINE_KIND= lk;
-        this.COORDINATES = new MoveCoordinates(i, j);
+    public Move(Which lineKind, Integer row,Integer column){
+        this.LINE_KIND = lineKind;
+        this.COORDINATES = new MoveCoordinates(row, column);
     }
 
     public Which getLineKind(){return this.LINE_KIND;}
