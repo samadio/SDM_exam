@@ -39,7 +39,7 @@ public class DotsAndBoxesMoveValidatorTest {
         BoardManager currentBM = new DotsAndBoxesBoardManager(8, 8);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
-        assertFalse(testMoveValidator.outBoardLine(currentMove));
+        assertFalse(testMoveValidator.outOfBoardLine(currentMove));
     }
 
     @Test
@@ -47,11 +47,11 @@ public class DotsAndBoxesMoveValidatorTest {
         BoardManager currentBM = new DotsAndBoxesBoardManager(10, 10);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
-        assertTrue(testMoveValidator.outBoardLine(new Move(Move.Which.HORIZONTAL,10,11)));
-        assertTrue(testMoveValidator.outBoardLine(new Move(Move.Which.VERTICAL, 10,11)));
-        assertTrue(testMoveValidator.outBoardLine(new Move(Move.Which.HORIZONTAL,-1,0)));
-        assertTrue(testMoveValidator.outBoardLine(new Move(Move.Which.HORIZONTAL,3,11)));
-        assertTrue(testMoveValidator.outBoardLine(new Move(Move.Which.VERTICAL, 11,2)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.HORIZONTAL,10,11)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.VERTICAL, 10,11)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.HORIZONTAL,-1,0)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.HORIZONTAL,3,11)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.VERTICAL, 11,2)));
     }
 
     @Test
