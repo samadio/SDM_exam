@@ -6,7 +6,10 @@ import gamesuite.players.Player;
 import gamesuite.status.GameStatus;
 import gamesuite.status.Scorer;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DotsAndBoxesStatus extends GameStatus {
 
@@ -32,6 +35,12 @@ public class DotsAndBoxesStatus extends GameStatus {
     @Override
     protected void updateProgress() {
         remainingMoves--;
+    }
+
+    @Override
+    public List<Player> getWinner() {
+        Integer maxScore = score.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getValue();
+        return score.entrySet().stream().filter(x -> x.getValue().equals(maxScore)).map(Map.Entry::getKey).collect(Collectors.toList());
     }
 
     @Override
