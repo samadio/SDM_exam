@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gamesuite.BoardTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:19:43" hostname="simonovo" time="0.011">
+<testsuite name="gamesuite.BoardTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:01:39" hostname="machine770" time="0.01">
   <properties/>
-  <testcase name="setElementTest()" classname="gamesuite.BoardTest" time="0.003"/>
-  <testcase name="getElementTest()" classname="gamesuite.BoardTest" time="0.001"/>
-  <testcase name="resetTest()" classname="gamesuite.BoardTest" time="0.005"/>
+  <testcase name="setElementTest()" classname="gamesuite.BoardTest" time="0.0"/>
+  <testcase name="getElementTest()" classname="gamesuite.BoardTest" time="0.0"/>
+  <testcase name="resetTest()" classname="gamesuite.BoardTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

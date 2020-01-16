@@ -8,34 +8,46 @@ public class Move {
     public enum Which{HORIZONTAL,VERTICAL}
 
 
-    private Which lineKind;
-    private int row;
-    private int column;
+    private final Which LINE_KIND;
+    private final MoveCoordinates COORDINATES;
 
     public Move(Which lk, Integer i,Integer j){
-        this.lineKind= lk;
-        this.row=i;
-        this.column=j;
+        this.LINE_KIND= lk;
+        this.COORDINATES = new MoveCoordinates(i, j);
     }
 
-    public Which getLineKind(){return this.lineKind;}
-    public Integer getRow(){ return this.row;}
-    public Integer getCol() {return this.column;}
+    public Which getLineKind(){return this.LINE_KIND;}
+    public Integer getRow(){ return this.COORDINATES.getRow();}
+    public Integer getCol() {return this.COORDINATES.getColumn();}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Move move = (Move) o;
-        return row == move.row &&
-                column == move.column &&
-                lineKind == move.lineKind;
+        return getRow().equals(move.getRow()) &&
+                getCol().equals(move.getCol()) &&
+                getLineKind() == move.getLineKind();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lineKind, row, column);
+        return Objects.hash(getLineKind(), getRow(), getCol());
     }
 }
 
 
+class MoveCoordinates{
+
+    private final int ROW;
+    private final int COL;
+
+    MoveCoordinates(int row, int col){
+
+        this.ROW = row;
+        this.COL = col;
+    }
+
+    Integer getRow(){ return ROW;}
+    Integer getColumn(){ return COL;}
+}

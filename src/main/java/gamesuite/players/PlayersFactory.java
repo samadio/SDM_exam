@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PlayersFactory {
 
-    private Integer numberOfPlayers = 1;
+    private Integer numberOfPlayers = 0;
     private ArrayList<String> usedCustomNames= new ArrayList<>();
 
 
@@ -12,12 +12,13 @@ public class PlayersFactory {
         if(usedCustomNames.contains(name)) throw new NameAlreadyUsedException();
         boolean isNumeric = name.trim().chars().allMatch( Character::isDigit );
         if(isNumeric) throw new ReservedNameException();
-        numberOfPlayers++;
+        numberOfPlayers+=1;
         usedCustomNames.add(name);
         return new Player(name);
     }
 
     public Player newPlayer() {
-        return new Player((numberOfPlayers++).toString());
+        numberOfPlayers+=1;
+        return new Player((numberOfPlayers).toString());
     }
 }

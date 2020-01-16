@@ -8,7 +8,6 @@ import gamesuite.players.Player;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public abstract class GameStatus {
@@ -17,7 +16,7 @@ public abstract class GameStatus {
     private final Scorer SCORER;
     private final List<Player> PLAYERS;
     private Integer currentPlayer;
-    private GameScore score;
+    protected GameScore score;
 
     public GameStatus(List<Player> players, BoardManager bManager, MoveValidator mValidator) {
 
@@ -31,6 +30,8 @@ public abstract class GameStatus {
     }
 
     protected abstract Scorer setScorer(BoardManager bManager, MoveValidator mValidator);
+    protected abstract void updateProgress();
+    public abstract List<Player> getWinner();
 
     public Player currentPlayer() {
         return PLAYERS.get(currentPlayer);
@@ -52,7 +53,6 @@ public abstract class GameStatus {
         }
     }
 
-    protected abstract void updateProgress();
 
     private Integer nextPlayer() {
         return (currentPlayer + 1) % PLAYERS.size();
@@ -75,8 +75,4 @@ public abstract class GameStatus {
         currentPlayer=0;
     }
 
-    public List<Player> getWinner(){
-        Integer maxScore = score.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getValue();
-        return score.entrySet().stream().filter(x -> x.getValue().equals(maxScore)).map(Map.Entry::getKey).collect(Collectors.toList());
-    }
 }

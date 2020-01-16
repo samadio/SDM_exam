@@ -33,7 +33,7 @@ public class Game {
 
         oManager.printGame(this);
 
-            while (status.isNotFinished()) {
+            while (notEnded()) {
 
                 try {
                     boolean invalidMove = true;

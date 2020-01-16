@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gametests.statustest.PlayerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:19:43" hostname="simonovo" time="0.014">
+<testsuite name="gametests.statustest.PlayerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:01:38" hostname="machine770" time="0.019">
   <properties/>
-  <testcase name="ExceptionsThrown()" classname="gametests.statustest.PlayerTest" time="0.005"/>
-  <testcase name="customNameTest()" classname="gametests.statustest.PlayerTest" time="0.002"/>
-  <testcase name="noExceptionThrown()" classname="gametests.statustest.PlayerTest" time="0.002"/>
+  <testcase name="customNameTest()" classname="gametests.statustest.PlayerTest" time="0.018"/>
   <testcase name="defaultNameTest()" classname="gametests.statustest.PlayerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
