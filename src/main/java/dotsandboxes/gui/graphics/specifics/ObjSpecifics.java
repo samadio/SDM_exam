@@ -1,11 +1,12 @@
 package dotsandboxes.gui.graphics.specifics;
 
 public class ObjSpecifics {
-    public String fileName;
-    public String fileName2;
-    public Integer width;
-    public Integer height;
-    public Integer hints;
+
+    private String fileName;
+    private String fileName2;
+    private Integer width;
+    private Integer height;
+    private Integer hints;
 
     public ObjSpecifics(String fn, String fn2, Integer w, Integer h, Integer hi) {
         fileName = fn;
@@ -15,5 +16,24 @@ public class ObjSpecifics {
         hints = hi;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getFileName2() {
+        return fileName2;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public Integer getHints() {
+        return hints;
+    }
 }
 

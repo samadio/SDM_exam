@@ -13,10 +13,10 @@ public class SetElementsInGrid {
     public static LinesList setLines(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
 
         LinesList lines= new LinesList();
-        for (int i = 0; i < gridSpec.rows; i++) {
-            for (int j = 0; j < gridSpec.cols; j++) {
+        for (int i = 0; i < gridSpec.getRows(); i++) {
+            for (int j = 0; j < gridSpec.getCols(); j++) {
                 Line line = new Line(objSpec,i,j);
-                line.setButtonProperties(gridSpec.dist * j + gridSpec.xOffset, gridSpec.dist * i + gridSpec.yOffset, gridSpec.width, gridSpec.height);
+                line.setButtonProperties(gridSpec.getDist() * j + gridSpec.getxOffset(), gridSpec.getDist() * i + gridSpec.getyOffset(), gridSpec.getWidth(), gridSpec.getHeight());
                 bPanel.add(line);
                 lines.add(line);
             }
@@ -28,10 +28,10 @@ public class SetElementsInGrid {
     public static void setDots(ObjSpecifics objSpec, GridSpecifics gridSpec,BackgroundPanel bPanel){
 
         DotsList dots= new DotsList();
-        for (int i = 0; i < gridSpec.rows; i++) {
-            for (int j = 0; j < gridSpec.cols; j++) {
+        for (int i = 0; i < gridSpec.getRows(); i++) {
+            for (int j = 0; j < gridSpec.getCols(); j++) {
                 GraphicObj dot = new GraphicObj(objSpec);
-                dot.setButtonProperties(gridSpec.dist * j + gridSpec.xOffset, gridSpec.dist * i + gridSpec.yOffset, gridSpec.width, gridSpec.height);
+                dot.setButtonProperties(gridSpec.getDist() * j + gridSpec.getxOffset(), gridSpec.getDist() * i + gridSpec.getyOffset(), gridSpec.getWidth(), gridSpec.getHeight());
                 bPanel.add(dot);
                 dots.add(dot);
             }

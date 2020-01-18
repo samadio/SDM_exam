@@ -24,14 +24,14 @@ public class Line extends GraphicObj {
 
     //public String newFileName() {return objSpec.fileName2;}
 
-    public Integer getLineW() {return objSpec.width;}
+    public Integer getLineW() {return objSpec.getWidth();}
 
-    public Integer getLineH() {return objSpec.height;}
+    public Integer getLineH() {return objSpec.getHeight();}
 
-    public Integer getLineHints() {return objSpec.hints;}
+    public Integer getLineHints() {return objSpec.getHints();}
 
     public void setDark(){
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(objSpec.fileName2).getImage().getScaledInstance(objSpec.width, objSpec.height, objSpec.hints));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(objSpec.getFileName2()).getImage().getScaledInstance(objSpec.getWidth(), objSpec.getHeight(), objSpec.getHints()));
         this.setIcon(imageIcon);
     }
 
