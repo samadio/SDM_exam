@@ -83,7 +83,7 @@ public class ComponentSetter{
         endGameButton.addActionListener(x ->
         {
             gameFrame.endGame= true;
-            gameFrame.inputGiven = true;
+            gameFrame.setInputGiven(true);
             endGameButton.setDark();
 
         });
@@ -93,7 +93,7 @@ public class ComponentSetter{
         resetGameButton.addActionListener(x ->
         {
             gameFrame.reset = true;
-            gameFrame.inputGiven = true;
+            gameFrame.setInputGiven(true);
             resetGameButton.setDark();
         });
 
@@ -116,16 +116,16 @@ public class ComponentSetter{
         for (Line l : horizontalLines) {
             l.addActionListener(x ->
             {
-                gameFrame.currentMove = new Move(Move.Which.HORIZONTAL, l.getRow(), l.getColumn());
-                gameFrame.inputGiven = true;
+                gameFrame.setCurrentMove( new Move(Move.Which.HORIZONTAL, l.getRow(), l.getColumn() ) );
+                gameFrame.setInputGiven(true);
             });
         }
 
         for (Line l : verticalLines) {
             l.addActionListener(x ->
             {
-                gameFrame.currentMove = new Move(Move.Which.VERTICAL, l.getRow(), l.getColumn());
-                gameFrame.inputGiven = true;
+                gameFrame.setCurrentMove( new Move(Move.Which.VERTICAL, l.getRow(), l.getColumn() ) );
+                gameFrame.setInputGiven(true);
             });
         }
     }

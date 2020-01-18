@@ -17,7 +17,7 @@ public class GameFrame extends InputFrame<Move> {
     ComponentSetter componentSetter;
 
     private DBLabel currentPlayerLabel;
-    public Move currentMove;
+    private Move currentMove;
     private LabelsList labels;
     public boolean endGame;
     public boolean reset;
@@ -51,6 +51,7 @@ public class GameFrame extends InputFrame<Move> {
         componentSetter.dots(backgroundPanel);
 
         updatePanel(backgroundPanel);
+
     }
 
 
@@ -93,6 +94,14 @@ public class GameFrame extends InputFrame<Move> {
 
     }
 
+
+    public Move getCurrentMove() {
+        return currentMove;
+    }
+
+    public void setCurrentMove(Move currentMove) {
+        this.currentMove = currentMove;
+    }
 }
 
 

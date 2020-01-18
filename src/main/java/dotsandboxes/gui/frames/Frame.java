@@ -4,7 +4,7 @@ import dotsandboxes.gui.graphics.BackgroundPanel;
 
 public abstract class Frame {
     protected BackgroundPanel backgroundPanel;
-    public boolean inputGiven;
+    private boolean inputGiven;
 
     public Frame(BackgroundPanel bP) {
 
@@ -21,5 +21,13 @@ public abstract class Frame {
     protected void clear(BackgroundPanel backgroundPanel){
         backgroundPanel.removeAll();
         updatePanel(backgroundPanel);
+    }
+
+    public boolean getInputGiven(){
+        return inputGiven;
+    }
+
+    public void setInputGiven(boolean inputGiven) {
+        this.inputGiven = inputGiven;
     }
 }
