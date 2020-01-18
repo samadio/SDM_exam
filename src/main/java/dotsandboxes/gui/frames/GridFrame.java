@@ -2,7 +2,6 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class GridFrame extends InputFrame<List<Integer>>{
             NumRadioButton colButton=new NumRadioButton(i,310, yOffset, 40, 30);
             rowButton.addActionListener(x ->
             {
-                rows=rowButton.number;
+                rows= rowButton.getNumber();
                 rowButton.setSelected(true);
                 rowInput=true;
                 for (NumRadioButton  rButton : rowsButtons){
@@ -48,7 +47,7 @@ public class GridFrame extends InputFrame<List<Integer>>{
             });
             colButton.addActionListener(x ->
             {
-                cols=colButton.number;
+                cols= colButton.getNumber();
                 colButton.setSelected(true);
                 colInput=true;
                 for (NumRadioButton  cButton : colsButtons){
