@@ -41,7 +41,7 @@ class DotsAndBoxesInputTest {
     }
 
     @Test
-    public void readMoveTest(){
+    public void readMoveTest() throws EndGameException, ResetGameException {
         itest.setConverter(10);
         setKeyboard("12 L");
         assertDoesNotThrow(()->itest.readMove());
@@ -102,8 +102,7 @@ class DotsAndBoxesInputTest {
             itest.readMove();
             fail();
         } catch (InvalidStateException e) {assertEquals(e.getMessage(),"Convert not set");}
-        catch(EndGameException end){fail();}
-        catch(ResetGameException res){fail();}
+        catch(EndGameException | ResetGameException end){fail();}
 
         itest.setConverter(10);
         setKeyboard("1 R");
