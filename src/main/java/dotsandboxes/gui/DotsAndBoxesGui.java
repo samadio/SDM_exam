@@ -43,32 +43,34 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public Move getMove() throws EndGameException, ResetGameException{
-        return gameFrame.getMove();
+
+        Move m = gameFrame.getInput();
+
+        if(gameFrame.getEndGame()) throw new EndGameException();
+        if(gameFrame.getReset()) throw new ResetGameException();
+
+        return m;
     }
 
     @Override
     public Integer getPlayersNumber() {
 
-        PlayersNumberFrame PNFrame=new PlayersNumberFrame(backgroundPanel);
-        Integer numPlayers=PNFrame.getInput();
-
-        return numPlayers;
+        InputFrame<Integer> PNFrame = new PlayersNumberFrame(backgroundPanel);
+        return PNFrame.getInput();
     }
 
     @Override
     public List<String> getPlayersName(Integer nPlayers) {
 
-        PlayersNameFrame playersNameFrame= new PlayersNameFrame(backgroundPanel,nPlayers);
-        List<String> playersNames=playersNameFrame.getInput();
-        return  playersNames;
+        InputFrame<List<String>> playersNameFrame= new PlayersNameFrame(backgroundPanel,nPlayers);
+        return playersNameFrame.getInput();
     }
 
     @Override
     public List<Integer> getGridDimensions() {
 
-        GridFrame gridFrame=new GridFrame(backgroundPanel);
-        List<Integer> gridDimensions= gridFrame.getInput();
-        return gridDimensions;
+        InputFrame<List<Integer>> gridFrame=new GridFrame(backgroundPanel);
+        return gridFrame.getInput();
     }
 
 

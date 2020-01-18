@@ -12,7 +12,7 @@ import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
 
-public class GameFrame extends Frame {
+public class GameFrame extends InputFrame<Move> {
 
     ComponentSetter componentSetter;
 
@@ -59,12 +59,13 @@ public class GameFrame extends Frame {
     public boolean[][] getBoxes() {return boxes;}
     public LabelsList getLabels() {return labels;}
     public boolean getReset() {return reset;}
+    public boolean getEndGame() {return endGame;}
 
 
-    public Move getMove() throws EndGameException, ResetGameException {
+    @Override
+    public Move getInput() {
+
         waitInput();
-        if(endGame==true) throw new EndGameException();
-        if(reset==true) throw new ResetGameException();
         return currentMove;
     }
 

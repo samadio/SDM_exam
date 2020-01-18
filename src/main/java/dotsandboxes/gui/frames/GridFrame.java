@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridFrame extends Frame{
+public class GridFrame extends InputFrame<List<Integer>>{
 
     List<Integer> dimensions;
     private Integer rows;
@@ -79,6 +79,7 @@ public class GridFrame extends Frame{
 
 
 
+    @Override
     public List<Integer> getInput() {
 
         while (!rowInput || !colInput) {
