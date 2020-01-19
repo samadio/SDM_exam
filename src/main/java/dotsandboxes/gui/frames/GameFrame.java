@@ -25,6 +25,7 @@ public class GameFrame extends InputFrame<Move> {
     private Integer boxesColumns;
     private boolean[][] boxes;
     public Grid grid;
+    private Game targetGame;
 
     public GameFrame(BackgroundPanel bP, Game game) {
 
@@ -32,26 +33,8 @@ public class GameFrame extends InputFrame<Move> {
         grid=new Grid();
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
-        currentPlayerLabel = new DBLabel();
-        boxes=new boolean[boxesRows][boxesColumns];
-        endGame = false;
-        reset = false;
-        labels= new LabelsList();
 
-        componentSetter= new ComponentSetter(boxesRows,boxesColumns);
-
-        componentSetter.playersLabels(this,game.getPlayers(), backgroundPanel);
-
-        componentSetter.endResetButtons(this,backgroundPanel);
-
-        componentSetter.currentPlayerLabel(backgroundPanel,currentPlayerLabel);
-
-        componentSetter.lines(this, backgroundPanel);
-
-        componentSetter.dots(backgroundPanel);
-
-        updatePanel(backgroundPanel);
-
+        targetGame = game;
     }
 
 
@@ -106,6 +89,25 @@ public class GameFrame extends InputFrame<Move> {
     @Override
     public void setPanel() {
 
+        currentPlayerLabel = new DBLabel();
+        boxes=new boolean[boxesRows][boxesColumns];
+        endGame = false;
+        reset = false;
+        labels= new LabelsList();
+
+        componentSetter= new ComponentSetter(boxesRows,boxesColumns);
+
+        componentSetter.playersLabels(this,targetGame.getPlayers(), backgroundPanel);
+
+        componentSetter.endResetButtons(this,backgroundPanel);
+
+        componentSetter.currentPlayerLabel(backgroundPanel,currentPlayerLabel);
+
+        componentSetter.lines(this, backgroundPanel);
+
+        componentSetter.dots(backgroundPanel);
+
+        updatePanel(backgroundPanel);
     }
 }
 

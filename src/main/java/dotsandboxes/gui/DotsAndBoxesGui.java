@@ -80,6 +80,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public void startMatch(Game game) {
 
         gameFrame= new GameFrame(backgroundPanel,game);
+        gameFrame.setPanel();
 
     }
 

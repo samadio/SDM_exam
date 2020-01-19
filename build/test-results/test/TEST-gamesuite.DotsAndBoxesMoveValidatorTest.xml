@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gamesuite.DotsAndBoxesMoveValidatorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-01-16T11:01:39" hostname="machine770" time="0.011">
+<testsuite name="gamesuite.DotsAndBoxesMoveValidatorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-01-19T20:20:50" hostname="machine770" time="0.019">
   <properties/>
   <testcase name="NewMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
-  <testcase name="validateMoveOutOfBoardException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.002"/>
-  <testcase name="validateMoveAlreadyDoneException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
+  <testcase name="validateMoveOutOfBoardException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.006"/>
+  <testcase name="validateMoveAlreadyDoneException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.002"/>
   <testcase name="outBoardMoveTests()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.0"/>
   <testcase name="inBoardMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
-  <testcase name="AlreadyDoneMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.0"/>
+  <testcase name="AlreadyDoneMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
   <testcase name="validateNoExceptionTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
