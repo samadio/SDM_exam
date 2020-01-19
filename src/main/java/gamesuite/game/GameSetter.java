@@ -2,8 +2,10 @@ package gamesuite.game;
 
 import gamesuite.board.BoardManager;
 import gamesuite.move.MoveValidator;
+import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
+import gamesuite.players.ReservedNameException;
 import gamesuite.status.GameStatus;
 import iomanagement.InputManager;
 import iomanagement.OutputManager;
@@ -23,7 +25,7 @@ public abstract class GameSetter {
         this.oManager = oManager;
     }
 
-   public final Game newGame(){
+   public final Game newGame() throws NameAlreadyUsedException, ReservedNameException {
 
        List<Player> players = setPlayers();
        BoardManager bManager = createBoard();
@@ -39,7 +41,7 @@ public abstract class GameSetter {
         return  setBoard(dimensions.get(0), dimensions.get(1));
     }
 
-    private List<Player> setPlayers(){
+    private List<Player> setPlayers() throws NameAlreadyUsedException, ReservedNameException {
 
         Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
         List<Player> players = new ArrayList<>(nPlayers);

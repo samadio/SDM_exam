@@ -6,6 +6,8 @@ import dotsandboxes.io.DotsAndBoxesOutput;
 import dotsandboxes.io.ExhaustedInputException;
 import gamesuite.game.Game;
 import gamesuite.game.GameSetter;
+import gamesuite.players.NameAlreadyUsedException;
+import gamesuite.players.ReservedNameException;
 import iomanagement.OutputManager;
 
 public class Main {
@@ -19,6 +21,10 @@ public class Main {
         }catch (ExhaustedInputException e){
             //System.out.println("Ctrl+D ending");
             System.exit(1);
+        } catch (NameAlreadyUsedException e) {
+            e.printStackTrace();
+        } catch (ReservedNameException e) {
+            e.printStackTrace();
         }
     }
 }   
