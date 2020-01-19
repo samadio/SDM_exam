@@ -16,5 +16,4 @@ public class InputMove {
 
         public Direction getDirection(){return this.direction;}
 
-
 }
