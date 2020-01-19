@@ -29,12 +29,6 @@ public class DotsAndBoxesInput implements InputManager {
     }
 
     @Override
-    public List<String> getPlayersName(Integer nPlayers) {
-        List<String> playerList= new ArrayList<>(nPlayers);
-        for (int i=0; i<nPlayers; i++) playerList.add(i,getPlayerName());
-        return playerList;
-    }
-
     public String getPlayerName() {
         String playerNameMessage = "Insert next player's name: ";
 

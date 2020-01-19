@@ -21,10 +21,6 @@ public class Main {
         }catch (ExhaustedInputException e){
             //System.out.println("Ctrl+D ending");
             System.exit(1);
-        } catch (NameAlreadyUsedException e) {
-            e.printStackTrace();
-        } catch (ReservedNameException e) {
-            e.printStackTrace();
         }
     }
 }   

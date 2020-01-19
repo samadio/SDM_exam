@@ -17,7 +17,7 @@ public interface InputManager {
 
      boolean customPlayers();
 
-     List<String> getPlayersName(Integer nPlayers);
+     String getPlayerName();
 
 }
 

@@ -60,9 +60,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
     @Override
-    public List<String> getPlayersName(Integer nPlayers) {
+    public String getPlayerName() {
 
-        InputFrame<List<String>> playersNameFrame= new PlayersNameFrame(backgroundPanel,nPlayers);
+        InputFrame<String> playersNameFrame= new PlayersNameFrame(backgroundPanel,1);
         return playersNameFrame.getInput();
     }
 
@@ -96,7 +96,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
      }
 
     @Override
-    public void printWinner(Game game, boolean gameManuallyEnded) {
+    public void printWinner(Game game, boolean manuallyEnded) {
         EndFrame endFrame=new EndFrame(backgroundPanel);
         endFrame.printWinner(game);
     }
@@ -114,7 +114,10 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public void outputPrintln(String message) {}
 
     @Override
-    public void errorPrintln(String s) {}
+    public void errorPrintln(String s) {
+
+        JOptionPane.showMessageDialog(this, s);
+    }
 
     @Override
     public void outputPrint(String s) {}

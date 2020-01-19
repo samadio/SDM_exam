@@ -7,7 +7,7 @@ import dotsandboxes.gui.graphics.DBTextField;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayersNameFrame extends InputFrame<List<String>> {
+public class PlayersNameFrame extends InputFrame<String> {
 
     private String name;
     Integer nPlayers;
@@ -39,17 +39,12 @@ public class PlayersNameFrame extends InputFrame<List<String>> {
 
 
     @Override
-    public  List<String> getInput() {
+    public  String getInput() {
 
-        for (int i=0; i<nPlayers; i++) {
-
-            waitInput();
-            playerList.add(i,name);
-
-        }
+        waitInput();
 
         clear(backgroundPanel);
 
-        return playerList;
+        return name;
     }
 }

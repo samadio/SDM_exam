@@ -12,6 +12,7 @@ import iomanagement.OutputManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.zip.DataFormatException;
 
 public abstract class GameSetter {
@@ -25,7 +26,7 @@ public abstract class GameSetter {
         this.oManager = oManager;
     }
 
-   public final Game newGame() throws NameAlreadyUsedException, ReservedNameException {
+   public final Game newGame() {
 
        List<Player> players = setPlayers();
        BoardManager bManager = createBoard();
@@ -41,7 +42,7 @@ public abstract class GameSetter {
         return  setBoard(dimensions.get(0), dimensions.get(1));
     }
 
-    private List<Player> setPlayers() throws NameAlreadyUsedException, ReservedNameException {
+    private List<Player> setPlayers(){
 
         Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
         List<Player> players = new ArrayList<>(nPlayers);
@@ -49,22 +50,28 @@ public abstract class GameSetter {
 
         boolean custom = iManager.customPlayers(); //do you want to customize Players name? Yes=True
         if (custom) {
+            int idx=0;
+            while(idx < nPlayers) {
 
-            List<String> playerNames= iManager.getPlayersName(nPlayers);
-
-            for (int i = 0; i < nPlayers ; i++) {
-
-                if (playerNames.get(i).isEmpty())
-                    players.add(i, playerGenerator.newPlayer());
-                else
-                    players.add(i, playerGenerator.newPlayer(playerNames.get(i)));
+                String name = iManager.getPlayerName();
+                try {
+                    if (name.isEmpty()) {
+                        oManager.outputPrintln("You were assigned the name: "+(idx+1));
+                        players.add(idx, playerGenerator.newPlayer());
+                    }
+                    else {
+                        players.add(idx, playerGenerator.newPlayer(name));
+                    }
+                    idx++;
+                }catch(NameAlreadyUsedException e){
+                    oManager.errorPrintln("Error: name already taken. Please select a different one");
+                }
+                catch (ReservedNameException e){
+                    oManager.errorPrintln("Error: Integer numbers cannot be chosen as names");
+                }
             }
         }
-        else{
-            for(int i=0;i<nPlayers;i++) {
-                players.add(i, playerGenerator.newPlayer());
-            }
-        }
+        else  IntStream.range(0, nPlayers).forEach(x -> players.add(playerGenerator.newPlayer()));
 
         return players;
     }
