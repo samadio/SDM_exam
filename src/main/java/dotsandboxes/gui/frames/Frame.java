@@ -4,7 +4,7 @@ import dotsandboxes.gui.graphics.BackgroundPanel;
 
 public abstract class Frame {
     protected BackgroundPanel backgroundPanel;
-    private boolean inputGiven;
+    protected boolean inputGiven;
 
     public Frame(BackgroundPanel bP) {
 

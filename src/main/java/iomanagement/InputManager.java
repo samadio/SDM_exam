@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface InputManager {
 
-
     public abstract String readInput();
 
     public abstract Move getMove() throws EndGameException, ResetGameException;
