@@ -44,7 +44,8 @@ class DotsAndBoxesInputTest {
     public void readMoveTest() throws EndGameException, ResetGameException {
         itest.setConverter(10);
         setKeyboard("12 L");
-        assertDoesNotThrow(()->itest.readMove());
+        assertDoesNotThrow(()->itest.getMove());
+        setKeyboard("12 L");
         Move current=itest.getMove();
         assertEquals(1,current.getRow());
         assertEquals(1,current.getCol());
@@ -80,18 +81,18 @@ class DotsAndBoxesInputTest {
     public void EndGameExceptionTest(){
         itest.setConverter(8);
         setKeyboard("1 2 quit");
-        assertThrows(EndGameException.class,()->itest.readMove());
+        assertThrows(EndGameException.class,()->itest.getMove());
         setKeyboard("exit");
-        assertThrows(EndGameException.class,()->itest.readMove());
+        assertThrows(EndGameException.class,()->itest.getMove());
     }
 
     @Test
     public void ResetGameExceptionTest(){
         itest.setConverter(8);
         setKeyboard("1 2 reset");
-        assertThrows(ResetGameException.class,()->itest.readMove());
+        assertThrows(ResetGameException.class,()->itest.getMove());
         setKeyboard("reset");
-        assertThrows(ResetGameException.class,()->itest.readMove());
+        assertThrows(ResetGameException.class,()->itest.getMove());
     }
 
 
@@ -99,17 +100,14 @@ class DotsAndBoxesInputTest {
     public void settedConverterExceptionTest() {
         try {
             setKeyboard("1 R");
-            itest.readMove();
+            itest.getMove();
             fail();
         } catch (InvalidStateException e) {assertEquals(e.getMessage(),"Convert not set");}
         catch(EndGameException | ResetGameException end){fail();}
 
         itest.setConverter(10);
         setKeyboard("1 R");
-        //try{itest.readMove();
-        //}catch(Exception e){fail();}
-        //or
-        assertDoesNotThrow(()->itest.readMove());
+        assertDoesNotThrow(()->itest.getMove());
     }
 
     @Test
