@@ -22,7 +22,7 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         backgroundPanel.add(playerQuestion);
 
         buttons= new ArrayList<>(3);
-        Integer yOffset = 100;
+        int yOffset = 100;
 
         for (int i=2; i<5; i++) {
             NumButton button=new NumButton(i,260, yOffset, 80, 30);
@@ -38,6 +38,11 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         }
 
         updatePanel(backgroundPanel);
+    }
+
+    @Override
+    public void setPanel() {
+
     }
 
 

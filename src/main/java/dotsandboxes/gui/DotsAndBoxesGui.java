@@ -20,12 +20,14 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     private BackgroundPanel backgroundPanel;
     private GameFrame gameFrame;
+    private final PlayersNameFrame PLAYER_NAME_FRAME;
 
 
 
     public DotsAndBoxesGui(){
         super();
         backgroundPanelInit();
+        PLAYER_NAME_FRAME = new PlayersNameFrame(backgroundPanel);
     }
 
     private void backgroundPanelInit(){
@@ -62,8 +64,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public String getPlayerName() {
 
-        InputFrame<String> playersNameFrame= new PlayersNameFrame(backgroundPanel,1);
-        return playersNameFrame.getInput();
+        PLAYER_NAME_FRAME.setPanel();
+        return PLAYER_NAME_FRAME.getInput();
     }
 
     @Override

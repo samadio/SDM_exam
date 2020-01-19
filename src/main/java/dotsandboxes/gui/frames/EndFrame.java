@@ -15,6 +15,11 @@ public class EndFrame extends Frame{
         super(bP);
     }
 
+    @Override
+    public void setPanel() {
+
+    }
+
     public void printWinner(Game game){
 
 
@@ -28,7 +33,7 @@ public class EndFrame extends Frame{
         else winMessage.setText("<html><body style='text-align: center'>Game is a draw<br/>The following players have the same score:<html>");
 
         backgroundPanel.add(winMessage);
-        Integer yOffset = 90;
+        int yOffset = 90;
 
         for (Player p : winners) {
             DBLabel label= new DBLabel(p.getName(),260, yOffset, 80, 30);

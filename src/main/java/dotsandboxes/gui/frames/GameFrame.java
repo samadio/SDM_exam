@@ -102,6 +102,11 @@ public class GameFrame extends InputFrame<Move> {
     public void setCurrentMove(Move currentMove) {
         this.currentMove = currentMove;
     }
+
+    @Override
+    public void setPanel() {
+
+    }
 }
 
 

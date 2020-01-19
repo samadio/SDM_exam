@@ -30,4 +30,6 @@ public abstract class Frame {
     public void setInputGiven(boolean inputGiven) {
         this.inputGiven = inputGiven;
     }
+
+    public abstract void setPanel();
 }

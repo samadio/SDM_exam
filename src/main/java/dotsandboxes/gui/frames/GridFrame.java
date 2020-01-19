@@ -23,13 +23,13 @@ public class GridFrame extends InputFrame<List<Integer>>{
 
         backgroundPanel.add(playerQuestion);
 
-        Integer minDimension=3;
-        Integer maxDimension=5;
+        int minDimension=3;
+        int maxDimension=5;
 
         List<NumRadioButton> rowsButtons= new ArrayList<>(maxDimension-minDimension);
         List<NumRadioButton> colsButtons= new ArrayList<>(maxDimension-minDimension);
 
-        Integer yOffset = 100;
+        int yOffset = 100;
 
         for (int i=minDimension; i<maxDimension+1; i++) {
             NumRadioButton rowButton=new NumRadioButton(i,250, yOffset, 40, 30);
@@ -76,6 +76,10 @@ public class GridFrame extends InputFrame<List<Integer>>{
         updatePanel(backgroundPanel);
     }
 
+    @Override
+    public void setPanel() {
+
+    }
 
 
     @Override

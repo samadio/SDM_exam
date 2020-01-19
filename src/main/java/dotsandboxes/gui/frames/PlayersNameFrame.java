@@ -10,14 +10,13 @@ import java.util.List;
 public class PlayersNameFrame extends InputFrame<String> {
 
     private String name;
-    Integer nPlayers;
-    List<String> playerList;
 
-    public PlayersNameFrame(BackgroundPanel bP, Integer nP){
+    public PlayersNameFrame(BackgroundPanel bP){
 
         super(bP);
-        nPlayers= nP;
-        playerList= new ArrayList<>(nPlayers);
+    }
+
+    public void setPanel(){
 
         DBTextField playerName= new DBTextField(1,270, 100, 60, 30);
         DBLabel playerQuestion= new DBLabel("PLAYER'S NAME",200, 30, 200, 30);
@@ -35,7 +34,6 @@ public class PlayersNameFrame extends InputFrame<String> {
 
         updatePanel(backgroundPanel);
     }
-
 
 
     @Override
