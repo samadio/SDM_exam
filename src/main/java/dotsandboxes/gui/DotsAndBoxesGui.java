@@ -58,6 +58,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public Integer getPlayersNumber() {
 
         InputFrame<Integer> PNFrame = new PlayersNumberFrame(backgroundPanel);
+        PNFrame.setPanel();
         return PNFrame.getInput();
     }
 
@@ -71,7 +72,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public List<Integer> getGridDimensions() {
 
-        InputFrame<List<Integer>> gridFrame=new GridFrame(backgroundPanel);
+        InputFrame<List<Integer>> gridFrame = new GridFrame(backgroundPanel);
+        gridFrame.setPanel();
         return gridFrame.getInput();
     }
 
