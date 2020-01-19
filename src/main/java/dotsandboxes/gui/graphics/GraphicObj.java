@@ -16,7 +16,7 @@ public class GraphicObj extends JButton {
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
         this.setFocusPainted(false);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(objSpec.fileName).getImage().getScaledInstance(objSpec.width, objSpec.height, objSpec.hints));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(objSpec.getFileName()).getImage().getScaledInstance(objSpec.getWidth(), objSpec.getHeight(), objSpec.getHints()));
         this.setIcon(imageIcon);
 
 

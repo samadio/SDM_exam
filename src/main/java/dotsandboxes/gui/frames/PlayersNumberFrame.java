@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayersNumberFrame extends Frame{
+public class PlayersNumberFrame extends InputFrame<Integer>{
 
     Integer numPlayers;
     List<NumButton> buttons;
@@ -41,6 +41,7 @@ public class PlayersNumberFrame extends Frame{
     }
 
 
+    @Override
     public Integer getInput(){
 
 
@@ -52,9 +53,6 @@ public class PlayersNumberFrame extends Frame{
 
         return numPlayers;
     }
-
-
-
 }
 
 

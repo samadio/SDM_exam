@@ -2,11 +2,10 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridFrame extends Frame{
+public class GridFrame extends InputFrame<List<Integer>>{
 
     List<Integer> dimensions;
     private Integer rows;
@@ -37,7 +36,7 @@ public class GridFrame extends Frame{
             NumRadioButton colButton=new NumRadioButton(i,310, yOffset, 40, 30);
             rowButton.addActionListener(x ->
             {
-                rows=rowButton.number;
+                rows= rowButton.getNumber();
                 rowButton.setSelected(true);
                 rowInput=true;
                 for (NumRadioButton  rButton : rowsButtons){
@@ -48,7 +47,7 @@ public class GridFrame extends Frame{
             });
             colButton.addActionListener(x ->
             {
-                cols=colButton.number;
+                cols= colButton.getNumber();
                 colButton.setSelected(true);
                 colInput=true;
                 for (NumRadioButton  cButton : colsButtons){
@@ -79,6 +78,7 @@ public class GridFrame extends Frame{
 
 
 
+    @Override
     public List<Integer> getInput() {
 
         while (!rowInput || !colInput) {

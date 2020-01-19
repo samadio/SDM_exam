@@ -12,12 +12,12 @@ import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
 
-public class GameFrame extends Frame {
+public class GameFrame extends InputFrame<Move> {
 
     ComponentSetter componentSetter;
 
     private DBLabel currentPlayerLabel;
-    public Move currentMove;
+    private Move currentMove;
     private LabelsList labels;
     public boolean endGame;
     public boolean reset;
@@ -51,6 +51,7 @@ public class GameFrame extends Frame {
         componentSetter.dots(backgroundPanel);
 
         updatePanel(backgroundPanel);
+
     }
 
 
@@ -59,12 +60,13 @@ public class GameFrame extends Frame {
     public boolean[][] getBoxes() {return boxes;}
     public LabelsList getLabels() {return labels;}
     public boolean getReset() {return reset;}
+    public boolean getEndGame() {return endGame;}
 
 
-    public Move getMove() throws EndGameException, ResetGameException {
+    @Override
+    public Move getInput() {
+
         waitInput();
-        if(endGame==true) throw new EndGameException();
-        if(reset==true) throw new ResetGameException();
         return currentMove;
     }
 
@@ -92,6 +94,14 @@ public class GameFrame extends Frame {
 
     }
 
+
+    public Move getCurrentMove() {
+        return currentMove;
+    }
+
+    public void setCurrentMove(Move currentMove) {
+        this.currentMove = currentMove;
+    }
 }
 
 

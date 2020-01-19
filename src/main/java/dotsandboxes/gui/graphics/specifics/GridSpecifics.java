@@ -1,22 +1,48 @@
 package dotsandboxes.gui.graphics.specifics;
 
+import java.awt.*;
+
 public class GridSpecifics {
-    public Integer rows;
-    public Integer cols;
-    public Integer width;
-    public Integer height;
-    public Integer xOffset;
-    public Integer yOffset;
-    public Integer dist;
+
+    private Rectangle gridArea;
+    private Integer rows;
+    private Integer cols;
+    private Integer dist;
+
     public GridSpecifics(Integer r, Integer c, Integer w, Integer h, Integer xO, Integer yO, Integer d){
 
+        gridArea = new Rectangle(xO, yO, w, h);
         rows=r;
         cols=c;
-        width=w;
-        height=h;
-        xOffset=xO;
-        yOffset=yO;
         dist=d;
 
+    }
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public Integer getCols() {
+        return cols;
+    }
+
+    public Integer getWidth() {
+        return (int) gridArea.getWidth();
+    }
+
+    public Integer getHeight() {
+        return (int) gridArea.getHeight();
+    }
+
+    public Integer getyOffset() {
+        return (int) gridArea.getY();
+    }
+
+    public Integer getDist() {
+        return dist;
+    }
+
+    public Integer getxOffset() {
+        return (int) gridArea.getX();
     }
 }
