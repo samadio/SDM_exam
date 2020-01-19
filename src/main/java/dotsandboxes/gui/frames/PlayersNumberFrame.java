@@ -17,6 +17,11 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
     public PlayersNumberFrame(BackgroundPanel bP){
 
         super(bP);
+    }
+
+    @Override
+    public void setPanel() {
+
         DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",200, 30, 200, 30);
 
         backgroundPanel.add(playerQuestion);
@@ -38,11 +43,6 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         }
 
         updatePanel(backgroundPanel);
-    }
-
-    @Override
-    public void setPanel() {
-
     }
 
 

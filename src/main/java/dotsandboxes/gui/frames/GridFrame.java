@@ -7,6 +7,9 @@ import java.util.List;
 
 public class GridFrame extends InputFrame<List<Integer>>{
 
+    private static final int MIN_DIMENSION=3;
+    private static final int MAX_DIMENSION=5;
+
     List<Integer> dimensions;
     private Integer rows;
     private Integer cols;
@@ -18,20 +21,21 @@ public class GridFrame extends InputFrame<List<Integer>>{
 
         super(bP);
         dimensions=new ArrayList<>(2);
+    }
+
+    @Override
+    public void setPanel() {
 
         DBLabel playerQuestion= new DBLabel("GRID DIMENSIONS",225, 30, 150, 30);
 
         backgroundPanel.add(playerQuestion);
 
-        int minDimension=3;
-        int maxDimension=5;
-
-        List<NumRadioButton> rowsButtons= new ArrayList<>(maxDimension-minDimension);
-        List<NumRadioButton> colsButtons= new ArrayList<>(maxDimension-minDimension);
+        List<NumRadioButton> rowsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
+        List<NumRadioButton> colsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
 
         int yOffset = 100;
 
-        for (int i=minDimension; i<maxDimension+1; i++) {
+        for (int i=MIN_DIMENSION; i<MAX_DIMENSION+1; i++) {
             NumRadioButton rowButton=new NumRadioButton(i,250, yOffset, 40, 30);
             NumRadioButton colButton=new NumRadioButton(i,310, yOffset, 40, 30);
             rowButton.addActionListener(x ->
@@ -63,8 +67,6 @@ public class GridFrame extends InputFrame<List<Integer>>{
             colsButtons.add(colButton);
         }
 
-
-
         DBButton button=new DBButton("OK",260, 300, 80, 30);
         button.addActionListener(x ->
         {
@@ -74,11 +76,6 @@ public class GridFrame extends InputFrame<List<Integer>>{
         backgroundPanel.add(button);
 
         updatePanel(backgroundPanel);
-    }
-
-    @Override
-    public void setPanel() {
-
     }
 
 
