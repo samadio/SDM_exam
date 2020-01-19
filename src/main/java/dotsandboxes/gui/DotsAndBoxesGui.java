@@ -75,7 +75,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
 
     @Override
-    public void startGame(Game game) {
+    public void startMatch(Game game) {
 
         gameFrame= new GameFrame(backgroundPanel,game);
 
@@ -89,9 +89,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
      @Override
-     public void resetGame(Game game) {
+     public void resetMatch(Game game) {
         gameFrame.resetFrame(backgroundPanel);
-        this.startGame(game);
+        this.startMatch(game);
         this.printGame(game);
      }
 
@@ -109,9 +109,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void printInvalidMove(InvalidMoveException e) {}
-
-    @Override
-    public String readInput() {return null;}
 
     @Override
     public void outputPrintln(String message) {}

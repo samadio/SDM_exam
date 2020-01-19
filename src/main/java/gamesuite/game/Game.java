@@ -31,7 +31,7 @@ public class Game {
 
     public void play(){
 
-        oManager.startGame(this);
+        oManager.startMatch(this);
 
         oManager.printGame(this);
 
@@ -89,7 +89,7 @@ public class Game {
     public void reset(){
         status.reset();
         boardManager.reset();
-        oManager.resetGame(this);
+        oManager.resetMatch(this);
     }
 
     public List<Player> getWinner(){  return status.getWinner(); }

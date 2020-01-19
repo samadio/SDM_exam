@@ -9,17 +9,15 @@ import java.util.List;
 
 public interface InputManager {
 
-    public abstract String readInput();
+     Move getMove() throws EndGameException, ResetGameException;
 
-    public abstract Move getMove() throws EndGameException, ResetGameException;
+     Integer getPlayersNumber();
 
-    public abstract Integer getPlayersNumber();
+     List<Integer> getGridDimensions();
 
-    public abstract List<Integer> getGridDimensions();
+     boolean customPlayers();
 
-    public abstract boolean customPlayers();
-
-    public abstract List<String> getPlayersName(Integer nPlayers);
+     List<String> getPlayersName(Integer nPlayers);
 
 }
 

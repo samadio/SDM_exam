@@ -23,8 +23,8 @@ public class DotsAndBoxesOutput implements OutputManager {
 
 
     @Override
-    public void startGame(Game game) {
-        System.out.println("Start Game");
+    public void startMatch(Game game) {
+        outputPrintln("Start Game");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class DotsAndBoxesOutput implements OutputManager {
     }
 
     @Override
-    public void resetGame(Game game) {
+    public void resetMatch(Game game) {
         outputPrintln("The game has been reset...");
         printGame(game);
     }
@@ -76,16 +76,16 @@ public class DotsAndBoxesOutput implements OutputManager {
     @Override
     public void printWinner(Game game, boolean gameManuallyEnded) {
 
-        if(gameManuallyEnded==true) outputPrintln("The game has been manually ended");
+        if(gameManuallyEnded) outputPrintln("The game has been manually ended");
 
         List<Player> winners = game.getWinner();
 
         if (winners.size() == 1)
-            System.out.println("The winner is " + winners.get(0));
+            outputPrintln("The winner is " + winners.get(0));
         else {
-            System.out.println("Game is a draw, the following players have the same score:");
+            outputPrintln("Game is a draw, the following players have the same score:");
             for (Player p : winners)
-                System.out.println(p);
+                outputPrintln(p.toString());
         }
     }
 

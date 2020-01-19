@@ -9,24 +9,24 @@ public interface OutputManager {
 
 
 
-    public void startGame(Game game);
+     void startMatch(Game game);
 
-    public  void printGame(Game game);
+      void printGame(Game game);
 
-    public  void printInvalidMove(InvalidMoveException e);
+      void printInvalidMove(InvalidMoveException e);
 
-    public  void outputPrintln(String message);
+      void outputPrintln(String message);
 
-    public  void errorPrintln(String s);
+      void errorPrintln(String s);
 
-    public  void outputPrint(String s);
+      void outputPrint(String s);
 
-    public void resetGame(Game game);
+     void resetMatch(Game game);
 
-    public  void errorPrint(String s);
+      void errorPrint(String s);
 
-    public  void printWinner(Game game, boolean gameManuallyEnded);
+      void printWinner(Game game, boolean gameManuallyEnded);
 
-    public  void printBoard(AbstractBoard board);
+      void printBoard(AbstractBoard board);
 
 }

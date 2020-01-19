@@ -42,9 +42,7 @@ public class DotsAndBoxesInput implements InputManager {
         return readInput();
     }
 
-    //private not considering tests
-    @Override
-    public String readInput(){
+    private String readInput(){
         Scanner input= new Scanner(System.in);
         if (!input.hasNextLine())
             throw new ExhaustedInputException();
@@ -53,7 +51,7 @@ public class DotsAndBoxesInput implements InputManager {
 
 
 
-    public void readMove() throws EndGameException, ResetGameException {
+    private void readMove() throws EndGameException, ResetGameException {
 
         if (!settedConverter)
             throw new InvalidStateException("Convert not set");
