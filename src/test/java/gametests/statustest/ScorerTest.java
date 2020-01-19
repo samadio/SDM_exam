@@ -157,7 +157,7 @@ class DummyValidator extends MoveValidator {
     public void validateMove(Move m) throws RuntimeException {}
 
     @Override
-    public boolean outBoardLine(Move m) {
+    public boolean outOfBoardLine(Move m) {
         return !MOVES_VALIDITY.get(m);
     }
 }
