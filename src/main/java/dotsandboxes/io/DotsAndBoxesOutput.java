@@ -19,7 +19,13 @@ import java.util.stream.IntStream;
 import static gamesuite.move.Move.Which.HORIZONTAL;
 import static gamesuite.move.Move.Which.VERTICAL;
 
-public class DotsAndBoxesOutput extends OutputManager {
+public class DotsAndBoxesOutput implements OutputManager {
+
+
+    @Override
+    public void startMatch(Game game) {
+        outputPrintln("Start Game");
+    }
 
     @Override
     public void printGame(Game game) {
@@ -39,7 +45,7 @@ public class DotsAndBoxesOutput extends OutputManager {
     private void printCurrentPlayer(Game game) { outputPrintln("Next player: " + game.nextPlayer()); }
 
     @Override
-    public void printInvalidMove(InvalidMoveException e) { System.err.println(e.getMessage());}
+    public void printInvalidMove(InvalidMoveException e) { errorPrintln(e.getMessage());}
 
     @Override
     public void outputPrintln(String message) {
@@ -57,21 +63,29 @@ public class DotsAndBoxesOutput extends OutputManager {
     }
 
     @Override
+    public void resetMatch(Game game) {
+        outputPrintln("The game has been reset...");
+        printGame(game);
+    }
+
+    @Override
     public void errorPrint(String s) {
         System.err.print(s);
     }
 
     @Override
-    public void printWinner(Game game) {
+    public void printWinner(Game game, boolean gameManuallyEnded) {
+
+        if(gameManuallyEnded) outputPrintln("The game has been manually ended");
 
         List<Player> winners = game.getWinner();
 
         if (winners.size() == 1)
-            System.out.println("The winner is " + winners.get(0));
+            outputPrintln("The winner is " + winners.get(0));
         else {
-            System.out.println("Game is a draw, the following players have the same score:");
+            outputPrintln("Game is a draw, the following players have the same score:");
             for (Player p : winners)
-                System.out.println(p);
+                outputPrintln(p.toString());
         }
     }
 

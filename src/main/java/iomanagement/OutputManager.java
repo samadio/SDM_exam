@@ -1,24 +1,32 @@
 package iomanagement;
 
 import gamesuite.board.AbstractBoard;
+import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 
-public abstract class OutputManager {
+public interface OutputManager {
 
-    public abstract void printGame(Game game);
-    public abstract void printInvalidMove(InvalidMoveException e);
 
-    public abstract void outputPrintln(String message);
 
-    public abstract void errorPrintln(String s);
+     void startMatch(Game game);
 
-    public abstract void outputPrint(String s);
+      void printGame(Game game);
 
-    public abstract void errorPrint(String s);
+      void printInvalidMove(InvalidMoveException e);
 
-    public abstract void printWinner(Game game);
+      void outputPrintln(String message);
 
-    public abstract void printBoard(AbstractBoard board);
+      void errorPrintln(String s);
+
+      void outputPrint(String s);
+
+     void resetMatch(Game game);
+
+      void errorPrint(String s);
+
+      void printWinner(Game game, boolean gameManuallyEnded);
+
+      void printBoard(AbstractBoard board);
 
 }

@@ -10,24 +10,33 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 
-public class DotsAndBoxesInput extends InputManager {
+public class DotsAndBoxesInput implements InputManager {
 
+    private Move currentMove;
+    private final OutputManager OUTPUT;
+
+    public DotsAndBoxesInput(OutputManager oManager){
+
+        OUTPUT = oManager;
+    }
 
     private Boolean settedConverter = false;
     private Converter moveConverter;
-
-    public DotsAndBoxesInput(OutputManager oManager) {
-        super(oManager);
-    }
 
     public void setConverter(Integer nCols){
         moveConverter = new Converter(nCols);
         settedConverter = true;
     }
 
-    //private not considering tests
     @Override
-    public String readInput(){
+    public String getPlayerName() {
+        String playerNameMessage = "Insert next player's name: ";
+
+        OUTPUT.outputPrintln(playerNameMessage);
+        return readInput();
+    }
+
+    private String readInput(){
         Scanner input= new Scanner(System.in);
         if (!input.hasNextLine())
             throw new ExhaustedInputException();
@@ -35,8 +44,8 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
 
-    @Override
-    public void readMove() throws EndGameException, ResetGameException {
+
+    private void readMove() throws EndGameException, ResetGameException {
 
         if (!settedConverter)
             throw new InvalidStateException("Convert not set");
@@ -69,7 +78,10 @@ public class DotsAndBoxesInput extends InputManager {
     }
 
     @Override
-    public Move getMove() { return this.currentMove; }
+    public Move getMove() throws EndGameException, ResetGameException{
+        readMove();
+        return this.currentMove;
+    }
 
     private List<Integer> takeGridDimensions() {
 
@@ -158,11 +170,5 @@ public class DotsAndBoxesInput extends InputManager {
         }
     }
 
-    @Override
-    public String getPlayerName() {
-        String playerNameMessage = "Insert next player's name: ";
 
-        OUTPUT.outputPrintln(playerNameMessage);
-        return readInput();
-    }
 }

@@ -27,7 +27,6 @@ public class ConverterTest{
         itest.setConverter(12);
 
         setKeyboard("26 R");
-        itest.readMove();
         Move m = itest.getMove();
 
         assertSame(m.getLineKind(), Move.Which.HORIZONTAL);

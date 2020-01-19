@@ -3,31 +3,21 @@ import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class InputManager {
 
-    protected Move currentMove;
-    protected final OutputManager OUTPUT;
+public interface InputManager {
 
-    protected InputManager(OutputManager oManager){
+     Move getMove() throws EndGameException, ResetGameException;
 
-        OUTPUT = oManager;
-    }
+     Integer getPlayersNumber();
 
-    public abstract String readInput();
+     List<Integer> getGridDimensions();
 
-    public abstract void readMove() throws EndGameException, ResetGameException;
+     boolean customPlayers();
 
-    public abstract Move getMove();
-
-    public abstract Integer getPlayersNumber();
-
-    public abstract List<Integer> getGridDimensions();
-
-    public abstract boolean customPlayers();
-
-    public abstract String getPlayerName();
+     String getPlayerName();
 
 }
 

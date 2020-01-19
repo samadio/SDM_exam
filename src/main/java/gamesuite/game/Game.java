@@ -31,13 +31,15 @@ public class Game {
 
     public void play(){
 
+        oManager.startMatch(this);
+
         oManager.printGame(this);
 
             while (notEnded()) {
 
                 try {
                     boolean invalidMove = true;
-                    iManager.readMove();
+
                     Move m = iManager.getMove();
 
                     while (invalidMove) {
@@ -45,31 +47,27 @@ public class Game {
                             validator.validateMove(m);
                             invalidMove = false;
                         } catch (InvalidMoveException e) {
-
                             oManager.printInvalidMove(e);
-                            iManager.readMove();
+
                             m = iManager.getMove();
                         }
                     }
 
-
                     boardManager.updateBoard(m);
                     status.update(m);
+
 
                     oManager.printGame(this);
                 }
                 catch (EndGameException e) {
-                    oManager.outputPrintln("The game has been manually ended");
-                    oManager.printWinner(this);
+                    oManager.printWinner(this,true);
                     return;
                 }
                 catch (ResetGameException e){
-                    oManager.outputPrintln("The game has been reset...");
                     this.reset();
-                    oManager.printGame(this);
                 }
             }
-        oManager.printWinner(this);
+        oManager.printWinner(this,false);
     }
 
 
@@ -91,6 +89,7 @@ public class Game {
     public void reset(){
         status.reset();
         boardManager.reset();
+        oManager.resetMatch(this);
     }
 
     public List<Player> getWinner(){  return status.getWinner(); }

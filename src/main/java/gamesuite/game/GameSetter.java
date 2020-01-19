@@ -13,6 +13,7 @@ import iomanagement.OutputManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.zip.DataFormatException;
 
 public abstract class GameSetter {
 
@@ -25,7 +26,7 @@ public abstract class GameSetter {
         this.oManager = oManager;
     }
 
-   public final Game newGame(){
+   public final Game newGame() {
 
        List<Player> players = setPlayers();
        BoardManager bManager = createBoard();
@@ -44,7 +45,6 @@ public abstract class GameSetter {
     private List<Player> setPlayers(){
 
         Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
-
         List<Player> players = new ArrayList<>(nPlayers);
         PlayersFactory playerGenerator= new PlayersFactory();
 
@@ -58,12 +58,11 @@ public abstract class GameSetter {
                     if (name.isEmpty()) {
                         oManager.outputPrintln("You were assigned the name: "+(idx+1));
                         players.add(idx, playerGenerator.newPlayer());
-                        idx++;
                     }
                     else {
                         players.add(idx, playerGenerator.newPlayer(name));
-                        idx++;
                     }
+                    idx++;
                 }catch(NameAlreadyUsedException e){
                     oManager.errorPrintln("Error: name already taken. Please select a different one");
                 }
