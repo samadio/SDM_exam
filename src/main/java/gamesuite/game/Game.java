@@ -21,7 +21,6 @@ public class Game {
     private List<Player> players;
 
     public Game(InputManager iManager, OutputManager oManager, BoardManager bManager, MoveValidator mValidator, GameStatus gStatus, List<Player> players){
-
         this.iManager=iManager;
         this.oManager = oManager;
         this.boardManager = bManager;
@@ -34,7 +33,7 @@ public class Game {
 
         oManager.printGame(this);
 
-            while (status.isNotFinished()) {
+            while (notEnded()) {
 
                 try {
                     boolean invalidMove = true;
@@ -75,24 +74,15 @@ public class Game {
 
 
 
-    public GameScore getScore(){
-
-        return status.getScore();
-    }
+    public GameScore getScore(){  return status.getScore(); }
 
     public List<Player> getPlayers(){
         return players;
     }
 
-    public Player nextPlayer(){
+    public Player nextPlayer(){  return status.currentPlayer(); }
 
-        return status.currentPlayer();
-    }
-
-    public boolean notEnded(){
-
-        return status.isNotFinished();
-    }
+    public boolean notEnded(){   return status.isNotFinished(); }
 
     public AbstractBoard getBoard(){
         return boardManager.getBoard();
@@ -103,8 +93,5 @@ public class Game {
         boardManager.reset();
     }
 
-    public List<Player> getWinner(){
-
-        return status.getWinner();
-    }
+    public List<Player> getWinner(){  return status.getWinner(); }
 }

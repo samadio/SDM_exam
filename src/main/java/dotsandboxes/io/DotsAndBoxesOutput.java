@@ -12,6 +12,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.IntFunction;
+import java.util.function.IntUnaryOperator;
+import java.util.stream.IntStream;
 
 import static gamesuite.move.Move.Which.HORIZONTAL;
 import static gamesuite.move.Move.Which.VERTICAL;
@@ -74,46 +77,60 @@ public class DotsAndBoxesOutput extends OutputManager {
 
     @Override
     public void printBoard(AbstractBoard board) {
+
+        outputPrintln(BoardDrawer.boardToString(board));
+    }
+
+}
+
+class BoardDrawer{
+
+    public static String boardToString(AbstractBoard board) {
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 
         //maximum number of digits needed
         Integer maxLength = String.valueOf(rows * columns - 1).length();
 
+        IntFunction<String> lastRowNumber = row -> String.valueOf(row * columns + columns - 1);
+
+        StringBuilder boardString = new StringBuilder();
         Move.Which type = HORIZONTAL;
-        int i = 0; //row u're looking at
-        while (i != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
-            for (int j = 0; j < AuxiliaryPrintBoard.columnsOf(type, columns); j++) {
-                Boolean present = board.getElement(type, i, j);
-                Integer currNode = i * columns + j;
-                String s = AuxiliaryPrintBoard.convertToString(present, type, currNode, maxLength);
-                outputPrint(s);
-            }
+        int currentRow = 0; //row u're looking at
+        while (currentRow != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
+
+            Move.Which finalType = type;
+            int finalRow = currentRow;
+
+            IntUnaryOperator currentNode = columnIdx -> finalRow*columns + columnIdx;
+            IntFunction<Boolean> isPresent = columnIdx -> board.getElement(finalType, finalRow, columnIdx);
+
+            IntStream.range(0, columnsOf(type, columns))
+                    .forEach(columnIdx -> boardString.append(convertToString(isPresent.apply(columnIdx), finalType, currentNode.applyAsInt(columnIdx), maxLength)));
+
             //after finishing a column
-            if (type == VERTICAL) {
-                i += 1;
-                outputPrint("\n");
-            }
-            if (type == HORIZONTAL)
-                outputPrint(AuxiliaryPrintBoard.indent(String.valueOf(i * columns + columns - 1), maxLength) + "\n");
-            type = AuxiliaryPrintBoard.other(type);
+            if (type == VERTICAL)
+                currentRow += 1;
+            String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(currentRow), maxLength) : "";
+            boardString.append(lineEnd).append("\n");
+
+            type = other(type);
         }
+
+        return boardString.toString();
     }
 
-}
-
-class AuxiliaryPrintBoard{
-    static Integer columnsOf(Move.Which lk,Integer cols){
+    private static Integer columnsOf(Move.Which lk,Integer cols){
         if((lk== HORIZONTAL)) return cols-1;
         return cols;
     }
 
-    static Move.Which other(Move.Which lk){
+    private static Move.Which other(Move.Which lk){
         if(lk==HORIZONTAL) return VERTICAL;
         return HORIZONTAL;
     }
 
-    static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
+    private static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
         String nodeString=String.valueOf(currNode);
         String indented=indent(nodeString,maxLength);
         if(present){
@@ -124,7 +141,7 @@ class AuxiliaryPrintBoard{
         return  indented+"  ";
     }
 
-    static String indent(String nodeString, Integer maxLength){
+    private static String indent(String nodeString, Integer maxLength){
         return "0".repeat(maxLength-nodeString.length())+nodeString;
     }
 
