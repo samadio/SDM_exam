@@ -26,6 +26,8 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
     @Override
     public void setPanel() {
 
+        clear(backgroundPanel);
+
         DBLabel playerQuestion= new DBLabel("GRID DIMENSIONS",225, 30, 150, 30);
 
         backgroundPanel.add(playerQuestion);

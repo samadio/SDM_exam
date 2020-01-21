@@ -1,6 +1,11 @@
 package dotsandboxes.gui.graphics;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class DBLabel extends JLabel {
     String text;
@@ -9,7 +14,7 @@ public class DBLabel extends JLabel {
     Integer width;
     Integer height;
 
-    public DBLabel(String t, Integer x, Integer y, Integer w, Integer h ){
+    public DBLabel(String t, Integer x, Integer y, Integer w, Integer h ) {
         super();
         text=t;
         x_position=x;
@@ -20,6 +25,8 @@ public class DBLabel extends JLabel {
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
         this.setBounds(x_position, y_position, width, height);
+        this.setFont(FontSetter.setFont());
+
 
         this.setOpaque(false);
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(w,h, 80));
@@ -42,6 +49,8 @@ public class DBLabel extends JLabel {
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
         this.setBounds(x_position, y_position, width, height);
+        this.setFont(FontSetter.setFont());
+
 
         this.setOpaque(false);
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(w,h, 80));

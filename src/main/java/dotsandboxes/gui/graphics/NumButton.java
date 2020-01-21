@@ -24,6 +24,7 @@ public class NumButton extends JButton {
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
         this.setFocusPainted(false);
+        this.setFont(FontSetter.setFont());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(w,h, 80));
         this.setIcon(imageIcon);
         this.setVerticalTextPosition(SwingConstants.CENTER);

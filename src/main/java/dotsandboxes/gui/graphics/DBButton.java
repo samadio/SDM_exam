@@ -37,6 +37,7 @@ public class DBButton extends JButton {
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
         this.setFocusPainted(false);
+        this.setFont(FontSetter.setFont());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
         this.setIcon(imageIcon);
     }

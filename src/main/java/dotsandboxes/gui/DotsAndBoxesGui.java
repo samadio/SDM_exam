@@ -120,8 +120,8 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void errorPrintln(String s) {
-
-        JOptionPane.showMessageDialog(this, s);
+        PLAYER_NAME_FRAME.showMessage(s);
+        //JOptionPane.showMessageDialog(this, s);
     }
 
     @Override

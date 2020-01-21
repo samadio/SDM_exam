@@ -16,5 +16,6 @@ public class DBTextField extends JTextField {
         height=h;
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setBounds(x_position, y_position, width, height);
+        this.setFont(FontSetter.setFont());
     }
 }
