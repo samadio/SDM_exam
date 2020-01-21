@@ -2,6 +2,7 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
+import dotsandboxes.gui.graphics.FontSetter;
 import gamesuite.game.Game;
 import gamesuite.players.Player;
 
@@ -31,6 +32,7 @@ public class EndFrame extends Frame{
 
         if (winners.size() == 1) winMessage.setText("The winner is");
         else winMessage.setText("<html><body style='text-align: center'>Game is a draw<br/>The following players have the same score:<html>");
+        winMessage.setFont(FontSetter.setFont());
 
         backgroundPanel.add(winMessage);
         int yOffset = 90;

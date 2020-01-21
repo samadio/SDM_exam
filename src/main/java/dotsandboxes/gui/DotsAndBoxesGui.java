@@ -47,7 +47,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     public Move getMove() throws EndGameException, ResetGameException{
 
         Move m = gameFrame.getInput();
-
         if(gameFrame.getEndGame()) throw new EndGameException();
         if(gameFrame.getReset()) throw new ResetGameException();
 

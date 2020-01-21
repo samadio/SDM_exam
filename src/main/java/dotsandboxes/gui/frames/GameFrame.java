@@ -48,7 +48,7 @@ public class GameFrame extends InputFrame<Move> {
 
 
     public void setReset(boolean bool) {reset=bool;}
-    public void setEndGame(boolean bool) {reset=bool;}
+    public void setEndGame(boolean bool) {endGame=bool;}
 
 
 
