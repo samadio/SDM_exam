@@ -1,7 +1,6 @@
 package dotsandboxes.gui.graphics;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class NumRadioButton extends JRadioButton {
 
@@ -33,10 +32,7 @@ public class NumRadioButton extends JRadioButton {
     }
 
     private void setStyle(){
-
-        //this.setOpaque(false);
         this.setContentAreaFilled(false);
-        //this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setFont(FontSetter.setFont());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));

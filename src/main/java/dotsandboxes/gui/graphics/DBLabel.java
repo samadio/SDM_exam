@@ -1,11 +1,7 @@
 package dotsandboxes.gui.graphics;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 
 public class DBLabel extends JLabel {
     String text;

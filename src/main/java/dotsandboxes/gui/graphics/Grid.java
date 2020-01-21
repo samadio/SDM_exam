@@ -1,6 +1,5 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.frames.gameFrameFunctions.SetElementsInGrid;
 import dotsandboxes.gui.graphics.lists.LinesList;
 
 public class Grid {

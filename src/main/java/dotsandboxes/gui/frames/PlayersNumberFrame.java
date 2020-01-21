@@ -3,8 +3,6 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.NumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
