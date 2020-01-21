@@ -4,7 +4,7 @@ import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
 
-public class Line extends GraphicObj {
+public class Line extends GridGraphicalObject {
 
     private Integer row;
     private Integer column;

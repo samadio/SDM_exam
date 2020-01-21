@@ -5,7 +5,7 @@ import dotsandboxes.gui.graphics.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridFrame extends InputFrame<List<Integer>>{
+public class GridDimensionFrame extends InputFrame<List<Integer>>{
 
     private static final int MIN_DIMENSION=3;
     private static final int MAX_DIMENSION=5;
@@ -17,7 +17,7 @@ public class GridFrame extends InputFrame<List<Integer>>{
     private boolean rowInput;
     private boolean colInput;
 
-    public GridFrame(BackgroundPanel bP){
+    public GridDimensionFrame(BackgroundPanel bP){
 
         super(bP);
         dimensions=new ArrayList<>(2);

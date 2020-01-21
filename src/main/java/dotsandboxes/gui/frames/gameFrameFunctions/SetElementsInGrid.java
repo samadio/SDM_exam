@@ -1,7 +1,7 @@
 package dotsandboxes.gui.frames.gameFrameFunctions;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.GraphicObj;
+import dotsandboxes.gui.graphics.GridGraphicalObject;
 import dotsandboxes.gui.graphics.Line;
 import dotsandboxes.gui.graphics.lists.DotsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
@@ -30,7 +30,7 @@ public class SetElementsInGrid {
         DotsList dots= new DotsList();
         for (int i = 0; i < gridSpec.getRows(); i++) {
             for (int j = 0; j < gridSpec.getCols(); j++) {
-                GraphicObj dot = new GraphicObj(objSpec);
+                GridGraphicalObject dot = new GridGraphicalObject(objSpec);
                 dot.setButtonProperties(gridSpec.getDist() * j + gridSpec.getxOffset(), gridSpec.getDist() * i + gridSpec.getyOffset(), gridSpec.getWidth(), gridSpec.getHeight());
                 bPanel.add(dot);
                 dots.add(dot);
@@ -48,7 +48,7 @@ public class SetElementsInGrid {
         Integer dimTwo=componentSetter.getDimTwo();
 
         ObjSpecifics boxSpec= new ObjSpecifics("images/box.png","",dimOne,dimOne, 50);
-        GraphicObj box = new GraphicObj(boxSpec);
+        GridGraphicalObject box = new GridGraphicalObject(boxSpec);
         box.setButtonProperties(xOffset+dimTwo +j*(dimOne+dimTwo), yOffset+dimTwo+i*(dimOne+dimTwo), dimOne, 50);
         backgroundPanel.add(box);
     }

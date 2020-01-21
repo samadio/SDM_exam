@@ -1,7 +1,5 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.graphics.GraphicObj;
-
 import javax.swing.*;
 
 public class NumButton extends JButton {

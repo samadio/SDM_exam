@@ -4,11 +4,11 @@ import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
 
-public class GraphicObj extends JButton {
+public class GridGraphicalObject extends JButton {
     protected ObjSpecifics objSpec;
 
 
-    public GraphicObj(ObjSpecifics os) {
+    public GridGraphicalObject(ObjSpecifics os) {
         super();
         objSpec=os;
         this.setBorder(null);

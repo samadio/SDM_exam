@@ -19,12 +19,12 @@ public class GameFrame extends InputFrame<Move> {
     private DBLabel currentPlayerLabel;
     private Move currentMove;
     private LabelsList labels;
-    public boolean endGame;
-    public boolean reset;
+    private boolean endGame;
+    private boolean reset;
     private Integer boxesRows;
     private Integer boxesColumns;
     private boolean[][] boxes;
-    public Grid grid;
+    private Grid grid;
     private Game targetGame;
 
     public GameFrame(BackgroundPanel bP, Game game) {
@@ -44,6 +44,12 @@ public class GameFrame extends InputFrame<Move> {
     public LabelsList getLabels() {return labels;}
     public boolean getReset() {return reset;}
     public boolean getEndGame() {return endGame;}
+    public Grid getGrid() {return grid;}
+
+
+    public void setReset(boolean bool) {reset=bool;}
+    public void setEndGame(boolean bool) {reset=bool;}
+
 
 
     @Override

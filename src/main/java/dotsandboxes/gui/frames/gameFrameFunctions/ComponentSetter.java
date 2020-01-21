@@ -82,7 +82,7 @@ public class ComponentSetter{
 
         endGameButton.addActionListener(x ->
         {
-            gameFrame.endGame= true;
+            gameFrame.setEndGame(true);
             gameFrame.setInputGiven(true);
             endGameButton.setDark();
 
@@ -92,7 +92,7 @@ public class ComponentSetter{
 
         resetGameButton.addActionListener(x ->
         {
-            gameFrame.reset = true;
+            gameFrame.setReset(true);
             gameFrame.setInputGiven(true);
             resetGameButton.setDark();
         });
@@ -111,7 +111,7 @@ public class ComponentSetter{
         LinesList horizontalLines = SetElementsInGrid.setLines(horizontalLinesSpec, horizontalGridSpec, backgroundPanel);
         LinesList verticalLines = SetElementsInGrid.setLines(verticalLinesSpec, verticalGridSpec, backgroundPanel);
 
-        gameFrame.grid.setGrid(horizontalLines,verticalLines);
+        gameFrame.getGrid().setGrid(horizontalLines,verticalLines);
 
         for (Line l : horizontalLines) {
             l.addActionListener(x ->
@@ -171,10 +171,10 @@ public class ComponentSetter{
     public void paintLine(Move currentMove, GameFrame gameFrame) {
 
         if(currentMove.getLineKind()== Move.Which.HORIZONTAL){
-            gameFrame.grid.horizontalLines.get(currentMove.getRow()*gameFrame.getBoxesColumns()+currentMove.getCol()).setDark();
+            gameFrame.getGrid().getHorizontalLines().get(currentMove.getRow()*gameFrame.getBoxesColumns()+currentMove.getCol()).setDark();
         }
         else{
-            gameFrame.grid.verticalLines.get(currentMove.getRow()*(gameFrame.getBoxesColumns()+1)+currentMove.getCol()).setDark();
+            gameFrame.getGrid().getVerticalLines().get(currentMove.getRow()*(gameFrame.getBoxesColumns()+1)+currentMove.getCol()).setDark();
         }
     }
 }

@@ -5,8 +5,8 @@ import dotsandboxes.gui.graphics.lists.LinesList;
 
 public class Grid {
 
-    public LinesList horizontalLines;
-    public LinesList verticalLines;
+    private LinesList horizontalLines;
+    private LinesList verticalLines;
 
     public Grid(){}
 
@@ -14,4 +14,8 @@ public class Grid {
         horizontalLines=hl;
         verticalLines=vl;
     }
+
+    public LinesList getHorizontalLines() { return horizontalLines; }
+
+    public LinesList getVerticalLines() {return verticalLines; }
 }

@@ -72,7 +72,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public List<Integer> getGridDimensions() {
 
-        InputFrame<List<Integer>> gridFrame = new GridFrame(backgroundPanel);
+        InputFrame<List<Integer>> gridFrame = new GridDimensionFrame(backgroundPanel);
         gridFrame.setPanel();
         return gridFrame.getInput();
     }
