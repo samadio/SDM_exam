@@ -50,6 +50,7 @@ public class PlayersNameFrame extends InputFrame<String> {
             if(!error) playerNumber+=1;
             playerToType.setText("PLAYER  "+Integer.toString(playerNumber));
             error=false;
+            updatePanel(backgroundPanel);
         }
 
     }
