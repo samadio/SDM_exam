@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-19T20:20:50" hostname="machine770" time="0.021">
-  <properties/>
-  <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.021"/>
-  <system-out><![CDATA[Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
