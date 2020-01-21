@@ -6,9 +6,7 @@ import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.Grid;
 import dotsandboxes.gui.graphics.lists.LabelsList;
-import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
-import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
 
 

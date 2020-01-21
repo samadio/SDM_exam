@@ -2,9 +2,6 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
 
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 public abstract class Frame {
     protected BackgroundPanel backgroundPanel;

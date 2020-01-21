@@ -9,7 +9,9 @@ import java.io.IOException;
 public class FontSetter {
     public static Font setFont(){
 
-        Font font=new Font("Helvetica Neue",Font.CENTER_BASELINE,16);
+        Integer size=14;
+
+        Font font=new Font("Helvetica Neue",Font.CENTER_BASELINE,size);
         try {
             File f = new File("font/SfEspressoShackCondensed-mYm5.ttf");
             FileInputStream in = new FileInputStream(f);
@@ -23,6 +25,6 @@ public class FontSetter {
         catch (FileNotFoundException |FontFormatException  e) {}
         catch (IOException e) {}
 
-        return font.deriveFont(Font.CENTER_BASELINE, 14);
+        return font.deriveFont(Font.CENTER_BASELINE, size);
     }
 }
