@@ -57,7 +57,7 @@ public class DotsAndBoxesInput implements InputManager {
                 invalidInput = false;
             }
             catch (DataFormatException e){
-                OUTPUT.errorPrintln(e.getMessage());
+                OUTPUT.errorMessage(e.getMessage());
             }
         }
     }
@@ -98,12 +98,12 @@ public class DotsAndBoxesInput implements InputManager {
                 parsedInput.removeAll(Collections.singletonList(""));
                 dimensions = parsedInput.stream().map(Integer::valueOf).collect(Collectors.toList());
                 if (dimensions.size() != 2) {
-                    OUTPUT.errorPrintln("Error: invalid grid dimensions.");
+                    OUTPUT.errorMessage("Error: invalid grid dimensions.");
                     OUTPUT.outputMessage(gridMessage);
                 } else
                     invalidDimensions = false;
             } catch (NumberFormatException e) {
-                OUTPUT.errorPrintln("Error: the input is expected to be a sequence of integer.");
+                OUTPUT.errorMessage("Error: the input is expected to be a sequence of integer.");
                 OUTPUT.outputMessage(gridMessage);
             }
         }
@@ -139,15 +139,15 @@ public class DotsAndBoxesInput implements InputManager {
                 invalidNumber = false;
                 if(i<=0){
                     invalidNumber=true;
-                    OUTPUT.errorPrintln("Error: insert a number of players greater than 0");
+                    OUTPUT.errorMessage("Error: insert a number of players greater than 0");
                 }
             }
             catch (InputMismatchException e){
-                OUTPUT.errorPrintln("Error: invalid number of inputs for number of players");
+                OUTPUT.errorMessage("Error: invalid number of inputs for number of players");
                 OUTPUT.outputMessage(playersMessage);
             }
             catch(NumberFormatException e){
-                OUTPUT.errorPrintln("Error: the input is expected to be Integer");
+                OUTPUT.errorMessage("Error: the input is expected to be Integer");
                 OUTPUT.outputMessage(playersMessage);
             }
         }
@@ -164,7 +164,7 @@ public class DotsAndBoxesInput implements InputManager {
         while (true) {
             if (answer.equalsIgnoreCase("y")) return true;
             else if (answer.equalsIgnoreCase("n")) return false;
-            OUTPUT.errorPrintln("Error: invalid answer");
+            OUTPUT.errorMessage("Error: invalid answer");
             OUTPUT.outputMessage(customPlayersMessage);
             answer=readInput();
         }

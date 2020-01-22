@@ -98,7 +98,7 @@ public class GameFrame extends InputFrame<Move> {
         reset = false;
         labels= new LabelsList();
 
-        componentSetter= new ComponentSetter(boxesRows,boxesColumns);
+        componentSetter= new ComponentSetter(IMAGE_DIR,boxesRows,boxesColumns);
 
         componentSetter.playersLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
 

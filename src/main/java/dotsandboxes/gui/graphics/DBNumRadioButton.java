@@ -1,17 +1,21 @@
 package dotsandboxes.gui.graphics;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 
-public class NumRadioButton extends JRadioButton {
+public class DBNumRadioButton extends JRadioButton {
 
     private final Integer NUMBER;
+    private final File IMAGE_DIR;
 
-    public NumRadioButton(Integer num, Integer x, Integer y, Integer w, Integer h ){
+    public DBNumRadioButton(File imgDir, Integer num, Point position, Rectangle size ){
 
         super(Integer.toString(num));
+        IMAGE_DIR=imgDir;
         NUMBER = num;
-        setLocation(x,y);
-        setSize(w,h);
+        setLocation(position);
+        setSize(size.width,size.height);
 
         setAlignment(JLabel.CENTER);
 
@@ -21,7 +25,7 @@ public class NumRadioButton extends JRadioButton {
 
         setTextPosition(SwingConstants.CENTER);
 
-        ImageIcon radio_on = new ImageIcon(new ImageIcon("images/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
+        ImageIcon radio_on = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
         this.setSelectedIcon(radio_on);
     }
 
@@ -35,7 +39,7 @@ public class NumRadioButton extends JRadioButton {
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
         this.setFont(FontSetter.setFont());
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
         this.setIcon(imageIcon);
     }
 

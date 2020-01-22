@@ -2,16 +2,17 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GridDimensionFrame extends InputFrame<List<Integer>>{
-
+    
     private static final int MIN_DIMENSION=3;
     private static final int MAX_DIMENSION=5;
 
-    List<Integer> dimensions;
+    private final List<Integer> DIMENSION;
     private Integer rows;
     private Integer cols;
 
@@ -21,7 +22,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
     public GridDimensionFrame(BackgroundPanel bP, File imageDir, File fontDir) {
 
         super(bP, imageDir, fontDir);
-        dimensions=new ArrayList<>(2);
+        DIMENSION=new ArrayList<>(2);
     }
 
     @Override
@@ -29,24 +30,24 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
 
         clear();
 
-        DBLabel playerQuestion= new DBLabel("GRID DIMENSIONS",225, 30, 150, 30);
+        DBLabel playerQuestion= new DBLabel("GRID DIMENSION",225, 30, 150, 30);
 
         BACKGROUND_PANEL.add(playerQuestion);
 
-        List<NumRadioButton> rowsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
-        List<NumRadioButton> colsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
+        List<DBNumRadioButton> rowsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
+        List<DBNumRadioButton> colsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
 
         int yOffset = 100;
 
         for (int i=MIN_DIMENSION; i<MAX_DIMENSION+1; i++) {
-            NumRadioButton rowButton=new NumRadioButton(i,250, yOffset, 40, 30);
-            NumRadioButton colButton=new NumRadioButton(i,310, yOffset, 40, 30);
+            DBNumRadioButton rowButton=new DBNumRadioButton(IMAGE_DIR,i,new Point(250, yOffset),new Rectangle( 40, 30));
+            DBNumRadioButton colButton=new DBNumRadioButton(IMAGE_DIR,i,new Point(310, yOffset), new Rectangle(40, 30));
             rowButton.addActionListener(x ->
             {
                 rows= rowButton.getNumber();
                 rowButton.setSelected(true);
                 rowInput=true;
-                for (NumRadioButton  rButton : rowsButtons){
+                for (DBNumRadioButton rButton : rowsButtons){
                     if(!rButton.equals(rowButton) & rButton.isSelected()){
                         rButton.setSelected(false);
                     }
@@ -57,7 +58,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
                 cols= colButton.getNumber();
                 colButton.setSelected(true);
                 colInput=true;
-                for (NumRadioButton  cButton : colsButtons){
+                for (DBNumRadioButton cButton : colsButtons){
                     if(!cButton.equals(colButton) & cButton.isSelected()){
                         cButton.setSelected(false);
                     }
@@ -70,7 +71,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
             colsButtons.add(colButton);
         }
 
-        DBButton button=new DBButton("OK",260, 300, 80, 30);
+        DBTextButton button=new DBTextButton(IMAGE_DIR,"OK", new Point(260, 300), new Rectangle(80, 30));
         button.addActionListener(x ->
         {
             inputGiven=true;
@@ -89,12 +90,12 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
             waitInput();
         }
 
-        dimensions.add(rows+1);
-        dimensions.add(cols+1);
+        DIMENSION.add(rows+1);
+        DIMENSION.add(cols+1);
 
         this.inputGiven=false;
         clear();
 
-        return dimensions;
+        return DIMENSION;
     }
 }

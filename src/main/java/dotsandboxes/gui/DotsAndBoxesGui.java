@@ -3,7 +3,6 @@ package dotsandboxes.gui;
 
 import dotsandboxes.gui.frames.*;
 import dotsandboxes.gui.graphics.*;
-import gamesuite.board.AbstractBoard;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;
@@ -22,13 +21,13 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private final BackgroundPanel BACKGROUND_PANEL;
     private GameFrame gameFrame;
     private final PlayersNameFrame PLAYER_NAME_FRAME;
-    private final File IMAGE_DIR = new File("../images");
-    private final File FONT_DIR = new File("../font");
+    private final File IMAGE_DIR = new File("images");
+    private final File FONT_DIR = new File("font");
 
 
     public DotsAndBoxesGui(){
         super();
-        BACKGROUND_PANEL = new BackgroundPanel();
+        BACKGROUND_PANEL = new BackgroundPanel(IMAGE_DIR);
         PLAYER_NAME_FRAME = new PlayersNameFrame(BACKGROUND_PANEL, IMAGE_DIR, FONT_DIR);
         setFrameOptions();
     }
@@ -118,7 +117,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
 
     @Override
-    public void errorPrintln(String s) {
+    public void errorMessage(String s) {
         PLAYER_NAME_FRAME.showMessage(s);
     }
 

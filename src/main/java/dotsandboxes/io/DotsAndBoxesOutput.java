@@ -41,7 +41,7 @@ public class DotsAndBoxesOutput implements OutputManager {
     private void printCurrentPlayer(Game game) { outputMessage("Next player: " + game.nextPlayer()); }
 
     @Override
-    public void printInvalidMove(InvalidMoveException e) { errorPrintln(e.getMessage());}
+    public void printInvalidMove(InvalidMoveException e) { errorMessage(e.getMessage());}
 
     @Override
     public void outputMessage(String message) {
@@ -53,7 +53,7 @@ public class DotsAndBoxesOutput implements OutputManager {
     }
 
     @Override
-    public void errorPrintln(String s) {
+    public void errorMessage(String s) {
         System.err.println(s);
     }
 

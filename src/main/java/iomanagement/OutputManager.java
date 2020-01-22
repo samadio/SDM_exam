@@ -1,7 +1,5 @@
 package iomanagement;
 
-import gamesuite.board.AbstractBoard;
-import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 
@@ -17,7 +15,7 @@ public interface OutputManager {
 
       void outputMessage(String message);
 
-      void errorPrintln(String s);
+      void errorMessage(String s);
 
       void resetMatch(Game game);
 

@@ -10,10 +10,14 @@ import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
+
+import java.awt.*;
+import java.io.File;
 import java.util.List;
 
 public class ComponentSetter{
 
+    private final File IMAGE_DIR;
     private ObjSpecifics horizontalLinesSpec;
     private ObjSpecifics verticalLinesSpec;
     private ObjSpecifics dotsSpec;
@@ -27,8 +31,9 @@ public class ComponentSetter{
     private Integer dimTwo;
 
 
-    public ComponentSetter(Integer rows, Integer cols){
+    public ComponentSetter(File imgDir,Integer rows, Integer cols){
 
+        IMAGE_DIR=imgDir;
         dimOne=45;
         dimTwo=15;
         xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
@@ -78,7 +83,7 @@ public class ComponentSetter{
 
 
     public void endResetButtons(GameFrame gameFrame, BackgroundPanel backgroundPanel){
-        DBButton endGameButton = new DBButton("END GAME",470, 290, 120, 30);
+        DBTextButton endGameButton = new DBTextButton(IMAGE_DIR,"END GAME", new Point(470, 290), new Rectangle(120, 30));
 
         endGameButton.addActionListener(x ->
         {
@@ -88,7 +93,7 @@ public class ComponentSetter{
 
         });
 
-        DBButton resetGameButton = new DBButton("RESET GAME",470, 330, 120, 30);
+        DBTextButton resetGameButton = new DBTextButton(IMAGE_DIR,"RESET GAME",new Point(470, 330),new Rectangle( 120, 30));
 
         resetGameButton.addActionListener(x ->
         {

@@ -1,16 +1,21 @@
 package dotsandboxes.gui.graphics;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
 
-public class DBButton extends JButton {
+public class DBTextButton extends JButton {
 
-    public DBButton(String t, Integer x, Integer y, Integer w, Integer h ){
+    private final File IMAGE_DIR;
+
+    public DBTextButton(File imgDir, String t, Point position, Rectangle size ){
 
         super();
-
+        IMAGE_DIR=imgDir;
         setText(t);
-        setSize(w, h);
-        setLocation(x,y);
+        setLocation(position);
+        setSize(size.width,size.height);
+
 
         setAlignment(JLabel.CENTER);
 
@@ -22,7 +27,7 @@ public class DBButton extends JButton {
     }
 
     public void setDark() {
-        ImageIcon darkIcon = new ImageIcon(new ImageIcon("images/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
+        ImageIcon darkIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
         this.setIcon(darkIcon);
     }
 
@@ -38,7 +43,7 @@ public class DBButton extends JButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setFont(FontSetter.setFont());
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
         this.setIcon(imageIcon);
     }
     private void setTextPosition(Integer position) {

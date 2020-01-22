@@ -63,10 +63,10 @@ public abstract class GameSetter {
                     }
                     idx++;
                 }catch(NameAlreadyUsedException e){
-                    oManager.errorPrintln("Error: name already taken. Please select a different one");
+                    oManager.errorMessage("Error: name already taken. Please select a different one");
                 }
                 catch (ReservedNameException e){
-                    oManager.errorPrintln("Error: Integer numbers cannot be chosen as names");
+                    oManager.errorMessage("Error: Integer numbers cannot be chosen as names");
                 }
             }
         }
