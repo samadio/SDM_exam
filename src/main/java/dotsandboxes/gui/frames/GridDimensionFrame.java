@@ -2,6 +2,7 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,20 +18,20 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
     private boolean rowInput;
     private boolean colInput;
 
-    public GridDimensionFrame(BackgroundPanel bP){
+    public GridDimensionFrame(BackgroundPanel bP, File imageDir, File fontDir) {
 
-        super(bP);
+        super(bP, imageDir, fontDir);
         dimensions=new ArrayList<>(2);
     }
 
     @Override
     public void setPanel() {
 
-        clear(backgroundPanel);
+        clear();
 
         DBLabel playerQuestion= new DBLabel("GRID DIMENSIONS",225, 30, 150, 30);
 
-        backgroundPanel.add(playerQuestion);
+        BACKGROUND_PANEL.add(playerQuestion);
 
         List<NumRadioButton> rowsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
         List<NumRadioButton> colsButtons= new ArrayList<>(MAX_DIMENSION-MIN_DIMENSION);
@@ -63,8 +64,8 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
                 }
             });
             yOffset+=40;
-            backgroundPanel.add(rowButton);
-            backgroundPanel.add(colButton);
+            BACKGROUND_PANEL.add(rowButton);
+            BACKGROUND_PANEL.add(colButton);
             rowsButtons.add(rowButton);
             colsButtons.add(colButton);
         }
@@ -75,9 +76,9 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
             inputGiven=true;
             if(rowInput & colInput) button.setDark();
         });
-        backgroundPanel.add(button);
+        BACKGROUND_PANEL.add(button);
 
-        updatePanel(backgroundPanel);
+        updatePanel();
     }
 
 
@@ -92,7 +93,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
         dimensions.add(cols+1);
 
         this.inputGiven=false;
-        clear(backgroundPanel);
+        clear();
 
         return dimensions;
     }

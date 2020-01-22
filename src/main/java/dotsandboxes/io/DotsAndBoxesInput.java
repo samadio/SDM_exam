@@ -20,12 +20,12 @@ public class DotsAndBoxesInput implements InputManager {
         OUTPUT = oManager;
     }
 
-    private Boolean settedConverter = false;
+    private Boolean converterSet = false;
     private Converter moveConverter;
 
     public void setConverter(Integer nCols){
         moveConverter = new Converter(nCols);
-        settedConverter = true;
+        converterSet = true;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class DotsAndBoxesInput implements InputManager {
 
     private void readMove() throws EndGameException, ResetGameException {
 
-        if (!settedConverter)
+        if (!converterSet)
             throw new InvalidStateException("Convert not set");
         boolean invalidInput = true;
         while(invalidInput){

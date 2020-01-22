@@ -8,7 +8,11 @@ import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SetElementsInGrid {
+
 
     public static LinesList setLines(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
 

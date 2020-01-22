@@ -9,6 +9,8 @@ import dotsandboxes.gui.graphics.lists.LabelsList;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
+import java.io.File;
+
 
 public class GameFrame extends InputFrame<Move> {
 
@@ -25,16 +27,16 @@ public class GameFrame extends InputFrame<Move> {
     private Grid grid;
     private Game targetGame;
 
-    public GameFrame(BackgroundPanel bP, Game game) {
 
-        super(bP);
+    public GameFrame(BackgroundPanel bP, Game game, File imageDir, File fontDir) {
+
+        super(bP, imageDir, fontDir);
         grid=new Grid();
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
 
         targetGame = game;
     }
-
 
     public Integer getBoxesRows() {return boxesRows;}
     public Integer getBoxesColumns() {return boxesColumns;}
@@ -67,9 +69,9 @@ public class GameFrame extends InputFrame<Move> {
 
         componentSetter.setScores(game, labels);
 
-        componentSetter.addBox(game,this,backgroundPanel);
+        componentSetter.addBox(game,this, BACKGROUND_PANEL);
 
-        updatePanel(backgroundPanel);
+        updatePanel();
 
     }
 
@@ -77,14 +79,10 @@ public class GameFrame extends InputFrame<Move> {
     public void resetFrame(BackgroundPanel backgroundPanel) {
 
         boxes=new boolean[boxesRows][boxesColumns];
-        clear(backgroundPanel);
+        clear();
 
     }
 
-
-    public Move getCurrentMove() {
-        return currentMove;
-    }
 
     public void setCurrentMove(Move currentMove) {
         this.currentMove = currentMove;
@@ -101,17 +99,17 @@ public class GameFrame extends InputFrame<Move> {
 
         componentSetter= new ComponentSetter(boxesRows,boxesColumns);
 
-        componentSetter.playersLabels(this,targetGame.getPlayers(), backgroundPanel);
+        componentSetter.playersLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
 
-        componentSetter.endResetButtons(this,backgroundPanel);
+        componentSetter.endResetButtons(this, BACKGROUND_PANEL);
 
-        componentSetter.currentPlayerLabel(backgroundPanel,currentPlayerLabel);
+        componentSetter.currentPlayerLabel(BACKGROUND_PANEL,currentPlayerLabel);
 
-        componentSetter.lines(this, backgroundPanel);
+        componentSetter.lines(this, BACKGROUND_PANEL);
 
-        componentSetter.dots(backgroundPanel);
+        componentSetter.dots(BACKGROUND_PANEL);
 
-        updatePanel(backgroundPanel);
+        updatePanel();
     }
 }
 

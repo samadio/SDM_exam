@@ -4,6 +4,8 @@ import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.DBTextField;
 
+import java.io.File;
+
 
 public class PlayersNameFrame extends InputFrame<String> {
 
@@ -14,9 +16,9 @@ public class PlayersNameFrame extends InputFrame<String> {
     private Integer playerNumber;
     private boolean error;
 
-    public PlayersNameFrame(BackgroundPanel bP){
+    public PlayersNameFrame(BackgroundPanel bP, File imageDir, File fontDir) {
 
-        super(bP);
+        super(bP, imageDir, fontDir);
         playerNumber=0;
     }
 
@@ -27,11 +29,11 @@ public class PlayersNameFrame extends InputFrame<String> {
             error=false;
             DBTextField playerName = new DBTextField(1, 265, 100, 70, 30);
             DBLabel playerQuestion = new DBLabel("INSERT NAMES", 200, 30, 200, 30);
-            playerToType =  new DBLabel("PLAYER  "+Integer.toString(playerNumber), 180, 100, 70, 30);
+            playerToType =  new DBLabel("PLAYER  "+ playerNumber, 180, 100, 70, 30);
 
-            backgroundPanel.add(playerQuestion);
-            backgroundPanel.add(playerName);
-            backgroundPanel.add(playerToType);
+            BACKGROUND_PANEL.add(playerQuestion);
+            BACKGROUND_PANEL.add(playerName);
+            BACKGROUND_PANEL.add(playerToType);
 
 
             playerName.addActionListener(x ->
@@ -41,16 +43,16 @@ public class PlayersNameFrame extends InputFrame<String> {
                 inputGiven = true;
             });
 
-            updatePanel(backgroundPanel);
+            updatePanel();
 
             panelSet=true;
         }
 
         else {
             if(!error) playerNumber+=1;
-            playerToType.setText("PLAYER  "+Integer.toString(playerNumber));
+            playerToType.setText("PLAYER  "+ playerNumber);
             error=false;
-            updatePanel(backgroundPanel);
+            updatePanel();
         }
 
     }
@@ -62,8 +64,8 @@ public class PlayersNameFrame extends InputFrame<String> {
         waitInput();
 
         if(playerMessage!=null) {
-            backgroundPanel.remove(playerMessage);
-            updatePanel(backgroundPanel);
+            BACKGROUND_PANEL.remove(playerMessage);
+            updatePanel();
 
         }
 
@@ -75,8 +77,8 @@ public class PlayersNameFrame extends InputFrame<String> {
     public void showMessage(String s) {
 
         playerMessage = new DBLabel(s, 50, 160, 500, 30);
-        backgroundPanel.add(playerMessage);
-        updatePanel(backgroundPanel);
+        BACKGROUND_PANEL.add(playerMessage);
+        updatePanel();
         error=true;
 
     }

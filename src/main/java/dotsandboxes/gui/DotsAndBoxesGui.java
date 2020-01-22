@@ -13,6 +13,7 @@ import iomanagement.InputManager;
 import iomanagement.OutputManager;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.List;
 
 
@@ -21,13 +22,14 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     private final BackgroundPanel BACKGROUND_PANEL;
     private GameFrame gameFrame;
     private final PlayersNameFrame PLAYER_NAME_FRAME;
-
+    private final File IMAGE_DIR = new File("../images");
+    private final File FONT_DIR = new File("../font");
 
 
     public DotsAndBoxesGui(){
         super();
         BACKGROUND_PANEL = new BackgroundPanel();
-        PLAYER_NAME_FRAME = new PlayersNameFrame(BACKGROUND_PANEL);
+        PLAYER_NAME_FRAME = new PlayersNameFrame(BACKGROUND_PANEL, IMAGE_DIR, FONT_DIR);
         setFrameOptions();
     }
 
@@ -56,7 +58,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public Integer getPlayersNumber() {
 
-        InputFrame<Integer> PNFrame = new PlayersNumberFrame(BACKGROUND_PANEL);
+        InputFrame<Integer> PNFrame = new PlayersNumberFrame(BACKGROUND_PANEL, IMAGE_DIR, FONT_DIR);
         PNFrame.setPanel();
         return PNFrame.getInput();
     }
@@ -71,7 +73,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public List<Integer> getGridDimensions() {
 
-        InputFrame<List<Integer>> gridFrame = new GridDimensionFrame(BACKGROUND_PANEL);
+        InputFrame<List<Integer>> gridFrame = new GridDimensionFrame(BACKGROUND_PANEL, IMAGE_DIR, FONT_DIR);
         gridFrame.setPanel();
         return gridFrame.getInput();
     }
@@ -80,7 +82,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void startMatch(Game game) {
 
-        gameFrame= new GameFrame(BACKGROUND_PANEL,game);
+        gameFrame= new GameFrame(BACKGROUND_PANEL,game, IMAGE_DIR, FONT_DIR);
         gameFrame.setPanel();
 
     }
@@ -101,7 +103,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
     @Override
     public void printWinner(Game game, boolean manuallyEnded) {
-        EndFrame endFrame=new EndFrame(BACKGROUND_PANEL);
+        EndFrame endFrame=new EndFrame(BACKGROUND_PANEL, IMAGE_DIR, FONT_DIR);
         endFrame.printWinner(game);
     }
 
@@ -120,7 +122,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void errorPrintln(String s) {
         PLAYER_NAME_FRAME.showMessage(s);
-        //JOptionPane.showMessageDialog(this, s);
     }
 
     @Override

@@ -3,18 +3,20 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.NumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayersNumberFrame extends InputFrame<Integer>{
 
-    Integer numPlayers;
-    List<NumButton> buttons;
+    private Integer numPlayers;
+    private List<NumButton> buttons;
 
 
-    public PlayersNumberFrame(BackgroundPanel bP){
+    public PlayersNumberFrame(BackgroundPanel bP, File imageDir, File fontDir) {
 
-        super(bP);
+        super(bP, imageDir, fontDir);
     }
 
     @Override
@@ -22,25 +24,25 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
 
         DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",200, 30, 200, 30);
 
-        backgroundPanel.add(playerQuestion);
+        BACKGROUND_PANEL.add(playerQuestion);
 
-        buttons= new ArrayList<>(3);
+        setButtons(new ArrayList<>(3));
         int yOffset = 100;
 
         for (int i=2; i<5; i++) {
             NumButton button=new NumButton(i,260, yOffset, 80, 30);
             button.addActionListener(x ->
             {
-                numPlayers=button.number;
+                setNumPlayers(button.number);
                 button.setDark();
                 inputGiven=true;
             });
             yOffset+=40;
-            backgroundPanel.add(button);
-            buttons.add(button);
+            BACKGROUND_PANEL.add(button);
+            getButtons().add(button);
         }
 
-        updatePanel(backgroundPanel);
+        updatePanel();
     }
 
 
@@ -50,11 +52,21 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
 
         waitInput();
 
-        this.inputGiven=false;
-
-        clear(backgroundPanel);
+        clear();
 
         return numPlayers;
+    }
+
+    private void setNumPlayers(Integer numPlayers) {
+        this.numPlayers = numPlayers;
+    }
+
+    private List<NumButton> getButtons() {
+        return buttons;
+    }
+
+    private void setButtons(List<NumButton> buttons) {
+        this.buttons = buttons;
     }
 }
 

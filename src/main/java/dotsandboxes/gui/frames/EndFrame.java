@@ -7,13 +7,14 @@ import gamesuite.game.Game;
 import gamesuite.players.Player;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EndFrame extends Frame{
-    public EndFrame(BackgroundPanel bP){
+    public EndFrame(BackgroundPanel bP, File imageDir, File fontDir) {
 
-        super(bP);
+        super(bP, imageDir, fontDir);
     }
 
     @Override
@@ -25,7 +26,7 @@ public class EndFrame extends Frame{
 
 
         List<Player> winners = game.getWinner();
-        clear(backgroundPanel);
+        clear();
         DBLabel winMessage = new DBLabel("",175, 30, 250, 50);
 
         List<JLabel> winnersLabels= new ArrayList<>();
@@ -34,16 +35,16 @@ public class EndFrame extends Frame{
         else winMessage.setText("<html><body style='text-align: center'>Game is a draw<br/>The following players have the same score:<html>");
         winMessage.setFont(FontSetter.setFont());
 
-        backgroundPanel.add(winMessage);
+        BACKGROUND_PANEL.add(winMessage);
         int yOffset = 90;
 
         for (Player p : winners) {
             DBLabel label= new DBLabel(p.getName(),260, yOffset, 80, 30);
 
             yOffset+=30;
-            backgroundPanel.add(label);
+            BACKGROUND_PANEL.add(label);
             winnersLabels.add(label);
         }
-        updatePanel(backgroundPanel);
+        updatePanel();
     }
 }

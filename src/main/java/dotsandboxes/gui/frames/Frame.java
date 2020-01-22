@@ -2,35 +2,31 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
 
+import java.io.File;
+
 
 public abstract class Frame {
-    protected BackgroundPanel backgroundPanel;
-    protected boolean inputGiven;
 
-    public Frame(BackgroundPanel bP) {
+    protected final BackgroundPanel BACKGROUND_PANEL;
+    protected final File IMAGE_DIR;
+    protected final File FONT_DIR;
 
-        backgroundPanel = bP;
-        inputGiven = false;
+    public Frame(BackgroundPanel bP, File imagesDir, File fontsDir) {
 
+        BACKGROUND_PANEL = bP;
+        IMAGE_DIR = imagesDir;
+        FONT_DIR = fontsDir;
     }
 
 
-    protected void updatePanel(BackgroundPanel backgroundPanel) {
-        backgroundPanel.revalidate();
-        backgroundPanel.repaint();
+    protected void updatePanel() {
+        BACKGROUND_PANEL.revalidate();
+        BACKGROUND_PANEL.repaint();
     }
 
-    protected void clear(BackgroundPanel backgroundPanel){
-        backgroundPanel.removeAll();
-        updatePanel(backgroundPanel);
-    }
-
-    public boolean getInputGiven(){
-        return inputGiven;
-    }
-
-    public void setInputGiven(boolean inputGiven) {
-        this.inputGiven = inputGiven;
+    protected void clear(){
+        BACKGROUND_PANEL.removeAll();
+        BACKGROUND_PANEL.revalidate();
     }
 
     public abstract void setPanel();
