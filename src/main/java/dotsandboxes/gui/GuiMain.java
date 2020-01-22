@@ -6,7 +6,7 @@ import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.ReservedNameException;
 
 public class GuiMain {
-    public static void main(String[] args) throws NameAlreadyUsedException, ReservedNameException {
+    public static void main(String[] args) {
 
 
         DotsAndBoxesGui dbGui = new DotsAndBoxesGui();

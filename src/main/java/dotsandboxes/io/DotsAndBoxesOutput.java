@@ -65,7 +65,6 @@ public class DotsAndBoxesOutput implements OutputManager {
     @Override
     public void resetMatch(Game game) {
         outputPrintln("The game has been reset...");
-        printGame(game);
     }
 
     @Override
@@ -89,9 +88,7 @@ public class DotsAndBoxesOutput implements OutputManager {
         }
     }
 
-    @Override
-    public void printBoard(AbstractBoard board) {
-
+    private void printBoard(AbstractBoard board) {
         outputPrintln(BoardDrawer.boardToString(board));
     }
 

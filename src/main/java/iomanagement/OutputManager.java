@@ -21,12 +21,10 @@ public interface OutputManager {
 
       void outputPrint(String s);
 
-     void resetMatch(Game game);
+      void resetMatch(Game game);
 
       void errorPrint(String s);
 
       void printWinner(Game game, boolean gameManuallyEnded);
-
-      void printBoard(AbstractBoard board);
 
 }
