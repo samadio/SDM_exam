@@ -22,7 +22,9 @@ public class DotsAndBoxesOutput implements OutputManager {
 
 
     @Override
-    public void startMatch(Game game) {}
+    public void startMatch(Game game) {
+        outputMessage("A move is encoded as [Number] [Direction]\n To connect nodes 11 12 please write '11 R' or '12 L'. Same for U (up) and D(down)");
+    }
 
     @Override
     public void initialMessage(){
