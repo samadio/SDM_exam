@@ -5,13 +5,9 @@ import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
-import gamesuite.status.GameScore;
 import iomanagement.OutputManager;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
@@ -24,32 +20,36 @@ public class DotsAndBoxesOutput implements OutputManager {
 
     @Override
     public void startMatch(Game game) {
-        outputPrintln("Start Game");
+        outputMessage("Start Game");
     }
 
     @Override
     public void printGame(Game game) {
-        outputPrintln("\n");
+        outputMessage("\n");
         printBoard(game.getBoard());
-        outputPrintln("\n Players score:");
+        outputMessage("\n Players score:");
         for (Player i : game.getPlayers()) {
             outputPrint(i.getName() + ": ");
             outputPrint(game.getScore().get(i) + "        ");
         }
-        outputPrintln("\n");
+        outputMessage("\n");
         printCurrentPlayer(game);
-        outputPrintln("\n");
+        outputMessage("\n");
 
     }
 
-    private void printCurrentPlayer(Game game) { outputPrintln("Next player: " + game.nextPlayer()); }
+    private void printCurrentPlayer(Game game) { outputMessage("Next player: " + game.nextPlayer()); }
 
     @Override
     public void printInvalidMove(InvalidMoveException e) { errorPrintln(e.getMessage());}
 
     @Override
-    public void outputPrintln(String message) {
+    public void outputMessage(String message) {
         System.out.println(message);
+    }
+
+    private void outputPrint(String s) {
+        System.out.print(s);
     }
 
     @Override
@@ -57,39 +57,29 @@ public class DotsAndBoxesOutput implements OutputManager {
         System.err.println(s);
     }
 
-    @Override
-    public void outputPrint(String s) {
-        System.out.print(s);
-    }
 
     @Override
     public void resetMatch(Game game) {
-        outputPrintln("The game has been reset...");
+        outputMessage("The game has been reset...");
     }
 
-    @Override
-    public void errorPrint(String s) {
-        System.err.print(s);
-    }
 
     @Override
-    public void printWinner(Game game, boolean gameManuallyEnded) {
-
-        if(gameManuallyEnded) outputPrintln("The game has been manually ended");
+    public void printWinner(Game game) {
 
         List<Player> winners = game.getWinner();
 
         if (winners.size() == 1)
-            outputPrintln("The winner is " + winners.get(0));
+            outputMessage("The winner is " + winners.get(0));
         else {
-            outputPrintln("Game is a draw, the following players have the same score:");
+            outputMessage("Game is a draw, the following players have the same score:");
             for (Player p : winners)
-                outputPrintln(p.toString());
+                outputMessage(p.toString());
         }
     }
 
     private void printBoard(AbstractBoard board) {
-        outputPrintln(BoardDrawer.boardToString(board));
+        outputMessage(BoardDrawer.boardToString(board));
     }
 
 }

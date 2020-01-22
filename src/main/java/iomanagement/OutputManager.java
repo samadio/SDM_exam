@@ -15,16 +15,12 @@ public interface OutputManager {
 
       void printInvalidMove(InvalidMoveException e);
 
-      void outputPrintln(String message);
+      void outputMessage(String message);
 
       void errorPrintln(String s);
 
-      void outputPrint(String s);
-
       void resetMatch(Game game);
 
-      void errorPrint(String s);
-
-      void printWinner(Game game, boolean gameManuallyEnded);
+      void printWinner(Game game);
 
 }

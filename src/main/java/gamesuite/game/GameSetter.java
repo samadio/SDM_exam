@@ -13,7 +13,6 @@ import iomanagement.OutputManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-import java.util.zip.DataFormatException;
 
 public abstract class GameSetter {
 
@@ -56,7 +55,7 @@ public abstract class GameSetter {
                 String name = iManager.getPlayerName();
                 try {
                     if (name.isEmpty()) {
-                        oManager.outputPrintln("You were assigned the name: "+(idx+1));
+                        oManager.outputMessage("You were assigned the name: "+(idx+1));
                         players.add(idx, playerGenerator.newPlayer());
                     }
                     else {

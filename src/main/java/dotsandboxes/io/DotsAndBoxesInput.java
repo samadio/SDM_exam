@@ -32,7 +32,7 @@ public class DotsAndBoxesInput implements InputManager {
     public String getPlayerName() {
         String playerNameMessage = "Insert next player's name: ";
 
-        OUTPUT.outputPrintln(playerNameMessage);
+        OUTPUT.outputMessage(playerNameMessage);
         return readInput();
     }
 
@@ -64,7 +64,7 @@ public class DotsAndBoxesInput implements InputManager {
 
     //private not considering tests
     public InputMove readInputMove() throws DataFormatException, EndGameException, ResetGameException {
-        OUTPUT.outputPrintln("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
+        OUTPUT.outputMessage("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
         String inputLine=readInput();
 
         QuitAndResetChecker.checkQuitCondition(inputLine);
@@ -86,7 +86,7 @@ public class DotsAndBoxesInput implements InputManager {
     private List<Integer> takeGridDimensions() {
 
         String gridMessage = "Insert grid dimension in format:[rowsNumber] [columnsNumber]";
-        OUTPUT.outputPrintln(gridMessage);
+        OUTPUT.outputMessage(gridMessage);
 
         boolean invalidDimensions = true;
         List<Integer> dimensions = null;
@@ -99,12 +99,12 @@ public class DotsAndBoxesInput implements InputManager {
                 dimensions = parsedInput.stream().map(Integer::valueOf).collect(Collectors.toList());
                 if (dimensions.size() != 2) {
                     OUTPUT.errorPrintln("Error: invalid grid dimensions.");
-                    OUTPUT.outputPrintln(gridMessage);
+                    OUTPUT.outputMessage(gridMessage);
                 } else
                     invalidDimensions = false;
             } catch (NumberFormatException e) {
                 OUTPUT.errorPrintln("Error: the input is expected to be a sequence of integer.");
-                OUTPUT.outputPrintln(gridMessage);
+                OUTPUT.outputMessage(gridMessage);
             }
         }
         return dimensions;
@@ -129,7 +129,7 @@ public class DotsAndBoxesInput implements InputManager {
         while (invalidNumber){
 
             try {
-                OUTPUT.outputPrintln(playersMessage);
+                OUTPUT.outputMessage(playersMessage);
                 input= new ArrayList<>(Arrays.asList(readInput().split(" ")));
                 //if u put blank spaces at the beginning or the end, it doesn't matter
                 input.removeAll(Collections.singletonList(""));
@@ -144,11 +144,11 @@ public class DotsAndBoxesInput implements InputManager {
             }
             catch (InputMismatchException e){
                 OUTPUT.errorPrintln("Error: invalid number of inputs for number of players");
-                OUTPUT.outputPrintln(playersMessage);
+                OUTPUT.outputMessage(playersMessage);
             }
             catch(NumberFormatException e){
                 OUTPUT.errorPrintln("Error: the input is expected to be Integer");
-                OUTPUT.outputPrintln(playersMessage);
+                OUTPUT.outputMessage(playersMessage);
             }
         }
         return i;
@@ -158,14 +158,14 @@ public class DotsAndBoxesInput implements InputManager {
     public boolean customPlayers(){
 
         String customPlayersMessage = "Do you want to customize player names? (y=yes,n=no)";
-        OUTPUT.outputPrintln(customPlayersMessage);
+        OUTPUT.outputMessage(customPlayersMessage);
         String answer=readInput().trim();
 
         while (true) {
             if (answer.equalsIgnoreCase("y")) return true;
             else if (answer.equalsIgnoreCase("n")) return false;
             OUTPUT.errorPrintln("Error: invalid answer");
-            OUTPUT.outputPrintln(customPlayersMessage);
+            OUTPUT.outputMessage(customPlayersMessage);
             answer=readInput();
         }
     }

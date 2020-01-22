@@ -102,7 +102,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
      }
 
     @Override
-    public void printWinner(Game game, boolean manuallyEnded) {
+    public void printWinner(Game game) {
         EndFrame endFrame=new EndFrame(BACKGROUND_PANEL, IMAGE_DIR, FONT_DIR);
         endFrame.printWinner(game);
     }
@@ -116,8 +116,6 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void printInvalidMove(InvalidMoveException e) {}
 
-    @Override
-    public void outputPrintln(String message) {}
 
     @Override
     public void errorPrintln(String s) {
@@ -125,9 +123,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     }
 
     @Override
-    public void outputPrint(String s) {}
+    public void outputMessage (String message) {}
 
-    @Override
-    public void errorPrint(String s) {}
 
 }
