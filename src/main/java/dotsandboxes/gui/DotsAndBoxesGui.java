@@ -124,5 +124,7 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void outputMessage (String message) {}
 
+    @Override
+    public void initialMessage(){}
 
 }
