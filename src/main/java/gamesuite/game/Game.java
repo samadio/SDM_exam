@@ -19,6 +19,7 @@ public class Game {
     private GameStatus status;
     private OutputManager oManager;
     private List<Player> players;
+    private boolean interrupted=false;
 
     public Game(InputManager iManager, OutputManager oManager, BoardManager bManager, MoveValidator mValidator, GameStatus gStatus, List<Player> players){
         this.iManager=iManager;
@@ -56,18 +57,19 @@ public class Game {
                     boardManager.updateBoard(m);
                     status.update(m);
 
-
                     oManager.printGame(this);
                 }
                 catch (EndGameException e) {
-                    oManager.printWinner(this,true);
-                    return;
+                    interrupted=true;
+                    break;
                 }
                 catch (ResetGameException e){
                     this.reset();
+                    oManager.startMatch(this);
+                    oManager.printGame(this);
                 }
             }
-        oManager.printWinner(this,false);
+        oManager.printWinner(this,interrupted);
     }
 
 
