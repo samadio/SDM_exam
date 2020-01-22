@@ -7,7 +7,10 @@ import gamesuite.move.Move;
 import gamesuite.players.Player;
 import iomanagement.OutputManager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
@@ -19,8 +22,20 @@ public class DotsAndBoxesOutput implements OutputManager {
 
 
     @Override
-    public void startMatch(Game game) {
-        outputMessage("Start Game");
+    public void startMatch(Game game) {}
+
+    @Override
+    public void initialMessage(){
+        Scanner input = null;
+        try {
+            input = new Scanner(new File("/home/simone/Desktop/DSSC/second_year/software_dev/SDM_exam/src/main/java/dotsandboxes/io/preliminary.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while (input.hasNextLine())
+        {
+            System.out.println(input.nextLine());
+        }
     }
 
     @Override

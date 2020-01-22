@@ -21,4 +21,6 @@ public interface OutputManager {
 
       void printWinner(Game game);
 
+      void initialMessage();
+
 }

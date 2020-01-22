@@ -26,11 +26,11 @@ public abstract class GameSetter {
     }
 
    public final Game newGame() {
-
-       List<Player> players = setPlayers();
-       BoardManager bManager = createBoard();
-       MoveValidator mValidator = setValidator(bManager);
-       GameStatus gStatus = setStatus(players, bManager, mValidator);
+        oManager.initialMessage();
+        List<Player> players = setPlayers();
+        BoardManager bManager = createBoard();
+        MoveValidator mValidator = setValidator(bManager);
+        GameStatus gStatus = setStatus(players, bManager, mValidator);
 
        return new Game(iManager, oManager, bManager, mValidator, gStatus, players);
    }
