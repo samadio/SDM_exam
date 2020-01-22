@@ -130,6 +130,4 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
     @Override
     public void errorPrint(String s) {}
 
-    @Override
-    public void printBoard(AbstractBoard board) {}
 }

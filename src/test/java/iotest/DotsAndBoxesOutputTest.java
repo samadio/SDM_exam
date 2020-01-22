@@ -23,7 +23,7 @@ class DotsAndBoxesOutputTest {
     DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
     BoardManager bm = new DotsAndBoxesBoardManager(4, 4);
 
-
+/*
     @Test
     public void seeOutputTest(){
         Move currentMove = new Move(Move.Which.HORIZONTAL, 0,0);
@@ -32,6 +32,8 @@ class DotsAndBoxesOutputTest {
         bm.updateBoard(new Move(Move.Which.HORIZONTAL,2,2));
         otest.printBoard(bm.getBoard());
     }
+    
+ */
 
 
 }

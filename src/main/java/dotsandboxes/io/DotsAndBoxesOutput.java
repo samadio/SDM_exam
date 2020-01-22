@@ -96,7 +96,7 @@ public class DotsAndBoxesOutput implements OutputManager {
 
 class BoardDrawer{
 
-    public static String boardToString(AbstractBoard board) {
+    static String boardToString(AbstractBoard board) {
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 

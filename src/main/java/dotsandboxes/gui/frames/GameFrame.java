@@ -91,7 +91,7 @@ public class GameFrame extends InputFrame<Move> {
     @Override
     public void setPanel() {
 
-        clear(backgroundPanel);
+        clear();
         currentPlayerLabel = new DBLabel();
         boxes=new boolean[boxesRows][boxesColumns];
         endGame = false;
