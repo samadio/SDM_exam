@@ -2,10 +2,12 @@ package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.RecursiveAction;
 
 public class GridDimensionFrame extends InputFrame<List<Integer>>{
     
@@ -71,11 +73,18 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
             colsButtons.add(colButton);
         }
 
-        DBTextButton button=new DBTextButton(IMAGE_DIR,"OK", new Point(260, 300), new Rectangle(80, 30));
+        Point position = new Point(260, 300);
+        Rectangle dimensions = new Rectangle(80, 30);
+        ImageIcon image = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance((int) dimensions.getWidth(), (int) dimensions.getHeight(), 80));
+
+        DBTextButton button=new DBTextButton("OK",image, position, dimensions);
         button.addActionListener(x ->
         {
             inputGiven=true;
-            if(rowInput & colInput) button.setDark();
+            if(rowInput & colInput){
+                ImageIcon darkImage = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance((int) dimensions.getWidth(), (int) dimensions.getHeight(), 80));
+                button.setIcon(darkImage);
+            }
         });
         BACKGROUND_PANEL.add(button);
 

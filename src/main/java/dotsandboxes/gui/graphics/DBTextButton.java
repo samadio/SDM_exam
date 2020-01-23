@@ -4,28 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class DBTextButton extends JButton {
-
-    private final File IMAGE_DIR;
-
-    public DBTextButton(File imgDir, String t, Point position, Rectangle size ){
-
-        super();
-        IMAGE_DIR=imgDir;
-        setText(t);
-        setLocation(position);
-        setSize(size.width,size.height);
+public class DBTextButton extends DBStyleButton {
 
 
-        setAlignment(JLabel.CENTER);
+    public DBTextButton(String text, Icon image, Point position, Rectangle size ){
 
-        this.setBounds(getX(), getY(), getWidth(), getHeight());
-
-        setStyle();
-
-        setTextPosition(SwingConstants.CENTER);
+        super(text, image, position, size);
     }
 
+    /*
     public void setDark() {
         ImageIcon darkIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
         this.setIcon(darkIcon);
@@ -51,4 +38,6 @@ public class DBTextButton extends JButton {
         this.setVerticalTextPosition(position);
         this.setHorizontalTextPosition(position);
     }
+
+     */
 }

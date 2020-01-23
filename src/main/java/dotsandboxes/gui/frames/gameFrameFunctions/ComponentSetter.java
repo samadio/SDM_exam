@@ -11,6 +11,7 @@ import gamesuite.game.Game;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
@@ -83,23 +84,30 @@ public class ComponentSetter{
 
 
     public void endResetButtons(GameFrame gameFrame, BackgroundPanel backgroundPanel){
-        DBTextButton endGameButton = new DBTextButton(IMAGE_DIR,"END GAME", new Point(470, 290), new Rectangle(120, 30));
+        Point position = new Point(470, 290);
+        Rectangle dimensions = new Rectangle(120, 30);
+        ImageIcon image = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance((int) dimensions.getWidth(), (int) dimensions.getHeight(), 80));
+
+        DBTextButton endGameButton=new DBTextButton("END GAME",image, position, dimensions);
+
 
         endGameButton.addActionListener(x ->
         {
             gameFrame.setEndGame(true);
             gameFrame.setInputGiven(true);
-            endGameButton.setDark();
+            ImageIcon darkImage = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance((int) dimensions.getWidth(), (int) dimensions.getHeight(), 80));
+            endGameButton.setIcon(darkImage);
 
         });
 
-        DBTextButton resetGameButton = new DBTextButton(IMAGE_DIR,"RESET GAME",new Point(470, 330),new Rectangle( 120, 30));
+        DBTextButton resetGameButton=new DBTextButton("RESET GAME",image, new Point(470, 330), dimensions);
 
         resetGameButton.addActionListener(x ->
         {
             gameFrame.setReset(true);
             gameFrame.setInputGiven(true);
-            resetGameButton.setDark();
+            ImageIcon darkImage = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance((int) dimensions.getWidth(), (int) dimensions.getHeight(), 80));
+            resetGameButton.setIcon(darkImage);
         });
 
         backgroundPanel.add(endGameButton);
