@@ -1,34 +1,21 @@
 package dotsandboxes.gui.graphics.DBButtons;
-
 import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
 import dotsandboxes.gui.graphics.specifics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 
-public class DBNumButton extends JButton {
-    final private File IMAGE;
-    final private File IMAGE_2;
-    final private Integer NUMBER;
-    final private ObjSpecifics SPECIFICS;
+public class DBNumButton extends DBButton {
 
+    private final Integer NUMBER;
 
     public DBNumButton(Integer num, ObjSpecifics objSpecifics){
-        super(Integer.toString(num));
-        IMAGE= FileManager.getWood();
-        IMAGE_2=FileManager.getWoodDark();
+        super(objSpecifics);
+        image= FileManager.getWood();
+        image2=FileManager.getWoodDark();
         NUMBER=num;
-        SPECIFICS=objSpecifics;
+        setText(Integer.toString(num));
 
-        DBLayoutSetter.setLayout(this,SPECIFICS);
-        DBLayoutSetter.setImageFile(this,IMAGE,SPECIFICS);
-
-    }
-
-    public void setDark() {
-        DBLayoutSetter.setImageFile(this,IMAGE_2,SPECIFICS);
+        DBLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
 
     public Integer getNumber() {return NUMBER;}

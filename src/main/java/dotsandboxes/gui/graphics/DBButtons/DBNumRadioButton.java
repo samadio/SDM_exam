@@ -37,8 +37,6 @@ public class DBNumRadioButton extends JRadioButton {
         this.setVerticalAlignment(alignment);
     }
 
-
-
     public Integer getNumber() {
         return NUMBER;
     }
