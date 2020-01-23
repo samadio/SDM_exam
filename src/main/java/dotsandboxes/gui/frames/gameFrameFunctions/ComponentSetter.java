@@ -113,8 +113,8 @@ public class ComponentSetter{
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
 
-        LinesList horizontalLines = SetElementsInGrid.setLines(horizontalLinesSpec, horizontalGridSpec, backgroundPanel);
-        LinesList verticalLines = SetElementsInGrid.setLines(verticalLinesSpec, verticalGridSpec, backgroundPanel);
+        LinesList horizontalLines = SetElementsInGrid.setHorizontalLines(horizontalLinesSpec, horizontalGridSpec, backgroundPanel);
+        LinesList verticalLines = SetElementsInGrid.setVerticalLines(verticalLinesSpec, verticalGridSpec, backgroundPanel);
 
         gameFrame.getGrid().setGrid(horizontalLines,verticalLines);
 

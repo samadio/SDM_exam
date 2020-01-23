@@ -16,13 +16,7 @@ public class ObjSpecifics {
         hints = hi;
     }
 
-    public ObjSpecifics(String fn, Integer w, Integer h, Integer hi) {
-        fileName = fn;
-        fileName2 = "";
-        width = w;
-        height = h;
-        hints = hi;
-    }
+
 
     public String getFileName() {
         return fileName;
