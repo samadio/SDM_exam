@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="iotest.DotsAndBoxesInputTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-01-22T16:56:48" hostname="andrea-TravelMate-5744" time="0.213">
+  <properties/>
+  <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.021"/>
+  <testcase name="ResetGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.039"/>
+  <testcase name="settedConverterExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.022"/>
+  <testcase name="EndGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.032"/>
+  <testcase name="DataFormatExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.013"/>
+  <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.014"/>
+  <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.014"/>
+  <system-out><![CDATA[Insert grid dimension in format:[rowsNumber] [columnsNumber]
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Do you want to customize player names? (y=yes,n=no)
+Do you want to customize player names? (y=yes,n=no)
+Enter number of players
+Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
