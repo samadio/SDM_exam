@@ -32,7 +32,7 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         int yOffset = 100;
 
         for (int i=2; i<5; i++) {
-            DBNumButton button=new DBNumButton(IMAGE_DIR,i,new Point(260,yOffset),new Rectangle( 80, 30));
+            DBNumButton button=new DBNumButton(i, new ObjSpecifics(260,yOffset, 80, 30,80) );
             button.addActionListener(x ->
             {
                 setNumPlayers(button.getNumber());

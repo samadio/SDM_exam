@@ -1,5 +1,7 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
+import dotsandboxes.gui.graphics.specifics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
@@ -7,49 +9,23 @@ import java.io.File;
 
 public class DBTextButton extends JButton {
 
-    private final File IMAGE_DIR;
+    private final File IMAGE;
+    private final File IMAGE_2;
+    private final ObjSpecifics SPECIFICS;
 
-    public DBTextButton(File imgDir, String t, ObjSpecifics objSpecifics){
+    public DBTextButton(String t, ObjSpecifics objSpecifics){
 
         super();
-        IMAGE_DIR=imgDir;
+        IMAGE= FileManager.getWood();
+        IMAGE_2=FileManager.getWoodDark();
+        SPECIFICS=objSpecifics;
         setText(t);
-        setLocation(objSpecifics.getPosition());
-        setSize(objSpecifics.getSize().width,objSpecifics.getSize().height);
+        DBLayoutSetter.setLayout(this,SPECIFICS);
+        DBLayoutSetter.setImageFile(this,IMAGE,SPECIFICS);
 
-
-        setAlignment(JLabel.CENTER);
-
-        this.setBounds(getX(), getY(), getWidth(), getHeight());
-
-        setStyle();
-
-        setTextPosition(SwingConstants.CENTER);
     }
 
     public void setDark() {
-        ImageIcon darkIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
-        this.setIcon(darkIcon);
-    }
-
-    private void setAlignment(Integer alignment){
-
-        this.setHorizontalAlignment(alignment);
-        this.setVerticalAlignment(alignment);
-    }
-    private void setStyle() {
-
-        this.setOpaque(false);
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
-        this.setFocusPainted(false);
-        this.setFont(FontSetter.setFont());
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
-        this.setIcon(imageIcon);
-    }
-    private void setTextPosition(Integer position) {
-
-        this.setVerticalTextPosition(position);
-        this.setHorizontalTextPosition(position);
+        DBLayoutSetter.setImageFile(this, IMAGE_2,SPECIFICS);
     }
 }

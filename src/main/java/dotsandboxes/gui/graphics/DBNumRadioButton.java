@@ -1,5 +1,7 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
+import dotsandboxes.gui.graphics.specifics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
@@ -7,26 +9,25 @@ import java.io.File;
 
 public class DBNumRadioButton extends JRadioButton {
 
+    private final ObjSpecifics SPECIFICS;
+    private final File IMAGE;
+    private final File IMAGE_2;
     private final Integer NUMBER;
-    private final File IMAGE_DIR;
 
-    public DBNumRadioButton(File imgDir, Integer num, ObjSpecifics objSpecifics){
+
+    public DBNumRadioButton( Integer num, ObjSpecifics objSpecifics){
 
         super(Integer.toString(num));
-        IMAGE_DIR=imgDir;
+        IMAGE=FileManager.getWood();
+        IMAGE_2=FileManager.getWoodDark();
+        SPECIFICS=objSpecifics;
         NUMBER = num;
-        setLocation(objSpecifics.getPosition());
-        setSize(objSpecifics.getSize().width,objSpecifics.getSize().height);
 
         setAlignment(JLabel.CENTER);
+        DBLayoutSetter.setLayout(this,SPECIFICS);
+        DBLayoutSetter.setImageFile(this,IMAGE,SPECIFICS);
 
-        this.setBounds(getX(),getY(),getWidth(),getHeight());
-
-        setStyle();
-
-        setTextPosition(SwingConstants.CENTER);
-
-        ImageIcon radio_on = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), objSpecifics.getHints()));
+        ImageIcon radio_on = new ImageIcon(new ImageIcon(IMAGE_2.getPath()).getImage().getScaledInstance(getWidth(), getHeight(), objSpecifics.getHints()));
         this.setSelectedIcon(radio_on);
     }
 
@@ -36,19 +37,7 @@ public class DBNumRadioButton extends JRadioButton {
         this.setVerticalAlignment(alignment);
     }
 
-    private void setStyle(){
-        this.setContentAreaFilled(false);
-        this.setFocusPainted(false);
-        this.setFont(FontSetter.setFont());
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
-        this.setIcon(imageIcon);
-    }
 
-    private void setTextPosition(Integer position){
-
-        this.setVerticalTextPosition(position);
-        this.setHorizontalTextPosition(position);
-    }
 
     public Integer getNumber() {
         return NUMBER;

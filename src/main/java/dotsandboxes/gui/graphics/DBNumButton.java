@@ -1,42 +1,34 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
+import dotsandboxes.gui.graphics.specifics.FileManager;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
 public class DBNumButton extends JButton {
-    final private File IMAGE_DIR;
+    final private File IMAGE;
+    final private File IMAGE_2;
     final private Integer NUMBER;
-    final private Point POSITION;
-    final private Rectangle SIZE;
+    final private ObjSpecifics SPECIFICS;
 
 
-    public DBNumButton(File imgDir, Integer num, Point position, Rectangle size){
+    public DBNumButton(Integer num, ObjSpecifics objSpecifics){
         super(Integer.toString(num));
-        IMAGE_DIR=imgDir;
+        IMAGE= FileManager.getWood();
+        IMAGE_2=FileManager.getWoodDark();
         NUMBER=num;
-        POSITION=position;
-        SIZE=size;
-        this.setBounds(POSITION.x, POSITION.y, SIZE.width, SIZE.height);
+        SPECIFICS=objSpecifics;
 
-
-
-
-        this.setOpaque(false);
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
-        this.setFocusPainted(false);
-        this.setFont(FontSetter.setFont());
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTable.png").getImage().getScaledInstance(SIZE.width,SIZE.height, 80));
-        this.setIcon(imageIcon);
-        this.setVerticalTextPosition(SwingConstants.CENTER);
-        this.setHorizontalTextPosition(SwingConstants.CENTER);
-
+        this.setBounds(SPECIFICS.getPosition().x, SPECIFICS.getPosition().y, SPECIFICS.getSize().width, SPECIFICS.getSize().height);
+        DBLayoutSetter.setLayout(this,SPECIFICS);
+        DBLayoutSetter.setImageFile(this,IMAGE,SPECIFICS);
     }
 
     public void setDark() {
-        ImageIcon darkIcon = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(SIZE.width, SIZE.height, 80));
-        this.setIcon(darkIcon);
+        DBLayoutSetter.setImageFile(this,IMAGE_2,SPECIFICS);
     }
 
     public Integer getNumber() {return NUMBER;}

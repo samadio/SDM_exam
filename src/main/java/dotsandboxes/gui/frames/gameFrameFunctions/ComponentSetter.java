@@ -79,7 +79,7 @@ public class ComponentSetter{
 
 
     public void endResetButtons(GameFrame gameFrame, BackgroundPanel backgroundPanel){
-        DBTextButton endGameButton = new DBTextButton(IMAGE_DIR,"END GAME", new ObjSpecifics(470, 290 ,120, 30,80));
+        DBTextButton endGameButton = new DBTextButton("END GAME", new ObjSpecifics(470, 290 ,120, 30,80));
 
         endGameButton.addActionListener(x ->
         {
@@ -89,7 +89,7 @@ public class ComponentSetter{
 
         });
 
-        DBTextButton resetGameButton = new DBTextButton(IMAGE_DIR,"RESET GAME",new ObjSpecifics(470, 330, 120, 30,80));
+        DBTextButton resetGameButton = new DBTextButton("RESET GAME",new ObjSpecifics(470, 330, 120, 30,80));
 
         resetGameButton.addActionListener(x ->
         {

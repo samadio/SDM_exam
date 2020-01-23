@@ -41,8 +41,8 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
         int yOffset = 100;
 
         for (int i=MIN_DIMENSION; i<MAX_DIMENSION+1; i++) {
-            DBNumRadioButton rowButton=new DBNumRadioButton(IMAGE_DIR,i,new ObjSpecifics(250, yOffset, 40, 30,80));
-            DBNumRadioButton colButton=new DBNumRadioButton(IMAGE_DIR,i,new ObjSpecifics(310, yOffset,40, 30,80));
+            DBNumRadioButton rowButton=new DBNumRadioButton(i,new ObjSpecifics(250, yOffset, 40, 30,80));
+            DBNumRadioButton colButton=new DBNumRadioButton(i,new ObjSpecifics(310, yOffset,40, 30,80));
             rowButton.addActionListener(x ->
             {
                 rows= rowButton.getNumber();
@@ -72,7 +72,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
             colsButtons.add(colButton);
         }
 
-        DBTextButton button=new DBTextButton(IMAGE_DIR,"OK", new ObjSpecifics(260, 300,80, 30,80));
+        DBTextButton button=new DBTextButton("OK", new ObjSpecifics(260, 300,80, 30,80));
         button.addActionListener(x ->
         {
             inputGiven=true;

@@ -1,26 +1,26 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
+import java.io.File;
 
 public abstract class Line extends JButton {
 
-    protected ObjSpecifics objSpecifics;
+    protected final ObjSpecifics SPECIFICS;
     private Integer row;
     private Integer column;
+    protected File image;
+    protected File image2;
 
     public Line(ObjSpecifics oS, Integer r, Integer c) {
         super();
-        objSpecifics=oS;
+        SPECIFICS=oS;
         row=r;
         column=c;
-        this.setBorder(null);
-        this.setOpaque(false);
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
-        this.setFocusPainted(false);
-        this.setBounds(objSpecifics.getPosition().x,objSpecifics.getPosition().y,objSpecifics.getSize().width,objSpecifics.getSize().height);
+        DBLayoutSetter.setLayout(this,SPECIFICS);
+        this.setBounds(SPECIFICS.getPosition().x,SPECIFICS.getPosition().y,SPECIFICS.getSize().width,SPECIFICS.getSize().height);
 
     }
 
@@ -29,6 +29,8 @@ public abstract class Line extends JButton {
 
     public Integer getColumn() { return column;}
 
-    public void setDark(){}
+    public void setDark(){
+        DBLayoutSetter.setImageFile(this,image2,SPECIFICS);
+    }
 
 }
