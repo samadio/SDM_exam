@@ -1,7 +1,7 @@
 package dotsandboxes.gui.graphics.DBButtons;
 
 import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
-import dotsandboxes.gui.graphics.specifics.FileManager;
+import dotsandboxes.gui.graphics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
@@ -18,8 +18,8 @@ public class DBNumRadioButton extends JRadioButton {
     public DBNumRadioButton( Integer num, ObjSpecifics objSpecifics){
 
         super(Integer.toString(num));
-        IMAGE=FileManager.getWood();
-        IMAGE_2=FileManager.getWoodDark();
+        IMAGE=FileManager.getWoodFile();
+        IMAGE_2=FileManager.getWoodDarkFile();
         SPECIFICS=objSpecifics;
         NUMBER = num;
 

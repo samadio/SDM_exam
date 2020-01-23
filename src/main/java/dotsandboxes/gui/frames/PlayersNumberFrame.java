@@ -14,9 +14,9 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
     private List<DBNumButton> buttons;
 
 
-    public PlayersNumberFrame(BackgroundPanel bP, File imageDir, File fontDir) {
+    public PlayersNumberFrame(BackgroundPanel bP) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
     }
 
     @Override

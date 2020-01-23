@@ -28,9 +28,9 @@ public class GameFrame extends InputFrame<Move> {
     private Game targetGame;
 
 
-    public GameFrame(BackgroundPanel bP, Game game, File imageDir, File fontDir) {
+    public GameFrame(BackgroundPanel bP, Game game) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
         grid=new Grid();
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
@@ -98,7 +98,7 @@ public class GameFrame extends InputFrame<Move> {
         reset = false;
         labels= new LabelsList();
 
-        componentSetter= new ComponentSetter(IMAGE_DIR,boxesRows,boxesColumns);
+        componentSetter= new ComponentSetter(boxesRows,boxesColumns);
 
         componentSetter.playersLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
 

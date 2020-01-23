@@ -9,7 +9,6 @@ import dotsandboxes.gui.graphics.lists.DotsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
-
 import java.awt.*;
 
 public class SetElementsInGrid {
@@ -62,7 +61,6 @@ public class SetElementsInGrid {
                 dots.add(dot);
             }
         }
-
     }
 
 

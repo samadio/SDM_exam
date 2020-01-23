@@ -8,14 +8,10 @@ import java.io.File;
 public abstract class Frame {
 
     protected final BackgroundPanel BACKGROUND_PANEL;
-    protected final File IMAGE_DIR;
-    protected final File FONT_DIR;
 
-    public Frame(BackgroundPanel bP, File imagesDir, File fontsDir) {
+    public Frame(BackgroundPanel bP) {
 
         BACKGROUND_PANEL = bP;
-        IMAGE_DIR = imagesDir;
-        FONT_DIR = fontsDir;
     }
 
 

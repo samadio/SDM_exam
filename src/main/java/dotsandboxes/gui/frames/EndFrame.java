@@ -8,14 +8,13 @@ import gamesuite.game.Game;
 import gamesuite.players.Player;
 
 import javax.swing.*;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EndFrame extends Frame{
-    public EndFrame(BackgroundPanel bP, File imageDir, File fontDir) {
+    public EndFrame(BackgroundPanel bP) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
     }
 
     @Override

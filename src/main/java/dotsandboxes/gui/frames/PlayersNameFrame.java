@@ -5,8 +5,6 @@ import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.DBTextField;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-import java.io.File;
-
 
 public class PlayersNameFrame extends InputFrame<String> {
 
@@ -17,9 +15,9 @@ public class PlayersNameFrame extends InputFrame<String> {
     private Integer playerNumber;
     private boolean error;
 
-    public PlayersNameFrame(BackgroundPanel bP, File imageDir, File fontDir) {
+    public PlayersNameFrame(BackgroundPanel bP) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
         playerNumber=0;
     }
 
@@ -67,7 +65,6 @@ public class PlayersNameFrame extends InputFrame<String> {
         if(playerMessage!=null) {
             BACKGROUND_PANEL.remove(playerMessage);
             updatePanel();
-
         }
 
         return name;

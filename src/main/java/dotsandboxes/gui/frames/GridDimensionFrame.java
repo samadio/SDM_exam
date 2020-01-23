@@ -21,9 +21,9 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
     private boolean rowInput;
     private boolean colInput;
 
-    public GridDimensionFrame(BackgroundPanel bP, File imageDir, File fontDir) {
+    public GridDimensionFrame(BackgroundPanel bP) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
         DIMENSION=new ArrayList<>(2);
     }
 

@@ -12,17 +12,11 @@ import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
-
 import java.awt.*;
-import java.io.File;
 import java.util.List;
 
 public class ComponentSetter{
 
-    private final File IMAGE_DIR;
-    private ObjSpecifics horizontalLinesSpec;
-    private ObjSpecifics verticalLinesSpec;
-    private ObjSpecifics dotsSpec;
     private GridSpecifics horizontalGridSpec;
     private GridSpecifics verticalGridSpec;
     private GridSpecifics dotsGridSpec;
@@ -33,9 +27,8 @@ public class ComponentSetter{
     private Integer dimTwo;
 
 
-    public ComponentSetter(File imgDir,Integer rows, Integer cols){
+    public ComponentSetter(Integer rows, Integer cols){
 
-        IMAGE_DIR=imgDir;
         dimOne=45;
         dimTwo=15;
         xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
@@ -162,7 +155,7 @@ public class ComponentSetter{
                 if (board.getElement(Move.Which.HORIZONTAL, i, j) && board.getElement(Move.Which.HORIZONTAL, i + 1, j)
                         && board.getElement(Move.Which.VERTICAL, i, j) && board.getElement(Move.Which.VERTICAL, i, j + 1)) {
 
-                    if (gameFrame.getBoxes()[i][j] == false) {
+                    if (!gameFrame.getBoxes()[i][j]) {
                         SetElementsInGrid.setBox(i, j,this, backgroundPanel);
                         gameFrame.getBoxes()[i][j] = true;
                     }

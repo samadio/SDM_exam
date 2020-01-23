@@ -13,7 +13,7 @@ public class FontSetter {
 
         Font font=new Font("Helvetica Neue",Font.CENTER_BASELINE,size);
         try {
-            File f = new File("font/SfEspressoShackCondensed-mYm5.ttf");
+            File f = new File(FileManager.getFontFile().getPath());
             FileInputStream in = new FileInputStream(f);
             font = Font.createFont(Font.TRUETYPE_FONT, in);
             GraphicsEnvironment ge;

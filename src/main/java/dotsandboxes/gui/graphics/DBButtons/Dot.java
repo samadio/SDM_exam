@@ -1,7 +1,7 @@
 package dotsandboxes.gui.graphics.DBButtons;
 
 import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
-import dotsandboxes.gui.graphics.specifics.FileManager;
+import dotsandboxes.gui.graphics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 

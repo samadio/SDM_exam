@@ -1,16 +1,15 @@
 package dotsandboxes.gui.graphics;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
 public class BackgroundPanel extends JPanel {
 
-    private File imageDir;
+    private final File IMAGE;
 
-    public BackgroundPanel(File iD) {
+    public BackgroundPanel() {
         super();
-        imageDir=iD;
+        IMAGE= FileManager.getBackgroundFile();
 
     }
 
@@ -18,7 +17,7 @@ public class BackgroundPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponents(g);
         this.setLayout(null);
-        ImageIcon img=new ImageIcon(imageDir.getPath()+"/background.jpg");
+        ImageIcon img=new ImageIcon(IMAGE.getPath());
         img.paintIcon(this,g,0,0);
     }
 }

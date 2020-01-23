@@ -1,6 +1,5 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.graphics.specifics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
@@ -13,13 +12,13 @@ public class DBLabel extends JLabel {
 
     public DBLabel(String t, ObjSpecifics objSpecifics) {
         super();
-        IMAGE= FileManager.getWood();
+        IMAGE= FileManager.getWoodFile();
         setLabelProperties(t,objSpecifics);
     }
 
     public DBLabel(){
         super();
-        IMAGE=FileManager.getWood();;
+        IMAGE=FileManager.getWoodFile();;
     }
 
 

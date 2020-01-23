@@ -1,15 +1,12 @@
 package dotsandboxes.gui.frames;
-
 import dotsandboxes.gui.graphics.BackgroundPanel;
-
-import java.io.File;
 
 public abstract  class InputFrame<V> extends Frame{
 
     protected boolean inputGiven;
 
-    public InputFrame(BackgroundPanel bP, File imageDir, File fontsDir) {
-        super(bP, imageDir, fontsDir);
+    public InputFrame(BackgroundPanel bP) {
+        super(bP);
         inputGiven = false;
 
     }
