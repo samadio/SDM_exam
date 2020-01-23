@@ -2,6 +2,8 @@ package dotsandboxes.gui.frames.gameFrameFunctions;
 
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.DBButtons.DBTextButton;
+import dotsandboxes.gui.graphics.DBButtons.Line;
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;

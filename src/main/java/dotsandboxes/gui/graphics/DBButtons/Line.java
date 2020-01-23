@@ -1,4 +1,4 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.graphics.DBButtons;
 
 import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
@@ -20,7 +20,6 @@ public abstract class Line extends JButton {
         row=r;
         column=c;
         DBLayoutSetter.setLayout(this,SPECIFICS);
-        this.setBounds(SPECIFICS.getPosition().x,SPECIFICS.getPosition().y,SPECIFICS.getSize().width,SPECIFICS.getSize().height);
 
     }
 

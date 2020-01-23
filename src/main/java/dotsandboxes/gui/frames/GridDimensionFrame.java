@@ -1,9 +1,10 @@
 package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.DBButtons.DBNumRadioButton;
+import dotsandboxes.gui.graphics.DBButtons.DBTextButton;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

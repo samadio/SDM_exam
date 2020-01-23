@@ -1,15 +1,19 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.graphics.DBButtons;
 import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
 import dotsandboxes.gui.graphics.specifics.FileManager;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-public class VerticalLine extends Line {
+public class HorizontalLine extends Line {
 
 
-    public  VerticalLine(ObjSpecifics oS, Integer r, Integer c) {
+
+    public  HorizontalLine(ObjSpecifics oS, Integer r, Integer c) {
         super(oS,r,c);
-        image = FileManager.getVerticalLineEmptyFile();
-        image2 = FileManager.getVerticalLineFullFile();
+        image = FileManager.getHorizontalEmptyFile();
+        image2 = FileManager.getHorizontalFullFile();
         DBLayoutSetter.setImageFile(this,image,SPECIFICS);
+
     }
+
+
 }
