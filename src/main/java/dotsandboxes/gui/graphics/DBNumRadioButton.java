@@ -1,7 +1,8 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 
 public class DBNumRadioButton extends JRadioButton {
@@ -9,13 +10,13 @@ public class DBNumRadioButton extends JRadioButton {
     private final Integer NUMBER;
     private final File IMAGE_DIR;
 
-    public DBNumRadioButton(File imgDir, Integer num, Point position, Rectangle size ){
+    public DBNumRadioButton(File imgDir, Integer num, ObjSpecifics objSpecifics){
 
         super(Integer.toString(num));
         IMAGE_DIR=imgDir;
         NUMBER = num;
-        setLocation(position);
-        setSize(size.width,size.height);
+        setLocation(objSpecifics.getPosition());
+        setSize(objSpecifics.getSize().width,objSpecifics.getSize().height);
 
         setAlignment(JLabel.CENTER);
 
@@ -25,7 +26,7 @@ public class DBNumRadioButton extends JRadioButton {
 
         setTextPosition(SwingConstants.CENTER);
 
-        ImageIcon radio_on = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), 80));
+        ImageIcon radio_on = new ImageIcon(new ImageIcon(IMAGE_DIR.getPath()+"/woodTableDark.png").getImage().getScaledInstance(getWidth(), getHeight(), objSpecifics.getHints()));
         this.setSelectedIcon(radio_on);
     }
 

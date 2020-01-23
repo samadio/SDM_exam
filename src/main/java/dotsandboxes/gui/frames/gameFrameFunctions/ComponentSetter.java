@@ -38,16 +38,12 @@ public class ComponentSetter{
         dimTwo=15;
         xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
         yOffset=50+(300-(dimOne+dimTwo)*rows)/2;
+        Integer hints=50;
 
 
-        horizontalLinesSpec = new ObjSpecifics("images/horizontal_empty.png", "images/horizontal_full.png", dimOne, dimTwo, 50);
-        horizontalGridSpec = new GridSpecifics(rows+1, cols, dimOne, dimTwo, xOffset+dimTwo, yOffset, dimOne+dimTwo);
-
-        verticalLinesSpec = new ObjSpecifics("images/vertical_empty.png", "images/vertical_full.png", dimTwo, dimOne, 50);
-        verticalGridSpec = new GridSpecifics(rows, cols+1, dimTwo, dimOne, xOffset, yOffset+dimTwo, dimOne+dimTwo);
-
-        dotsSpec = new ObjSpecifics("images/dot.png", "", 10, 10, 50);
-        dotsGridSpec = new GridSpecifics(rows+1, cols+1, dimTwo, dimTwo, xOffset, yOffset, dimOne+dimTwo);
+        horizontalGridSpec = new GridSpecifics(rows+1, cols, new Rectangle(dimOne, dimTwo), new Point(xOffset+dimTwo, yOffset), dimOne+dimTwo,hints);
+        verticalGridSpec = new GridSpecifics(rows, cols+1, new Rectangle(dimTwo, dimOne),new Point( xOffset, yOffset+dimTwo), dimOne+dimTwo,hints);
+        dotsGridSpec = new GridSpecifics(rows+1, cols+1,new Rectangle( dimTwo, dimTwo),new Point( xOffset, yOffset), dimOne+dimTwo,hints);
 
     }
 
@@ -62,13 +58,13 @@ public class ComponentSetter{
 
         Integer yOffset=40;
 
-        DBLabel score= new DBLabel("SCORE",10, yOffset, 100, 30);
+        DBLabel score= new DBLabel("SCORE",new ObjSpecifics(10, yOffset, 100, 30,80));
         backgroundPanel.add(score);
 
 
         for (int i=0; i<players.size(); i++) {
             yOffset+=40;
-            DBLabel label= new DBLabel(players.get(i).getName(),10, yOffset, 100, 30);
+            DBLabel label= new DBLabel(players.get(i).getName(),new ObjSpecifics(10, yOffset, 100, 30,80));
             gameFrame.getLabels().add(label);
             backgroundPanel.add(label);
         }
@@ -76,14 +72,14 @@ public class ComponentSetter{
 
 
     public void currentPlayerLabel(BackgroundPanel backgroundPanel,DBLabel currentPlayerLabel) {
-        currentPlayerLabel.setLabelProperties("",180, 10, 250, 30);
+        currentPlayerLabel.setLabelProperties("",new ObjSpecifics(180, 10, 250, 30,80));
         backgroundPanel.add(currentPlayerLabel);
     }
 
 
 
     public void endResetButtons(GameFrame gameFrame, BackgroundPanel backgroundPanel){
-        DBTextButton endGameButton = new DBTextButton(IMAGE_DIR,"END GAME", new Point(470, 290), new Rectangle(120, 30));
+        DBTextButton endGameButton = new DBTextButton(IMAGE_DIR,"END GAME", new ObjSpecifics(470, 290 ,120, 30,80));
 
         endGameButton.addActionListener(x ->
         {
@@ -93,7 +89,7 @@ public class ComponentSetter{
 
         });
 
-        DBTextButton resetGameButton = new DBTextButton(IMAGE_DIR,"RESET GAME",new Point(470, 330),new Rectangle( 120, 30));
+        DBTextButton resetGameButton = new DBTextButton(IMAGE_DIR,"RESET GAME",new ObjSpecifics(470, 330, 120, 30,80));
 
         resetGameButton.addActionListener(x ->
         {
@@ -113,8 +109,8 @@ public class ComponentSetter{
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
 
-        LinesList horizontalLines = SetElementsInGrid.setHorizontalLines(horizontalLinesSpec, horizontalGridSpec, backgroundPanel);
-        LinesList verticalLines = SetElementsInGrid.setVerticalLines(verticalLinesSpec, verticalGridSpec, backgroundPanel);
+        LinesList horizontalLines = SetElementsInGrid.setHorizontalLines( horizontalGridSpec, backgroundPanel);
+        LinesList verticalLines = SetElementsInGrid.setVerticalLines(verticalGridSpec, backgroundPanel);
 
         gameFrame.getGrid().setGrid(horizontalLines,verticalLines);
 
@@ -138,7 +134,7 @@ public class ComponentSetter{
 
     public void dots(BackgroundPanel backgroundPanel) {
 
-        SetElementsInGrid.setDots(dotsSpec, dotsGridSpec, backgroundPanel);
+        SetElementsInGrid.setDots(dotsGridSpec, backgroundPanel);
 
     }
 

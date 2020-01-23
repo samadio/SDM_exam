@@ -1,20 +1,21 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 
 public class DBTextButton extends JButton {
 
     private final File IMAGE_DIR;
 
-    public DBTextButton(File imgDir, String t, Point position, Rectangle size ){
+    public DBTextButton(File imgDir, String t, ObjSpecifics objSpecifics){
 
         super();
         IMAGE_DIR=imgDir;
         setText(t);
-        setLocation(position);
-        setSize(size.width,size.height);
+        setLocation(objSpecifics.getPosition());
+        setSize(objSpecifics.getSize().width,objSpecifics.getSize().height);
 
 
         setAlignment(JLabel.CENTER);

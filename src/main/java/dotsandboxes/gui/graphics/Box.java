@@ -4,31 +4,18 @@ import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
 
-public abstract class Line extends JButton {
+public class Box extends JButton {
 
-    protected ObjSpecifics objSpecifics;
-    private Integer row;
-    private Integer column;
-
-    public Line(ObjSpecifics oS, Integer r, Integer c) {
+    public Box(ObjSpecifics objSpecifics) {
         super();
-        objSpecifics=oS;
-        row=r;
-        column=c;
         this.setBorder(null);
         this.setOpaque(false);
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setBounds(objSpecifics.getPosition().x,objSpecifics.getPosition().y,objSpecifics.getSize().width,objSpecifics.getSize().height);
-
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/box.png").getImage().getScaledInstance(objSpecifics.getSize().width, objSpecifics.getSize().width, objSpecifics.getHints()));
+        this.setIcon(imageIcon);
     }
-
-
-    public Integer getRow() {return this.row;}
-
-    public Integer getColumn() { return column;}
-
-    public void setDark(){}
 
 }

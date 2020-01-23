@@ -3,6 +3,7 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.DBNumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import java.awt.*;
 import java.io.File;
@@ -23,7 +24,7 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
     @Override
     public void setPanel() {
 
-        DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",200, 30, 200, 30);
+        DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",new ObjSpecifics(200, 30, 200, 30,80));
 
         BACKGROUND_PANEL.add(playerQuestion);
 

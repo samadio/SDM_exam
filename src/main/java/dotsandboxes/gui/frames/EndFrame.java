@@ -3,6 +3,7 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.FontSetter;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.game.Game;
 import gamesuite.players.Player;
 
@@ -27,7 +28,7 @@ public class EndFrame extends Frame{
 
         List<Player> winners = game.getWinner();
         clear();
-        DBLabel winMessage = new DBLabel("",175, 30, 250, 50);
+        DBLabel winMessage = new DBLabel("",new ObjSpecifics(175, 30, 250, 50,80));
 
         List<JLabel> winnersLabels= new ArrayList<>();
 
@@ -39,7 +40,7 @@ public class EndFrame extends Frame{
         int yOffset = 90;
 
         for (Player p : winners) {
-            DBLabel label= new DBLabel(p.getName(),260, yOffset, 80, 30);
+            DBLabel label= new DBLabel(p.getName(),new ObjSpecifics(260, yOffset, 80, 30,80));
 
             yOffset+=30;
             BACKGROUND_PANEL.add(label);

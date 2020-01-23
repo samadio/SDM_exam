@@ -14,13 +14,12 @@ public class Dot extends JButton {
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
         this.setFocusPainted(false);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(objSpecifics.getFileName()).getImage().getScaledInstance(objSpecifics.getWidth(), objSpecifics.getHeight(), objSpecifics.getHints()));
+        this.setBounds(objSpecifics.getPosition().x,objSpecifics.getPosition().y,objSpecifics.getSize().width,objSpecifics.getSize().height);
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/dot.png").getImage().getScaledInstance(objSpecifics.getSize().width, objSpecifics.getSize().width, objSpecifics.getHints()));
         this.setIcon(imageIcon);
 
 
     }
-
-    public void setButtonProperties(int x, int y, int w, int h)  {this.setBounds(x,y,w,h);}
 
 }
 

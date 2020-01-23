@@ -1,39 +1,33 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 import javax.swing.*;
 
 
 public class DBLabel extends JLabel {
     String text;
-    Integer x_position;
-    Integer y_position;
-    Integer width;
-    Integer height;
 
-    public DBLabel(String t, Integer x, Integer y, Integer w, Integer h ) {
+    public DBLabel(String t, ObjSpecifics objSpecifics) {
         super();
-        setLabelProperties(t,x,y,w,h);
+        setLabelProperties(t,objSpecifics);
     }
 
     public DBLabel(){
         super();
     }
 
-    public void setLabelProperties(String t, Integer x, Integer y, Integer w, Integer h ){
+    public void setLabelProperties(String t, ObjSpecifics objSpecifics){
         text=t;
-        x_position=x;
-        y_position=y;
-        width=w;
-        height=h;
         this.setText(text);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
-        this.setBounds(x_position, y_position, width, height);
+        this.setBounds(objSpecifics.getPosition().x, objSpecifics.getPosition().y, objSpecifics.getSize().width, objSpecifics.getSize().height);
         this.setFont(FontSetter.setFont());
 
 
         this.setOpaque(false);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(w,h, 80));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("images/woodTable.png").getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints()));
         this.setIcon(imageIcon);
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);

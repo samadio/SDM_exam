@@ -3,6 +3,7 @@ package dotsandboxes.gui.frames;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.DBTextField;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import java.io.File;
 
@@ -27,9 +28,9 @@ public class PlayersNameFrame extends InputFrame<String> {
         if(!panelSet) {
             playerNumber=1;
             error=false;
-            DBTextField playerName = new DBTextField(1, 265, 100, 70, 30);
-            DBLabel playerQuestion = new DBLabel("INSERT NAMES", 200, 30, 200, 30);
-            playerToType =  new DBLabel("PLAYER  "+ playerNumber, 180, 100, 70, 30);
+            DBTextField playerName = new DBTextField(1, new ObjSpecifics(265, 100, 70, 30,80));
+            DBLabel playerQuestion = new DBLabel("INSERT NAMES", new ObjSpecifics(200, 30, 200, 30,80));
+            playerToType =  new DBLabel("PLAYER  "+ playerNumber, new ObjSpecifics(180, 100, 70, 30,80));
 
             BACKGROUND_PANEL.add(playerQuestion);
             BACKGROUND_PANEL.add(playerName);
@@ -76,7 +77,7 @@ public class PlayersNameFrame extends InputFrame<String> {
 
     public void showMessage(String s) {
 
-        playerMessage = new DBLabel(s, 50, 160, 500, 30);
+        playerMessage = new DBLabel(s,new ObjSpecifics( 50, 160, 500, 30,80));
         BACKGROUND_PANEL.add(playerMessage);
         updatePanel();
         error=true;
