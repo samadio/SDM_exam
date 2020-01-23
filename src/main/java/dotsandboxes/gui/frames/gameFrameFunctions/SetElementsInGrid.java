@@ -64,12 +64,12 @@ public class SetElementsInGrid {
     }
 
 
-    public static void setBox(int i, int j,ComponentSetter componentSetter,BackgroundPanel backgroundPanel){
+    public static void setBox(int i, int j, GridSettings gridSettings, BackgroundPanel backgroundPanel){
 
-        Integer xOffset=componentSetter.getXOffset();
-        Integer yOffset=componentSetter.getYOffset();
-        Integer dimOne=componentSetter.getDimOne();
-        Integer dimTwo=componentSetter.getDimTwo();
+        Integer xOffset=gridSettings.getXOffset();
+        Integer yOffset=gridSettings.getYOffset();
+        Integer dimOne=gridSettings.getDimOne();
+        Integer dimTwo=gridSettings.getDimTwo();
         Point boxPosition=new Point(xOffset+dimTwo +j*(dimOne+dimTwo),yOffset+dimTwo+i*(dimOne+dimTwo));
         ObjSpecifics boxSpec= new ObjSpecifics(boxPosition,new Rectangle(dimOne,dimOne), 50);
         Box box = new Box(boxSpec);
