@@ -1,8 +1,10 @@
 package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.DBButtons.DBNumRadioButton;
+import dotsandboxes.gui.graphics.DBButtons.DBTextButton;
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +21,9 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
     private boolean rowInput;
     private boolean colInput;
 
-    public GridDimensionFrame(BackgroundPanel bP, File imageDir, File fontDir) {
+    public GridDimensionFrame(BackgroundPanel bP) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
         DIMENSION=new ArrayList<>(2);
     }
 
@@ -30,7 +32,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
 
         clear();
 
-        DBLabel playerQuestion= new DBLabel("GRID DIMENSION",225, 30, 150, 30);
+        DBLabel playerQuestion= new DBLabel("GRID DIMENSION",new ObjSpecifics(225, 30, 150, 30,80));
 
         BACKGROUND_PANEL.add(playerQuestion);
 
@@ -40,8 +42,8 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
         int yOffset = 100;
 
         for (int i=MIN_DIMENSION; i<MAX_DIMENSION+1; i++) {
-            DBNumRadioButton rowButton=new DBNumRadioButton(IMAGE_DIR,i,new Point(250, yOffset),new Rectangle( 40, 30));
-            DBNumRadioButton colButton=new DBNumRadioButton(IMAGE_DIR,i,new Point(310, yOffset), new Rectangle(40, 30));
+            DBNumRadioButton rowButton=new DBNumRadioButton(i,new ObjSpecifics(250, yOffset, 40, 30,80));
+            DBNumRadioButton colButton=new DBNumRadioButton(i,new ObjSpecifics(310, yOffset,40, 30,80));
             rowButton.addActionListener(x ->
             {
                 rows= rowButton.getNumber();
@@ -71,7 +73,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
             colsButtons.add(colButton);
         }
 
-        DBTextButton button=new DBTextButton(IMAGE_DIR,"OK", new Point(260, 300), new Rectangle(80, 30));
+        DBTextButton button=new DBTextButton("OK", new ObjSpecifics(260, 300,80, 30,80));
         button.addActionListener(x ->
         {
             inputGiven=true;

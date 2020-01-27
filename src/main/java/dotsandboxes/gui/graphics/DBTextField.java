@@ -1,21 +1,15 @@
 package dotsandboxes.gui.graphics;
 
+import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+
 import javax.swing.*;
 
 public class DBTextField extends JTextField {
-    Integer x_position;
-    Integer y_position;
-    Integer width;
-    Integer height;
 
-    public DBTextField(Integer cols, Integer x, Integer y, Integer w, Integer h ){
+    public DBTextField(Integer cols, ObjSpecifics objSpecifics){
         super(cols);
-        x_position=x;
-        y_position=y;
-        width=w;
-        height=h;
         this.setHorizontalAlignment(JLabel.CENTER);
-        this.setBounds(x_position, y_position, width, height);
+        this.setBounds(objSpecifics.getPosition().x, objSpecifics.getPosition().y, objSpecifics.getSize().width, objSpecifics.getSize().height);
         this.setFont(FontSetter.setFont());
     }
 }

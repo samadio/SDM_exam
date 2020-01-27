@@ -4,45 +4,47 @@ import java.awt.*;
 
 public class GridSpecifics {
 
-    private Rectangle gridArea;
-    private Integer rows;
-    private Integer cols;
-    private Integer dist;
+    private final Rectangle ELEMENT_SIZE;
+    private final Point GRID_OFFSETS;
+    private final Integer HINTS;
+    private final Integer ROWS;
+    private final Integer COLS;
+    private final Integer DIST;
 
-    public GridSpecifics(Integer r, Integer c, Integer w, Integer h, Integer xO, Integer yO, Integer d){
-
-        gridArea = new Rectangle(xO, yO, w, h);
-        rows=r;
-        cols=c;
-        dist=d;
+    public GridSpecifics(Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
+        
+        
+        ELEMENT_SIZE = elementSize;
+        GRID_OFFSETS= gridOffsets;
+        HINTS=hi;
+        ROWS=r;
+        COLS=c;
+        DIST=d;
 
     }
 
     public Integer getRows() {
-        return rows;
+        return ROWS;
     }
 
     public Integer getCols() {
-        return cols;
+        return COLS;
     }
 
-    public Integer getWidth() {
-        return (int) gridArea.getWidth();
+    public Rectangle getElementSize() {
+        return ELEMENT_SIZE;
     }
 
-    public Integer getHeight() {
-        return (int) gridArea.getHeight();
+    public Point getOffset() {
+        return GRID_OFFSETS;
     }
-
-    public Integer getyOffset() {
-        return (int) gridArea.getY();
-    }
+    
 
     public Integer getDist() {
-        return dist;
+        return DIST;
     }
 
-    public Integer getxOffset() {
-        return (int) gridArea.getX();
+    public Integer getHints() {
+        return HINTS;
     }
 }

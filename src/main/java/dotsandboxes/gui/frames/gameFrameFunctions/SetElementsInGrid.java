@@ -1,26 +1,27 @@
 package dotsandboxes.gui.frames.gameFrameFunctions;
 
-import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.GridGraphicalObject;
-import dotsandboxes.gui.graphics.Line;
+import dotsandboxes.gui.graphics.*;
+import dotsandboxes.gui.graphics.DBButtons.Box;
+import dotsandboxes.gui.graphics.DBButtons.Dot;
+import dotsandboxes.gui.graphics.DBButtons.HorizontalLine;
+import dotsandboxes.gui.graphics.DBButtons.VerticalLine;
 import dotsandboxes.gui.graphics.lists.DotsList;
 import dotsandboxes.gui.graphics.lists.LinesList;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
-
-import java.util.LinkedList;
-import java.util.List;
+import java.awt.*;
 
 public class SetElementsInGrid {
 
 
-    public static LinesList setLines(ObjSpecifics objSpec, GridSpecifics gridSpec, BackgroundPanel bPanel){
+    public static LinesList setHorizontalLines(GridSpecifics gridSpec, BackgroundPanel bPanel){
 
         LinesList lines= new LinesList();
         for (int i = 0; i < gridSpec.getRows(); i++) {
             for (int j = 0; j < gridSpec.getCols(); j++) {
-                Line line = new Line(objSpec,i,j);
-                line.setButtonProperties(gridSpec.getDist() * j + gridSpec.getxOffset(), gridSpec.getDist() * i + gridSpec.getyOffset(), gridSpec.getWidth(), gridSpec.getHeight());
+                Point position= new Point(gridSpec.getDist() * j + gridSpec.getOffset().x,gridSpec.getDist() * i + gridSpec.getOffset().y);
+                ObjSpecifics lineSpecs= new ObjSpecifics(position,gridSpec.getElementSize(),gridSpec.getHints());
+                HorizontalLine line = new HorizontalLine(lineSpecs,i,j);
                 bPanel.add(line);
                 lines.add(line);
             }
@@ -29,31 +30,49 @@ public class SetElementsInGrid {
 
     }
 
-    public static void setDots(ObjSpecifics objSpec, GridSpecifics gridSpec,BackgroundPanel bPanel){
 
-        DotsList dots= new DotsList();
+    public static LinesList setVerticalLines(GridSpecifics gridSpec, BackgroundPanel bPanel){
+
+        LinesList lines= new LinesList();
         for (int i = 0; i < gridSpec.getRows(); i++) {
             for (int j = 0; j < gridSpec.getCols(); j++) {
-                GridGraphicalObject dot = new GridGraphicalObject(objSpec);
-                dot.setButtonProperties(gridSpec.getDist() * j + gridSpec.getxOffset(), gridSpec.getDist() * i + gridSpec.getyOffset(), gridSpec.getWidth(), gridSpec.getHeight());
-                bPanel.add(dot);
-                dots.add(dot);
+                Point position= new Point(gridSpec.getDist() * j + gridSpec.getOffset().x,gridSpec.getDist() * i + gridSpec.getOffset().y);
+                ObjSpecifics lineSpecs= new ObjSpecifics(position,gridSpec.getElementSize(),gridSpec.getHints());
+                VerticalLine line = new VerticalLine(lineSpecs,i,j);
+                bPanel.add(line);
+                lines.add(line);
             }
         }
+        return lines;
 
     }
 
 
-    public static void setBox(int i, int j,ComponentSetter componentSetter,BackgroundPanel backgroundPanel){
+    public static void setDots(GridSpecifics gridSpec,BackgroundPanel bPanel){
 
-        Integer xOffset=componentSetter.getXOffset();
-        Integer yOffset=componentSetter.getYOffset();
-        Integer dimOne=componentSetter.getDimOne();
-        Integer dimTwo=componentSetter.getDimTwo();
+        DotsList dots= new DotsList();
+        for (int i = 0; i < gridSpec.getRows(); i++) {
+            for (int j = 0; j < gridSpec.getCols(); j++) {
 
-        ObjSpecifics boxSpec= new ObjSpecifics("images/box.png","",dimOne,dimOne, 50);
-        GridGraphicalObject box = new GridGraphicalObject(boxSpec);
-        box.setButtonProperties(xOffset+dimTwo +j*(dimOne+dimTwo), yOffset+dimTwo+i*(dimOne+dimTwo), dimOne, 50);
+                Point position= new Point(gridSpec.getDist() * j + gridSpec.getOffset().x,gridSpec.getDist() * i + gridSpec.getOffset().y);
+                ObjSpecifics dotSpecs= new ObjSpecifics(position,gridSpec.getElementSize(),gridSpec.getHints());
+                Dot dot = new Dot(dotSpecs);
+                bPanel.add(dot);
+                dots.add(dot);
+            }
+        }
+    }
+
+
+    public static void setBox(int i, int j, GridSettings gridSettings, BackgroundPanel backgroundPanel){
+
+        Integer xOffset=gridSettings.getXOffset();
+        Integer yOffset=gridSettings.getYOffset();
+        Integer dimOne=gridSettings.getDimOne();
+        Integer dimTwo=gridSettings.getDimTwo();
+        Point boxPosition=new Point(xOffset+dimTwo +j*(dimOne+dimTwo),yOffset+dimTwo+i*(dimOne+dimTwo));
+        ObjSpecifics boxSpec= new ObjSpecifics(boxPosition,new Rectangle(dimOne,dimOne), 50);
+        Box box = new Box(boxSpec);
         backgroundPanel.add(box);
     }
 }

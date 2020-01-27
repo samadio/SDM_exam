@@ -1,7 +1,7 @@
 package dotsandboxes.gui.frames;
 
 
-import dotsandboxes.gui.frames.gameFrameFunctions.ComponentSetter;
+import dotsandboxes.gui.frames.gameFrameFunctions.*;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.Grid;
@@ -9,12 +9,10 @@ import dotsandboxes.gui.graphics.lists.LabelsList;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
-import java.io.File;
-
 
 public class GameFrame extends InputFrame<Move> {
 
-    ComponentSetter componentSetter;
+    GridSetter gridSetter;
 
     private DBLabel currentPlayerLabel;
     private Move currentMove;
@@ -28,9 +26,9 @@ public class GameFrame extends InputFrame<Move> {
     private Game targetGame;
 
 
-    public GameFrame(BackgroundPanel bP, Game game, File imageDir, File fontDir) {
+    public GameFrame(BackgroundPanel bP, Game game) {
 
-        super(bP, imageDir, fontDir);
+        super(bP);
         grid=new Grid();
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
@@ -46,10 +44,35 @@ public class GameFrame extends InputFrame<Move> {
     public boolean getEndGame() {return endGame;}
     public Grid getGrid() {return grid;}
 
-
     public void setReset(boolean bool) {reset=bool;}
     public void setEndGame(boolean bool) {endGame=bool;}
 
+
+    @Override
+    public void setPanel() {
+
+        clear();
+        currentPlayerLabel = new DBLabel();
+        boxes=new boolean[boxesRows][boxesColumns];
+        endGame = false;
+        reset = false;
+        labels= new LabelsList();
+
+
+        gridSetter = new GridSetter(boxesRows,boxesColumns);
+
+        PlayersLabelSetter.setLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
+
+        EndResetButtons.setLabels(this, BACKGROUND_PANEL);
+
+        CurrentPlayerLabel.setLabel(BACKGROUND_PANEL,currentPlayerLabel);
+
+        gridSetter.lines(this, BACKGROUND_PANEL);
+
+        gridSetter.dots(BACKGROUND_PANEL);
+
+        updatePanel();
+    }
 
 
     @Override
@@ -63,13 +86,14 @@ public class GameFrame extends InputFrame<Move> {
 
     public void updateFrame(Game game) {
 
-        componentSetter.updateCurrentPlayer(game, currentPlayerLabel);
 
-        if(currentMove!=null) componentSetter.paintLine(currentMove,this);
+        CurrentPlayerLabel.updateLabel(game, currentPlayerLabel);
 
-        componentSetter.setScores(game, labels);
+        if(currentMove!=null) gridSetter.paintLine(currentMove,this);
 
-        componentSetter.addBox(game,this, BACKGROUND_PANEL);
+        ScoreLabels.setLabels(game, labels);
+
+        gridSetter.addBox(game,this, BACKGROUND_PANEL);
 
         updatePanel();
 
@@ -88,30 +112,7 @@ public class GameFrame extends InputFrame<Move> {
         this.currentMove = currentMove;
     }
 
-    @Override
-    public void setPanel() {
 
-        clear();
-        currentPlayerLabel = new DBLabel();
-        boxes=new boolean[boxesRows][boxesColumns];
-        endGame = false;
-        reset = false;
-        labels= new LabelsList();
-
-        componentSetter= new ComponentSetter(IMAGE_DIR,boxesRows,boxesColumns);
-
-        componentSetter.playersLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
-
-        componentSetter.endResetButtons(this, BACKGROUND_PANEL);
-
-        componentSetter.currentPlayerLabel(BACKGROUND_PANEL,currentPlayerLabel);
-
-        componentSetter.lines(this, BACKGROUND_PANEL);
-
-        componentSetter.dots(BACKGROUND_PANEL);
-
-        updatePanel();
-    }
 }
 
 
