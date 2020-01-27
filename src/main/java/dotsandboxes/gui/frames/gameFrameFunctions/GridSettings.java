@@ -9,18 +9,18 @@ public class GridSettings {
     private GridSpecifics verticalGridSpec;
     private GridSpecifics dotsGridSpec;
 
-    private Integer xOffset;
-    private Integer yOffset;
-    private Integer dimOne;
-    private Integer dimTwo;
+    private final Integer xOffset;
+    private final Integer yOffset;
+    private final Integer dimOne=45;
+    private final Integer dimTwo=15;
+    private final Integer LEFT_MARGIN=120; //trasformare in punto
+    private final Integer TOP_MARGIN=50;
 
 
     public GridSettings(Integer rows, Integer cols){
 
-        dimOne=45;
-        dimTwo=15;
-        xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
-        yOffset=50+(300-(dimOne+dimTwo)*rows)/2;
+        xOffset=LEFT_MARGIN+(340-(dimOne+dimTwo)*cols)/2;  //risistemare tutte costanti
+        yOffset=TOP_MARGIN+(300-(dimOne+dimTwo)*rows)/2;
         Integer hints=50;
 
         horizontalGridSpec = new GridSpecifics(rows+1, cols, new Rectangle(dimOne, dimTwo), new Point(xOffset+dimTwo, yOffset), dimOne+dimTwo,hints);

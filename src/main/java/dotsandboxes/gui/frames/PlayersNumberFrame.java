@@ -4,14 +4,13 @@ import dotsandboxes.gui.graphics.DBLabel;
 import dotsandboxes.gui.graphics.DBButtons.DBNumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PlayersNumberFrame extends InputFrame<Integer>{
 
     private Integer numPlayers;
-    private List<DBNumButton> buttons;
 
 
     public PlayersNumberFrame(BackgroundPanel bP) {
@@ -25,21 +24,24 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         DBLabel playerQuestion= new DBLabel("NUMBER OF PLAYERS",new ObjSpecifics(200, 30, 200, 30,80));
         BACKGROUND_PANEL.add(playerQuestion);
 
-        setButtons(new ArrayList<>(3));
-        int yOffset = 100;
+        final int yOffset = 100;
+        final int minPlayers = 2;
+        final int maxPlayers = 5;
+        final int yOffsetGap = 40;
 
-        for (int i=2; i<5; i++) {
-            DBNumButton button=new DBNumButton(i, new ObjSpecifics(260,yOffset, 80, 30,80) );
+        List<DBNumButton> buttonsList = IntStream.range(minPlayers,maxPlayers)
+                .mapToObj(i -> new DBNumButton(i, new ObjSpecifics(260, yOffset + (i-minPlayers)*yOffsetGap, 80, 30,80)))
+                .collect(Collectors.toList());
+        buttonsList.stream().forEach(button -> {
+
             button.addActionListener(x ->
             {
                 setNumPlayers(button.getNumber());
                 button.setDark();
                 inputGiven=true;
             });
-            yOffset+=40;
-            BACKGROUND_PANEL.add(button);
-            getButtons().add(button);
-        }
+        });
+        buttonsList.stream().forEach(BACKGROUND_PANEL::add);
 
         updatePanel();
     }
@@ -60,13 +62,6 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         this.numPlayers = numPlayers;
     }
 
-    private List<DBNumButton> getButtons() {
-        return buttons;
-    }
-
-    private void setButtons(List<DBNumButton> buttons) {
-        this.buttons = buttons;
-    }
 }
 
 
