@@ -71,6 +71,8 @@ public class GameFrame extends InputFrame<Move> {
 
         gridSetter.dots(this,BACKGROUND_PANEL);
 
+        gridSetter.boxes(this,BACKGROUND_PANEL);
+
         updatePanel();
     }
 
@@ -93,7 +95,7 @@ public class GameFrame extends InputFrame<Move> {
 
         ScoreLabels.setLabels(game, labels);
 
-        gridSetter.addBox(game,this, BACKGROUND_PANEL);
+        gridSetter.paintBox(game,this, BACKGROUND_PANEL);
 
         updatePanel();
 

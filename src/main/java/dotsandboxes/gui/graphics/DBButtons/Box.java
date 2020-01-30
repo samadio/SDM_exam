@@ -8,10 +8,8 @@ import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 public class Box extends DBButton {
 
 
-    public Box(ObjSpecifics objSpecifics) {
-        super(objSpecifics);
-        image= FileManager.getBoxIcon();
-        DBLayoutSetter.setImageFile(this,image,SPECIFICS);
+    public Box(ObjSpecifics oS) {
+        super(oS);
+        image2= FileManager.getBoxIcon();
     }
-
 }
