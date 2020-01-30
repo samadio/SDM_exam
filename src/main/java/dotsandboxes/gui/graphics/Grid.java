@@ -1,8 +1,6 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.graphics.DBButtons.DBButton;
 import dotsandboxes.gui.graphics.lists.DBButtonList;
-import dotsandboxes.gui.graphics.lists.LinesList;
 
 public class Grid {
 

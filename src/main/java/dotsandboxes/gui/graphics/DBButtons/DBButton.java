@@ -12,10 +12,6 @@ public abstract class DBButton extends JButton {
     protected ImageIcon image2;
     protected final ObjSpecifics SPECIFICS;
 
-    public DBButton(){
-        SPECIFICS=null;
-    }
-
     DBButton(ObjSpecifics objSpecifics){
 
         SPECIFICS=objSpecifics;
