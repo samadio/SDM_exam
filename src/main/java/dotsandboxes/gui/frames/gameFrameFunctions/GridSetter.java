@@ -7,6 +7,7 @@ import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
+
 public class GridSetter {
 
     private final GridSettings GRID_SETTINGS;
@@ -19,13 +20,13 @@ public class GridSetter {
     }
 
 
-
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
-        DBButtonList horizontalLines = SetElementsInGrid.set( GRID_SETTINGS.getHorizontalGridSpec(),gameFrame, backgroundPanel);
-        DBButtonList verticalLines = SetElementsInGrid.set(GRID_SETTINGS.getVerticalGridSpec(), gameFrame,backgroundPanel);
+        DBButtonList horizontalLines = InitElementsInGrid.set( GRID_SETTINGS.getHorizontalGridSpec(),gameFrame, backgroundPanel);
+        DBButtonList verticalLines = InitElementsInGrid.set(GRID_SETTINGS.getVerticalGridSpec(), gameFrame,backgroundPanel);
 
-        gameFrame.getGrid().setGrid(horizontalLines,verticalLines);
+        gameFrame.getGrid().setHorizontalLines(horizontalLines);
+        gameFrame.getGrid().setVerticalLines(verticalLines);
     }
 
 
@@ -42,30 +43,33 @@ public class GridSetter {
 
     public void dots(GameFrame gameFrame,BackgroundPanel backgroundPanel) {
 
-        SetElementsInGrid.set(GRID_SETTINGS.getDotsGridSpec(),gameFrame, backgroundPanel);
+        InitElementsInGrid.set(GRID_SETTINGS.getDotsGridSpec(),gameFrame, backgroundPanel);
 
     }
 
+    public void boxes(GameFrame gameFrame,BackgroundPanel backgroundPanel){
 
-    public  void addBox(Game game, GameFrame gameFrame,  BackgroundPanel backgroundPanel) {
-        AbstractBoard board = game.getBoard();
+        DBButtonList boxesList= InitElementsInGrid.set(GRID_SETTINGS.getBoxesGridSpec(),gameFrame,backgroundPanel);
+        gameFrame.getGrid().setBoxes(boxesList);
+    }
+
+
+    public  void paintBox(Game game, GameFrame gameFrame) {
 
         for (int i = 0; i < gameFrame.getBoxesRows(); i++) {
             for (int j = 0; j < gameFrame.getBoxesColumns(); j++) {
 
-                if (board.getElement(Move.Which.HORIZONTAL, i, j) && board.getElement(Move.Which.HORIZONTAL, i + 1, j)
-                        && board.getElement(Move.Which.VERTICAL, i, j) && board.getElement(Move.Which.VERTICAL, i, j + 1)) {
+                if (isSquare(game.getBoard(),i,j))
+                    gameFrame.getGrid().getBoxes().get(i*GRID_SETTINGS.getRows()+j).setDark();
 
-                    if (!gameFrame.getBoxes()[i][j]) {
-                        SetElementsInGrid.setBox(i, j,GRID_SETTINGS, backgroundPanel);
-                        gameFrame.getBoxes()[i][j] = true;
-                    }
                 }
             }
         }
+
+    private  boolean isSquare(AbstractBoard board, Integer i, Integer j) {
+        return board.getElement(Move.Which.HORIZONTAL, i, j) && board.getElement(Move.Which.HORIZONTAL, i + 1, j)
+                && board.getElement(Move.Which.VERTICAL, i, j) && board.getElement(Move.Which.VERTICAL, i, j + 1);
     }
-
-
 
 
 }

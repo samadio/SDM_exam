@@ -10,7 +10,7 @@ import gamesuite.move.Move;
 
 import java.awt.*;
 
-public class SetElementsInGrid {
+public class InitElementsInGrid {
 
 
     public static DBButtonList set(GridSpecifics gridSpec, GameFrame gameFrame, BackgroundPanel bPanel){
@@ -39,6 +39,11 @@ public class SetElementsInGrid {
                         Dot dot = new Dot(objSpecifics);
                         elementList.add(dot);
                         break;
+
+                    case BOX:
+                        Box box = new Box(objSpecifics);
+                        elementList.add(box);
+                        break;
                 }
                 bPanel.add(elementList.getLast());
             }
@@ -60,15 +65,4 @@ public class SetElementsInGrid {
 
 
 
-    public static void setBox(int i, int j, GridSettings gridSettings, BackgroundPanel backgroundPanel){
-
-        Integer xOffset=gridSettings.getXOffset();
-        Integer yOffset=gridSettings.getYOffset();
-        Integer dimOne=gridSettings.getDimOne();
-        Integer dimTwo=gridSettings.getDimTwo();
-        Point boxPosition=new Point(xOffset+dimTwo +j*(dimOne+dimTwo),yOffset+dimTwo+i*(dimOne+dimTwo));
-        ObjSpecifics boxSpec= new ObjSpecifics(boxPosition,new Rectangle(dimOne,dimOne), 50);
-        Box box = new Box(boxSpec);
-        backgroundPanel.add(box);
-    }
 }
