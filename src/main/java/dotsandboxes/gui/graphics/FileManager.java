@@ -1,5 +1,6 @@
 package dotsandboxes.gui.graphics;
 
+import javax.swing.*;
 import java.io.File;
 
 public class FileManager {
@@ -19,16 +20,20 @@ public class FileManager {
 
     private static final File FONT=new File("SfEspressoShackCondensed-mYm5.ttf");
 
-    public static File getHorizontalEmptyFile(){return new File(IMAGE_DIR,HORIZONTAL_LINE_EMPTY.getName());}
-    public static File getHorizontalFullFile(){return new File(IMAGE_DIR,HORIZONTAL_LINE_FULL.getName());}
-    public static File getVerticalLineEmptyFile(){return new File(IMAGE_DIR,VERTICAL_LINE_EMPTY.getName());}
-    public static File getVerticalLineFullFile(){return new File(IMAGE_DIR,VERTICAL_LINE_FULL.getName());}
-    public static File getBoxFile(){return new File(IMAGE_DIR,BOX.getName());}
-    public static File getDotFile(){return new File(IMAGE_DIR,DOT.getName());}
-    public static File getWoodFile(){return new File(IMAGE_DIR,WOOD.getName());}
-    public static File getWoodDarkFile(){return new File(IMAGE_DIR,WOOD_DARK.getName());}
-    public static File getBackgroundFile() {return new File(IMAGE_DIR,BACKGROUND.getName());}
+    public static ImageIcon getHorizontalEmptyIcon(){return getImageIcon(new File(IMAGE_DIR,HORIZONTAL_LINE_EMPTY.getName()));}
+    public static ImageIcon getHorizontalFullIcon(){return getImageIcon(new File(IMAGE_DIR,HORIZONTAL_LINE_FULL.getName()));}
+    public static ImageIcon getVerticalLineEmptyIcon(){return getImageIcon(new File(IMAGE_DIR,VERTICAL_LINE_EMPTY.getName()));}
+    public static ImageIcon getVerticalLineFullIcon(){return getImageIcon(new File(IMAGE_DIR,VERTICAL_LINE_FULL.getName()));}
+    public static ImageIcon getBoxIcon(){return getImageIcon(new File(IMAGE_DIR,BOX.getName()));}
+    public static ImageIcon getDotIcon(){return getImageIcon(new File(IMAGE_DIR,DOT.getName()));}
+    public static ImageIcon getWoodIcon(){return getImageIcon(new File(IMAGE_DIR,WOOD.getName()));}
+    public static ImageIcon getWoodDarkIcon(){return getImageIcon(new File(IMAGE_DIR,WOOD_DARK.getName()));}
+    public static ImageIcon getBackgroundIcon() {return getImageIcon(new File(IMAGE_DIR,BACKGROUND.getName()));}
 
     public static File getFontFile() {return new File(FONT_DIR,FONT.getName());}
+
+    private static ImageIcon getImageIcon(File imageFile) {
+        return new ImageIcon(new ImageIcon(imageFile.getPath()).getImage());
+    }
 
 }

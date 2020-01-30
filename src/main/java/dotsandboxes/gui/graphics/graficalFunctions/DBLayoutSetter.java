@@ -4,6 +4,7 @@ import dotsandboxes.gui.graphics.FontSetter;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 public class DBLayoutSetter {
@@ -20,9 +21,9 @@ public class DBLayoutSetter {
         element.setBounds(objSpecifics.getPosition().x, objSpecifics.getPosition().y, objSpecifics.getSize().width, objSpecifics.getSize().height);
     }
     
-    public static void setImageFile(AbstractButton element, File imageFile, ObjSpecifics objSpecifics){
+    public static void setImageFile(AbstractButton element, ImageIcon imageIcon, ObjSpecifics objSpecifics){
 
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imageFile.getPath()).getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints()));
+        imageIcon=new ImageIcon(imageIcon.getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints()));
         element.setIcon(imageIcon);
     }
 }

@@ -8,8 +8,8 @@ public class HorizontalLine extends Line {
 
     public  HorizontalLine(ObjSpecifics oS, Integer r, Integer c) {
         super(oS,r,c);
-        image = FileManager.getHorizontalEmptyFile();
-        image2 = FileManager.getHorizontalFullFile();
+        image = FileManager.getHorizontalEmptyIcon();
+        image2 = FileManager.getHorizontalFullIcon();
         DBLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
 }

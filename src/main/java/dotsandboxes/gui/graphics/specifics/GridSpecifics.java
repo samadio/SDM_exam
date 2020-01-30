@@ -1,5 +1,7 @@
 package dotsandboxes.gui.graphics.specifics;
 
+import dotsandboxes.gui.frames.gameFrameFunctions.GridSettings;
+
 import java.awt.*;
 
 public class GridSpecifics {
@@ -10,10 +12,11 @@ public class GridSpecifics {
     private final Integer ROWS;
     private final Integer COLS;
     private final Integer DIST;
+    //private final GridSettings.GridElement TYPE;
 
-    public GridSpecifics(Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
+    public GridSpecifics( Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
         
-        
+        //TYPE=type;
         ELEMENT_SIZE = elementSize;
         GRID_OFFSETS= gridOffsets;
         HINTS=hi;
@@ -22,6 +25,7 @@ public class GridSpecifics {
         DIST=d;
 
     }
+    //public GridSettings.GridElement getType() {return TYPE;}
 
     public Integer getRows() {
         return ROWS;

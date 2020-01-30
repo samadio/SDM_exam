@@ -10,8 +10,8 @@ public class DBNumButton extends DBButton {
 
     public DBNumButton(Integer num, ObjSpecifics objSpecifics){
         super(objSpecifics);
-        image= FileManager.getWoodFile();
-        image2=FileManager.getWoodDarkFile();
+        image= FileManager.getWoodIcon();
+        image2=FileManager.getWoodDarkIcon();
         NUMBER=num;
         setText(Integer.toString(num));
 

@@ -11,8 +11,8 @@ public class DBTextButton extends DBButton {
     public DBTextButton(String t, ObjSpecifics objSpecifics){
 
         super(objSpecifics);
-        image= FileManager.getWoodFile();
-        image2=FileManager.getWoodDarkFile();
+        image= FileManager.getWoodIcon();
+        image2=FileManager.getWoodDarkIcon();
         setText(t);
         DBLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
