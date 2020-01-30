@@ -69,7 +69,7 @@ public class GameFrame extends InputFrame<Move> {
 
         gridSetter.lines(this, BACKGROUND_PANEL);
 
-        gridSetter.dots(BACKGROUND_PANEL);
+        gridSetter.dots(this,BACKGROUND_PANEL);
 
         updatePanel();
     }

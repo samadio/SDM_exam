@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class GridSettings {
 
+    public  enum ElementType{HORIZONTAL_LINE,VERTICAL_LINE,DOT}
+
     private GridSpecifics horizontalGridSpec;
     private GridSpecifics verticalGridSpec;
     private GridSpecifics dotsGridSpec;
@@ -17,15 +19,16 @@ public class GridSettings {
 
     public GridSettings(Integer rows, Integer cols){
 
+
         dimOne=45;
         dimTwo=15;
         xOffset=120+(340-(dimOne+dimTwo)*cols)/2;
         yOffset=50+(300-(dimOne+dimTwo)*rows)/2;
         Integer hints=50;
 
-        horizontalGridSpec = new GridSpecifics(rows+1, cols, new Rectangle(dimOne, dimTwo), new Point(xOffset+dimTwo, yOffset), dimOne+dimTwo,hints);
-        verticalGridSpec = new GridSpecifics(rows, cols+1, new Rectangle(dimTwo, dimOne),new Point( xOffset, yOffset+dimTwo), dimOne+dimTwo,hints);
-        dotsGridSpec = new GridSpecifics(rows+1, cols+1,new Rectangle( dimTwo, dimTwo),new Point( xOffset, yOffset), dimOne+dimTwo,hints);
+        horizontalGridSpec = new GridSpecifics(ElementType.HORIZONTAL_LINE,rows+1, cols, new Rectangle(dimOne, dimTwo), new Point(xOffset+dimTwo, yOffset), dimOne+dimTwo,hints);
+        verticalGridSpec = new GridSpecifics(ElementType.VERTICAL_LINE,rows, cols+1, new Rectangle(dimTwo, dimOne),new Point( xOffset, yOffset+dimTwo), dimOne+dimTwo,hints);
+        dotsGridSpec = new GridSpecifics(ElementType.DOT,rows+1, cols+1,new Rectangle( dimTwo, dimTwo),new Point( xOffset, yOffset), dimOne+dimTwo,hints);
 
     }
 
