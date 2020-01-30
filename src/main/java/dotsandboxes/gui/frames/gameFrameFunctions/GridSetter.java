@@ -20,7 +20,6 @@ public class GridSetter {
     }
 
 
-
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
         DBButtonList horizontalLines = InitElementsInGrid.set( GRID_SETTINGS.getHorizontalGridSpec(),gameFrame, backgroundPanel);
