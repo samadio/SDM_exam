@@ -21,7 +21,6 @@ public class GameFrame extends InputFrame<Move> {
     private boolean reset;
     private Integer boxesRows;
     private Integer boxesColumns;
-    private boolean[][] boxes;
     private Grid grid;
     private Game targetGame;
 
@@ -38,7 +37,6 @@ public class GameFrame extends InputFrame<Move> {
 
     public Integer getBoxesRows() {return boxesRows;}
     public Integer getBoxesColumns() {return boxesColumns;}
-    public boolean[][] getBoxes() {return boxes;}
     public LabelsList getLabels() {return labels;}
     public boolean getReset() {return reset;}
     public boolean getEndGame() {return endGame;}
@@ -53,7 +51,6 @@ public class GameFrame extends InputFrame<Move> {
 
         clear();
         currentPlayerLabel = new DBLabel();
-        boxes=new boolean[boxesRows][boxesColumns];
         endGame = false;
         reset = false;
         labels= new LabelsList();
@@ -95,7 +92,7 @@ public class GameFrame extends InputFrame<Move> {
 
         ScoreLabels.setLabels(game, labels);
 
-        gridSetter.paintBox(game,this, BACKGROUND_PANEL);
+        gridSetter.paintBox(game,this);
 
         updatePanel();
 
@@ -103,8 +100,6 @@ public class GameFrame extends InputFrame<Move> {
 
 
     public void resetFrame(BackgroundPanel backgroundPanel) {
-
-        boxes=new boolean[boxesRows][boxesColumns];
         clear();
 
     }

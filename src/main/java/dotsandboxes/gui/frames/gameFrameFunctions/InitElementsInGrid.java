@@ -39,6 +39,11 @@ public class InitElementsInGrid {
                         Dot dot = new Dot(objSpecifics);
                         elementList.add(dot);
                         break;
+
+                    case BOX:
+                        Box box = new Box(objSpecifics);
+                        elementList.add(box);
+                        break;
                 }
                 bPanel.add(elementList.getLast());
             }
