@@ -38,6 +38,7 @@ public class GridSettings {
     public Integer getYOffset(){return  yOffset;}
     public Integer getDimOne() {return  DIM_ONE;}
     public Integer getDimTwo() {return  DIM_TWO;}
+    public Integer getHints() {return HINTS;}
 
     public GridSpecifics getHorizontalGridSpec() {return horizontalGridSpec; }
     public GridSpecifics getVerticalGridSpec() {return verticalGridSpec; }

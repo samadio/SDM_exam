@@ -67,7 +67,7 @@ public class SetElementsInGrid {
         Integer dimOne=gridSettings.getDimOne();
         Integer dimTwo=gridSettings.getDimTwo();
         Point boxPosition=new Point(xOffset+dimTwo +j*(dimOne+dimTwo),yOffset+dimTwo+i*(dimOne+dimTwo));
-        ObjSpecifics boxSpec= new ObjSpecifics(boxPosition,new Rectangle(dimOne,dimOne), 50);
+        ObjSpecifics boxSpec= new ObjSpecifics(boxPosition,new Rectangle(dimOne,dimOne), gridSettings.getHints());
         Box box = new Box(boxSpec);
         backgroundPanel.add(box);
     }
