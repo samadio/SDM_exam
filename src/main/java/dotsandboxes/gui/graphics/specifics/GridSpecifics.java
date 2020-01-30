@@ -12,11 +12,11 @@ public class GridSpecifics {
     private final Integer ROWS;
     private final Integer COLS;
     private final Integer DIST;
-    //private final GridSettings.GridElement TYPE;
+    private final GridSettings.ElementType TYPE;
 
-    public GridSpecifics( Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
+    public GridSpecifics(GridSettings.ElementType type, Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
         
-        //TYPE=type;
+        TYPE=type;
         ELEMENT_SIZE = elementSize;
         GRID_OFFSETS= gridOffsets;
         HINTS=hi;
@@ -25,7 +25,7 @@ public class GridSpecifics {
         DIST=d;
 
     }
-    //public GridSettings.GridElement getType() {return TYPE;}
+    public GridSettings.ElementType getType() {return TYPE;}
 
     public Integer getRows() {
         return ROWS;

@@ -4,7 +4,5 @@ import dotsandboxes.gui.graphics.DBButtons.DBButton;
 
 import java.util.LinkedList;
 
-public class DBButtonList extends  LinkedList<DBButton> {
-
-
+public class DBButtonList extends LinkedList<DBButton> {
 }

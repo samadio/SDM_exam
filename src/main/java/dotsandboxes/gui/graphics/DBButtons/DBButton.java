@@ -6,15 +6,11 @@ import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import javax.swing.*;
 import java.io.File;
 
-public class DBButton extends JButton {
+public abstract class DBButton extends JButton {
 
     protected ImageIcon image;
     protected ImageIcon image2;
     protected final ObjSpecifics SPECIFICS;
-
-    public DBButton(){
-        SPECIFICS=null;
-    }
 
     DBButton(ObjSpecifics objSpecifics){
 

@@ -2,8 +2,7 @@ package dotsandboxes.gui.frames.gameFrameFunctions;
 
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.graphics.DBButtons.Line;
-import dotsandboxes.gui.graphics.lists.LinesList;
+import dotsandboxes.gui.graphics.lists.DBButtonList;
 import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
@@ -23,32 +22,27 @@ public class GridSetter {
 
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
-        LinesList horizontalLines = SetElementsInGrid.setHorizontalLines( GRID_SETTINGS.getHorizontalGridSpec(), backgroundPanel);
-        LinesList verticalLines = SetElementsInGrid.setVerticalLines(GRID_SETTINGS.getVerticalGridSpec(), backgroundPanel);
+        DBButtonList horizontalLines = SetElementsInGrid.set( GRID_SETTINGS.getHorizontalGridSpec(),gameFrame, backgroundPanel);
+        DBButtonList verticalLines = SetElementsInGrid.set(GRID_SETTINGS.getVerticalGridSpec(), gameFrame,backgroundPanel);
 
         gameFrame.getGrid().setGrid(horizontalLines,verticalLines);
+    }
 
-        for (Line l : horizontalLines) {
-            l.addActionListener(x ->
-            {
-                gameFrame.setCurrentMove( new Move(Move.Which.HORIZONTAL, l.getRow(), l.getColumn() ) );
-                gameFrame.setInputGiven(true);
-            });
+
+    public void paintLine(Move currentMove, GameFrame gameFrame) {
+
+        if(currentMove.getLineKind()== Move.Which.HORIZONTAL){
+            gameFrame.getGrid().getHorizontalLines().get(currentMove.getRow()*gameFrame.getBoxesColumns()+currentMove.getCol()).setDark();
         }
-
-        for (Line l : verticalLines) {
-            l.addActionListener(x ->
-            {
-                gameFrame.setCurrentMove( new Move(Move.Which.VERTICAL, l.getRow(), l.getColumn() ) );
-                gameFrame.setInputGiven(true);
-            });
+        else{
+            gameFrame.getGrid().getVerticalLines().get(currentMove.getRow()*(gameFrame.getBoxesColumns()+1)+currentMove.getCol()).setDark();
         }
     }
 
 
-    public void dots(BackgroundPanel backgroundPanel) {
+    public void dots(GameFrame gameFrame,BackgroundPanel backgroundPanel) {
 
-        SetElementsInGrid.setDots(GRID_SETTINGS.getDotsGridSpec(), backgroundPanel);
+        SetElementsInGrid.set(GRID_SETTINGS.getDotsGridSpec(),gameFrame, backgroundPanel);
 
     }
 
@@ -72,13 +66,6 @@ public class GridSetter {
     }
 
 
-    public void paintLine(Move currentMove, GameFrame gameFrame) {
 
-        if(currentMove.getLineKind()== Move.Which.HORIZONTAL){
-            gameFrame.getGrid().getHorizontalLines().get(currentMove.getRow()*gameFrame.getBoxesColumns()+currentMove.getCol()).setDark();
-        }
-        else{
-            gameFrame.getGrid().getVerticalLines().get(currentMove.getRow()*(gameFrame.getBoxesColumns()+1)+currentMove.getCol()).setDark();
-        }
-    }
+
 }
