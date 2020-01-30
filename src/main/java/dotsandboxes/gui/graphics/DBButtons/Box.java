@@ -10,7 +10,7 @@ public class Box extends DBButton {
 
     public Box(ObjSpecifics objSpecifics) {
         super(objSpecifics);
-        image= FileManager.getBoxFile();
+        image= FileManager.getBoxIcon();
         DBLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
 

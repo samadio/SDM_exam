@@ -20,9 +20,9 @@ public class DBLayoutSetter {
         element.setBounds(objSpecifics.getPosition().x, objSpecifics.getPosition().y, objSpecifics.getSize().width, objSpecifics.getSize().height);
     }
     
-    public static void setImageFile(AbstractButton element, File imageFile, ObjSpecifics objSpecifics){
+    public static void setImageFile(AbstractButton element, ImageIcon imageIcon, ObjSpecifics objSpecifics){
 
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imageFile.getPath()).getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints()));
+        imageIcon.getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints());
         element.setIcon(imageIcon);
     }
 }

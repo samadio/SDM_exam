@@ -8,8 +8,8 @@ public class VerticalLine extends Line {
 
     public  VerticalLine(ObjSpecifics oS, Integer r, Integer c) {
         super(oS,r,c);
-        image = FileManager.getVerticalLineEmptyFile();
-        image2 = FileManager.getVerticalLineFullFile();
+        image = FileManager.getVerticalLineEmptyIcon();
+        image2 = FileManager.getVerticalLineFullIcon();
         DBLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
 }

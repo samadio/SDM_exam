@@ -10,16 +10,16 @@ import java.io.File;
 public class DBNumRadioButton extends JRadioButton {
 
     private final ObjSpecifics SPECIFICS;
-    private final File IMAGE;
-    private final File IMAGE_2;
+    private final ImageIcon IMAGE;
+    private final ImageIcon IMAGE_2;
     private final Integer NUMBER;
 
 
     public DBNumRadioButton( Integer num, ObjSpecifics objSpecifics){
 
         super(Integer.toString(num));
-        IMAGE=FileManager.getWoodFile();
-        IMAGE_2=FileManager.getWoodDarkFile();
+        IMAGE=FileManager.getWoodIcon();
+        IMAGE_2=FileManager.getWoodDarkIcon();
         SPECIFICS=objSpecifics;
         NUMBER = num;
 
@@ -27,8 +27,8 @@ public class DBNumRadioButton extends JRadioButton {
         DBLayoutSetter.setLayout(this,SPECIFICS);
         DBLayoutSetter.setImageFile(this,IMAGE,SPECIFICS);
 
-        ImageIcon radio_on = new ImageIcon(new ImageIcon(IMAGE_2.getPath()).getImage().getScaledInstance(getWidth(), getHeight(), objSpecifics.getHints()));
-        this.setSelectedIcon(radio_on);
+        IMAGE_2.getImage().getScaledInstance(getWidth(), getHeight(), objSpecifics.getHints());
+        this.setSelectedIcon(IMAGE_2);
     }
 
     private void setAlignment(Integer alignment){

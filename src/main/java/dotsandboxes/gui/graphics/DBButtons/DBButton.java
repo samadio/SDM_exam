@@ -8,8 +8,8 @@ import java.io.File;
 
 public abstract class DBButton extends JButton {
 
-    protected File image;
-    protected File image2;
+    protected ImageIcon image;
+    protected ImageIcon image2;
     protected final ObjSpecifics SPECIFICS;
 
     DBButton(ObjSpecifics objSpecifics){

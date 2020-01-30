@@ -8,17 +8,17 @@ import java.io.File;
 
 public class DBLabel extends JLabel {
     private String text;
-    private final File IMAGE;
+    private final ImageIcon IMAGE;
 
     public DBLabel(String t, ObjSpecifics objSpecifics) {
         super();
-        IMAGE= FileManager.getWoodFile();
+        IMAGE= FileManager.getWoodIcon();
         setLabelProperties(t,objSpecifics);
     }
 
     public DBLabel(){
         super();
-        IMAGE=FileManager.getWoodFile();;
+        IMAGE=FileManager.getWoodIcon();;
     }
 
 
@@ -30,8 +30,8 @@ public class DBLabel extends JLabel {
         this.setBounds(objSpecifics.getPosition().x, objSpecifics.getPosition().y, objSpecifics.getSize().width, objSpecifics.getSize().height);
         this.setFont(FontSetter.setFont());
         this.setOpaque(false);
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(IMAGE.getPath()).getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints()));
-        this.setIcon(imageIcon);
+        IMAGE.getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints());
+        this.setIcon(IMAGE);
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
     }

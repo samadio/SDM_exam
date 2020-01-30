@@ -9,7 +9,7 @@ public class Dot extends DBButton {
 
     public Dot(ObjSpecifics objSpecifics) {
         super(objSpecifics);
-        image= FileManager.getDotFile();
+        image= FileManager.getDotIcon();
         DBLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
 
