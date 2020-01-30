@@ -3,22 +3,20 @@ package dotsandboxes.gui.graphics;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
 import javax.swing.*;
-import java.io.File;
 
 
 public class DBLabel extends JLabel {
     private String text;
-    private final ImageIcon IMAGE;
+    private ImageIcon image;
 
     public DBLabel(String t, ObjSpecifics objSpecifics) {
-        super();
-        IMAGE= FileManager.getWoodIcon();
+        image= FileManager.getWoodIcon();
         setLabelProperties(t,objSpecifics);
     }
 
     public DBLabel(){
         super();
-        IMAGE=FileManager.getWoodIcon();;
+        image=FileManager.getWoodIcon();;
     }
 
 
@@ -30,8 +28,8 @@ public class DBLabel extends JLabel {
         this.setBounds(objSpecifics.getPosition().x, objSpecifics.getPosition().y, objSpecifics.getSize().width, objSpecifics.getSize().height);
         this.setFont(FontSetter.setFont());
         this.setOpaque(false);
-        IMAGE.getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints());
-        this.setIcon(IMAGE);
+        image = new ImageIcon(image.getImage().getScaledInstance(objSpecifics.getSize().width,objSpecifics.getSize().height, objSpecifics.getHints()));
+        this.setIcon(image);
         this.setVerticalTextPosition(SwingConstants.CENTER);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
     }

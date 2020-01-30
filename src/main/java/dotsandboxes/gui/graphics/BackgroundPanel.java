@@ -1,7 +1,6 @@
 package dotsandboxes.gui.graphics;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class BackgroundPanel extends JPanel {
 
