@@ -1,7 +1,7 @@
 package dotsandboxes.gui.frames;
 
 
-import dotsandboxes.gui.frames.gameFrameFunctions.*;
+import dotsandboxes.gui.frames.buttonsGrid.*;
 import dotsandboxes.gui.frames.labels.CurrentPlayerLabel;
 import dotsandboxes.gui.frames.labels.PlayersLabelSetter;
 import dotsandboxes.gui.frames.labels.ScoreLabels;

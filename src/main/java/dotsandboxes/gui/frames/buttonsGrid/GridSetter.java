@@ -1,4 +1,4 @@
-package dotsandboxes.gui.frames.gameFrameFunctions;
+package dotsandboxes.gui.frames.buttonsGrid;
 
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.graphics.*;
@@ -20,8 +20,8 @@ public class GridSetter {
 
     public void lines(GameFrame gameFrame, BackgroundPanel backgroundPanel){
 
-        DBButtonList horizontalLines = InitElementsInGrid.set( GRID_SETTINGS.getHorizontalGridSpec(),gameFrame, backgroundPanel);
-        DBButtonList verticalLines = InitElementsInGrid.set(GRID_SETTINGS.getVerticalGridSpec(), gameFrame,backgroundPanel);
+        DBButtonList horizontalLines = ButtonsInGrid.set( GRID_SETTINGS.getHorizontalGridSpec(),gameFrame, backgroundPanel);
+        DBButtonList verticalLines = ButtonsInGrid.set(GRID_SETTINGS.getVerticalGridSpec(), gameFrame,backgroundPanel);
 
         gameFrame.getGrid().setHorizontalLines(horizontalLines);
         gameFrame.getGrid().setVerticalLines(verticalLines);
@@ -41,13 +41,13 @@ public class GridSetter {
 
     public void dots(GameFrame gameFrame,BackgroundPanel backgroundPanel) {
 
-        InitElementsInGrid.set(GRID_SETTINGS.getDotsGridSpec(),gameFrame, backgroundPanel);
+        ButtonsInGrid.set(GRID_SETTINGS.getDotsGridSpec(),gameFrame, backgroundPanel);
 
     }
 
     public void boxes(GameFrame gameFrame,BackgroundPanel backgroundPanel){
 
-        DBButtonList boxesList= InitElementsInGrid.set(GRID_SETTINGS.getBoxesGridSpec(),gameFrame,backgroundPanel);
+        DBButtonList boxesList= ButtonsInGrid.set(GRID_SETTINGS.getBoxesGridSpec(),gameFrame,backgroundPanel);
         gameFrame.getGrid().setBoxes(boxesList);
     }
 

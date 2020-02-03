@@ -1,4 +1,4 @@
-package dotsandboxes.gui.frames.gameFrameFunctions;
+package dotsandboxes.gui.frames.buttonsGrid;
 
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import java.awt.*;
@@ -6,7 +6,6 @@ import java.awt.*;
 public class GridSettings {
 
     public  enum ElementType{HORIZONTAL_LINE,VERTICAL_LINE,BOX,DOT}
-
 
     //queste sono alla fine final? (insopportabile gioco di parole)
     private final Integer ROWS;

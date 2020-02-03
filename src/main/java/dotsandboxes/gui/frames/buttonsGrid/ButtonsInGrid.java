@@ -1,4 +1,4 @@
-package dotsandboxes.gui.frames.gameFrameFunctions;
+package dotsandboxes.gui.frames.buttonsGrid;
 
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.graphics.*;
@@ -10,7 +10,7 @@ import gamesuite.move.Move;
 
 import java.awt.*;
 
-public class InitElementsInGrid {
+public class ButtonsInGrid {
 
 
     public static DBButtonList set(GridSpecifics gridSpec, GameFrame gameFrame, BackgroundPanel bPanel){
@@ -61,8 +61,5 @@ public class InitElementsInGrid {
             gameFrame.setInputGiven(true);
         });
     }
-
-
-
 
 }

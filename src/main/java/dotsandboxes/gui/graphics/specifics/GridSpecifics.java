@@ -1,6 +1,6 @@
 package dotsandboxes.gui.graphics.specifics;
 
-import dotsandboxes.gui.frames.gameFrameFunctions.GridSettings;
+import dotsandboxes.gui.frames.buttonsGrid.GridSettings;
 
 import java.awt.*;
 
