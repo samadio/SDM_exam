@@ -2,22 +2,18 @@ package dotsandboxes.gui.board;
 
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.graphics.DBButtons.*;
 import dotsandboxes.gui.graphics.lists.DBButtonList;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
-import java.awt.*;
-
 
 public class BoardManager {
 
-    private final BoardElementsSpecifics GRID_SETTINGS;
+    private final BoardSettings GRID_SETTINGS;
 
     public BoardManager(Integer rows, Integer cols){
-        GRID_SETTINGS=new BoardElementsSpecifics(rows,cols);
+        GRID_SETTINGS=new BoardSettings(rows,cols);
     }
 
 

@@ -2,7 +2,7 @@ package dotsandboxes.gui.board;
 
 import java.awt.*;
 
-public class BoardElementsSpecifics {
+public class BoardSettings {
 
     enum ElementType{HORIZONTAL_LINE,VERTICAL_LINE,BOX,DOT}
 
@@ -22,7 +22,7 @@ public class BoardElementsSpecifics {
     private final Integer HINTS=50;
 
 
-    public BoardElementsSpecifics(Integer rows, Integer cols){
+    public BoardSettings(Integer rows, Integer cols){
 
 
         //è da capire bene come mettere questi numeri sotto forma di costanti

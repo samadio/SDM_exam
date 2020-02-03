@@ -11,9 +11,9 @@ class BoardButtonSpecifics {
     private final Integer ROWS;
     private final Integer COLS;
     private final Integer DIST;
-    private final BoardElementsSpecifics.ElementType TYPE;
+    private final BoardSettings.ElementType TYPE;
 
-    public BoardButtonSpecifics(BoardElementsSpecifics.ElementType type, Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
+    public BoardButtonSpecifics(BoardSettings.ElementType type, Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
 
         TYPE=type;
         ELEMENT_SIZE = elementSize;
@@ -25,7 +25,7 @@ class BoardButtonSpecifics {
 
     }
 
-    public BoardElementsSpecifics.ElementType getType() {return TYPE;}
+    public BoardSettings.ElementType getType() {return TYPE;}
 
     public Integer getRows() {
         return ROWS;
