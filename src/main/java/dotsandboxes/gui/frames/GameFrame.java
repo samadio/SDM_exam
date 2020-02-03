@@ -1,7 +1,7 @@
 package dotsandboxes.gui.frames;
 
 
-import dotsandboxes.gui.frames.buttonsGrid.*;
+import dotsandboxes.gui.board.*;
 import dotsandboxes.gui.frames.labels.CurrentPlayerLabel;
 import dotsandboxes.gui.frames.labels.PlayersLabelSetter;
 import dotsandboxes.gui.frames.labels.ScoreLabels;
@@ -17,7 +17,7 @@ import gamesuite.move.Move;
 
 public class GameFrame extends InputFrame<Move> {
 
-    GridSetter gridSetter;
+    BoardManager boardManager;
 
     private DBLabel currentPlayerLabel;
     private Move currentMove;
@@ -61,7 +61,7 @@ public class GameFrame extends InputFrame<Move> {
         labels= new LabelsList();
 
 
-        gridSetter = new GridSetter(boxesRows,boxesColumns);
+        boardManager = new BoardManager(boxesRows,boxesColumns);
 
         PlayersLabelSetter.setLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
 
@@ -70,11 +70,11 @@ public class GameFrame extends InputFrame<Move> {
 
         CurrentPlayerLabel.setPosition(BACKGROUND_PANEL,currentPlayerLabel);
 
-        gridSetter.lines(this, BACKGROUND_PANEL);
+        boardManager.createLines(this, BACKGROUND_PANEL);
 
-        gridSetter.dots(this,BACKGROUND_PANEL);
+        boardManager.createDots(this,BACKGROUND_PANEL);
 
-        gridSetter.boxes(this,BACKGROUND_PANEL);
+        boardManager.createBoxes(this,BACKGROUND_PANEL);
 
         updatePanel();
     }
@@ -93,11 +93,11 @@ public class GameFrame extends InputFrame<Move> {
 
         CurrentPlayerLabel.setName(game, currentPlayerLabel);
 
-        if(currentMove!=null) gridSetter.paintLine(currentMove,this);
+        if(currentMove!=null) boardManager.paintLine(currentMove,this);
 
         ScoreLabels.setLabels(game, labels);
 
-        gridSetter.paintBox(game,this);
+        boardManager.paintBox(game,this);
 
         updatePanel();
 

@@ -21,7 +21,6 @@ public class ObjSpecifics {
     }
 
 
-
     public Point getPosition() {
         return POSITION;
     }
