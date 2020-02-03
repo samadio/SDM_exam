@@ -1,9 +1,9 @@
 package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.DBLabel;
+import dotsandboxes.gui.DBlabels.DBLabel;
 import dotsandboxes.gui.graphics.DBTextField;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 
 public class PlayersNameFrame extends InputFrame<String> {

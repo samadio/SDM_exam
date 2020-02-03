@@ -1,15 +1,15 @@
 package dotsandboxes.gui.frames;
 
 import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.graphics.DBButtons.DBNumRadioButton;
-import dotsandboxes.gui.graphics.DBButtons.DBTextButton;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.DBbuttons.DBNumRadioButton;
+import dotsandboxes.gui.DBbuttons.DBTextButton;
+import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.DBlabels.DBLabel;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GridDimensionFrame extends InputFrame<List<Integer>>{
+public class BoardDimensionFrame extends InputFrame<List<Integer>>{
     
     private static final int MIN_DIMENSION=3;
     private static final int MAX_DIMENSION=5;
@@ -21,7 +21,7 @@ public class GridDimensionFrame extends InputFrame<List<Integer>>{
     private boolean rowInput;
     private boolean colInput;
 
-    public GridDimensionFrame(BackgroundPanel bP) {
+    public BoardDimensionFrame(BackgroundPanel bP) {
 
         super(bP);
         DIMENSION=new ArrayList<>(2);

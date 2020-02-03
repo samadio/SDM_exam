@@ -1,4 +1,4 @@
-package dotsandboxes.gui.graphics.lists;
+package dotsandboxes.gui.DBlabels;
 
 import java.util.LinkedList;
 import javax.swing.*;

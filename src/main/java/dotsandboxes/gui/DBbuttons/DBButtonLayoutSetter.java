@@ -1,13 +1,11 @@
-package dotsandboxes.gui.graphics.graficalFunctions;
+package dotsandboxes.gui.DBbuttons;
 
-import dotsandboxes.gui.graphics.FontSetter;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.filesAndFont.FontSetter;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 
-public class DBLayoutSetter {
+class DBButtonLayoutSetter {
 
     public static void setLayout(AbstractButton element, ObjSpecifics objSpecifics){
         element.setBorder(null);

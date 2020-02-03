@@ -1,8 +1,7 @@
-package dotsandboxes.gui.frames.labels;
+package dotsandboxes.gui.DBlabels.labelSetters;
 
-import dotsandboxes.gui.graphics.lists.LabelsList;
+import dotsandboxes.gui.DBlabels.LabelsList;
 import gamesuite.game.Game;
-import gamesuite.players.Player;
 
 import java.util.stream.IntStream;
 

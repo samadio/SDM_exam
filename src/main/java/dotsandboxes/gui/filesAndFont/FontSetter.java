@@ -1,4 +1,4 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.filesAndFont;
 
 import java.awt.*;
 import java.io.File;
@@ -22,8 +22,7 @@ public class FontSetter {
 
 
         }
-        catch (FileNotFoundException |FontFormatException  e) {}
-        catch (IOException e) {}
+        catch (FontFormatException|IOException  e) {}
 
         return font.deriveFont(Font.CENTER_BASELINE, size);
     }

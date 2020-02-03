@@ -1,6 +1,6 @@
 package dotsandboxes.gui.graphics;
 
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.filesAndFont.FontSetter;
 
 import javax.swing.*;
 

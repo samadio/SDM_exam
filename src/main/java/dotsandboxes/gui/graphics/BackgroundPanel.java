@@ -1,4 +1,6 @@
 package dotsandboxes.gui.graphics;
+import dotsandboxes.gui.filesAndFont.FileManager;
+
 import javax.swing.*;
 import java.awt.*;
 

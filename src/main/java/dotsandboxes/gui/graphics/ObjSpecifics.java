@@ -1,4 +1,4 @@
-package dotsandboxes.gui.graphics.specifics;
+package dotsandboxes.gui.graphics;
 
 import java.awt.*;
 

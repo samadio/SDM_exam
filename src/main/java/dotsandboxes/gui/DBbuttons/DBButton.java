@@ -1,10 +1,8 @@
-package dotsandboxes.gui.graphics.DBButtons;
+package dotsandboxes.gui.DBbuttons;
 
-import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 import javax.swing.*;
-import java.io.File;
 
 public abstract class DBButton extends JButton {
 
@@ -15,11 +13,11 @@ public abstract class DBButton extends JButton {
     DBButton(ObjSpecifics objSpecifics){
 
         SPECIFICS=objSpecifics;
-        DBLayoutSetter.setLayout(this,SPECIFICS);
+        DBButtonLayoutSetter.setLayout(this,SPECIFICS);
 
     }
 
     public void setDark() {
-        DBLayoutSetter.setImageFile(this,image2,SPECIFICS);
+        DBButtonLayoutSetter.setImageFile(this,image2,SPECIFICS);
     }
 }

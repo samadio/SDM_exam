@@ -1,5 +1,5 @@
-package dotsandboxes.gui.graphics.DBButtons;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+package dotsandboxes.gui.DBbuttons;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 
 public abstract class Line extends DBButton {

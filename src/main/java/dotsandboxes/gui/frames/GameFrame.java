@@ -1,16 +1,16 @@
 package dotsandboxes.gui.frames;
 
 
-import dotsandboxes.gui.board.*;
-import dotsandboxes.gui.frames.labels.CurrentPlayerLabel;
-import dotsandboxes.gui.frames.labels.PlayersLabelSetter;
-import dotsandboxes.gui.frames.labels.ScoreLabels;
+import dotsandboxes.gui.DBbuttons.board.*;
+import dotsandboxes.gui.DBlabels.labelSetters.CurrentPlayerLabel;
+import dotsandboxes.gui.DBlabels.labelSetters.PlayersLabelSetter;
+import dotsandboxes.gui.DBlabels.labelSetters.ScoreLabels;
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.DBButtons.DBTextButton;
-import dotsandboxes.gui.graphics.DBLabel;
-import dotsandboxes.gui.graphics.Grid;
-import dotsandboxes.gui.graphics.lists.LabelsList;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.DBbuttons.DBTextButton;
+import dotsandboxes.gui.DBlabels.DBLabel;
+import dotsandboxes.gui.DBbuttons.board.Board;
+import dotsandboxes.gui.DBlabels.LabelsList;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
@@ -26,14 +26,14 @@ public class GameFrame extends InputFrame<Move> {
     private boolean reset;
     private Integer boxesRows;
     private Integer boxesColumns;
-    private Grid grid;
+    private Board board;
     private Game targetGame;
 
 
     public GameFrame(BackgroundPanel bP, Game game) {
 
         super(bP);
-        grid=new Grid();
+        board =new Board();
         boxesRows=game.getBoard().getRows()-1;
         boxesColumns=game.getBoard().getColumns()-1;
 
@@ -45,7 +45,7 @@ public class GameFrame extends InputFrame<Move> {
     public LabelsList getLabels() {return labels;}
     public boolean getReset() {return reset;}
     public boolean getEndGame() {return endGame;}
-    public Grid getGrid() {return grid;}
+    public Board getBoard() {return board;}
 
     public void setReset(boolean bool) {reset=bool;}
     public void setEndGame(boolean bool) {endGame=bool;}

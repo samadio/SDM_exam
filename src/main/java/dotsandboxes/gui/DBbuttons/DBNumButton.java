@@ -1,7 +1,6 @@
-package dotsandboxes.gui.graphics.DBButtons;
-import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
-import dotsandboxes.gui.graphics.FileManager;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+package dotsandboxes.gui.DBbuttons;
+import dotsandboxes.gui.filesAndFont.FileManager;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 
 public class DBNumButton extends DBButton {
@@ -15,7 +14,7 @@ public class DBNumButton extends DBButton {
         NUMBER=num;
         setText(Integer.toString(num));
 
-        DBLayoutSetter.setImageFile(this,image,SPECIFICS);
+        DBButtonLayoutSetter.setImageFile(this,image,SPECIFICS);
     }
 
     public Integer getNumber() {return NUMBER;}

@@ -1,11 +1,9 @@
-package dotsandboxes.gui.graphics.DBButtons;
+package dotsandboxes.gui.DBbuttons;
 
-import dotsandboxes.gui.graphics.graficalFunctions.DBLayoutSetter;
-import dotsandboxes.gui.graphics.FileManager;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.filesAndFont.FileManager;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 import javax.swing.*;
-import java.io.File;
 
 public class DBNumRadioButton extends JRadioButton {
 
@@ -24,8 +22,8 @@ public class DBNumRadioButton extends JRadioButton {
         NUMBER = num;
 
         setAlignment(JLabel.CENTER);
-        DBLayoutSetter.setLayout(this,SPECIFICS);
-        DBLayoutSetter.setImageFile(this,image,SPECIFICS);
+        DBButtonLayoutSetter.setLayout(this,SPECIFICS);
+        DBButtonLayoutSetter.setImageFile(this,image,SPECIFICS);
 
         image_2=new ImageIcon(image_2.getImage().getScaledInstance(getWidth(), getHeight(), objSpecifics.getHints()));
         this.setSelectedIcon(image_2);

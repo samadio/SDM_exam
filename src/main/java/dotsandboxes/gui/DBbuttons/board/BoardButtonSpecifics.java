@@ -1,4 +1,4 @@
-package dotsandboxes.gui.board;
+package dotsandboxes.gui.DBbuttons.board;
 
 import java.awt.*;
 

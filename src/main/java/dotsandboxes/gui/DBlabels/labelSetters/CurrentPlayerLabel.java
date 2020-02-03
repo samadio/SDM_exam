@@ -1,8 +1,8 @@
-package dotsandboxes.gui.frames.labels;
+package dotsandboxes.gui.DBlabels.labelSetters;
 
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.DBLabel;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.DBlabels.DBLabel;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 import gamesuite.game.Game;
 
 public class CurrentPlayerLabel {

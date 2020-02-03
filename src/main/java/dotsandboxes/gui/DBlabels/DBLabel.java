@@ -1,6 +1,8 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.DBlabels;
 
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.filesAndFont.FileManager;
+import dotsandboxes.gui.filesAndFont.FontSetter;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 
 import javax.swing.*;
 
@@ -16,7 +18,7 @@ public class DBLabel extends JLabel {
 
     public DBLabel(){
         super();
-        image=FileManager.getWoodIcon();;
+        image=FileManager.getWoodIcon();
     }
 
 

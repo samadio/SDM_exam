@@ -1,9 +1,9 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.graphics.DBLabel;
-import dotsandboxes.gui.graphics.DBButtons.DBNumButton;
+import dotsandboxes.gui.DBlabels.DBLabel;
+import dotsandboxes.gui.DBbuttons.DBNumButton;
 import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
+import dotsandboxes.gui.graphics.ObjSpecifics;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -32,7 +32,7 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
         List<DBNumButton> buttonsList = IntStream.range(minPlayers,maxPlayers)
                 .mapToObj(i -> new DBNumButton(i, new ObjSpecifics(260, yOffset + (i-minPlayers)*yOffsetGap, 80, 30,80)))
                 .collect(Collectors.toList());
-        buttonsList.stream().forEach(button -> {
+        buttonsList.forEach(button -> {
 
             button.addActionListener(x ->
             {
@@ -41,7 +41,7 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
                 inputGiven=true;
             });
         });
-        buttonsList.stream().forEach(BACKGROUND_PANEL::add);
+        buttonsList.forEach(BACKGROUND_PANEL::add);
 
         updatePanel();
     }

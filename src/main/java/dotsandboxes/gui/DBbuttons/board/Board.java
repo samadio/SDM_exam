@@ -1,13 +1,13 @@
-package dotsandboxes.gui.graphics;
-import dotsandboxes.gui.graphics.lists.DBButtonList;
+package dotsandboxes.gui.DBbuttons.board;
+import dotsandboxes.gui.DBbuttons.DBButtonList;
 
-public class Grid {
+public class Board {
 
     private DBButtonList horizontalLines;
     private DBButtonList verticalLines;
     private DBButtonList boxes;
 
-    public Grid(){}
+    public Board(){}
 
     public void setHorizontalLines(DBButtonList hl){ horizontalLines=hl;}
     public void setVerticalLines(DBButtonList vl) { verticalLines = vl;}
