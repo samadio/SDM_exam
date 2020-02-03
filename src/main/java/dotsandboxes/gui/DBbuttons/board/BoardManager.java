@@ -57,7 +57,7 @@ public class BoardManager {
             for (int j = 0; j < gameFrame.getBoxesColumns(); j++) {
 
                 if (isSquare(game.getBoard(),i,j))
-                    gameFrame.getBoard().getBoxes().get(i* BOARD_SETTINGS.getRows()+j).setDark();
+                    gameFrame.getBoard().getBoxes().get(i* BOARD_SETTINGS.getColumns()+j).setDark();
 
                 }
             }
