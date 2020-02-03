@@ -17,7 +17,7 @@ import gamesuite.move.Move;
 
 public class GameFrame extends InputFrame<Move> {
 
-    BoardManager boardManager;
+    private BoardManager boardManager;
 
     private DBLabel currentPlayerLabel;
     private Move currentMove;
