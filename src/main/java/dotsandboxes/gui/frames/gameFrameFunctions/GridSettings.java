@@ -14,7 +14,7 @@ public class GridSettings {
 
     private GridSpecifics horizontalGridSpec;
     private GridSpecifics verticalGridSpec;
-    private GridSpecifics boxesGridSped;
+    private GridSpecifics boxesGridSpec;
     private GridSpecifics dotsGridSpec;
 
     private Integer xOffset;
@@ -37,7 +37,7 @@ public class GridSettings {
         horizontalGridSpec = new GridSpecifics(ElementType.HORIZONTAL_LINE,rows+1, cols, new Rectangle(DIM_ONE, DIM_TWO), new Point(xOffset+DIM_TWO, yOffset), DIM_ONE+DIM_TWO,HINTS);
         verticalGridSpec = new GridSpecifics(ElementType.VERTICAL_LINE,rows, cols+1, new Rectangle(DIM_TWO, DIM_ONE),new Point( xOffset, yOffset+DIM_TWO), DIM_ONE+DIM_TWO,HINTS);
         dotsGridSpec = new GridSpecifics(ElementType.DOT,rows+1, cols+1,new Rectangle( DIM_TWO, DIM_TWO),new Point( xOffset, yOffset), DIM_ONE+DIM_TWO,HINTS);
-        boxesGridSped=new GridSpecifics(ElementType.BOX,rows,cols,new Rectangle(DIM_ONE,DIM_ONE),new Point(xOffset+DIM_TWO,yOffset+DIM_TWO),DIM_ONE+DIM_TWO,HINTS);
+        boxesGridSpec =new GridSpecifics(ElementType.BOX,rows,cols,new Rectangle(DIM_ONE,DIM_ONE),new Point(xOffset+DIM_TWO,yOffset+DIM_TWO),DIM_ONE+DIM_TWO,HINTS);
     }
 
     public Integer getColumns() {return COLUMNS;}
@@ -50,7 +50,7 @@ public class GridSettings {
 
     public GridSpecifics getHorizontalGridSpec() {return horizontalGridSpec; }
     public GridSpecifics getVerticalGridSpec() {return verticalGridSpec; }
-    public GridSpecifics getBoxesGridSpec() {return boxesGridSped; }
+    public GridSpecifics getBoxesGridSpec() {return boxesGridSpec; }
     public GridSpecifics getDotsGridSpec() {return dotsGridSpec;}
 
 }

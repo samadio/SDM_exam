@@ -1,4 +1,4 @@
-package dotsandboxes.gui.frames.gameFrameFunctions;
+package dotsandboxes.gui.frames.labels;
 
 import dotsandboxes.gui.graphics.lists.LabelsList;
 import gamesuite.game.Game;

@@ -1,4 +1,4 @@
-package dotsandboxes.gui.frames.gameFrameFunctions;
+package dotsandboxes.gui.frames.labels;
 
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.graphics.BackgroundPanel;
@@ -18,9 +18,9 @@ public class PlayersLabelSetter {
         backgroundPanel.add(score);
 
 
-        for (int i=0; i<players.size(); i++) {
-            yOffset+=40;
-            DBLabel label= new DBLabel(players.get(i).getName(),new ObjSpecifics(10, yOffset, 100, 30,80));
+        for (Player player : players) {
+            yOffset += 40;
+            DBLabel label = new DBLabel(player.getName(), new ObjSpecifics(10, yOffset, 100, 30, 80));
             gameFrame.getLabels().add(label);
             backgroundPanel.add(label);
         }

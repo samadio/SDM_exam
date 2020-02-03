@@ -14,9 +14,7 @@ public class GridSetter {
 
 
     public GridSetter(Integer rows, Integer cols){
-
         GRID_SETTINGS=new GridSettings(rows,cols);
-
     }
 
 
