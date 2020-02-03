@@ -10,11 +10,10 @@ import gamesuite.move.Move;
 
 public class GridSetter {
 
-    private final GridSettings GRID_SETTINGS;
-
+    private final BoardGraphicalParameters GRID_SETTINGS;
 
     public GridSetter(Integer rows, Integer cols){
-        GRID_SETTINGS=new GridSettings(rows,cols);
+        GRID_SETTINGS=new BoardGraphicalParameters(rows,cols);
     }
 
 

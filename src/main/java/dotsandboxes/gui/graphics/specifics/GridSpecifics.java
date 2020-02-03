@@ -1,6 +1,6 @@
 package dotsandboxes.gui.graphics.specifics;
 
-import dotsandboxes.gui.frames.buttonsGrid.GridSettings;
+import dotsandboxes.gui.frames.buttonsGrid.BoardGraphicalParameters;
 
 import java.awt.*;
 
@@ -12,9 +12,9 @@ public class GridSpecifics {
     private final Integer ROWS;
     private final Integer COLS;
     private final Integer DIST;
-    private final GridSettings.ElementType TYPE;
+    private final BoardGraphicalParameters.ElementType TYPE;
 
-    public GridSpecifics(GridSettings.ElementType type, Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
+    public GridSpecifics(BoardGraphicalParameters.ElementType type, Integer r, Integer c, Rectangle elementSize, Point gridOffsets, Integer d, Integer hi){
         
         TYPE=type;
         ELEMENT_SIZE = elementSize;
@@ -25,7 +25,7 @@ public class GridSpecifics {
         DIST=d;
 
     }
-    public GridSettings.ElementType getType() {return TYPE;}
+    public BoardGraphicalParameters.ElementType getType() {return TYPE;}
 
     public Integer getRows() {
         return ROWS;

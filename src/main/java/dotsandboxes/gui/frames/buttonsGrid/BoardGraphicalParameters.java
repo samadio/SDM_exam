@@ -3,7 +3,7 @@ package dotsandboxes.gui.frames.buttonsGrid;
 import dotsandboxes.gui.graphics.specifics.GridSpecifics;
 import java.awt.*;
 
-public class GridSettings {
+public class BoardGraphicalParameters {
 
     public  enum ElementType{HORIZONTAL_LINE,VERTICAL_LINE,BOX,DOT}
 
@@ -23,7 +23,7 @@ public class GridSettings {
     private final Integer HINTS=50;
 
 
-    public GridSettings(Integer rows, Integer cols){
+    public BoardGraphicalParameters(Integer rows, Integer cols){
 
 
         //è da capire bene come mettere questi numeri sotto forma di costanti
