@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-22T16:56:47" hostname="andrea-TravelMate-5744" time="0.08">
+<testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-03T09:44:22" hostname="simonovo" time="0.018">
   <properties/>
-  <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.08"/>
+  <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.018"/>
   <system-out><![CDATA[Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

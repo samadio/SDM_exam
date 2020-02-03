@@ -5,10 +5,10 @@ import dotsandboxes.gui.graphics.BackgroundPanel;
 import dotsandboxes.gui.graphics.DBButtons.DBTextButton;
 import dotsandboxes.gui.graphics.specifics.ObjSpecifics;
 
-public class EndResetButtons {
+public class ButtonInserter {
 
-    public static void setLabels(GameFrame gameFrame, BackgroundPanel backgroundPanel){
-        DBTextButton endGameButton = new DBTextButton("END GAME", new ObjSpecifics(470, 290 ,120, 30,80));
+    public static void addEndButton(GameFrame gameFrame, BackgroundPanel backgroundPanel) {
+        DBTextButton endGameButton = new DBTextButton("END GAME", new ObjSpecifics(470, 290, 120, 30, 80));
 
         endGameButton.addActionListener(x ->
         {
@@ -17,6 +17,10 @@ public class EndResetButtons {
             endGameButton.setDark();
 
         });
+        backgroundPanel.add(endGameButton);
+    }
+
+    public static void addResetButton(GameFrame gameFrame, BackgroundPanel backgroundPanel) {
 
         DBTextButton resetGameButton = new DBTextButton("RESET GAME",new ObjSpecifics(470, 330, 120, 30,80));
 
@@ -27,7 +31,6 @@ public class EndResetButtons {
             resetGameButton.setDark();
         });
 
-        backgroundPanel.add(endGameButton);
         backgroundPanel.add(resetGameButton);
     }
 

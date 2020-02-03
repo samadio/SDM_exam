@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gamesuite.DotsAndBoxesMoveValidatorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-01-22T16:56:47" hostname="andrea-TravelMate-5744" time="0.091">
+<testsuite name="gamesuite.DotsAndBoxesMoveValidatorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-02-03T09:44:22" hostname="simonovo" time="0.031">
   <properties/>
-  <testcase name="NewMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.054"/>
-  <testcase name="validateMoveOutOfBoardException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.009"/>
-  <testcase name="validateMoveAlreadyDoneException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.003"/>
-  <testcase name="outBoardMoveTests()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.003"/>
-  <testcase name="inBoardMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.002"/>
-  <testcase name="AlreadyDoneMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.003"/>
-  <testcase name="validateNoExceptionTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.004"/>
+  <testcase name="NewMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
+  <testcase name="validateMoveOutOfBoardException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.002"/>
+  <testcase name="validateMoveAlreadyDoneException()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.008"/>
+  <testcase name="outBoardMoveTests()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
+  <testcase name="inBoardMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
+  <testcase name="AlreadyDoneMoveTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.001"/>
+  <testcase name="validateNoExceptionTest()" classname="gamesuite.DotsAndBoxesMoveValidatorTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

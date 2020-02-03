@@ -60,7 +60,8 @@ public class GameFrame extends InputFrame<Move> {
 
         PlayersLabelSetter.setLabels(this,targetGame.getPlayers(), BACKGROUND_PANEL);
 
-        EndResetButtons.setLabels(this, BACKGROUND_PANEL);
+        ButtonInserter.addEndButton(this, BACKGROUND_PANEL);
+        ButtonInserter.addResetButton(this, BACKGROUND_PANEL);
 
         CurrentPlayerLabel.setLabel(BACKGROUND_PANEL,currentPlayerLabel);
 

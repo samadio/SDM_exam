@@ -1,0 +1,12 @@
+('=Insert grid dimension in format:[rowsNumber] [columnsNumber]
+()OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+()OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+(*OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+(+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+(+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+(,OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+(-4Do you want to customize player names? (y=yes,n=no)
+(-4Do you want to customize player names? (y=yes,n=no)
+(.Enter number of players
+(/OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+10OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
