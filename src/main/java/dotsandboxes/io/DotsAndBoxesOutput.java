@@ -28,16 +28,15 @@ public class DotsAndBoxesOutput implements OutputManager {
 
     @Override
     public void initialMessage(){
-        Scanner input = null;
-        try {
-            input = new Scanner(new File("/home/simone/Desktop/DSSC/second_year/software_dev/SDM_exam/src/main/java/dotsandboxes/io/preliminary.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        while (input.hasNextLine())
-        {
-            System.out.println(input.nextLine());
-        }
+        outputMessage(" Welcome to our Dots And Boxes: for an overview of the rules please consult\n" +
+                " https://en.wikipedia.org/wiki/Dots_and_Boxes\n" +
+                "\n" +
+                "PLAYER NAMES:\n" +
+                "Default player names are integer numbers.\n" +
+                "Custom names can be chosen with the following rules:\n" +
+                "  -You are not allowed to choose an integer number as name.\n" +
+                "  -Repeated occurrences of the same name are not permitted.\n" +
+                "  -If no custom name is given, you will be assigned an increasing integer number.");
     }
 
     @Override
