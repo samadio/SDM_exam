@@ -1,9 +1,9 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.DBlabels.DBLabel;
-import dotsandboxes.gui.DBbuttons.DBNumButton;
-import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.components.DBlabels.DBLabel;
+import dotsandboxes.gui.components.DBbuttons.DBNumButton;
+import dotsandboxes.gui.components.BackgroundPanel;
+import dotsandboxes.gui.components.ObjSpecifics;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

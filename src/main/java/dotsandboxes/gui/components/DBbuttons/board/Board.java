@@ -1,5 +1,5 @@
-package dotsandboxes.gui.DBbuttons.board;
-import dotsandboxes.gui.DBbuttons.DBButtonList;
+package dotsandboxes.gui.components.DBbuttons.board;
+import dotsandboxes.gui.components.DBbuttons.DBButtonList;
 
 public class Board {
 

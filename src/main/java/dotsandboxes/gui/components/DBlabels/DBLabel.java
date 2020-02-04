@@ -1,8 +1,8 @@
-package dotsandboxes.gui.DBlabels;
+package dotsandboxes.gui.components.DBlabels;
 
 import dotsandboxes.gui.filesAndFont.FileManager;
 import dotsandboxes.gui.filesAndFont.FontSetter;
-import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.components.ObjSpecifics;
 
 import javax.swing.*;
 

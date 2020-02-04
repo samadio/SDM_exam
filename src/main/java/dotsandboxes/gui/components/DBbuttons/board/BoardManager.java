@@ -1,8 +1,8 @@
-package dotsandboxes.gui.DBbuttons.board;
+package dotsandboxes.gui.components.DBbuttons.board;
 
+import dotsandboxes.gui.components.BackgroundPanel;
 import dotsandboxes.gui.frames.GameFrame;
-import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.DBbuttons.DBButtonList;
+import dotsandboxes.gui.components.DBbuttons.DBButtonList;
 import gamesuite.board.AbstractBoard;
 import gamesuite.game.Game;
 import gamesuite.move.Move;

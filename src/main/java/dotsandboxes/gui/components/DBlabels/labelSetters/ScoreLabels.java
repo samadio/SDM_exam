@@ -1,6 +1,6 @@
-package dotsandboxes.gui.DBlabels.labelSetters;
+package dotsandboxes.gui.components.DBlabels.labelSetters;
 
-import dotsandboxes.gui.DBlabels.LabelsList;
+import dotsandboxes.gui.components.DBlabels.LabelsList;
 import gamesuite.game.Game;
 
 import java.util.stream.IntStream;

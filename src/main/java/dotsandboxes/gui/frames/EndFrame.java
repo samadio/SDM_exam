@@ -1,9 +1,9 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.DBlabels.DBLabel;
+import dotsandboxes.gui.components.BackgroundPanel;
+import dotsandboxes.gui.components.DBlabels.DBLabel;
 import dotsandboxes.gui.filesAndFont.FontSetter;
-import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.components.ObjSpecifics;
 import gamesuite.game.Game;
 import gamesuite.players.Player;
 

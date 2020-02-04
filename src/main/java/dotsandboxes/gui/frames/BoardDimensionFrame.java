@@ -1,10 +1,10 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.graphics.*;
-import dotsandboxes.gui.DBbuttons.DBNumRadioButton;
-import dotsandboxes.gui.DBbuttons.DBTextButton;
-import dotsandboxes.gui.graphics.ObjSpecifics;
-import dotsandboxes.gui.DBlabels.DBLabel;
+import dotsandboxes.gui.components.BackgroundPanel;
+import dotsandboxes.gui.components.DBbuttons.DBNumRadioButton;
+import dotsandboxes.gui.components.DBbuttons.DBTextButton;
+import dotsandboxes.gui.components.ObjSpecifics;
+import dotsandboxes.gui.components.DBlabels.DBLabel;
 
 import java.util.ArrayList;
 import java.util.List;

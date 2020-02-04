@@ -1,6 +1,6 @@
-package dotsandboxes.gui.DBbuttons;
+package dotsandboxes.gui.components.DBbuttons;
 
-import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.components.ObjSpecifics;
 
 import javax.swing.*;
 

@@ -26,13 +26,6 @@ class DotsAndBoxesInputTest {
 
     DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
 
-    /*
-    @Test
-    public void readInputTest() {
-        setKeyboard("Mossa");
-        assertEquals(itest.readInput(), "Mossa");
-    }
-     */
 
     @Test
     public void readInputMoveParserTest() throws DataFormatException, EndGameException, ResetGameException {

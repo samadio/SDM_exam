@@ -1,5 +1,5 @@
 package dotsandboxes.gui.frames;
-import dotsandboxes.gui.graphics.BackgroundPanel;
+import dotsandboxes.gui.components.BackgroundPanel;
 
 public abstract  class InputFrame<V> extends Frame{
 

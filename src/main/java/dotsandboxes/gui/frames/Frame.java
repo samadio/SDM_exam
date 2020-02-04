@@ -1,8 +1,6 @@
 package dotsandboxes.gui.frames;
 
-import dotsandboxes.gui.graphics.BackgroundPanel;
-
-import java.io.File;
+import dotsandboxes.gui.components.BackgroundPanel;
 
 
 public abstract class Frame {

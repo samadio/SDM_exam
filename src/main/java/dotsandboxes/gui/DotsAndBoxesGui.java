@@ -1,7 +1,7 @@
 package dotsandboxes.gui;
 
+import dotsandboxes.gui.components.BackgroundPanel;
 import dotsandboxes.gui.frames.*;
-import dotsandboxes.gui.graphics.*;
 import gamesuite.game.EndGameException;
 import gamesuite.game.Game;
 import gamesuite.game.ResetGameException;

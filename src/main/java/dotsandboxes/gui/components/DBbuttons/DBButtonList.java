@@ -1,4 +1,4 @@
-package dotsandboxes.gui.DBbuttons;
+package dotsandboxes.gui.components.DBbuttons;
 
 import java.util.LinkedList;
 

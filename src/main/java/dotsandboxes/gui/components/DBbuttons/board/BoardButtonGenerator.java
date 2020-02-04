@@ -1,10 +1,10 @@
-package dotsandboxes.gui.DBbuttons.board;
+package dotsandboxes.gui.components.DBbuttons.board;
 
 import dotsandboxes.gui.frames.GameFrame;
-import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.DBbuttons.*;
-import dotsandboxes.gui.DBbuttons.DBButtonList;
-import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.components.BackgroundPanel;
+import dotsandboxes.gui.components.DBbuttons.*;
+import dotsandboxes.gui.components.DBbuttons.DBButtonList;
+import dotsandboxes.gui.components.ObjSpecifics;
 import gamesuite.move.Move;
 
 import java.awt.*;

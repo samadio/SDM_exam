@@ -1,4 +1,4 @@
-package dotsandboxes.gui.graphics;
+package dotsandboxes.gui.components;
 
 import dotsandboxes.gui.filesAndFont.FontSetter;
 

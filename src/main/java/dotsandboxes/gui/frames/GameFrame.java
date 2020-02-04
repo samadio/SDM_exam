@@ -1,16 +1,16 @@
 package dotsandboxes.gui.frames;
 
 
-import dotsandboxes.gui.DBbuttons.board.*;
-import dotsandboxes.gui.DBlabels.labelSetters.CurrentPlayerLabel;
-import dotsandboxes.gui.DBlabels.labelSetters.PlayersLabelSetter;
-import dotsandboxes.gui.DBlabels.labelSetters.ScoreLabels;
-import dotsandboxes.gui.graphics.BackgroundPanel;
-import dotsandboxes.gui.DBbuttons.DBTextButton;
-import dotsandboxes.gui.DBlabels.DBLabel;
-import dotsandboxes.gui.DBbuttons.board.Board;
-import dotsandboxes.gui.DBlabels.LabelsList;
-import dotsandboxes.gui.graphics.ObjSpecifics;
+import dotsandboxes.gui.components.DBbuttons.board.*;
+import dotsandboxes.gui.components.DBlabels.labelSetters.CurrentPlayerLabel;
+import dotsandboxes.gui.components.DBlabels.labelSetters.PlayersLabelSetter;
+import dotsandboxes.gui.components.DBlabels.labelSetters.ScoreLabels;
+import dotsandboxes.gui.components.BackgroundPanel;
+import dotsandboxes.gui.components.DBbuttons.DBTextButton;
+import dotsandboxes.gui.components.DBlabels.DBLabel;
+import dotsandboxes.gui.components.DBbuttons.board.Board;
+import dotsandboxes.gui.components.DBlabels.LabelsList;
+import dotsandboxes.gui.components.ObjSpecifics;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
