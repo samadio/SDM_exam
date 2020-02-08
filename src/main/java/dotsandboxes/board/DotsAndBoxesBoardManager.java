@@ -32,7 +32,6 @@ public class DotsAndBoxesBoardManager extends BoardManager {
 
     @Override
     public void reset() {
-
         board.reset();
     }
 }
