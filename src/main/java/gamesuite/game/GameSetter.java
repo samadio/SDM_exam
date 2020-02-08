@@ -37,17 +37,17 @@ public abstract class GameSetter {
 
     private BoardManager createBoard(){
 
-        List<Integer> dimensions = iManager.getGridDimensions(); //function that asks for grid dimensions and returns it
+        List<Integer> dimensions = iManager.getGridDimensions();
         return  setBoard(dimensions.get(0), dimensions.get(1));
     }
 
     private List<Player> setPlayers(){
 
-        Integer nPlayers = iManager.getPlayersNumber(); //how many players are there?
+        Integer nPlayers = iManager.getPlayersNumber();
         List<Player> players = new ArrayList<>(nPlayers);
         PlayersFactory playerGenerator= new PlayersFactory();
 
-        boolean custom = iManager.customPlayers(); //do you want to customize Players name? Yes=True
+        boolean custom = iManager.customPlayers();
         if (custom) {
             int idx=0;
             while(idx < nPlayers) {
