@@ -83,6 +83,7 @@ class BoardDimensions{
     }
 }
 
+
 class LinesGrid {
 
     private boolean[][] lineGrid;
@@ -103,17 +104,14 @@ class LinesGrid {
     }
 
     Integer numRows(){
-
         return lineGrid.length;
     }
 
     Integer numColumns(){
-
         return lineGrid[0].length;
     }
 
     void reset(){
-
         IntStream.range(0, numRows()).forEach(x -> IntStream.range(0, numColumns()).forEach(y -> setLine(x, y,false)));
     }
 }
