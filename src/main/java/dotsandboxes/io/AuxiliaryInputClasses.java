@@ -12,13 +12,10 @@ class InputValidator{
         List<String> input;
         try{
             input=Arrays.asList(trimmed.split(" +"));
-            System.out.println("parsedInput done");
             if(input.size()!=2) return false;
             Integer.valueOf(input.get(0));
-            System.out.println("valueOf done");
         }
         catch(Exception e){
-            System.out.println("Exception taken");
             return false;
         }
         return validChar.contains(input.get(1));

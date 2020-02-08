@@ -19,6 +19,7 @@ public class Game {
     private GameStatus status;
     private OutputManager oManager;
     private List<Player> players;
+    private Boolean endedWithException=false;
 
     public Game(InputManager iManager, OutputManager oManager, BoardManager bManager, MoveValidator mValidator, GameStatus gStatus, List<Player> players){
         this.iManager=iManager;
@@ -59,6 +60,7 @@ public class Game {
                 oManager.printGame(this);
             }
             catch (EndGameException e) {
+                endedWithException=true;
                 break;
             }
             catch (ResetGameException e){
@@ -69,7 +71,6 @@ public class Game {
         }
 
         oManager.printWinner(this);
-        this.reset();
     }
 
 
@@ -88,11 +89,14 @@ public class Game {
         return boardManager.getBoard();
     }
 
-    private void reset(){
+    public void reset(){
         status.reset();
         boardManager.reset();
         oManager.resetMatch(this);
+        endedWithException=false;
     }
 
     public List<Player> getWinner(){  return status.getWinner(); }
+
+    public Boolean endedManually(){ return endedWithException; }
 }

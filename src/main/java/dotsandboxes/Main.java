@@ -18,6 +18,8 @@ public class Main {
             GameSetter gSetter = new DotsAndBoxesSetter(new DotsAndBoxesInput(outputManager), outputManager);
             Game dotsAndBoxes = gSetter.newGame();
             dotsAndBoxes.play();
+            //dotsAndBoxes.reset();
+            //dotsAndBoxes.play();
         }catch (ExhaustedInputException e){
             //System.out.println("Ctrl+D ending");
             System.exit(1);
