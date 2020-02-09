@@ -3,29 +3,22 @@ package dotsandboxes.io;
 import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 class InputValidator{
     static boolean checkFormat(String s){
-        Scanner in = new Scanner(s);
+        List<String> validChar = Arrays.asList("U","D","L","R");
+        String trimmed= s.trim();
+        List<String> input;
         try{
-            Integer i = in.nextInt();
+            input=Arrays.asList(trimmed.split(" +"));
+            if(input.size()!=2) return false;
+            Integer.valueOf(input.get(0));
         }
         catch(Exception e){
             return false;
         }
-
-        List<String> validChar = Arrays.asList("U","D","L","R");
-        String direction;
-        try{
-            direction = in.next();
-        } catch (Exception e) {
-            return false;
-        }
-        if (direction.length()!=1) return false;
-        return (validChar.contains(direction));
+        return validChar.contains(input.get(1));
     }
 }
 

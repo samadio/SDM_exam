@@ -19,6 +19,7 @@ public class Game {
     private GameStatus status;
     private OutputManager oManager;
     private List<Player> players;
+    private Boolean endedWithException=false;
 
     public Game(InputManager iManager, OutputManager oManager, BoardManager bManager, MoveValidator mValidator, GameStatus gStatus, List<Player> players){
         this.iManager=iManager;
@@ -35,38 +36,40 @@ public class Game {
 
         oManager.printGame(this);
 
-            while (notEnded()) {
+        while (notEnded()) {
 
-                try {
-                    boolean invalidMove = true;
+            try {
+                boolean invalidMove = true;
 
-                    Move m = iManager.getMove();
+                Move m = iManager.getMove();
 
-                    while (invalidMove) {
-                        try {
-                            validator.validateMove(m);
-                            invalidMove = false;
-                        } catch (InvalidMoveException e) {
-                            oManager.printInvalidMove(e);
+                while (invalidMove) {
+                    try {
+                        validator.validateMove(m);
+                        invalidMove = false;
+                    } catch (InvalidMoveException e) {
+                        oManager.printInvalidMove(e);
 
-                            m = iManager.getMove();
-                        }
+                        m = iManager.getMove();
                     }
+                }
 
-                    boardManager.updateBoard(m);
-                    status.update(m);
+                boardManager.updateBoard(m);
+                status.update(m);
 
-                    oManager.printGame(this);
-                }
-                catch (EndGameException e) {
-                    break;
-                }
-                catch (ResetGameException e){
-                    this.reset();
-                    oManager.startMatch(this);
-                    oManager.printGame(this);
-                }
+                oManager.printGame(this);
             }
+            catch (EndGameException e) {
+                endedWithException=true;
+                break;
+            }
+            catch (ResetGameException e){
+                this.reset();
+                oManager.startMatch(this);
+                oManager.printGame(this);
+            }
+        }
+
         oManager.printWinner(this);
     }
 
@@ -80,7 +83,7 @@ public class Game {
 
     public Player nextPlayer(){  return status.currentPlayer(); }
 
-    public boolean notEnded(){   return status.isNotFinished(); }
+    private boolean notEnded(){   return status.isNotFinished(); }
 
     public AbstractBoard getBoard(){
         return boardManager.getBoard();
@@ -90,7 +93,10 @@ public class Game {
         status.reset();
         boardManager.reset();
         oManager.resetMatch(this);
+        endedWithException=false;
     }
 
     public List<Player> getWinner(){  return status.getWinner(); }
+
+    public Boolean endedManually(){ return endedWithException; }
 }

@@ -1,9 +1,0 @@
- Welcome to our Dots And Boxes: for an overview of the rules please consult
- https://en.wikipedia.org/wiki/Dots_and_Boxes
-
-PLAYER NAMES:
-Default player names are integer numbers.
-Custom names can be chosen with the following rules:
-  -You are not allowed to choose an integer number as name.
-  -Repeated occurrences of the same name are not permitted.
-  -If no custom name is given, you will be assigned an increasing integer number.
