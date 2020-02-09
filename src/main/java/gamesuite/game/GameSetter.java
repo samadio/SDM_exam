@@ -36,7 +36,6 @@ public abstract class GameSetter {
    }
 
     private BoardManager createBoard(){
-
         List<Integer> dimensions = iManager.getGridDimensions();
         return  setBoard(dimensions.get(0), dimensions.get(1));
     }

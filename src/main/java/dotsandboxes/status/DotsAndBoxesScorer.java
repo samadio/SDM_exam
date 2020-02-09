@@ -27,7 +27,6 @@ public class DotsAndBoxesScorer extends Scorer {
         Boolean lowerPoint = lowerNeighbors.stream().map(MOVE_VALIDATOR::outOfBoardLine).allMatch(isFalse) && lowerNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
 
         return upperPoint || lowerPoint;
-
     }
 
     private List<Move> lowerNeighbors(Move refMove) {

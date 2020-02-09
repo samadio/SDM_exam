@@ -51,7 +51,6 @@ public class DotsAndBoxesOutput implements OutputManager {
         outputMessage("\n");
         printCurrentPlayer(game);
         outputMessage("\n");
-
     }
 
     private void printCurrentPlayer(Game game) { outputMessage("Next player: " + game.nextPlayer()); }

@@ -1,12 +1,33 @@
-('=Insert grid dimension in format:[rowsNumber] [columnsNumber]
-()OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-()OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-(*OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-(+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-(+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-(,OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-(-4Do you want to customize player names? (y=yes,n=no)
-(-4Do you want to customize player names? (y=yes,n=no)
-(.Enter number of players
-(/OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
-10OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*A move is encoded as [Number] [Direction]
+S To connect nodes 11 12 please write '11 R' or '12 L'. Same for U (up) and D(down)
+
+
+00  01  02  03
+                
+04  05  06  07
+                
+08  09  10  11
+                
+12  13  14  15
+
+
+ Players score:
+testPlayer: 0        
+
+Next player: testPlayer
+
+
+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+The winner is testPlayer
+*)=Insert grid dimension in format:[rowsNumber] [columnsNumber]
+*+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*+OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*,OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*-OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*-OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*.OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+*/4Do you want to customize player names? (y=yes,n=no)
+*/4Do you want to customize player names? (y=yes,n=no)
+*0Enter number of players
+*1OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+32OInsert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]

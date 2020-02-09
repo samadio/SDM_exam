@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.DotsAndBoxesInputTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-02-03T09:44:22" hostname="simonovo" time="0.226">
+<testsuite name="iotest.DotsAndBoxesInputTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-02-09T09:03:25" hostname="simonovo" time="0.081">
   <properties/>
-  <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.071"/>
-  <testcase name="ResetGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.018"/>
-  <testcase name="settedConverterExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.041"/>
-  <testcase name="EndGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.022"/>
-  <testcase name="DataFormatExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.01"/>
-  <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.007"/>
-  <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.004"/>
-  <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.012"/>
+  <testcase name="getGridTest()" classname="iotest.DotsAndBoxesInputTest" time="0.006"/>
+  <testcase name="ResetGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.013"/>
+  <testcase name="settedConverterExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.008"/>
+  <testcase name="EndGameExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.005"/>
+  <testcase name="DataFormatExceptionTest()" classname="iotest.DotsAndBoxesInputTest" time="0.003"/>
+  <testcase name="customizePlayersTest()" classname="iotest.DotsAndBoxesInputTest" time="0.003"/>
+  <testcase name="getPlayersNumberTest()" classname="iotest.DotsAndBoxesInputTest" time="0.002"/>
+  <testcase name="readInputMoveParserTest()" classname="iotest.DotsAndBoxesInputTest" time="0.006"/>
   <system-out><![CDATA[Insert grid dimension in format:[rowsNumber] [columnsNumber]
 Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
 Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]

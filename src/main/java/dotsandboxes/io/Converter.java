@@ -7,7 +7,6 @@ public class Converter {
     private final Integer COLS;
 
     public Converter(Integer nCols){
-
         this.COLS = nCols;
     }
 

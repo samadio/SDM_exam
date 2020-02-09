@@ -4,26 +4,28 @@ import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
 
 import java.util.*;
+import java.util.zip.DataFormatException;
 
 class InputValidator{
-    static boolean checkFormat(String s){
+    static void checkFormat(String s) throws DataFormatException {
         List<String> validChar = Arrays.asList("U","D","L","R");
         String trimmed= s.trim();
         List<String> input;
         try{
             input=Arrays.asList(trimmed.split(" +"));
-            if(input.size()!=2) return false;
+            if(input.size()!=2) throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
             Integer.valueOf(input.get(0));
         }
         catch(Exception e){
-            return false;
+            throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
         }
-        return validChar.contains(input.get(1));
+        if(!validChar.contains(input.get(1))) throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
     }
 }
 
-class ValidatedInputParser{
-    static InputMove parse(String s){
+class InputParser {
+    static InputMove parse(String s) throws DataFormatException {
+        InputValidator.checkFormat(s);
         Scanner in = new Scanner(s);
         Integer i = in.nextInt();
         String d = in.next();

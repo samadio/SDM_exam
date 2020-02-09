@@ -16,7 +16,6 @@ public class DotsAndBoxesInput implements InputManager {
     private final OutputManager OUTPUT;
 
     public DotsAndBoxesInput(OutputManager oManager){
-
         OUTPUT = oManager;
     }
 
@@ -70,11 +69,7 @@ public class DotsAndBoxesInput implements InputManager {
         QuitAndResetChecker.checkQuitCondition(inputLine);
         QuitAndResetChecker.checkResetCondition(inputLine);
 
-        if(InputValidator.checkFormat(inputLine)){
-            return ValidatedInputParser.parse(inputLine);
-        }
-        else
-            throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+        return InputParser.parse(inputLine);
     }
 
     @Override
