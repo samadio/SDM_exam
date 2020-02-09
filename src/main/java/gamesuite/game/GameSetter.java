@@ -54,14 +54,12 @@ public abstract class GameSetter {
 
                 String name = iManager.getPlayerName();
                 try {
-                    if (name.isEmpty()) {
-                        oManager.outputMessage("You were assigned the name: "+(idx+1));
-                        players.add(idx, playerGenerator.newPlayer());
-                    }
-                    else {
-                        players.add(idx, playerGenerator.newPlayer(name));
-                    }
+
+                    Player newPlayer = playerGenerator.newPlayer(name);
+                    players.add(newPlayer);
+                    oManager.outputMessage("You were assigned the name: " + newPlayer);
                     idx++;
+
                 }catch(NameAlreadyUsedException e){
                     oManager.errorMessage("Error: name already taken. Please select a different one");
                 }
