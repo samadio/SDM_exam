@@ -1,9 +1,6 @@
 package iotest;
 
-import dotsandboxes.io.DotsAndBoxesInput;
-import dotsandboxes.io.DotsAndBoxesOutput;
-import dotsandboxes.io.InputMove;
-import dotsandboxes.io.InvalidStateException;
+import dotsandboxes.io.*;
 import gamesuite.game.EndGameException;
 import gamesuite.game.ResetGameException;
 import gamesuite.move.Move;
@@ -13,7 +10,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
-import java.util.zip.DataFormatException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,32 +20,45 @@ class DotsAndBoxesInputTest {
         System.setIn(new ByteArrayInputStream(data.getBytes()));
     }
 
-    DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
-
-
     @Test
-    public void readInputMoveParserTest() throws DataFormatException, EndGameException, ResetGameException {
-        setKeyboard("12 R");
-        InputMove imove=itest.readInputMove();
-        assertEquals(12,imove.getNode());
-        assertEquals(InputMove.Direction.RIGHT, imove.getDirection());
+    public void ExhaustedInputTest(){
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
+        //in order to setConverter
+        setKeyboard("10 10");
+        itest.getGridDimensions();
+        setKeyboard("    12   L  ");
+        assertDoesNotThrow(itest::getMove);
+        setKeyboard("12 2");
+        ExhaustedInputException e=assertThrows(ExhaustedInputException.class, itest::getMove);
+        setKeyboard("    12.2 L  ");
+        assertThrows(ExhaustedInputException.class, itest::getMove);
+        assertThrows(ExhaustedInputException.class, itest::getMove);
+
     }
 
+
     @Test
-    private void readMoveTest() throws EndGameException, ResetGameException {
-        itest.setConverter(10);
-        setKeyboard("12 L");
-        assertDoesNotThrow(()->itest.getMove());
-        setKeyboard("12 L");
-        Move current=itest.getMove();
-        assertEquals(1,current.getRow());
-        assertEquals(1,current.getCol());
-        assertEquals(Move.Which.HORIZONTAL,current.getLineKind());
+    public void readInputMoveParserTest(){
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
+        //in order to setConverter
+        setKeyboard("10 10");
+        itest.getGridDimensions();
+        setKeyboard("12 R");
+        try{
+            Move move=itest.getMove();
+            assertEquals(Move.Which.HORIZONTAL,move.getLineKind());
+            assertEquals(1,move.getRow());
+            assertEquals(2,move.getCol());
+
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test
     public void getGridTest(){
-        setKeyboard("12 13");
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
+        setKeyboard("  12   13 ");
         List<Integer> expected = Arrays.asList(12,13);
         assertEquals(itest.getGridDimensions(), expected);
     }
@@ -58,41 +67,47 @@ class DotsAndBoxesInputTest {
 
     @Test
     public void getPlayersNumberTest(){
-        setKeyboard("5 ");
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
+        setKeyboard("   5 ");
         Integer i=itest.getPlayersNumber();
         assertEquals(5, i);
     }
 
     @Test
     public void customizePlayersTest(){
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
         setKeyboard("n\n");
         assertFalse(itest.customPlayers());
         setKeyboard(" Y \n");
         assertTrue(itest.customPlayers());
-
     }
 
     @Test
     public void EndGameExceptionTest(){
-        itest.setConverter(8);
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
+        setKeyboard("10 10");
+        itest.getGridDimensions();
         setKeyboard("1 2 quit");
-        assertThrows(EndGameException.class,()->itest.getMove());
+        assertThrows(EndGameException.class, itest::getMove);
         setKeyboard("exit");
-        assertThrows(EndGameException.class,()->itest.getMove());
+        assertThrows(EndGameException.class, itest::getMove);
     }
 
     @Test
     public void ResetGameExceptionTest(){
-        itest.setConverter(8);
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
+        setKeyboard("10 10");
+        itest.getGridDimensions();
         setKeyboard("1 2 reset");
-        assertThrows(ResetGameException.class,()->itest.getMove());
+        assertThrows(ResetGameException.class, itest::getMove);
         setKeyboard("reset");
-        assertThrows(ResetGameException.class,()->itest.getMove());
+        assertThrows(ResetGameException.class, itest::getMove);
     }
 
 
     @Test
     public void settedConverterExceptionTest() {
+        DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
         try {
             setKeyboard("1 R");
             itest.getMove();
@@ -100,16 +115,10 @@ class DotsAndBoxesInputTest {
         } catch (InvalidStateException e) {assertEquals(e.getMessage(),"Convert not set");}
         catch(EndGameException | ResetGameException end){fail();}
 
-        itest.setConverter(10);
+        setKeyboard("10 10");
+        itest.getGridDimensions();
         setKeyboard("1 R");
-        assertDoesNotThrow(()->itest.getMove());
-    }
-
-    @Test
-    public void DataFormatExceptionTest() {
-        setKeyboard("1 l");
-        DataFormatException e = assertThrows(DataFormatException.class, () -> itest.readInputMove());
-        assertEquals(e.getMessage(), "Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+        assertDoesNotThrow(itest::getMove);
     }
 
 }

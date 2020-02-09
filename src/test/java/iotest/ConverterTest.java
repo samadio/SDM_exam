@@ -23,9 +23,8 @@ public class ConverterTest{
 
     @Test
     public void converterTest() throws EndGameException, ResetGameException {
-
-        itest.setConverter(12);
-
+        setKeyboard("12 12");
+        itest.getGridDimensions();
         setKeyboard("26 R");
         Move m = itest.getMove();
 

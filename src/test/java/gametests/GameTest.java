@@ -40,7 +40,8 @@ public class GameTest {
 
         OutputManager oManager= new DotsAndBoxesOutput();
         DotsAndBoxesInput iManager= new DotsAndBoxesInput(oManager);
-        iManager.setConverter(4);
+        setKeyboard("4 4");
+        iManager.getGridDimensions();
         BoardManager bManager= new DotsAndBoxesBoardManager(4,4);
         MoveValidator mValidator= new DotsAndBoxesMoveValidator(bManager);
         PlayersFactory factory=new PlayersFactory();

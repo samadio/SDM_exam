@@ -22,17 +22,9 @@ public class DotsAndBoxesInput implements InputManager {
     private Boolean converterSet = false;
     private Converter moveConverter;
 
-    public void setConverter(Integer nCols){
+    private void setConverter(Integer nCols){
         moveConverter = new Converter(nCols);
         converterSet = true;
-    }
-
-    @Override
-    public String getPlayerName() {
-        String playerNameMessage = "Insert next player's name: ";
-
-        OUTPUT.outputMessage(playerNameMessage);
-        return readInput();
     }
 
     private String readInput(){
@@ -43,6 +35,16 @@ public class DotsAndBoxesInput implements InputManager {
     }
 
 
+    //private not considering tests
+    private InputMove readInputMove() throws DataFormatException, EndGameException, ResetGameException {
+        OUTPUT.outputMessage("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
+        String inputLine=readInput();
+
+        QuitAndResetChecker.checkQuitCondition(inputLine);
+        QuitAndResetChecker.checkResetCondition(inputLine);
+
+        return InputParser.parse(inputLine);
+    }
 
     private void readMove() throws EndGameException, ResetGameException {
 
@@ -61,16 +63,14 @@ public class DotsAndBoxesInput implements InputManager {
         }
     }
 
-    //private not considering tests
-    public InputMove readInputMove() throws DataFormatException, EndGameException, ResetGameException {
-        OUTPUT.outputMessage("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
-        String inputLine=readInput();
 
-        QuitAndResetChecker.checkQuitCondition(inputLine);
-        QuitAndResetChecker.checkResetCondition(inputLine);
-
-        return InputParser.parse(inputLine);
+    @Override
+    public String getPlayerName() {
+        String playerNameMessage = "Insert next player's name: ";
+        OUTPUT.outputMessage(playerNameMessage);
+        return readInput();
     }
+
 
     @Override
     public Move getMove() throws EndGameException, ResetGameException{
