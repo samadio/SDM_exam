@@ -89,7 +89,7 @@ class DotsAndBoxesInputTest {
         itest.getGridDimensions();
         setKeyboard("1 2 quit");
         assertThrows(EndGameException.class, itest::getMove);
-        setKeyboard("exit");
+        setKeyboard("parliamo della brexit?");
         assertThrows(EndGameException.class, itest::getMove);
     }
 
