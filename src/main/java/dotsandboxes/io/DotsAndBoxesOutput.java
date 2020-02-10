@@ -53,7 +53,7 @@ public class DotsAndBoxesOutput implements OutputManager {
         outputMessage("\n");
     }
 
-    private void printCurrentPlayer(Game game) { outputMessage("Next player: " + game.nextPlayer()); }
+    private void printCurrentPlayer(Game game) { outputMessage("Player " + game.nextPlayer() + " its your turn!"); }
 
     @Override
     public void printInvalidMove(InvalidMoveException e) { errorMessage(e.getMessage());}
