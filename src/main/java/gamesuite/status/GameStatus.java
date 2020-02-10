@@ -25,8 +25,7 @@ public abstract class GameStatus {
         currentPlayer = 0;
         score = new GameScore();
 
-        for (Player p : PLAYERS)
-            score.put(p, 0);
+        PLAYERS.forEach( p -> score.put(p,0) );
     }
 
     protected abstract Scorer setScorer(BoardManager bManager, MoveValidator mValidator);
@@ -72,7 +71,7 @@ public abstract class GameStatus {
 
     public void reset(){
         score.reset();
-        currentPlayer=0;
+        currentPlayer = 0;
     }
 
 }

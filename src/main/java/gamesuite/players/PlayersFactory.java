@@ -9,18 +9,18 @@ public class PlayersFactory {
 
 
     public Player newPlayer(String name) throws NameAlreadyUsedException, ReservedNameException {
-        name=name.trim();
+        name = name.trim();
         if(name.isEmpty()) return newPlayer();
         if(usedCustomNames.contains(name)) throw new NameAlreadyUsedException();
         boolean isNumeric = name.trim().chars().allMatch( Character::isDigit );
         if(isNumeric) throw new ReservedNameException();
-        numberOfPlayers+=1;
+        numberOfPlayers += 1;
         usedCustomNames.add(name);
         return new Player(name);
     }
 
     public Player newPlayer() {
-        numberOfPlayers+=1;
+        numberOfPlayers += 1;
         return new Player((numberOfPlayers).toString());
     }
 }

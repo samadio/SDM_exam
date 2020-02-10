@@ -16,9 +16,9 @@ public class Move {
         this.COORDINATES = new MoveCoordinates(row, column);
     }
 
-    public Which getLineKind(){return this.LINE_KIND;}
+    public Which getLineKind(){ return this.LINE_KIND;}
     public Integer getRow(){ return this.COORDINATES.getRow();}
-    public Integer getCol() {return this.COORDINATES.getColumn();}
+    public Integer getCol() { return this.COORDINATES.getColumn();}
 
     @Override
     public boolean equals(Object o) {

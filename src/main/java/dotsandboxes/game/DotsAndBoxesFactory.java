@@ -4,7 +4,7 @@ import dotsandboxes.board.DotsAndBoxesBoardManager;
 import dotsandboxes.status.DotsAndBoxesStatus;
 import dotsandboxes.validation.DotsAndBoxesMoveValidator;
 import gamesuite.board.BoardManager;
-import gamesuite.game.GameSetter;
+import gamesuite.game.GameFactory;
 import gamesuite.move.MoveValidator;
 import gamesuite.players.Player;
 import gamesuite.status.GameStatus;
@@ -13,9 +13,9 @@ import iomanagement.OutputManager;
 
 import java.util.List;
 
-public class DotsAndBoxesSetter extends GameSetter {
+public class DotsAndBoxesFactory extends GameFactory {
 
-    public DotsAndBoxesSetter(InputManager iManager, OutputManager oManager) {
+    public DotsAndBoxesFactory(InputManager iManager, OutputManager oManager) {
         super(iManager, oManager);
     }
 

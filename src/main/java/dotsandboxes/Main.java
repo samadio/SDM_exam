@@ -1,13 +1,11 @@
 package dotsandboxes;
 
-import dotsandboxes.game.DotsAndBoxesSetter;
+import dotsandboxes.game.DotsAndBoxesFactory;
 import dotsandboxes.io.DotsAndBoxesInput;
 import dotsandboxes.io.DotsAndBoxesOutput;
 import dotsandboxes.io.ExhaustedInputException;
 import gamesuite.game.Game;
-import gamesuite.game.GameSetter;
-import gamesuite.players.NameAlreadyUsedException;
-import gamesuite.players.ReservedNameException;
+import gamesuite.game.GameFactory;
 import iomanagement.OutputManager;
 
 public class Main {
@@ -15,7 +13,7 @@ public class Main {
     public static void main(String[] args){
         OutputManager outputManager = new DotsAndBoxesOutput();
         try{
-            GameSetter gSetter = new DotsAndBoxesSetter(new DotsAndBoxesInput(outputManager), outputManager);
+            GameFactory gSetter = new DotsAndBoxesFactory(new DotsAndBoxesInput(outputManager), outputManager);
             Game dotsAndBoxes = gSetter.newGame();
             dotsAndBoxes.play();
             //dotsAndBoxes.reset();

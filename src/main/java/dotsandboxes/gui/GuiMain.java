@@ -1,16 +1,14 @@
 package dotsandboxes.gui;
 
-import dotsandboxes.game.DotsAndBoxesSetter;
+import dotsandboxes.game.DotsAndBoxesFactory;
 import gamesuite.game.Game;
-import gamesuite.players.NameAlreadyUsedException;
-import gamesuite.players.ReservedNameException;
 
 public class GuiMain {
     public static void main(String[] args) {
 
 
         DotsAndBoxesGui dbGui = new DotsAndBoxesGui();
-        Game game = (new DotsAndBoxesSetter(dbGui, dbGui)).newGame();
+        Game game = (new DotsAndBoxesFactory(dbGui, dbGui)).newGame();
         game.play();
     }
 }

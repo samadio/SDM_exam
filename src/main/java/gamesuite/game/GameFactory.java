@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public abstract class GameSetter {
+public abstract class GameFactory {
 
     private final InputManager iManager;
     private final OutputManager oManager;
 
-    public GameSetter(InputManager iManager, OutputManager oManager){
+    public GameFactory(InputManager iManager, OutputManager oManager){
 
         this.iManager = iManager;
         this.oManager = oManager;

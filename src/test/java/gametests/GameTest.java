@@ -1,22 +1,18 @@
 package gametests;
 
 import dotsandboxes.board.DotsAndBoxesBoardManager;
-import dotsandboxes.game.DotsAndBoxesSetter;
 import dotsandboxes.io.DotsAndBoxesInput;
 import dotsandboxes.io.DotsAndBoxesOutput;
 import dotsandboxes.status.DotsAndBoxesStatus;
 import dotsandboxes.validation.DotsAndBoxesMoveValidator;
 import gamesuite.board.BoardManager;
 import gamesuite.game.Game;
-import gamesuite.game.GameSetter;
-import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
 import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
 import gamesuite.players.PlayersFactory;
 import gamesuite.players.ReservedNameException;
 import gamesuite.status.GameStatus;
-import iomanagement.InputManager;
 import iomanagement.OutputManager;
 import org.junit.jupiter.api.Test;
 
