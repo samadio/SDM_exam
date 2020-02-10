@@ -106,27 +106,21 @@ class BoardDrawer{
         Integer columns = board.getColumns();
 
         //maximum number of digits needed
-        Integer maxLength = String.valueOf(rows * columns - 1).length();
+        int maxLength = String.valueOf(rows * columns - 1).length();
 
         IntFunction<String> lastRowNumber = row -> String.valueOf(row * columns + columns - 1);
 
         StringBuilder boardString = new StringBuilder();
         Move.Which type = HORIZONTAL;
         int currentRow = 0; //row u're looking at
-        while (currentRow != rows - 1 | type != VERTICAL) {   //stop condition: first invalid row
+        while (currentRow != rows - 1 || type != VERTICAL) {   //stop condition: first invalid row
 
-            Move.Which finalType = type;
-            int finalRow = currentRow;
-
-            IntUnaryOperator currentNode = columnIdx -> finalRow*columns + columnIdx;
-            IntFunction<Boolean> isPresent = columnIdx -> board.getElement(finalType, finalRow, columnIdx);
-
-            IntStream.range(0, columnsOf(type, columns))
-                    .forEach(columnIdx -> boardString.append(convertToString(isPresent.apply(columnIdx), finalType, currentNode.applyAsInt(columnIdx), maxLength)));
+            rowToString(currentRow, type, maxLength, board, boardString);
 
             //after finishing a column
             if (type == VERTICAL)
                 currentRow += 1;
+
             String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(currentRow), maxLength) : "";
             boardString.append(lineEnd).append("\n");
 
@@ -136,13 +130,23 @@ class BoardDrawer{
         return boardString.toString();
     }
 
+    private static void rowToString(final int rowIdx, final Move.Which type, final int maxLength, final AbstractBoard board, StringBuilder outputString){
+
+        IntUnaryOperator currentNode = columnIdx -> rowIdx*board.getColumns() + columnIdx;
+        IntFunction<Boolean> isPresent = columnIdx -> board.getElement(type, rowIdx, columnIdx);
+
+        IntStream.range(0, columnsOf(type, board.getColumns()))
+                .forEach(columnIdx -> outputString.append(convertToString(isPresent.apply(columnIdx), type, currentNode.applyAsInt(columnIdx), maxLength)));
+
+    }
+
     private static Integer columnsOf(Move.Which lk,Integer cols){
-        if((lk== HORIZONTAL)) return cols-1;
+        if((lk == HORIZONTAL)) return cols - 1;
         return cols;
     }
 
     private static Move.Which other(Move.Which lk){
-        if(lk==HORIZONTAL) return VERTICAL;
+        if(lk == HORIZONTAL) return VERTICAL;
         return HORIZONTAL;
     }
 
@@ -150,15 +154,15 @@ class BoardDrawer{
         String nodeString=String.valueOf(currNode);
         String indented=indent(nodeString,maxLength);
         if(present){
-            if(type==VERTICAL)  return " ".repeat(maxLength/2)+"| "+ " ".repeat((maxLength+1)/2);
-            if(type==HORIZONTAL)return indented+"——";
+            if(type == VERTICAL)  return " ".repeat(maxLength/2) + "| " +  " ".repeat((maxLength + 1) / 2);
+            if(type == HORIZONTAL) return indented + "——";
         }
-        if(type==VERTICAL)return " ".repeat(maxLength+2);
-        return  indented+"  ";
+        if(type == VERTICAL) return " ".repeat(maxLength + 2);
+        return  indented + "  ";
     }
 
     private static String indent(String nodeString, Integer maxLength){
-        return "0".repeat(maxLength-nodeString.length())+nodeString;
+        return "0".repeat(maxLength - nodeString.length()) + nodeString;
     }
 
 }
