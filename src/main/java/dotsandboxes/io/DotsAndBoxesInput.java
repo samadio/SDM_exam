@@ -78,7 +78,7 @@ public class DotsAndBoxesInput implements InputManager {
         return this.currentMove;
     }
 
-    private List<Integer> takeGridDimensions() {
+    private List<Integer> setGridDimensions() {
 
         String gridMessage = "Insert grid dimension in format:[rowsNumber] [columnsNumber]";
         OUTPUT.outputMessage(gridMessage);
@@ -89,8 +89,7 @@ public class DotsAndBoxesInput implements InputManager {
         while (invalidDimensions) {
             try {
 
-                List<String> parsedInput = Arrays.stream(readInput().split(" ")).collect(Collectors.toList());
-                parsedInput.removeAll(Collections.singletonList(""));
+                List<String> parsedInput = Arrays.asList(readInput().trim().split(" +"));
                 dimensions = parsedInput.stream().map(Integer::valueOf).collect(Collectors.toList());
                 if (dimensions.size() != 2) {
                     OUTPUT.errorMessage("Error: invalid grid dimensions.");
@@ -107,7 +106,7 @@ public class DotsAndBoxesInput implements InputManager {
 
     @Override
     public List<Integer> getGridDimensions() {
-        List<Integer> dimensions=takeGridDimensions();
+        List<Integer> dimensions= setGridDimensions();
         setConverter(dimensions.get(1));
         return dimensions;
     }
