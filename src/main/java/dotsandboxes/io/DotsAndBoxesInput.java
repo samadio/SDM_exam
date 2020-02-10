@@ -37,7 +37,7 @@ public class DotsAndBoxesInput implements InputManager {
 
     //private not considering tests
     private InputMove readInputMove() throws DataFormatException, EndGameException, ResetGameException {
-        OUTPUT.outputMessage("Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
+        OUTPUT.outputMessage("Provide edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
         String inputLine=readInput();
 
         QuitAndResetChecker.checkQuitCondition(inputLine);
