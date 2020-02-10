@@ -6,11 +6,11 @@ import gamesuite.move.*;
 public class DotsAndBoxesMoveValidator extends MoveValidator {
     BoardManager bm;
 
-    public DotsAndBoxesMoveValidator(BoardManager desired){
-        this.bm=desired;
+    public DotsAndBoxesMoveValidator(BoardManager bm){
+        this.bm=bm;
     }
 
-    public boolean moveAlreadyDone(Move m){
+    private boolean moveAlreadyDone(Move m){
         return bm.moveDone(m);
     }
 

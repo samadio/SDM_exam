@@ -44,9 +44,9 @@ public class DotsAndBoxesOutput implements OutputManager {
         outputMessage("\n");
         printBoard(game.getBoard());
         outputMessage("\n Players score:");
-        for (Player i : game.getPlayers()) {
-            outputPrint(i.getName() + ": ");
-            outputPrint(game.getScore().get(i) + "        ");
+        for (Player p : game.getPlayers()) {
+            outputPrint(p.getName() + ": ");
+            outputPrint(game.getScore().get(p) + "        ");
         }
         outputMessage("\n");
         printCurrentPlayer(game);

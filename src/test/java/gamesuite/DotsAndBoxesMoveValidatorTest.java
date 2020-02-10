@@ -17,19 +17,7 @@ public class DotsAndBoxesMoveValidatorTest {
         Move currentMove = new Move(Move.Which.HORIZONTAL, 0,0);
         BoardManager currentBM = new DotsAndBoxesBoardManager(4, 4);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
-        assertFalse(testMoveValidator.moveAlreadyDone(currentMove));
-    }
-
-
-    @Test
-    public void AlreadyDoneMoveTest() {
-        Move currentMove = new Move(Move.Which.HORIZONTAL,4,4);
-        BoardManager currentBM = new DotsAndBoxesBoardManager(6, 8);
-        DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
-
-        currentBM.updateBoard(currentMove);
-
-        assertTrue(testMoveValidator.moveAlreadyDone(currentMove));
+        assertDoesNotThrow(()->testMoveValidator.validateMove(currentMove));
     }
 
 
