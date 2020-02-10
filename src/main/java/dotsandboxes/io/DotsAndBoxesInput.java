@@ -124,9 +124,7 @@ public class DotsAndBoxesInput implements InputManager {
 
             try {
                 OUTPUT.outputMessage(playersMessage);
-                input= new ArrayList<>(Arrays.asList(readInput().split(" ")));
-                //if u put blank spaces at the beginning or the end, it doesn't matter
-                input.removeAll(Collections.singletonList(""));
+                input= new ArrayList<>(Arrays.asList(readInput().trim().split(" +")));
 
                 if(input.size()!=1) throw new InputMismatchException();
                 i=Integer.parseInt(input.get(0));
