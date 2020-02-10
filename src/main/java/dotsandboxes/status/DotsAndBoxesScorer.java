@@ -23,10 +23,10 @@ public class DotsAndBoxesScorer extends Scorer {
         Predicate<Boolean> isTrue = x -> x;
         Predicate<Boolean> isFalse = x -> !x;
 
-        Boolean upperPoint = upperNeighbors.stream().map(MOVE_VALIDATOR::outOfBoardLine).allMatch(isFalse) && upperNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
-        Boolean lowerPoint = lowerNeighbors.stream().map(MOVE_VALIDATOR::outOfBoardLine).allMatch(isFalse) && lowerNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
+        Boolean upperSquareCompleted = upperNeighbors.stream().map(MOVE_VALIDATOR::outOfBoardLine).allMatch(isFalse) && upperNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
+        Boolean lowerSquareCompleted = lowerNeighbors.stream().map(MOVE_VALIDATOR::outOfBoardLine).allMatch(isFalse) && lowerNeighbors.stream().map(BOARD_MANAGER::moveDone).allMatch(isTrue);
 
-        return upperPoint || lowerPoint;
+        return upperSquareCompleted || lowerSquareCompleted;
     }
 
     private List<Move> lowerNeighbors(Move refMove) {

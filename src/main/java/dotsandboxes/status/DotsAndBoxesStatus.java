@@ -45,7 +45,6 @@ public class DotsAndBoxesStatus extends GameStatus {
 
     @Override
     public boolean isFinished() {
-
         return remainingMoves <= 0;
     }
 
