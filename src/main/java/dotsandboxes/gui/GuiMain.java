@@ -12,5 +12,8 @@ public class GuiMain {
         DotsAndBoxesGui dbGui = new DotsAndBoxesGui();
         Game game = (new DotsAndBoxesSetter(dbGui, dbGui)).newGame();
         game.play();
+        System.out.println("sono qua");
+        game.reset();
+        game.play();
     }
 }

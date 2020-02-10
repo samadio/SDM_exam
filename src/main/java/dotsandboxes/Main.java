@@ -26,7 +26,9 @@ public class Main {
         }
     }
 }
+//le funzioni sotto l'exception reset e sotto this.reset andrebbero spostate nel reset
 
+//ora funziona anche chiamare il game.reset() game.play() in guiMain()
 
 //le exceptions secondo me andrebbero in un package (più ordinato)
 //questo vale per game move players ecc
@@ -41,3 +43,6 @@ public class Main {
 
 //game status line 59. Lo status (astratto) non solo aggionrna lo score che dovrebbe essere fatto dallo score,
 //ma decide pure il valore di un punto
+
+
+//per la gui paradossalmente i termini specifici di DB sono in gameFrame updateFrame()

@@ -93,11 +93,13 @@ public class GameFrame extends InputFrame<Move> {
 
         CurrentPlayerLabel.setName(game, currentPlayerLabel);
 
+        //***************** parte specifica di dots and boxes
+
         if(currentMove!=null) boardManager.paintLine(currentMove,this);
-
         ScoreLabels.setLabels(game, labels);
-
         boardManager.paintBox(game,this);
+
+        //****************** fine parte specifica
 
         updatePanel();
 
