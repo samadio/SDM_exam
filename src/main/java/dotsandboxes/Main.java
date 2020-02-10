@@ -25,4 +25,19 @@ public class Main {
             System.exit(1);
         }
     }
-}   
+}
+
+
+//le exceptions secondo me andrebbero in un package (più ordinato)
+//questo vale per game move players ecc
+
+// in generale passare direttamente i messaggi non mi piace
+////in particolare gamesetter line 59 non ha senso, cosa stampare dovrebbe essere un problema dell io
+
+
+//mi piace ancora meno il fatto che il validator scelga il messaggio, lui lancia l'eccezzione appropriata,
+//cosa si stampi, è per lui irrilevante
+
+
+//game status line 59. Lo status (astratto) non solo aggionrna lo score che dovrebbe essere fatto dallo score,
+//ma decide pure il valore di un punto
