@@ -56,6 +56,9 @@ class BoardButtonGenerator {
         line.addActionListener(x ->
         {
             gameFrame.setCurrentMove( new Move(type, line.getRow(), line.getColumn() ) );
+            synchronized (gameFrame){
+                gameFrame.notify();
+            }
             gameFrame.setInputGiven(true);
         });
     }

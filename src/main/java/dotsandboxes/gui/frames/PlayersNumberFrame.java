@@ -38,7 +38,11 @@ public class PlayersNumberFrame extends InputFrame<Integer>{
             {
                 setNumPlayers(button.getNumber());
                 button.setDark();
+                synchronized (this) {
+                    notifyAll();
+                }
                 inputGiven=true;
+
             });
         });
         buttonsList.forEach(BACKGROUND_PANEL::add);

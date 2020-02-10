@@ -11,11 +11,12 @@ public abstract  class InputFrame<V> extends Frame{
 
     }
 
-    protected   void waitInput() {
+    protected synchronized void waitInput() {
         while (!inputGiven) {
 
             try {
-                Thread.sleep(150);
+                //Thread.sleep(150);
+                wait();
             } catch (InterruptedException e) {
 
                 throw new RuntimeException("Error: thread was interrupted unexpectedly");

@@ -91,9 +91,9 @@ public class DotsAndBoxesGui extends JFrame implements InputManager, OutputManag
 
      @Override
      public void resetMatch(Game game) {
-        gameFrame.resetFrame(BACKGROUND_PANEL);
-        this.startMatch(game);
-        this.printGame(game);
+        //gameFrame.resetFrame(BACKGROUND_PANEL);
+        //this.startMatch(game);
+        //this.printGame(game);
      }
 
     @Override

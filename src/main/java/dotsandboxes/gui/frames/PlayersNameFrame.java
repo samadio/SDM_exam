@@ -39,6 +39,9 @@ public class PlayersNameFrame extends InputFrame<String> {
             {
                 name = playerName.getText();
                 playerName.setText("");
+                synchronized (this){
+                    notify();
+                }
                 inputGiven = true;
             });
 

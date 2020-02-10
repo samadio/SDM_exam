@@ -53,7 +53,7 @@ public class GameFrame extends InputFrame<Move> {
 
     @Override
     public void setPanel() {
-
+        System.out.println("chiamato");
         clear();
         currentPlayerLabel = new DBLabel();
         endGame = false;
@@ -127,6 +127,9 @@ class ButtonInserter {
         {
             gameFrame.setEndGame(true);
             gameFrame.setInputGiven(true);
+            synchronized (gameFrame) {
+                gameFrame.notify();
+            }
             endGameButton.setDark();
 
         });
@@ -141,6 +144,9 @@ class ButtonInserter {
         {
             gameFrame.setReset(true);
             gameFrame.setInputGiven(true);
+            synchronized (gameFrame){
+                gameFrame.notify();
+            }
             resetGameButton.setDark();
         });
 

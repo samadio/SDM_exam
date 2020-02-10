@@ -78,6 +78,9 @@ public class BoardDimensionFrame extends InputFrame<List<Integer>>{
         {
             inputGiven=true;
             if(rowInput & colInput) button.setDark();
+            synchronized (this) {
+                notify();
+            }
         });
         BACKGROUND_PANEL.add(button);
 
