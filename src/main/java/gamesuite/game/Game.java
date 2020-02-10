@@ -19,10 +19,10 @@ public class Game {
     private GameStatus status;
     private OutputManager oManager;
     private List<Player> players;
-    private Boolean endedWithException=false;
+    private Boolean endedWithException = false;
 
     public Game(InputManager iManager, OutputManager oManager, BoardManager bManager, MoveValidator mValidator, GameStatus gStatus, List<Player> players){
-        this.iManager=iManager;
+        this.iManager = iManager;
         this.oManager = oManager;
         this.boardManager = bManager;
         this.validator = mValidator;
@@ -60,7 +60,7 @@ public class Game {
                 oManager.printGame(this);
             }
             catch (EndGameException e) {
-                endedWithException=true;
+                endedWithException = true;
                 break;
             }
             catch (ResetGameException e){
@@ -93,7 +93,7 @@ public class Game {
         status.reset();
         boardManager.reset();
         oManager.resetMatch(this);
-        endedWithException=false;
+        endedWithException = false;
     }
 
     public List<Player> getWinner(){  return status.getWinner(); }

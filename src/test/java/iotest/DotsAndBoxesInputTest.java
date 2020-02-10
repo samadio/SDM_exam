@@ -45,7 +45,7 @@ class DotsAndBoxesInputTest {
         itest.getGridDimensions();
         setKeyboard("12 R");
         try{
-            Move move=itest.getMove();
+            Move move = itest.getMove();
             assertEquals(Move.Which.HORIZONTAL,move.getLineKind());
             assertEquals(1,move.getRow());
             assertEquals(2,move.getCol());
@@ -64,12 +64,11 @@ class DotsAndBoxesInputTest {
     }
 
 
-
     @Test
     public void getPlayersNumberTest(){
         DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
         setKeyboard("   5 ");
-        Integer i=itest.getPlayersNumber();
+        Integer i = itest.getPlayersNumber();
         assertEquals(5, i);
     }
 

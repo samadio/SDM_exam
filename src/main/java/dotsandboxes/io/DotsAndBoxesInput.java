@@ -28,27 +28,26 @@ public class DotsAndBoxesInput implements InputManager {
     }
 
     private String readInput(){
-        Scanner input= new Scanner(System.in);
-        if (!input.hasNextLine())
+        Scanner input = new Scanner(System.in);
+        if (! input.hasNextLine() )
             throw new ExhaustedInputException();
         return input.nextLine();
     }
 
 
-    //private not considering tests
     private InputMove readInputMove() throws DataFormatException, EndGameException, ResetGameException {
         OUTPUT.outputMessage("Provide edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]");
-        String inputLine=readInput();
+        String inputLine = readInput();
 
-        QuitAndResetChecker.checkQuitCondition(inputLine);
-        QuitAndResetChecker.checkResetCondition(inputLine);
+        ExitAndResetChecker.checkQuitCondition(inputLine);
+        ExitAndResetChecker.checkResetCondition(inputLine);
 
         return InputParser.parse(inputLine);
     }
 
     private void readMove() throws EndGameException, ResetGameException {
 
-        if (!converterSet)
+        if ( ! converterSet)
             throw new InvalidStateException("Convert not set");
         boolean invalidInput = true;
         while(invalidInput){
@@ -106,7 +105,7 @@ public class DotsAndBoxesInput implements InputManager {
 
     @Override
     public List<Integer> getGridDimensions() {
-        List<Integer> dimensions= setGridDimensions();
+        List<Integer> dimensions = setGridDimensions();
         setConverter(dimensions.get(1));
         return dimensions;
     }
@@ -124,13 +123,13 @@ public class DotsAndBoxesInput implements InputManager {
 
             try {
                 OUTPUT.outputMessage(playersMessage);
-                input= new ArrayList<>(Arrays.asList(readInput().trim().split(" +")));
+                input = new ArrayList<>(Arrays.asList(readInput().trim().split(" +")));
 
-                if(input.size()!=1) throw new InputMismatchException();
-                i=Integer.parseInt(input.get(0));
+                if( input.size() != 1 ) throw new InputMismatchException();
+                i = Integer.parseInt(input.get(0));
                 invalidNumber = false;
                 if(i<=0){
-                    invalidNumber=true;
+                    invalidNumber = true;
                     OUTPUT.errorMessage("Error: insert a number of players greater than 0");
                 }
             }
@@ -151,14 +150,14 @@ public class DotsAndBoxesInput implements InputManager {
 
         String customPlayersMessage = "Do you want to customize player names? (y=yes,n=no)";
         OUTPUT.outputMessage(customPlayersMessage);
-        String answer=readInput().trim();
+        String answer = readInput().trim();
 
         while (true) {
             if (answer.equalsIgnoreCase("y")) return true;
             else if (answer.equalsIgnoreCase("n")) return false;
             OUTPUT.errorMessage("Error: invalid answer");
             OUTPUT.outputMessage(customPlayersMessage);
-            answer=readInput();
+            answer = readInput();
         }
     }
 

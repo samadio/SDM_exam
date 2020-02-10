@@ -9,7 +9,7 @@ public class DotsAndBoxesBoardManager extends BoardManager {
     private Board board;
 
     public DotsAndBoxesBoardManager(Integer n, Integer m) {
-        this.board= new Board(n,m);
+        this.board=  new Board(n,m);
     }
 
     @Override

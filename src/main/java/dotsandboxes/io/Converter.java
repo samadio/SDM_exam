@@ -17,23 +17,23 @@ public class Converter {
 
 
     private  Move.Which toWhichLine(InputMove m){
-        if (m.getDirection()== InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
+        if (m.getDirection() == InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
             return Move.Which.HORIZONTAL;
         else
             return Move.Which.VERTICAL;
     }
 
     private  Integer  toBoardRowIndex(InputMove m) {
-        if(m.getDirection()== InputMove.Direction.UP)
-            return m.getNode()/COLS-1;
+        if(m.getDirection() == InputMove.Direction.UP)
+            return (m.getNode() / COLS) - 1;
         else
-            return m.getNode()/COLS;
+            return m.getNode() / COLS;
     }
 
     private  Integer  toBoardColIndex(InputMove m) {
-        if(m.getDirection()== InputMove.Direction.LEFT)
-            return m.getNode()%COLS -1;
+        if(m.getDirection() == InputMove.Direction.LEFT)
+            return (m.getNode() % COLS) - 1;
         else
-            return m.getNode()%COLS;
+            return m.getNode() % COLS;
     }
 }

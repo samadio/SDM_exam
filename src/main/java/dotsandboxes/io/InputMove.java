@@ -8,8 +8,8 @@ public class InputMove {
         private Direction direction;
 
         public InputMove(Integer i,Direction d){
-            this.node=i;
-            this.direction=d;
+            this.node = i;
+            this.direction = d;
         }
 
         public Integer getNode(){ return this.node;}

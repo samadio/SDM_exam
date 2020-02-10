@@ -112,12 +112,11 @@ class BoardDrawer{
 
         StringBuilder boardString = new StringBuilder();
         Move.Which type = HORIZONTAL;
-        int currentRow = 0; //row u're looking at
+        int currentRow = 0;
         while (currentRow != rows - 1 || type != VERTICAL) {   //stop condition: first invalid row
 
             rowToString(currentRow, type, maxLength, board, boardString);
 
-            //after finishing a column
             if (type == VERTICAL)
                 currentRow += 1;
 
@@ -132,7 +131,7 @@ class BoardDrawer{
 
     private static void rowToString(final int rowIdx, final Move.Which type, final int maxLength, final AbstractBoard board, StringBuilder outputString){
 
-        IntUnaryOperator currentNode = columnIdx -> rowIdx*board.getColumns() + columnIdx;
+        IntUnaryOperator currentNode = columnIdx -> rowIdx * board.getColumns() + columnIdx;
         IntFunction<Boolean> isPresent = columnIdx -> board.getElement(type, rowIdx, columnIdx);
 
         IntStream.range(0, columnsOf(type, board.getColumns()))
@@ -151,10 +150,10 @@ class BoardDrawer{
     }
 
     private static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
-        String nodeString=String.valueOf(currNode);
-        String indented=indent(nodeString,maxLength);
+        String nodeString = String.valueOf(currNode);
+        String indented = indent(nodeString,maxLength);
         if(present){
-            if(type == VERTICAL)  return " ".repeat(maxLength/2) + "| " +  " ".repeat((maxLength + 1) / 2);
+            if(type == VERTICAL)  return " ".repeat( maxLength / 2 ) + "| " +  " ".repeat((maxLength + 1) / 2);
             if(type == HORIZONTAL) return indented + "——";
         }
         if(type == VERTICAL) return " ".repeat(maxLength + 2);

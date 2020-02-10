@@ -48,7 +48,7 @@ public abstract class GameFactory {
 
         boolean custom = iManager.customPlayers();
         if (custom) {
-            int idx=0;
+            int idx = 0;
             while(idx < nPlayers) {
 
                 String name = iManager.getPlayerName();

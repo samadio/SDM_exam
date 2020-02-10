@@ -22,9 +22,9 @@ class BoardManagerTest {
 
     @Test
     void moveDoneTest(){
-        BoardManager BM=new DotsAndBoxesBoardManager(4,6);
+        BoardManager BM = new DotsAndBoxesBoardManager(4,6);
 
-        InputMove m= new InputMove(10, InputMove.Direction.UP);
+        InputMove m = new InputMove(10, InputMove.Direction.UP);
 
         assertFalse(BM.moveDone(new Converter(6).convert(m)));
     }
