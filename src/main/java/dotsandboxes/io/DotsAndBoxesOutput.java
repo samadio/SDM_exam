@@ -134,8 +134,9 @@ class BoardDrawer{
         IntUnaryOperator currentNode = columnIdx -> rowIdx * board.getColumns() + columnIdx;
         IntFunction<Boolean> isPresent = columnIdx -> board.getElement(type, rowIdx, columnIdx);
 
+        IntFunction<String> toString = columnIdx -> convertToString(isPresent.apply(columnIdx), type, currentNode.applyAsInt(columnIdx), maxLength);
         IntStream.range(0, columnsOf(type, board.getColumns()))
-                .forEach(columnIdx -> outputString.append(convertToString(isPresent.apply(columnIdx), type, currentNode.applyAsInt(columnIdx), maxLength)));
+                .forEach(columnIdx -> outputString.append(toString.apply(columnIdx)));
 
     }
 
