@@ -1,4 +1,4 @@
-package gamesuite;
+package gametests.boardtest;
 
 import dotsandboxes.board.DotsAndBoxesBoardManager;
 import dotsandboxes.io.Converter;

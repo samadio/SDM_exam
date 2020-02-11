@@ -1,4 +1,4 @@
-package gamesuite;
+package gametests;
 
 import dotsandboxes.board.DotsAndBoxesBoardManager;
 import gamesuite.board.BoardManager;
