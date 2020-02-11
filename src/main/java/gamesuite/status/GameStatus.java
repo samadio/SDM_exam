@@ -45,7 +45,7 @@ public abstract class GameStatus {
             else {
 
                 Player currentP = PLAYERS.get(currentPlayer);
-                score.replace(currentP, score.get(currentP) + 1);
+                score.replace(currentP, updateScore(score.get(currentP)));
             }
 
             updateProgress();
@@ -73,5 +73,7 @@ public abstract class GameStatus {
         score.reset();
         currentPlayer = 0;
     }
+
+    protected abstract int updateScore(int score);
 
 }

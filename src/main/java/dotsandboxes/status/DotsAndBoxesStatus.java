@@ -53,4 +53,9 @@ public class DotsAndBoxesStatus extends GameStatus {
         super.reset();
         remainingMoves = MAXIMUM_MOVES;
     }
+
+    @Override
+    protected int updateScore(int score) {
+        return score + 1;
+    }
 }
