@@ -42,23 +42,21 @@ class BoardTest {
         Integer columns = board.getColumns();
 
         Move.Orientation type = HORIZONTAL;
-        int i = 0; //row u're looking at
-        while(i != rows - 1 | type != VERTICAL){   //stop condition: first invalid row
+        int i = 0;
+        while(i != rows - 1 | type != VERTICAL){
             for(int j = 0; j < columnsOf(type,columns); j += 1){
                 board.setBoard(type,i,j);
             }
-            //after finishing a column
             if(type == VERTICAL) i += 1;
             type = other(type);
         }
         board.reset();
         type = HORIZONTAL;
-        i = 0; //row u're looking at
-        while(i != rows-1 | type != VERTICAL){   //stop condition: first invalid row
+        i = 0;
+        while(i != rows-1 | type != VERTICAL){
             for(int j = 0; j < columnsOf(type,columns); j += 1){
                 assertFalse(board.getElement(type,i,j));
             }
-            //after finishing a column
             if(type==VERTICAL) i += 1;
             type=other(type);
         }
