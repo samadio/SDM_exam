@@ -4,7 +4,8 @@ import gamesuite.board.BoardManager;
 import gamesuite.move.*;
 
 public class DotsAndBoxesMoveValidator extends MoveValidator {
-    BoardManager bm;
+
+    private BoardManager bm;
 
     public DotsAndBoxesMoveValidator(BoardManager bm){
         this.bm = bm;
