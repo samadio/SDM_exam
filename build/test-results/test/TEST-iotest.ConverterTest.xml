@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-09T09:53:36" hostname="simonovo" time="0.006">
+<testsuite name="iotest.ConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-02-11T16:05:36" hostname="machine770" time="0.008">
   <properties/>
-  <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.006"/>
+  <testcase name="converterTest()" classname="iotest.ConverterTest" time="0.008"/>
   <system-out><![CDATA[Insert grid dimension in format:[rowsNumber] [columnsNumber]
-Insert edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
+Provide edge to be inserted in the format:[NodeNumber] [Direction={L,R,U or D}]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

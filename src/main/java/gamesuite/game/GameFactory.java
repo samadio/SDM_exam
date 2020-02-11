@@ -59,11 +59,8 @@ public abstract class GameFactory {
                     oManager.outputMessage("You were assigned the name: " + newPlayer);
                     idx++;
 
-                }catch(NameAlreadyUsedException e){
-                    oManager.errorMessage("Error: name already taken. Please select a different one");
-                }
-                catch (ReservedNameException e){
-                    oManager.errorMessage("Error: Integer numbers cannot be chosen as names");
+                }catch(NameAlreadyUsedException | ReservedNameException e){
+                    oManager.errorMessage(e.getMessage());
                 }
             }
         }

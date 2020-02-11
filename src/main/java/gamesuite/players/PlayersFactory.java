@@ -11,9 +11,9 @@ public class PlayersFactory {
     public Player newPlayer(String name) throws NameAlreadyUsedException, ReservedNameException {
         name = name.trim();
         if(name.isEmpty()) return newPlayer();
-        if(usedCustomNames.contains(name)) throw new NameAlreadyUsedException();
+        if(usedCustomNames.contains(name)) throw new NameAlreadyUsedException("Error: name already taken. Please select a different one");
         boolean isNumeric = name.trim().chars().allMatch( Character::isDigit );
-        if(isNumeric) throw new ReservedNameException();
+        if(isNumeric) throw new ReservedNameException("Error: Integer numbers cannot be chosen as names");
         numberOfPlayers += 1;
         usedCustomNames.add(name);
         return new Player(name);
