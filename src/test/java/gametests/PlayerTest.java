@@ -37,29 +37,37 @@ class PlayerTest {
     }
 
     @Test
-    void customNameTest() throws NameAlreadyUsedException, ReservedNameException {
+    void customNameTest() {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        Player p1 = pFactory.newPlayer("Federico");
-        Player p2 = pFactory.newPlayer("Simone");
-        Player p3 = pFactory.newPlayer("Andrea");
+        try {
+            PlayersFactory pFactory = new PlayersFactory();
+            Player p1 = pFactory.newPlayer("Federico");
+            Player p2 = pFactory.newPlayer("Simone");
+            Player p3 = pFactory.newPlayer("Andrea");
 
-        assertEquals("Federico" , p1.getName());
-        assertEquals("Simone" , p2.getName());
-        assertEquals("Andrea" , p3.getName());
+            assertEquals("Federico", p1.getName());
+            assertEquals("Simone", p2.getName());
+            assertEquals("Andrea", p3.getName());
+        }catch (NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void customEmptyNameTest() throws NameAlreadyUsedException, ReservedNameException {
+    void customEmptyNameTest() {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        Player p1 = pFactory.newPlayer("  ");
-        Player p2 = pFactory.newPlayer("");
-        Player p3 = pFactory.newPlayer("    ");
+        try {
+            PlayersFactory pFactory = new PlayersFactory();
+            Player p1 = pFactory.newPlayer("  ");
+            Player p2 = pFactory.newPlayer("");
+            Player p3 = pFactory.newPlayer("    ");
 
-        assertEquals("1" , p1.getName());
-        assertEquals("2" , p2.getName());
-        assertEquals("3" , p3.getName());
+            assertEquals("1", p1.getName());
+            assertEquals("2", p2.getName());
+            assertEquals("3", p3.getName());
+        }catch(ReservedNameException|NameAlreadyUsedException e){
+            fail();
+        }
     }
 
 }
