@@ -53,7 +53,6 @@ public class GameFrame extends InputFrame<Move> {
 
     @Override
     public void setPanel() {
-        System.out.println("chiamato");
         clear();
         currentPlayerLabel = new DBLabel();
         endGame = false;
