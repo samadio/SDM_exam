@@ -22,123 +22,158 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameStatusTest {
 
     @Test
-    void playerChangesAfterNoPoint() throws NameAlreadyUsedException, ReservedNameException {
+    void playerChangesAfterNoPoint() {
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        assertEquals(players.get(0), gStatus.currentPlayer());
-        gStatus.update(lastMove);
-        assertEquals(players.get(1), gStatus.currentPlayer());
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+            assertEquals(players.get(0), gStatus.currentPlayer());
+            gStatus.update(lastMove);
+            assertEquals(players.get(1), gStatus.currentPlayer());
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void playerNotChangedAfterPoint() throws NameAlreadyUsedException, ReservedNameException {
+    void playerNotChangedAfterPoint() {
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try{
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        assertEquals(players.get(0), gStatus.currentPlayer());
-        gStatus.update(lastMove);
-        assertEquals(players.get(0), gStatus.currentPlayer());
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+            assertEquals(players.get(0), gStatus.currentPlayer());
+            gStatus.update(lastMove);
+            assertEquals(players.get(0), gStatus.currentPlayer());
+
+        } catch(NameAlreadyUsedException|ReservedNameException e){
+        fail();
+        }
     }
 
     @Test
-    void initialPlayerAfterTwoNoPoints() throws NameAlreadyUsedException, ReservedNameException {
+    void initialPlayerAfterTwoNoPoints(){
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        assertEquals(players.get(0), gStatus.currentPlayer());
-        gStatus.update(lastMove);
-        assertEquals(players.get(1), gStatus.currentPlayer());
-        gStatus.update(lastMove);
-        assertEquals(players.get(0), gStatus.currentPlayer());
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+            assertEquals(players.get(0), gStatus.currentPlayer());
+            gStatus.update(lastMove);
+            assertEquals(players.get(1), gStatus.currentPlayer());
+            gStatus.update(lastMove);
+            assertEquals(players.get(0), gStatus.currentPlayer());
+        } catch(NameAlreadyUsedException|ReservedNameException e){
+        fail();
+    }
 
     }
 
     @Test
-    void pointAssigned() throws NameAlreadyUsedException, ReservedNameException {
+    void pointAssigned() {
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        GameScore score = gStatus.getScore();
-        assertScore(players, score ,0 , 0);
-        gStatus.update(lastMove);
-        assertScore(players, score ,1 , 0);
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+            GameScore score = gStatus.getScore();
+            assertScore(players, score, 0, 0);
+            gStatus.update(lastMove);
+            assertScore(players, score, 1, 0);
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+        fail();
+        }
     }
 
     @Test
-    void pointNotAssigned() throws NameAlreadyUsedException, ReservedNameException {
+    void pointNotAssigned() {
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        GameScore score = gStatus.getScore();
-        assertScore(players, score, 0, 0);
-        gStatus.update(lastMove);
-        assertScore(players, score, 0, 0);
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, false, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+
+            GameScore score = gStatus.getScore();
+            assertScore(players, score, 0, 0);
+            gStatus.update(lastMove);
+            assertScore(players, score, 0, 0);
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void notFinishedAtStart() throws NameAlreadyUsedException, ReservedNameException {
+    void notFinishedAtStart(){
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try {
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
-        assertFalse(gStatus.isFinished());
+            assertFalse(gStatus.isFinished());
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void notFinishedAfterOneMove() throws NameAlreadyUsedException, ReservedNameException {
+    void notFinishedAfterOneMove() {
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+        try {
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
-        assertFalse(gStatus.isFinished());
-        gStatus.update(lastMove);
-        assertFalse(gStatus.isFinished());
+            assertFalse(gStatus.isFinished());
+            gStatus.update(lastMove);
+            assertFalse(gStatus.isFinished());
+        } catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void finishedAtEnd() throws NameAlreadyUsedException, ReservedNameException {
+    void finishedAtEnd() {
 
+        try{
         Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
@@ -153,83 +188,91 @@ class GameStatusTest {
         for(int i = 0; i < nMoves; i++)
             gStatus.update(lastMove);
         assertTrue(gStatus.isFinished());
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void gameTest() throws NameAlreadyUsedException, ReservedNameException {
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+    void gameTest() {
+        try{
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
 
-        BoardManager boardManager = new DotsAndBoxesBoardManager(3,3);
-        GameStatus gStatus = new DotsAndBoxesStatus(players, boardManager, new DotsAndBoxesMoveValidator(boardManager));
+            BoardManager boardManager = new DotsAndBoxesBoardManager(3,3);
+            GameStatus gStatus = new DotsAndBoxesStatus(players, boardManager, new DotsAndBoxesMoveValidator(boardManager));
 
-        assertScore(players, gStatus.getScore(), 0, 0);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 1, 0);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 0, 0);
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 1, 0);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Orientation.VERTICAL, 0, 1);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 0, 0);
+            lastMove = new Move(Move.Orientation.VERTICAL, 0, 1);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 1);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 0, 0);
+            lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 1);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Orientation.VERTICAL, 1, 1);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 0, 0);
+            lastMove = new Move(Move.Orientation.VERTICAL, 1, 1);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Orientation.HORIZONTAL, 2, 1);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 0, 0);
+            lastMove = new Move(Move.Orientation.HORIZONTAL, 2, 1);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Orientation.VERTICAL, 0, 0);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 0, 0);
+            lastMove = new Move(Move.Orientation.VERTICAL, 0, 0);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 1, 0);
-        assertEquals(players.get(0), gStatus.currentPlayer());
+            lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 1, 0);
+            assertEquals(players.get(0), gStatus.currentPlayer());
 
-        lastMove = new Move(Move.Orientation.VERTICAL, 0, 2);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 1, 0);
+            lastMove = new Move(Move.Orientation.VERTICAL, 0, 2);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 1, 0);
 
-        lastMove = new Move(Move.Orientation.HORIZONTAL, 1, 1);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 1, 1);
-        assertEquals(players.get(1), gStatus.currentPlayer());
+            lastMove = new Move(Move.Orientation.HORIZONTAL, 1, 1);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 1, 1);
+            assertEquals(players.get(1), gStatus.currentPlayer());
 
-        lastMove = new Move(Move.Orientation.VERTICAL, 1, 2);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 1, 2);
-        assertEquals(players.get(1), gStatus.currentPlayer());
+            lastMove = new Move(Move.Orientation.VERTICAL, 1, 2);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 1, 2);
+            assertEquals(players.get(1), gStatus.currentPlayer());
 
-        lastMove = new Move(Move.Orientation.HORIZONTAL, 2, 0);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 1, 2);
+            lastMove = new Move(Move.Orientation.HORIZONTAL, 2, 0);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 1, 2);
 
-        lastMove = new Move(Move.Orientation.VERTICAL, 1, 0);
-        boardManager.updateBoard(lastMove);
-        gStatus.update(lastMove);
-        assertScore(players, gStatus.getScore(), 2, 2);
-        assertEquals(players.get(0), gStatus.currentPlayer());
+            lastMove = new Move(Move.Orientation.VERTICAL, 1, 0);
+            boardManager.updateBoard(lastMove);
+            gStatus.update(lastMove);
+            assertScore(players, gStatus.getScore(), 2, 2);
+            assertEquals(players.get(0), gStatus.currentPlayer());
 
-        assertTrue(gStatus.isFinished());
+            assertTrue(gStatus.isFinished());
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
+
     }
 
     @Test
@@ -253,39 +296,50 @@ class GameStatusTest {
     }
 
     @Test
-    void singleWinnerTest() throws NameAlreadyUsedException, ReservedNameException {
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+    void singleWinnerTest() {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
-        gStatus.update(lastMove);
+        try{
 
-        List<Player> winners = gStatus.getWinner();
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        assertEquals(1, winners.size());
-        assertEquals(winners.get(0), players.get(0));
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+            gStatus.update(lastMove);
+
+            List<Player> winners = gStatus.getWinner();
+
+            assertEquals(1, winners.size());
+            assertEquals(winners.get(0), players.get(0));
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     @Test
-    void twoWinnersTest() throws NameAlreadyUsedException, ReservedNameException {
-        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
+    void twoWinnersTest() {
 
-        PlayersFactory pFactory = new PlayersFactory();
-        List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
-        BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
-        GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
+        try{
+            Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
-        List<Player> winners = gStatus.getWinner();
+            PlayersFactory pFactory = new PlayersFactory();
+            List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
+            BoardManager bManager = new DummyBoardManager(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            MoveValidator mValidator = new DummyValidator(ScorerTest.moveMap(lastMove, Arrays.asList(true, false, false, false, true, true, true)));
+            GameStatus gStatus = new DotsAndBoxesStatus(players, bManager, mValidator);
 
-        assertEquals(2, winners.size());
-        Player winner1 = winners.get(0);
-        assertTrue(winner1.equals(players.get(0)) || winner1.equals(players.get(1)));
-        Player winner2 = winners.get(1);
-        assertTrue(winner2.equals(players.get(0)) || winner2.equals(players.get(1)));
+            List<Player> winners = gStatus.getWinner();
+
+            assertEquals(2, winners.size());
+            Player winner1 = winners.get(0);
+            assertTrue(winner1.equals(players.get(0)) || winner1.equals(players.get(1)));
+            Player winner2 = winners.get(1);
+            assertTrue(winner2.equals(players.get(0)) || winner2.equals(players.get(1)));
+        }catch(NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
     private void assertScore(List<Player> players, GameScore score, Integer... points ){

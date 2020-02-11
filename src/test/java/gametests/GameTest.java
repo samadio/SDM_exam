@@ -32,27 +32,31 @@ public class GameTest {
 
 
     @Test
-    void ManuallyEnded() throws NameAlreadyUsedException, ReservedNameException {
+    void ManuallyEnded() {
 
-        OutputManager oManager = new DotsAndBoxesOutput();
-        DotsAndBoxesInput iManager = new DotsAndBoxesInput(oManager);
-        setKeyboard("4 4");
-        iManager.getGridDimensions();
-        BoardManager bManager = new DotsAndBoxesBoardManager(4,4);
-        MoveValidator mValidator = new DotsAndBoxesMoveValidator(bManager);
-        PlayersFactory factory = new PlayersFactory();
-        List<Player> list = new ArrayList<>();
-        Player p = factory.newPlayer("testPlayer");
-        list.add(p);
+        try {
+            OutputManager oManager = new DotsAndBoxesOutput();
+            DotsAndBoxesInput iManager = new DotsAndBoxesInput(oManager);
+            setKeyboard("4 4");
+            iManager.getGridDimensions();
+            BoardManager bManager = new DotsAndBoxesBoardManager(4, 4);
+            MoveValidator mValidator = new DotsAndBoxesMoveValidator(bManager);
+            PlayersFactory factory = new PlayersFactory();
+            List<Player> list = new ArrayList<>();
+            Player p = factory.newPlayer("testPlayer");
+            list.add(p);
 
-        GameStatus gStatus = new DotsAndBoxesStatus(list,bManager,mValidator);
+            GameStatus gStatus = new DotsAndBoxesStatus(list, bManager, mValidator);
 
-        Game dotsAndBoxes = new Game(iManager, oManager, bManager, mValidator, gStatus,list);
+            Game dotsAndBoxes = new Game(iManager, oManager, bManager, mValidator, gStatus, list);
 
-        assertFalse(dotsAndBoxes.endedManually());
-        setKeyboard("  exit  ");
-        dotsAndBoxes.play();
-        assertTrue(dotsAndBoxes.endedManually());
+            assertFalse(dotsAndBoxes.endedManually());
+            setKeyboard("  exit  ");
+            dotsAndBoxes.play();
+            assertTrue(dotsAndBoxes.endedManually());
+        }catch (NameAlreadyUsedException|ReservedNameException e){
+            fail();
+        }
     }
 
 }

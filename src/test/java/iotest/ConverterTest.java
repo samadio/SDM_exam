@@ -22,14 +22,19 @@ public class ConverterTest{
     DotsAndBoxesInput itest = new DotsAndBoxesInput(new DotsAndBoxesOutput());
 
     @Test
-    public void converterTest() throws EndGameException, ResetGameException {
-        setKeyboard("12 12");
-        itest.getGridDimensions();
-        setKeyboard("26 R");
-        Move m = itest.getMove();
+    public void converterTest() {
+        try {
 
-        assertSame(m.getLineKind(), Move.Orientation.HORIZONTAL);
-        assertEquals(2, (int) m.getRow()); //first element of row2=Node 24,
-        assertEquals(2, (int) m.getCol());
+            setKeyboard("12 12");
+            itest.getGridDimensions();
+            setKeyboard("26 R");
+            Move m = itest.getMove();
+
+            assertSame(m.getLineKind(), Move.Orientation.HORIZONTAL);
+            assertEquals(2, (int) m.getRow()); //first element of row2=Node 24,
+            assertEquals(2, (int) m.getCol());
+        }catch(EndGameException| ResetGameException e){
+            fail();
+        }
     }
 }

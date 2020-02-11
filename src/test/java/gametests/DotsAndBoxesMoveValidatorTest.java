@@ -69,7 +69,6 @@ public class DotsAndBoxesMoveValidatorTest {
         BoardManager currentBM = new DotsAndBoxesBoardManager(10, 10);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
-        //outBoardLine should cause exception
         Move move1=new Move(Move.Orientation.HORIZONTAL,10,10);
         MoveOutOfBoardException exception= assertThrows(MoveOutOfBoardException.class, () -> testMoveValidator.validateMove(move1));
         assertEquals(move1,exception.getInvalid());
