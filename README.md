@@ -1,4 +1,4 @@
 # SDM_exam
 ![Build Status](https://travis-ci.com/samadio/SDM_exam.svg?branch=master)
 
-![alt text](INTRO.png)
+![alt text](GAME.png)
