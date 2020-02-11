@@ -13,8 +13,6 @@ public class PlayersFactory {
         name = name.trim();
 
         if(name.isEmpty()){
-
-            numberOfPlayers += 1;
             return newPlayer();
         }
 
@@ -44,7 +42,6 @@ public class PlayersFactory {
     }
 
     private boolean isNumericName(String name){
-
         return name.chars().allMatch( Character::isDigit );
     }
 }

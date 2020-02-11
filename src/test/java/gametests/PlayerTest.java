@@ -1,4 +1,4 @@
-package gametests.statustest;
+package gametests;
 
 import gamesuite.players.NameAlreadyUsedException;
 import gamesuite.players.Player;
@@ -47,6 +47,19 @@ class PlayerTest {
         assertEquals("Federico" , p1.getName());
         assertEquals("Simone" , p2.getName());
         assertEquals("Andrea" , p3.getName());
+    }
+
+    @Test
+    void customEmptyNameTest() throws NameAlreadyUsedException, ReservedNameException {
+
+        PlayersFactory pFactory = new PlayersFactory();
+        Player p1 = pFactory.newPlayer("  ");
+        Player p2 = pFactory.newPlayer("");
+        Player p3 = pFactory.newPlayer("    ");
+
+        assertEquals("1" , p1.getName());
+        assertEquals("2" , p2.getName());
+        assertEquals("3" , p3.getName());
     }
 
 }
