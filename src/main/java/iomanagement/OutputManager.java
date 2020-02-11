@@ -17,8 +17,6 @@ public interface OutputManager {
 
       void errorMessage(String s);
 
-      void resetMatch(Game game);
-
       void printWinner(Game game);
 
       void initialMessage();

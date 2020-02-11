@@ -72,13 +72,6 @@ public class DotsAndBoxesOutput implements OutputManager {
         System.err.println(s);
     }
 
-
-    @Override
-    public void resetMatch(Game game) {
-        outputMessage("The game has been reset...");
-    }
-
-
     @Override
     public void printWinner(Game game) {
 
