@@ -1,6 +1,6 @@
 package gamesuite.players;
 
-public class NameAlreadyUsedException extends Exception{
+public class NameAlreadyUsedException extends PlayerNameException{
 
    public NameAlreadyUsedException(){
        super();

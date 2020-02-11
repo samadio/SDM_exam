@@ -1,3 +1,3 @@
 package gamesuite.game;
 
-public class EndGameException extends Exception {}
+public class EndGameException extends GameException {}

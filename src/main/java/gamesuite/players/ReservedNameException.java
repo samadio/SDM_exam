@@ -1,6 +1,6 @@
 package gamesuite.players;
 
-public class ReservedNameException extends Exception {
+public class ReservedNameException extends PlayerNameException {
 
     public ReservedNameException() {
         super();
