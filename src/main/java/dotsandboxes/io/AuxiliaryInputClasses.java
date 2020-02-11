@@ -8,18 +8,19 @@ import java.util.zip.DataFormatException;
 
 class InputValidator{
     static void checkFormat(String s) throws DataFormatException {
+        String formatErrorMessage="Invalid move, please use the following format: [NodeNumber] [U|D|L|R]";
         List<String> validChar = Arrays.asList("U","D","L","R");
         String trimmed=  s.trim();
         List<String> input;
         try{
             input = Arrays.asList(trimmed.split(" +"));
-            if( input.size() != 2 ) throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+            if( input.size() != 2 ) throw new DataFormatException(formatErrorMessage);
             Integer.valueOf(input.get(0));
         }
         catch(Exception e){
-            throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+            throw new DataFormatException(formatErrorMessage);
         }
-        if(!validChar.contains( input.get(1) )) throw new DataFormatException("Invalid move, please use the following format: [NodeNumber] [U|D|L|R]");
+        if(!validChar.contains( input.get(1) )) throw new DataFormatException(formatErrorMessage);
     }
 }
 

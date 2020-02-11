@@ -51,3 +51,4 @@ class MoveCoordinates{
     Integer getRow(){ return ROW;}
     Integer getColumn(){ return COL;}
 }
+
