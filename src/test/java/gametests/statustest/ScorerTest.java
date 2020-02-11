@@ -1,7 +1,7 @@
 package gametests.statustest;
 
 import dotsandboxes.status.DotsAndBoxesScorer;
-import gamesuite.board.AbstractBoard;
+import gamesuite.board.BoardHandle;
 import gamesuite.board.BoardManager;
 import gamesuite.move.Move;
 import gamesuite.move.MoveValidator;
@@ -23,7 +23,7 @@ class ScorerTest {
     @Test
     void horizontalMoveNoPoint() {
 
-        Move refMove = new Move(Move.Which.HORIZONTAL, 1, 0);
+        Move refMove = new Move(Move.Orientation.HORIZONTAL, 1, 0);
         Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, true, false, true, false, true, true));
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
 
@@ -37,7 +37,7 @@ class ScorerTest {
     @Test
     void verticalMoveNoPoint() {
 
-        Move refMove = new Move(Move.Which.VERTICAL, 0, 0);
+        Move refMove = new Move(Move.Orientation.VERTICAL, 0, 0);
         Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, false, false, true, false, false));
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
 
@@ -50,7 +50,7 @@ class ScorerTest {
     @Test
     void horizontalMovePoint() {
 
-        Move refMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move refMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
         Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, false, false, false, true, true, true));
 
@@ -63,7 +63,7 @@ class ScorerTest {
     @Test
     void verticalMovePoint() {
 
-        Move refMove = new Move(Move.Which.VERTICAL, 1, 1);
+        Move refMove = new Move(Move.Orientation.VERTICAL, 1, 1);
         Map<Move, Boolean> movesDone = moveMap(refMove, Arrays.asList(true, false, true, true, true, true, true));
         Map<Move, Boolean> validMoves = moveMap(refMove, Arrays.asList(true, true, true, true, true, true, true));
 
@@ -81,23 +81,23 @@ class ScorerTest {
 
         movesMap.put(referenceMove, values.get(0));
 
-        if (referenceMove.getLineKind() == Move.Which.HORIZONTAL) {
+        if (referenceMove.getLineKind() == Move.Orientation.HORIZONTAL) {
 
-            movesMap.put(new Move(Move.Which.VERTICAL, refRow - 1, refCol), values.get(1));
-            movesMap.put(new Move(Move.Which.HORIZONTAL, refRow - 1, refCol), values.get(2));
-            movesMap.put(new Move(Move.Which.VERTICAL, refRow - 1, refCol + 1), values.get(3));
-            movesMap.put(new Move(Move.Which.VERTICAL, refRow, refCol + 1), values.get(4));
-            movesMap.put(new Move(Move.Which.HORIZONTAL, refRow + 1, refCol), values.get(5));
-            movesMap.put(new Move(Move.Which.VERTICAL, refRow, refCol), values.get(6));
+            movesMap.put(new Move(Move.Orientation.VERTICAL, refRow - 1, refCol), values.get(1));
+            movesMap.put(new Move(Move.Orientation.HORIZONTAL, refRow - 1, refCol), values.get(2));
+            movesMap.put(new Move(Move.Orientation.VERTICAL, refRow - 1, refCol + 1), values.get(3));
+            movesMap.put(new Move(Move.Orientation.VERTICAL, refRow, refCol + 1), values.get(4));
+            movesMap.put(new Move(Move.Orientation.HORIZONTAL, refRow + 1, refCol), values.get(5));
+            movesMap.put(new Move(Move.Orientation.VERTICAL, refRow, refCol), values.get(6));
         }
         else{
 
-            movesMap.put(new Move(Move.Which.HORIZONTAL, refRow + 1, refCol - 1), values.get(1));
-            movesMap.put(new Move(Move.Which.VERTICAL, refRow, refCol - 1), values.get(2));
-            movesMap.put(new Move(Move.Which.HORIZONTAL, refRow, refCol - 1), values.get(3));
-            movesMap.put(new Move(Move.Which.HORIZONTAL, refRow, refCol), values.get(4));
-            movesMap.put(new Move(Move.Which.VERTICAL, refRow, refCol + 1), values.get(5));
-            movesMap.put(new Move(Move.Which.HORIZONTAL, refRow + 1, refCol), values.get(6));
+            movesMap.put(new Move(Move.Orientation.HORIZONTAL, refRow + 1, refCol - 1), values.get(1));
+            movesMap.put(new Move(Move.Orientation.VERTICAL, refRow, refCol - 1), values.get(2));
+            movesMap.put(new Move(Move.Orientation.HORIZONTAL, refRow, refCol - 1), values.get(3));
+            movesMap.put(new Move(Move.Orientation.HORIZONTAL, refRow, refCol), values.get(4));
+            movesMap.put(new Move(Move.Orientation.VERTICAL, refRow, refCol + 1), values.get(5));
+            movesMap.put(new Move(Move.Orientation.HORIZONTAL, refRow + 1, refCol), values.get(6));
         }
 
         return movesMap;
@@ -135,7 +135,7 @@ class DummyBoardManager extends BoardManager {
     }
 
     @Override
-    public AbstractBoard getBoard() {
+    public BoardHandle getBoard() {
         return null;
     }
 

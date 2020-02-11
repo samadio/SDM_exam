@@ -14,7 +14,7 @@ public class DotsAndBoxesMoveValidatorTest {
 
     @Test
     public void NewMoveTest() {
-        Move currentMove = new Move(Move.Which.HORIZONTAL, 0,0);
+        Move currentMove = new Move(Move.Orientation.HORIZONTAL, 0,0);
         BoardManager currentBM = new DotsAndBoxesBoardManager(4, 4);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
         assertDoesNotThrow(()->testMoveValidator.validateMove(currentMove));
@@ -23,7 +23,7 @@ public class DotsAndBoxesMoveValidatorTest {
 
     @Test
     public void inBoardMoveTest() {
-        Move currentMove = new Move(Move.Which.HORIZONTAL,4,4);
+        Move currentMove = new Move(Move.Orientation.HORIZONTAL,4,4);
         BoardManager currentBM = new DotsAndBoxesBoardManager(8, 8);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
@@ -35,16 +35,16 @@ public class DotsAndBoxesMoveValidatorTest {
         BoardManager currentBM = new DotsAndBoxesBoardManager(10, 10);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
-        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.HORIZONTAL,10,11)));
-        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.VERTICAL, 10,11)));
-        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.HORIZONTAL,-1,0)));
-        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.HORIZONTAL,3,11)));
-        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Which.VERTICAL, 11,2)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Orientation.HORIZONTAL,10,11)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Orientation.VERTICAL, 10,11)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Orientation.HORIZONTAL,-1,0)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Orientation.HORIZONTAL,3,11)));
+        assertTrue(testMoveValidator.outOfBoardLine(new Move(Move.Orientation.VERTICAL, 11,2)));
     }
 
     @Test
     public void validateNoExceptionTest(){
-        Move currentMove= new Move(Move.Which.HORIZONTAL, 10,0);
+        Move currentMove= new Move(Move.Orientation.HORIZONTAL, 10,0);
         BoardManager currentBM = new DotsAndBoxesBoardManager(11, 11);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
@@ -53,7 +53,7 @@ public class DotsAndBoxesMoveValidatorTest {
 
     @Test
     public void validateMoveAlreadyDoneException(){
-        Move currentMove = new Move(Move.Which.HORIZONTAL, 10,0);
+        Move currentMove = new Move(Move.Orientation.HORIZONTAL, 10,0);
         BoardManager currentBM = new DotsAndBoxesBoardManager(11, 11);
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
@@ -70,7 +70,7 @@ public class DotsAndBoxesMoveValidatorTest {
         DotsAndBoxesMoveValidator testMoveValidator = new DotsAndBoxesMoveValidator(currentBM);
 
         //outBoardLine should cause exception
-        Move move1=new Move(Move.Which.HORIZONTAL,10,10);
+        Move move1=new Move(Move.Orientation.HORIZONTAL,10,10);
         MoveOutOfBoardException exception= assertThrows(MoveOutOfBoardException.class, () -> testMoveValidator.validateMove(move1));
         assertEquals(move1,exception.getInvalid());
     }

@@ -6,7 +6,6 @@ public class BoardSettings {
 
     enum ElementType{HORIZONTAL_LINE,VERTICAL_LINE,BOX,DOT}
 
-    //queste sono alla fine final? (insopportabile gioco di parole)
     private final Integer ROWS;
     private final Integer COLUMNS;
 
@@ -25,7 +24,6 @@ public class BoardSettings {
     public BoardSettings(Integer rows, Integer cols){
 
 
-        //è da capire bene come mettere questi numeri sotto forma di costanti
         ROWS=rows;
         COLUMNS=cols;
         xOffset=120+(340-(DIM_ONE+DIM_TWO)*cols)/2;
@@ -39,12 +37,6 @@ public class BoardSettings {
     }
 
     public Integer getColumns() {return COLUMNS;}
-    public Integer getRows() { return ROWS; }
-    public Integer getXOffset(){return  xOffset;}
-    public Integer getYOffset(){return  yOffset;}
-    public Integer getDimOne() {return  DIM_ONE;}
-    public Integer getDimTwo() {return  DIM_TWO;}
-    public Integer getHints() {return HINTS;}
 
     public BoardButtonSpecifics getHorizontalGridSpec() {return horizontalGridSpec; }
     public BoardButtonSpecifics getVerticalGridSpec() {return verticalGridSpec; }

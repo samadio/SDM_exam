@@ -23,13 +23,13 @@ class BoardButtonGenerator {
                 switch (gridSpec.getType()) {
                     case HORIZONTAL_LINE:
                         HorizontalLine hLine = new HorizontalLine(objSpecifics, i, j);
-                        setAction(Move.Which.HORIZONTAL,hLine,gameFrame);
+                        setAction(Move.Orientation.HORIZONTAL,hLine,gameFrame);
                         elementList.add(hLine);
                         break;
 
                     case VERTICAL_LINE:
                         VerticalLine vLine = new VerticalLine(objSpecifics,i,j);
-                        setAction(Move.Which.VERTICAL,vLine,gameFrame);
+                        setAction(Move.Orientation.VERTICAL,vLine,gameFrame);
                         elementList.add(vLine);
                         break;
 
@@ -52,7 +52,7 @@ class BoardButtonGenerator {
     }
 
 
-    private static void setAction(Move.Which type, Line line, GameFrame gameFrame) {
+    private static void setAction(Move.Orientation type, Line line, GameFrame gameFrame) {
         line.addActionListener(x ->
         {
             gameFrame.setCurrentMove( new Move(type, line.getRow(), line.getColumn() ) );

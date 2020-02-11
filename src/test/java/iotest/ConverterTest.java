@@ -28,7 +28,7 @@ public class ConverterTest{
         setKeyboard("26 R");
         Move m = itest.getMove();
 
-        assertSame(m.getLineKind(), Move.Which.HORIZONTAL);
+        assertSame(m.getLineKind(), Move.Orientation.HORIZONTAL);
         assertEquals(2, (int) m.getRow()); //first element of row2=Node 24,
         assertEquals(2, (int) m.getCol());
     }

@@ -24,7 +24,7 @@ class GameStatusTest {
     @Test
     void playerChangesAfterNoPoint() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -40,7 +40,7 @@ class GameStatusTest {
     @Test
     void playerNotChangedAfterPoint() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -56,7 +56,7 @@ class GameStatusTest {
     @Test
     void initialPlayerAfterTwoNoPoints() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -75,7 +75,7 @@ class GameStatusTest {
     @Test
     void pointAssigned() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -92,7 +92,7 @@ class GameStatusTest {
     @Test
     void pointNotAssigned() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -109,7 +109,7 @@ class GameStatusTest {
     @Test
     void notFinishedAtStart() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -123,7 +123,7 @@ class GameStatusTest {
     @Test
     void notFinishedAfterOneMove() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -139,7 +139,7 @@ class GameStatusTest {
     @Test
     void finishedAtEnd() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -165,65 +165,65 @@ class GameStatusTest {
 
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 1, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 1, 0);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Which.VERTICAL, 0, 1);
+        lastMove = new Move(Move.Orientation.VERTICAL, 0, 1);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Which.HORIZONTAL, 0, 1);
+        lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 1);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Which.VERTICAL, 1, 1);
+        lastMove = new Move(Move.Orientation.VERTICAL, 1, 1);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Which.HORIZONTAL, 2, 1);
+        lastMove = new Move(Move.Orientation.HORIZONTAL, 2, 1);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Which.VERTICAL, 0, 0);
+        lastMove = new Move(Move.Orientation.VERTICAL, 0, 0);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 0, 0);
 
-        lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 1, 0);
         assertEquals(players.get(0), gStatus.currentPlayer());
 
-        lastMove = new Move(Move.Which.VERTICAL, 0, 2);
+        lastMove = new Move(Move.Orientation.VERTICAL, 0, 2);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 1, 0);
 
-        lastMove = new Move(Move.Which.HORIZONTAL, 1, 1);
+        lastMove = new Move(Move.Orientation.HORIZONTAL, 1, 1);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 1, 1);
         assertEquals(players.get(1), gStatus.currentPlayer());
 
-        lastMove = new Move(Move.Which.VERTICAL, 1, 2);
+        lastMove = new Move(Move.Orientation.VERTICAL, 1, 2);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 1, 2);
         assertEquals(players.get(1), gStatus.currentPlayer());
 
-        lastMove = new Move(Move.Which.HORIZONTAL, 2, 0);
+        lastMove = new Move(Move.Orientation.HORIZONTAL, 2, 0);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 1, 2);
 
-        lastMove = new Move(Move.Which.VERTICAL, 1, 0);
+        lastMove = new Move(Move.Orientation.VERTICAL, 1, 0);
         boardManager.updateBoard(lastMove);
         gStatus.update(lastMove);
         assertScore(players, gStatus.getScore(), 2, 2);
@@ -235,7 +235,7 @@ class GameStatusTest {
     @Test
     void resetTest() throws NameAlreadyUsedException, ReservedNameException {
 
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -254,7 +254,7 @@ class GameStatusTest {
 
     @Test
     void singleWinnerTest() throws NameAlreadyUsedException, ReservedNameException {
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));
@@ -271,7 +271,7 @@ class GameStatusTest {
 
     @Test
     void twoWinnersTest() throws NameAlreadyUsedException, ReservedNameException {
-        Move lastMove = new Move(Move.Which.HORIZONTAL, 0, 0);
+        Move lastMove = new Move(Move.Orientation.HORIZONTAL, 0, 0);
 
         PlayersFactory pFactory = new PlayersFactory();
         List<Player> players = Arrays.asList(pFactory.newPlayer("Pippo"), pFactory.newPlayer("Pluto"));

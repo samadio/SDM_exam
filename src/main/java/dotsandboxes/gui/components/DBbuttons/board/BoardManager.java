@@ -3,7 +3,7 @@ package dotsandboxes.gui.components.DBbuttons.board;
 import dotsandboxes.gui.components.BackgroundPanel;
 import dotsandboxes.gui.frames.GameFrame;
 import dotsandboxes.gui.components.DBbuttons.DBButtonList;
-import gamesuite.board.AbstractBoard;
+import gamesuite.board.BoardHandle;
 import gamesuite.game.Game;
 import gamesuite.move.Move;
 
@@ -29,7 +29,7 @@ public class BoardManager {
 
     public void paintLine(Move currentMove, GameFrame gameFrame) {
 
-        if(currentMove.getLineKind()== Move.Which.HORIZONTAL){
+        if(currentMove.getLineKind()== Move.Orientation.HORIZONTAL){
             gameFrame.getBoard().getHorizontalLines().get(currentMove.getRow()*gameFrame.getBoxesColumns()+currentMove.getCol()).setDark();
         }
         else{
@@ -63,9 +63,9 @@ public class BoardManager {
             }
         }
 
-    private  boolean isSquare(AbstractBoard board, Integer i, Integer j) {
-        return board.getElement(Move.Which.HORIZONTAL, i, j) && board.getElement(Move.Which.HORIZONTAL, i + 1, j)
-                && board.getElement(Move.Which.VERTICAL, i, j) && board.getElement(Move.Which.VERTICAL, i, j + 1);
+    private  boolean isSquare(BoardHandle board, Integer i, Integer j) {
+        return board.getElement(Move.Orientation.HORIZONTAL, i, j) && board.getElement(Move.Orientation.HORIZONTAL, i + 1, j)
+                && board.getElement(Move.Orientation.VERTICAL, i, j) && board.getElement(Move.Orientation.VERTICAL, i, j + 1);
     }
 
 

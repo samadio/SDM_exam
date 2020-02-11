@@ -16,11 +16,11 @@ public class Converter {
     }
 
 
-    private  Move.Which toWhichLine(InputMove m){
+    private Move.Orientation toWhichLine(InputMove m){
         if (m.getDirection() == InputMove.Direction.LEFT || m.getDirection()==InputMove.Direction.RIGHT)
-            return Move.Which.HORIZONTAL;
+            return Move.Orientation.HORIZONTAL;
         else
-            return Move.Which.VERTICAL;
+            return Move.Orientation.VERTICAL;
     }
 
     private  Integer  toBoardRowIndex(InputMove m) {

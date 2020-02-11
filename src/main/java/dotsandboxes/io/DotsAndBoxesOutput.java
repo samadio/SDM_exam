@@ -1,22 +1,19 @@
 package dotsandboxes.io;
 
-import gamesuite.board.AbstractBoard;
+import gamesuite.board.BoardHandle;
 import gamesuite.game.Game;
 import gamesuite.move.InvalidMoveException;
 import gamesuite.move.Move;
 import gamesuite.players.Player;
 import iomanagement.OutputManager;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Scanner;
 import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
 
-import static gamesuite.move.Move.Which.HORIZONTAL;
-import static gamesuite.move.Move.Which.VERTICAL;
+import static gamesuite.move.Move.Orientation.HORIZONTAL;
+import static gamesuite.move.Move.Orientation.VERTICAL;
 
 public class DotsAndBoxesOutput implements OutputManager {
 
@@ -86,7 +83,7 @@ public class DotsAndBoxesOutput implements OutputManager {
         }
     }
 
-    private void printBoard(AbstractBoard board) {
+    private void printBoard(BoardHandle board) {
         outputMessage(BoardDrawer.boardToString(board));
     }
 
@@ -94,7 +91,7 @@ public class DotsAndBoxesOutput implements OutputManager {
 
 class BoardDrawer{
 
-    static String boardToString(AbstractBoard board) {
+    static String boardToString(BoardHandle board) {
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 
@@ -104,7 +101,7 @@ class BoardDrawer{
         IntFunction<String> lastRowNumber = row -> String.valueOf(row * columns + columns - 1);
 
         StringBuilder boardString = new StringBuilder();
-        Move.Which type = HORIZONTAL;
+        Move.Orientation type = HORIZONTAL;
         int currentRow = 0;
         while (currentRow != rows - 1 || type != VERTICAL) {   //stop condition: first invalid row
 
@@ -122,7 +119,7 @@ class BoardDrawer{
         return boardString.toString();
     }
 
-    private static void rowToString(final int rowIdx, final Move.Which type, final int maxLength, final AbstractBoard board, StringBuilder outputString){
+    private static void rowToString(final int rowIdx, final Move.Orientation type, final int maxLength, final BoardHandle board, StringBuilder outputString){
 
         IntUnaryOperator currentNode = columnIdx -> rowIdx * board.getColumns() + columnIdx;
         IntFunction<Boolean> isPresent = columnIdx -> board.getElement(type, rowIdx, columnIdx);
@@ -133,17 +130,17 @@ class BoardDrawer{
 
     }
 
-    private static Integer columnsOf(Move.Which lk,Integer cols){
+    private static Integer columnsOf(Move.Orientation lk, Integer cols){
         if((lk == HORIZONTAL)) return cols - 1;
         return cols;
     }
 
-    private static Move.Which other(Move.Which lk){
+    private static Move.Orientation other(Move.Orientation lk){
         if(lk == HORIZONTAL) return VERTICAL;
         return HORIZONTAL;
     }
 
-    private static String convertToString(Boolean present, Move.Which type, Integer currNode,Integer maxLength) {
+    private static String convertToString(Boolean present, Move.Orientation type, Integer currNode, Integer maxLength) {
         String nodeString = String.valueOf(currNode);
         String indented = indent(nodeString,maxLength);
         if(present){

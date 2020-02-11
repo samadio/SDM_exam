@@ -26,6 +26,7 @@ public abstract class GameFactory {
     }
 
    public final Game newGame() {
+
         oManager.initialMessage();
         List<Player> players = setPlayers();
         BoardManager bManager = createBoard();

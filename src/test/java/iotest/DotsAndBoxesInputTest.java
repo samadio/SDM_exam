@@ -46,7 +46,7 @@ class DotsAndBoxesInputTest {
         setKeyboard("12 R");
         try{
             Move move = itest.getMove();
-            assertEquals(Move.Which.HORIZONTAL,move.getLineKind());
+            assertEquals(Move.Orientation.HORIZONTAL,move.getLineKind());
             assertEquals(1,move.getRow());
             assertEquals(2,move.getCol());
 

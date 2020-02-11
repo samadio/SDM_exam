@@ -5,18 +5,18 @@ import java.util.Objects;
 
 public class Move {
 
-    public enum Which{HORIZONTAL,VERTICAL}
+    public enum Orientation {HORIZONTAL,VERTICAL}
 
 
-    private final Which LINE_KIND;
+    private final Orientation LINE_KIND;
     private final MoveCoordinates COORDINATES;
 
-    public Move(Which lineKind, Integer row,Integer column){
+    public Move(Orientation lineKind, Integer row, Integer column){
         this.LINE_KIND = lineKind;
         this.COORDINATES = new MoveCoordinates(row, column);
     }
 
-    public Which getLineKind(){ return this.LINE_KIND;}
+    public Orientation getLineKind(){ return this.LINE_KIND;}
     public Integer getRow(){ return this.COORDINATES.getRow();}
     public Integer getCol() { return this.COORDINATES.getColumn();}
 

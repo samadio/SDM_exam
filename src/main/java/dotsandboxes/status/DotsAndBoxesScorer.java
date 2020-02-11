@@ -34,17 +34,17 @@ public class DotsAndBoxesScorer extends Scorer {
         Integer refRow = refMove.getRow();
         Integer refCol = refMove.getCol();
 
-        if (refMove.getLineKind() == Move.Which.HORIZONTAL) {
+        if (refMove.getLineKind() == Move.Orientation.HORIZONTAL) {
 
-            return Arrays.asList(new Move(Move.Which.VERTICAL, refRow, refCol + 1),
-                    new Move(Move.Which.HORIZONTAL, refRow + 1, refCol),
-                    new Move(Move.Which.VERTICAL, refRow, refCol));
+            return Arrays.asList(new Move(Move.Orientation.VERTICAL, refRow, refCol + 1),
+                    new Move(Move.Orientation.HORIZONTAL, refRow + 1, refCol),
+                    new Move(Move.Orientation.VERTICAL, refRow, refCol));
         }
         else{
 
-            return Arrays.asList(new Move(Move.Which.HORIZONTAL, refRow, refCol),
-                    new Move(Move.Which.VERTICAL, refRow, refCol + 1),
-                    new Move(Move.Which.HORIZONTAL, refRow + 1, refCol));
+            return Arrays.asList(new Move(Move.Orientation.HORIZONTAL, refRow, refCol),
+                    new Move(Move.Orientation.VERTICAL, refRow, refCol + 1),
+                    new Move(Move.Orientation.HORIZONTAL, refRow + 1, refCol));
         }
     }
 
@@ -53,17 +53,17 @@ public class DotsAndBoxesScorer extends Scorer {
         Integer refRow = refMove.getRow();
         Integer refCol = refMove.getCol();
 
-        if (refMove.getLineKind() == Move.Which.HORIZONTAL) {
+        if (refMove.getLineKind() == Move.Orientation.HORIZONTAL) {
 
-            return Arrays.asList(new Move(Move.Which.VERTICAL, refRow - 1, refCol),
-                    new Move(Move.Which.HORIZONTAL, refRow - 1, refCol),
-                    new Move(Move.Which.VERTICAL, refRow - 1, refCol + 1));
+            return Arrays.asList(new Move(Move.Orientation.VERTICAL, refRow - 1, refCol),
+                    new Move(Move.Orientation.HORIZONTAL, refRow - 1, refCol),
+                    new Move(Move.Orientation.VERTICAL, refRow - 1, refCol + 1));
         }
         else{
 
-            return Arrays.asList(new Move(Move.Which.HORIZONTAL, refRow + 1, refCol - 1),
-                    new Move(Move.Which.VERTICAL, refRow, refCol - 1),
-                    new Move(Move.Which.HORIZONTAL, refRow, refCol - 1));
+            return Arrays.asList(new Move(Move.Orientation.HORIZONTAL, refRow + 1, refCol - 1),
+                    new Move(Move.Orientation.VERTICAL, refRow, refCol - 1),
+                    new Move(Move.Orientation.HORIZONTAL, refRow, refCol - 1));
         }
     }
 }

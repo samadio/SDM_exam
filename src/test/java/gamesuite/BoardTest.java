@@ -1,6 +1,6 @@
 package gamesuite;
 
-import dotsandboxes.board.Board;
+import dotsandboxes.board.BoardHandle;
 import dotsandboxes.io.Converter;
 import dotsandboxes.io.InputMove;
 import gamesuite.move.Move;
@@ -8,19 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dotsandboxes.board.Board;
-import gamesuite.move.Move;
-import org.junit.jupiter.api.Test;
-
-import static gamesuite.move.Move.Which.HORIZONTAL;
-import static gamesuite.move.Move.Which.VERTICAL;
+import static gamesuite.move.Move.Orientation.HORIZONTAL;
+import static gamesuite.move.Move.Orientation.VERTICAL;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class BoardTest {
 
     @Test
     public void getElementTest() {
-        Board board = new Board(4,6);
+        BoardHandle board = new BoardHandle(4,6);
         InputMove inputMove = new InputMove(10, InputMove.Direction.UP);
         Converter converter = new Converter(6);
         Move m=converter.convert(inputMove);
@@ -29,7 +25,7 @@ class BoardTest {
 
     @Test
     public void setElementTest(){
-        Board board = new Board(4,6);
+        BoardHandle board = new BoardHandle(4,6);
         InputMove inputMove = new InputMove(10, InputMove.Direction.UP);
         Converter converter = new Converter(6);
         Move m = converter.convert(inputMove);
@@ -40,12 +36,12 @@ class BoardTest {
 
     @Test
     void resetTest() {
-        Board board = new Board(3,3);
+        BoardHandle board = new BoardHandle(3,3);
 
         Integer rows = board.getRows();
         Integer columns = board.getColumns();
 
-        Move.Which type = HORIZONTAL;
+        Move.Orientation type = HORIZONTAL;
         int i = 0; //row u're looking at
         while(i != rows - 1 | type != VERTICAL){   //stop condition: first invalid row
             for(int j = 0; j < columnsOf(type,columns); j += 1){
@@ -69,12 +65,12 @@ class BoardTest {
     }
 
 
-    private Integer columnsOf(Move.Which lk,Integer cols){
+    private Integer columnsOf(Move.Orientation lk, Integer cols){
         if((lk ==  HORIZONTAL)) return cols - 1;
         return cols;
     }
 
-    private Move.Which other(Move.Which lk){
+    private Move.Orientation other(Move.Orientation lk){
         if(lk == HORIZONTAL) return VERTICAL;
         return HORIZONTAL;
     }

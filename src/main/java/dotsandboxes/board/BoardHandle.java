@@ -1,17 +1,16 @@
 package dotsandboxes.board;
 
-import gamesuite.board.AbstractBoard;
 import gamesuite.move.Move;
 
 import java.util.stream.IntStream;
 
-public class Board extends AbstractBoard {
+public class BoardHandle extends gamesuite.board.BoardHandle {
 
     private final BoardDimensions DIMS;
     private final LinesGrid HORIZONTAL_LINES;
     private final LinesGrid VERTICAL_LINES;
 
-    public Board(Integer n, Integer m){
+    public BoardHandle(Integer n, Integer m){
         this.DIMS = new BoardDimensions(n,m);
         this.HORIZONTAL_LINES = new LinesGrid(n,m-1);
         this.VERTICAL_LINES = new LinesGrid(n-1, m);
@@ -19,12 +18,12 @@ public class Board extends AbstractBoard {
 
 
     @Override
-    public Boolean getElement(Move.Which w, Integer i, Integer j) {
+    public Boolean getElement(Move.Orientation w, Integer i, Integer j) {
         return getGrid(w).getLine(i,j);
     }
 
-    private LinesGrid getGrid(Move.Which lineType){
-        return (lineType == Move.Which.HORIZONTAL) ? HORIZONTAL_LINES : VERTICAL_LINES;
+    private LinesGrid getGrid(Move.Orientation lineType){
+        return (lineType == Move.Orientation.HORIZONTAL) ? HORIZONTAL_LINES : VERTICAL_LINES;
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Board extends AbstractBoard {
     @Override
     public Integer getColumns() {return DIMS.getColumns();}
 
-    public void setBoard(Move.Which w, Integer i, Integer j){
+    public void setBoard(Move.Orientation w, Integer i, Integer j){
         getGrid(w).setLine(i,j,true);
     }
 
