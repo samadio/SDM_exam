@@ -13,8 +13,8 @@ public class Main {
     public static void main(String[] args){
         OutputManager outputManager = new DotsAndBoxesOutput();
         try{
-            GameFactory gSetter = new DotsAndBoxesFactory(new DotsAndBoxesInput(outputManager), outputManager);
-            Game dotsAndBoxes = gSetter.newGame();
+            GameFactory gFactory = new DotsAndBoxesFactory(new DotsAndBoxesInput(outputManager), outputManager);
+            Game dotsAndBoxes = gFactory.newGame();
             dotsAndBoxes.play();
             //dotsAndBoxes.reset();
             //dotsAndBoxes.play();

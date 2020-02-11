@@ -29,16 +29,16 @@ public abstract class GameFactory {
 
         oManager.initialMessage();
         List<Player> players = setPlayers();
-        BoardManager bManager = createBoard();
+        BoardManager bManager = createBoardManager();
         MoveValidator mValidator = setValidator(bManager);
         GameStatus gStatus = setStatus(players, bManager, mValidator);
 
        return new Game(iManager, oManager, bManager, mValidator, gStatus, players);
    }
 
-    private BoardManager createBoard(){
+    private BoardManager createBoardManager(){
         List<Integer> dimensions = iManager.getGridDimensions();
-        return  setBoard(dimensions.get(0), dimensions.get(1));
+        return  setBoardManager(dimensions.get(0), dimensions.get(1));
     }
 
     private List<Player> setPlayers(){
@@ -74,5 +74,5 @@ public abstract class GameFactory {
 
     protected abstract MoveValidator setValidator(BoardManager bManager);
 
-    protected abstract BoardManager setBoard(Integer rows, Integer cols);
+    protected abstract BoardManager setBoardManager(Integer rows, Integer cols);
 }

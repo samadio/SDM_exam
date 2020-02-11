@@ -30,7 +30,7 @@ public class DotsAndBoxesFactory extends GameFactory {
     }
 
     @Override
-    protected BoardManager setBoard(Integer rows, Integer cols) {
+    protected BoardManager setBoardManager(Integer rows, Integer cols) {
         return new DotsAndBoxesBoardManager(rows, cols);
     }
 }
