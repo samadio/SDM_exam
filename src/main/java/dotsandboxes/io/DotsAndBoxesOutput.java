@@ -101,19 +101,16 @@ class BoardDrawer{
         IntFunction<String> lastRowNumber = row -> String.valueOf(row * columns + columns - 1);
 
         StringBuilder boardString = new StringBuilder();
-        Move.Orientation type = HORIZONTAL;
-        int currentRow = 0;
-        while (currentRow != rows - 1 || type != VERTICAL) {   //stop condition: first invalid row
 
-            rowToString(currentRow, type, maxLength, board, boardString);
+        rowToString(0, HORIZONTAL, maxLength, board, boardString);
+        boardString.append(indent(lastRowNumber.apply(0), maxLength)).append("\n");
 
-            if (type == VERTICAL)
-                currentRow += 1;
+        for(int currentRow = 1; currentRow < rows; currentRow++){
 
-            String lineEnd = (type == HORIZONTAL) ? indent(lastRowNumber.apply(currentRow), maxLength) : "";
-            boardString.append(lineEnd).append("\n");
-
-            type = other(type);
+            rowToString(currentRow - 1, VERTICAL, maxLength, board, boardString);
+            boardString.append("\n");
+            rowToString(currentRow , HORIZONTAL, maxLength, board, boardString);
+            boardString.append(indent(lastRowNumber.apply(currentRow), maxLength)).append("\n");
         }
 
         return boardString.toString();
